@@ -1,0 +1,2 @@
+# Article content in Latex
+
