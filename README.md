@@ -2,7 +2,7 @@
 
 ## Preface
 
-Object-Oriented Internet - reactive visualization of asynchronous data using AZURE services article
+Object-Oriented Internet - reactive visualization of asynchronous data using AZURE services article :book:
 
 ## Title
 
