@@ -1,13 +1,18 @@
-# OOI/Azure Interoperability
+# OOI/Azure Interoperability <!-- omit in toc -->
 
-## Preface
+## Table of content<!-- omit in toc -->
+
+- [Title proposals](#title-proposals)
+- [Article structure](#article-structure)
+- [Prototyping](#prototyping)
+- [See also](#see-also)
 
 ## Title proposals
 
 - Object-Oriented Internet - reactive visualization of asynchronous data using AZURE
 - Object-Oriented Internet - Azure interoperability
 
-## Table of content
+## Article structure
 
 - **Abstract**
 - **Key words**
@@ -31,7 +36,7 @@ Any information about available reusable deliverables related to this work.
   - **Simple, complex and structural data processing**
   - **Connectivity**
   - **How to implement**
- All about available libraries and tools
+All about available libraries and tools
 - **OOI Main Technology Fetuses**
   - Machinie To Machine communication based on the semantic data
   - OOI PubSub Implementation Architecture
@@ -44,8 +49,13 @@ Describe reactive nature of the Azure monitoring process data (telemetry) servic
   - **Deployment phases**
     - Design
     - Gateway and devices registration
-    - Authorization
-    - Interconnection
+    - Authentication
+    - Device/Service association
+    - Device/Application association
+    - Establishing session
+      - Device/Device Template (Device Capability Model) association - establishing a semantic-context
+      - Security management - establishing security-context
+    - Interconnection - exchange of data
     - Maintenance
 - **Gateway implementation**
   - Architecture

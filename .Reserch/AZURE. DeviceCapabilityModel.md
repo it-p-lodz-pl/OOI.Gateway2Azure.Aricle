@@ -12,7 +12,7 @@ Application templates consist of:
 - Pre-configured rules and jobs
 - Rich documentation including tutorials and how-tos
 
-> Note MP: ist set of definitions that could be serialized as a JSON document?
+> Note MP: is a set of definitions that could be serialized as a JSON document?
 
 ## Device Template
 
@@ -23,7 +23,7 @@ A device template includes the following sections
 - Device Capability Model (DCM)
 - Cloud properties
 - Customizations
-- Views.
+- Views
 
 Metadata management: in an Azure IoT Central application, device templates define the behavior and capability of types of device. For example, a refrigerator device template specifies the telemetry a refrigerator sends to your application.
 
