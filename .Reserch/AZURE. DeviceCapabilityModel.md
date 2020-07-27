@@ -53,3 +53,25 @@ These parts are called interfaces in a DCM. Interfaces define the details of eac
 > NOTE MP:
 >
 >- Interface is an Object according to the JSON syntax definition.
+
+## DTDL
+
+> **TBD**
+
+## JSON-LD
+
+## Getting started
+
+The easiest way to get dotNetRDF is via NuGet. We provide the following packages:
+
+- dotNetRDF - contains the core libraries. This includes support for reading and writing RDF; and for managing and querying RDF data in-memory.
+- dotNetRDF.Data.DataTables - a package which integrates RDF data with System.Data.DataTable
+- dotNetRDF.Data.Virtuoso - provides support for using OpenLink Virtuoso as a backend store with dotNetRDF.
+- dotNetRDF.Query.FullText - provides a full-text query plugin for dotNetRDF's Leviathan SPARQL query engine. The text indexing is provided by Lucene.
+- dotNetRDF.Query.Spin - provides an implementation of SPIN using dotNetRDF's Leviathan SPARQL query engine.
+- dotNetRDF.Web - provides a framework for hosting RDF data in an IIS web applicat
+
+### See also
+
+- [JSON-LD 1.1](https://www.w3.org/TR/json-ld11/) - A JSON-based Serialization for Linked Data.
+- [dotnetrdf/dotnetrdf](https://github.com/dotnetrdf/dotnetrdf#welcome) - dotNetRDF is a powerful and flexible API for working with RDF and SPARQL in .Net environments
