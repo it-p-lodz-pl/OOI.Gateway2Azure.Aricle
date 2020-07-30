@@ -15,7 +15,7 @@
 1. [IoT Central](https://docs.microsoft.com/en-gb/azure/iot-central/core/)
    - allows to describe devices using metadata
    - provides process data visualization user interface
-2. [IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/) *(MP?? classification `General Services` vs `Messaging Services`)*
+2. [IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/)
    - part of IoT Central *(MP?? or IoT Central is dependent on)*
    - provides robust messaging solution, with responses/acknowledgements and commands
    - operates without types allowing any devices to exchange any kind of data
