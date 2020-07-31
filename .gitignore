@@ -1,3 +1,6 @@
+## Enterprise Architect tem file
+*.ldb
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
