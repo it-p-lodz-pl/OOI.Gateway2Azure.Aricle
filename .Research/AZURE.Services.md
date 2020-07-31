@@ -2,11 +2,24 @@
 
 ## Table of content <!-- omit in toc -->
 
+- [Definitions](#definitions)
 - [Functionality](#functionality)
   - [General Services](#general-services)
   - [Messaging Services](#messaging-services)
 - [Architecture](#architecture)
+- [Field gateway](#field-gateway)
+  - [Microsoft Azure IoT services Reference Architecture](#microsoft-azure-iot-services-reference-architecture)
+  - [IoT Hub Documentation](#iot-hub-documentation)
+  - [Microsoft Azure IoT Protocol Gateway Developer Guide](#microsoft-azure-iot-protocol-gateway-developer-guide)
+  - [See also](#see-also)
 - [Decision](#decision)
+
+## Definitions
+
+- **Service**. In the context of this document a service is defined as any software component or module that is interfacing with devices through a field gateway or cloud gateway for data collection and analysis, as well as for command and control interactions. Services are mediators. They act under their own identity toward gateways and other subsystems, store and analyze data, autonomously issue commands to devices based on data insights or schedules, and expose information and control capabilities to authorized end users.
+- **Solution**. A solution for a particular IoT scenario is a composition of system building blocks, including all user-contributed rules, extensions, and code. It includes all data storage and analysis capabilities specific to the known scope of the solution.
+- **Device environment**. The device environment is the immediate physical space around the device where physical access and/or “local network” peer-to-peer, digital access to the device is feasible.
+- **Local network**. A “local network” is assumed to be a network that is distinct and insulated from—but potentially bridged to—the public Internet, and includes any short-range wireless radio technology that permits peer-to-peer communication of devices. This notion of “local network” does not include network virtualization technology creating the illusion of such a local network and it does also not include public operator networks that require any two devices to communicate across public network space if they were to enter a peer-to-peer communication relationship.
 
 ## Functionality
 
@@ -87,7 +100,7 @@
 
 ## Architecture
 
->TODO collect information about services relationship, namely: dependency, aggregation, collection, generalization, association, etc.
+>TODO collect information about services relationship, namely: dependency, aggregation, composition, generalization, association, etc.
 
 - Azure IoT Central uses Azure IoT Hub as a cloud gateway that enables device connectivity
 - 
@@ -100,7 +113,45 @@ Compare the terms:
   - MP?? it looks like embedded functionality of the IoT Hub
 - messages services
 
+## Field gateway
+
+### Microsoft Azure IoT services Reference Architecture
+
+This reference model discusses preferred communication protocol choices, explains potential trade-offs with these choices, and also explicitly allows for custom protocol extensibility and adaptation at the field gateway or in a cloud-based protocol gateway.
+
+Devices can be connected directly or indirectly via a field gateway. Both devices and field gateways may implement edge intelligence and analytics capabilities
+
+Figure 3 outlines the conceptual representation of the different device connectivity options for IoT solutions. The numbers in the figure correspond to four key connectivity patterns, defined as follows:
+
+1. **Direct** device connectivity to the cloud gateway: For IP capable devices that can establish secure connections via the Internet.
+2. Connectivity via a **field gateway**: For devices using industry specific protocols (such as CoAP5, OPC), short-range communication technologies (such as Bluetooth, ZigBee), as well as for resource-constrained devices not capable of hosting a TLS/SSL stack, or devices not exposed to the Internet. This option is also useful when aggregation of streams and data is executed on a field gateway before transferring to the cloud.
+3. Connectivity via a custom **cloud gateway**: For devices that require protocol translation or some form of custom processing before reaching the cloud gateway communication endpoint.
+4. Connectivity via a **field gateway and a custom cloud gateway**: Similar to the previous pattern, field gateway scenarios might require some protocol adaption or customizations on the cloud side and therefore can choose to connect to a custom gateway running in the cloud. Some scenarios require integration of field and cloud gateways using isolated network tunnels, either using VPN technology or using an application-level relay service.
+
+A field gateway is a specialized device-appliance or general-purpose software that acts as a communication enabler and, potentially, as a local device control system and device data processing hub. A field gateway can perform local processing and control functions toward the devices; on the other side it can filter or aggregate the device telemetry and thus reduce the amount of data being transferred to the cloud back end.
+
+A field gateway’s scope includes the field gateway itself and all devices that are attached to it. As the name implies, field gateways act outside dedicated data processing facilities and are usually collocated with the devices.
+A field gateway is different from a mere traffic router in that it has an active role in managing access and information flow. It is an application-addressed entity and network connection or session terminal. For example, gateways in this context may assist in device provisioning, data filtering, batching and aggregation, buffering of data, protocol translation, and event rules processing. NAT devices or firewalls, in contrast, do not qualify as field gateways since they are not explicit connection or session terminals, but rather route (or deny) connections or sessions made through them.
+
+### IoT Hub Documentation
+
+Use Azure IoT Edge to create a field gateway to perform protocol translation on the edge.
+
+Azure IoT Hub natively supports communication over the MQTT, AMQP, and HTTPS protocols. In some cases, devices or field gateways might not be able to use one of these standard protocols and require protocol adaptation. In such cases, you can use a custom gateway. A custom gateway enables protocol adaptation for IoT Hub endpoints by bridging the traffic to and from IoT Hub. You can use the [Azure IoT protocol gateway](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) as a custom gateway to enable protocol adaptation for IoT Hub.
+
+Azure IoT protocol gateway enables protocol translation for Azure IoT Hub
+
+### Microsoft Azure IoT Protocol Gateway Developer Guide
+
+The terms ‘device’ or ‘devices’ are used in this guide as a generic way to indicate IoT devices or field gateways, but could also include other types of clients establishing communication with IoT Hub. ‘Protocol gateway’ or ‘gateway’ are used to refer to the Azure IoT protocol gateway.
+
+### See also
+
+- [Microsoft Azure IoT Protocol Gateway Developer Guide](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
+ 
 ## Decision
+
+>MP?? it must be moved to the integration architecture scenario description
 
 We have selected [IoT Central](https://docs.microsoft.com/en-gb/azure/iot-central/core/) because;
 
