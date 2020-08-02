@@ -65,7 +65,7 @@
    - currently developed tech
    - aims at managing the graph of digital twins, which are to represent some real world process or entity
    - works based on DTDL v2
-   - allows data ingress and egress 
+   - allows data ingress and egress
    - graph traversing, management, versioning
    - can forward data to the messaging services described below
 
@@ -148,7 +148,7 @@ The terms ‘device’ or ‘devices’ are used in this guide as a generic way 
 ### See also
 
 - [Microsoft Azure IoT Protocol Gateway Developer Guide](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
- 
+
 ## Decision
 
 >MP?? it must be moved to the integration architecture scenario description
