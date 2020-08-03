@@ -9,6 +9,10 @@
   - [Shared Access Signature (SAS)](#shared-access-signature-sas)
   - [Implement the device](#implement-the-device)
   - [Software Development Kit](#software-development-kit)
+- [Azure IoT Hub Device Provisioning Service](#azure-iot-hub-device-provisioning-service)
+  - [Security concepts](#security-concepts)
+  - [Service concepts in Azure IoT Hub Device Provisioning Service](#service-concepts-in-azure-iot-hub-device-provisioning-service)
+  - [Symmetric key attestation](#symmetric-key-attestation)
 
 ## IoT Central Notes
 
@@ -75,3 +79,51 @@ Use one of the Azure IoT device SDKs to implement the behavior of your device. T
 For more information about the supported languages and SDKs, see [Understand and use Azure IoT Hub device SDKs](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks).
 
 - [Microsoft Azure IoT SDK for .NET](https://github.com/azure/azure-iot-sdk-csharp#microsoft-azure-iot-sdk-for-net)
+
+## Azure IoT Hub Device Provisioning Service
+
+### Security concepts
+
+IoT Hub Device Provisioning Service is a helper service for IoT Hub that you use to configure zero-touch device provisioning to a specified IoT hub.
+
+> [!NOTE]
+> IoT Hub uses "authentication scheme" for a similar concept in that service.
+
+Device Provisioning Service supports the following forms of attestation:
+
+- **X.509 certificates** based on the standard X.509 certificate authentication flow.
+- **Trusted Platform Module (TPM)** based on a nonce challenge, using the TPM standard for keys to present a signed Shared Access Signature (SAS) token. This form of attestation does not require a physical TPM on the device, but the service expects to attest using the endorsement key per the [TPM spec](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+- **Symmetric Key**  based on shared access signature (SAS) [Security tokens](../iot-hub/iot-hub-devguide-security.md#security-tokens), which include a hashed signature and an embedded expiration. For more information, see [Symmetric key attestation](concepts-symmetric-key-attestation.md).
+
+### Service concepts in Azure IoT Hub Device Provisioning Service
+
+Device provisioning is a two part process. The first part is establishing the initial connection between the device and the IoT solution by *registering* the device. The second part is applying the proper *configuration* to the device based on the specific requirements of the solution. Once both steps have been completed, the device has been fully *provisioned*. Device Provisioning Service automates both steps to provide a seamless provisioning experience for the device.
+
+An **enrollment** is the record of devices or groups of devices that may register through auto-provisioning.
+An **enrollment group** is a group of devices that share a specific attestation mechanism.
+
+A **registration** is the record of a device successfully registering/provisioning to an IoT Hub via the Device Provisioning Service. Registration records are created automatically; they can be deleted, but they cannot be updated.
+
+### Symmetric key attestation
+
+Symmetric key attestation is a simple approach to authenticating a device with a Device Provisioning Service instance.
+
+By default, the Device Provisioning Service creates new symmetric keys with a default length of 64 bytes.
+
+You can also provide your own symmetric keys for enrollments by disabling this option. When specifying your own symmetric keys, your keys must have a key length between 16 bytes and 64 bytes. Also, symmetric keys must be provided in valid Base64 format.
+
+SAS tokens have the following form:
+
+`SharedAccessSignature sig={signature}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`
+
+Here are the components of each token:
+
+| Value | Description |
+| --- | --- |
+| {signature} |An HMAC-SHA256 signature string. For individual enrollments, this signature is produced by using the symmetric key (primary or secondary) to perform the hash. For enrollment groups, a key derived from the enrollment group key is used to perform the hash. The hash is performed on a message of the form: `URL-encoded-resourceURI + "\n" + expiry`. **Important**: The key must be decoded from base64 before being used to perform the HMAC-SHA256 computation. Also, the signature result must be URL-encoded. |
+| {resourceURI} |URI of the registration endpoint that can be accessed with this token, starting with scope ID for the Device Provisioning Service instance. For example, `{Scope ID}/registrations/{Registration ID}` |
+| {expiry} |UTF8 strings for number of seconds since the epoch 00:00:00 UTC on 1 January 1970. |
+| {URL-encoded-resourceURI} |Lower case URL-encoding of the lower case resource URI |
+| {policyName} |The name of the shared access policy to which this token refers. The policy name used when provisioning with symmetric key attestation is **registration**. |
+
+When a device is attesting with an individual enrollment, the device uses the symmetric key defined in the individual enrollment entry to create the hashed signature for the SAS token.
