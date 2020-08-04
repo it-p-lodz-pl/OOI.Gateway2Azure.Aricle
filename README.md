@@ -1,14 +1,12 @@
-# OOI/Azure Interoperability <!- omit in toc ->
+# OOI/Azure Interoperability <!-- omit in toc -->
 
-## Table of content<!- omit in toc ->
+## Table of content<!-- omit in toc -->
 
-- [OOI/Azure Interoperability <!- omit in toc ->](#ooiazure-interoperability---omit-in-toc--)
-  - [Table of content<!- omit in toc ->](#table-of-content--omit-in-toc--)
-  - [Title proposals](#title-proposals)
-  - [Article structure](#article-structure)
-  - [Workspace organization](#workspace-organization)
-  - [Prototyping](#prototyping)
-  - [See also](#see-also)
+- [Title proposals](#title-proposals)
+- [Article structure](#article-structure)
+- [Workspace organization](#workspace-organization)
+- [Prototyping](#prototyping)
+- [See also](#see-also)
 
 ## Title proposals
 
