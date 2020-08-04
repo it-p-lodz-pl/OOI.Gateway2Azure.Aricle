@@ -7,8 +7,8 @@
   - [Key words](#key-words)
   - [Introduction](#introduction)
   - [Azure Main Technology Fetuses](#azure-main-technology-fetuses)
-  - [OOI Main Technology Fetuses](#ooi-main-technology-fetuses)
-  - [Azure to Sensors (M2S) connectivity deployment](#azure-to-sensors-m2s-connectivity-deployment)
+  - [OOI Main Technology Features](#ooi-main-technology-features)
+  - [Azure to Sensors (A2S) connectivity deployment (field level connectivity)](#azure-to-sensors-a2s-connectivity-deployment-field-level-connectivity)
   - [Gateway implementation](#gateway-implementation)
   - [Conclusion](#conclusion)
   - [References](#references)
@@ -31,7 +31,7 @@ Azure, Cloud Computing, Object-Oriented Internet, OPC Unified Architecture, Mach
 ### Azure Main Technology Fetuses
 
 - **Selection of the service**
-- **Metadata**
+- **Metadata** - must be discussed in context of the design/run time stages.
   - **Device Template (DT)**
   - **Device Capability Model**
   - **Interface**
@@ -40,13 +40,15 @@ Azure, Cloud Computing, Object-Oriented Internet, OPC Unified Architecture, Mach
 - **Connectivity**
 - **How to implement** All about available libraries and tools
 
-### OOI Main Technology Fetuses
+### OOI Main Technology Features
 
 - Machinie To Machine communication based on the semantic data
 - OOI PubSub Implementation Architecture
 - Simple, complex and structural data processing
 
-### Azure to Sensors (M2S) connectivity deployment
+### Azure to Sensors (A2S) connectivity deployment (field level connectivity) 
+
+> The title must be revised
 
 - **Architecture** - Domain model presenting relationship between the: Azure, PubSub Gateway, Device, Design and development tools
 - **Connectivity** - Describe reactive nature of the Azure monitoring process data (telemetry) services.
