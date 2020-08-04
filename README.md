@@ -1,11 +1,14 @@
-# OOI/Azure Interoperability <!-- omit in toc -->
+# OOI/Azure Interoperability <!- omit in toc ->
 
-## Table of content<!-- omit in toc -->
+## Table of content<!- omit in toc ->
 
-- [Title proposals](#title-proposals)
-- [Article structure](#article-structure)
-- [Prototyping](#prototyping)
-- [See also](#see-also)
+- [OOI/Azure Interoperability <!- omit in toc ->](#ooiazure-interoperability---omit-in-toc--)
+  - [Table of content<!- omit in toc ->](#table-of-content--omit-in-toc--)
+  - [Title proposals](#title-proposals)
+  - [Article structure](#article-structure)
+  - [Workspace organization](#workspace-organization)
+  - [Prototyping](#prototyping)
+  - [See also](#see-also)
 
 ## Title proposals
 
@@ -14,57 +17,17 @@
 
 ## Article structure
 
-- **Abstract**
-- **Key words**
-Azure, Cloud Computing, Object-Oriented Internet, OPC Unified Architecture, Machine to Machine Communication, Internet of Things,
-- **Introduction**
-  - **Subject**
-A basic matter of thought, discussion, investigation, development, etc. Describe the problem and the motivation for undertaking the effort to solve the problem.
-  - **Goal**
-What we are going to achieve - the result or achievement toward which effort is directed.
-  - **Scope**
-What we must do to prove the goal have been achieved. Extent or range of development, view, outlook, application, operation, effectiveness, etc.
-  - **Related work**
-Any information about available reusable deliverables related to this work.
-- **Azure Main Technology Fetuses**
-  - **Selection of the service**
-  - **Metadata**
-    - **Device Template (DT)**
-    - **Device Capability Model**
-    - **Interface**
-    - **Digital Twin Definition Language (DTDL)**
-  - **Simple, complex and structural data processing**
-  - **Connectivity**
-  - **How to implement**
-All about available libraries and tools
-- **OOI Main Technology Fetuses**
-  - Machinie To Machine communication based on the semantic data
-  - OOI PubSub Implementation Architecture
-  - Simple, complex and structural data processing
-- **Azure to Sensors (M2S) connectivity deployment**
-  - **Architecture**
-Domain model presenting relationship between the: Azure, PubSub Gateway, Device, Design and development tools
-  - **Connectivity**
-Describe reactive nature of the Azure monitoring process data (telemetry) services.
-  - **Deployment phases**
-    - Design
-    - Gateway and devices registration
-    - Authentication
-    - Device/Service association
-    - Device/Application association
-    - Establishing session
-      - Device/Device Template (Device Capability Model) association - establishing a semantic-context
-      - Security management - establishing security-context
-    - Interconnection - exchange of data
-    - Maintenance
-- **Gateway implementation**
-  - Architecture
-  - Protocol selection and mapping
-  - Configuration
-  - Testing
-- **Conclusion**
-- **References**
-List of available resources related to the topic in concern
+To get more about the preliminary structure check out the document [Markdown\Readme.md](Markdown\Readme.md)
+
+## Workspace organization
+
+| Folder    |Description |
+|-|-|
+| .Media    | All graphics related to the research and the article content.|
+| .Research | Documents prepared based on the project reference. The content may not be original and contains the research outcome.|
+| docs      | GitHub pages - documentation that may be published elsewhere. Not awaitable in private repository - published as [OOI/Azure Interoperability](https://it-p-lodz-pl.github.io/OOI.Gateway2Azure.Article/README.html). |
+| Latex     | A final version of the paper prepared using Latex format. |
+| Markdown  | A preliminary content of the article prepared using markdown format. |
 
 ## Prototyping
 
@@ -82,7 +45,7 @@ The prototyping is conducted in the repositories:
 
 - Mariusz Postol, [Object Oriented Internet](https://ieeexplore.ieee.org/abstract/document/7321562), [3rd International Conference on Innovative Network Systems and Applications](https://fedcsis.org/2015/inetsapp), 2015, [IEEE Xplore Digital Library](https://ieeexplore.ieee.org/abstract/document/7321562) [![DOI](https://img.shields.io/badge/DOI-10.15439%2F2015F160-blue)](https://fedcsis.org/proceedings/2015/pliks/160.pdf)
 
-<!--OOI on GitHub-->
+<!-OOI on GitHub->
 
 - [Object Oriented Internet - C# deliverables supporting a new Machine To Machine (M2M) communication architecture; GitHub Open Source Software][OOI]
   - [GitHub UAOOI.Networking.UDPMessageHandler][OOI.Networking.UDPMessageHandler]
