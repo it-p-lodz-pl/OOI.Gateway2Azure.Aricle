@@ -64,7 +64,7 @@ Azure, Cloud Computing, Object-Oriented Internet, OPC Unified Architecture, Mach
   - Interconnection - exchange of data
   - Maintenance
 
-We have selected [IoT Central](https://docs.microsoft.com/en-gb/azure/iot-central/core/) because;
+We have selected [IoT Central](https://docs.microsoft.com/en-gb/azure/iot-central/core/) because:
 
 - provides process data visualization user interface
 - allows to describe devices using metadata containing telemetry data types
