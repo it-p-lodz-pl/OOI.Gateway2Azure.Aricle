@@ -6,7 +6,7 @@
   - [Abstract](#abstract)
   - [Key words](#key-words)
   - [Introduction](#introduction)
-  - [Azure Main Technology Fetuses](#azure-main-technology-fetuses)
+  - [Azure Main Technology Features](#azure-main-technology-fetuses)
   - [OOI Main Technology Features](#ooi-main-technology-features)
   - [Azure to Sensors (A2S) connectivity deployment (field level connectivity)](#azure-to-sensors-a2s-connectivity-deployment-field-level-connectivity)
   - [Gateway implementation](#gateway-implementation)
@@ -28,7 +28,7 @@ Azure, Cloud Computing, Object-Oriented Internet, OPC Unified Architecture, Mach
 - **Scope** - What we must do to prove the goal have been achieved. Extent or range of development, view, outlook, application, operation, effectiveness, etc.
 - **Related work** - Any information about available reusable deliverables related to this work.
 
-### Azure Main Technology Fetuses
+### Azure Main Technology Features
 
 - **Selection of the service**
 - **Metadata** - must be discussed in context of the design/run time stages.
@@ -64,7 +64,7 @@ Azure, Cloud Computing, Object-Oriented Internet, OPC Unified Architecture, Mach
   - Interconnection - exchange of data
   - Maintenance
 
-We have selected [IoT Central](https://docs.microsoft.com/en-gb/azure/iot-central/core/) because;
+We have selected [IoT Central](https://docs.microsoft.com/en-gb/azure/iot-central/core/) because:
 
 - provides process data visualization user interface
 - allows to describe devices using metadata containing telemetry data types
