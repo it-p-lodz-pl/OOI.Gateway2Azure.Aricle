@@ -9,6 +9,7 @@
   - [Shared Access Signature (SAS)](#shared-access-signature-sas)
   - [Implement the device](#implement-the-device)
   - [Software Development Kit](#software-development-kit)
+- [IoT Hub Notes](#iot-hub-notes)
 - [Azure IoT Hub Device Provisioning Service](#azure-iot-hub-device-provisioning-service)
   - [Security concepts](#security-concepts)
   - [Service concepts in Azure IoT Hub Device Provisioning Service](#service-concepts-in-azure-iot-hub-device-provisioning-service)
@@ -24,7 +25,7 @@ Types of device:
 - **Gateway device**: A gateway device manages one or more downstream devices that connect to your IoT Central application. You use IoT Central to configure the relationships between the downstream devices and the gateway device. To learn more, see Define a new IoT gateway device type in your Azure IoT Central application.
 - **Edge device** - An edge device connects directly to IoT Central, but acts as an intermediary for other devices known as leaf devices. An edge device is typically located close to the leaf devices for which it's acting as an intermediary. IoT Central only sees the edge device, not the leaf devices connected to the edge device.
 
-> MP Comment: to fulfill our assumption we must implement **Gateway device**.
+> MP Comment: to fulfill our assumption we must implement **field gateway**. **field gateway** is not mentioned on this list.
 
 Typically, a device must be registered in the IoT Central application before it can connect. However, IoT Central does support scenarios where devices can connect without first being registered.
 
@@ -36,11 +37,13 @@ Azure IoT Central uses Azure IoT Hub as a cloud gateway that enables device conn
 - Device management.
 - Secure device connectivity.
 
-To learn more about IoT Hub, see [Azure IoT Hub Documentation](https://docs.microsoft.com/en-us/azure/iot-hub/)
+To learn more about IoT Hub, see [Azure IoT Hub Documentation](https://docs.microsoft.com/En-us/azure/iot-hub/)
+
+- The [IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) automatically provisions devices to the right IoT hub when the device first boots up.
 
 ### IoT Hub Device Provisioning
 
-IoT Central uses the Azure [IoT Hub Device Provisioning service (DPS)](https://docs.microsoft.com/en-us/azure/iot-dps/about-iot-dps) to manage the connection process. Using DPS enables:
+IoT Central uses the [Azure IoT Hub Device Provisioning service (DPS)](https://docs.microsoft.com/En-us/azure/iot-dps/about-iot-dps) to manage the connection process. Using DPS enables:
 
 - IoT Central to support onboarding and connecting devices at scale.
 - You to generate device credentials and configure the devices offline without registering the devices through IoT Central UI.
@@ -64,6 +67,13 @@ IoT Central also enables OEMs to mass manufacture devices that can connect witho
 To secure the communication between a device and your application, IoT Central supports both shared access signatures (SAS) and X.509 certificates. X.509 certificates are recommended in production environments.
 
 > MP Comments - documentation doesn't cover the topic how it works.
+> To secure the communication - what it exactly means: 
+>
+>- authentication,
+>- authorization,
+>- integrity,
+>- nonrepudiation,
+>- encryption.
 
 ### Implement the device
 
@@ -80,7 +90,22 @@ For more information about the supported languages and SDKs, see [Understand and
 
 - [Microsoft Azure IoT SDK for .NET](https://github.com/azure/azure-iot-sdk-csharp#microsoft-azure-iot-sdk-for-net)
 
+## IoT Hub Notes
+
+*Device provisioning* is the process of adding the initial device data to the stores in your solution. To enable a new device to connect to your hub, you must add a device ID and keys to the IoT Hub identity registry. As part of the provisioning process, you might need to initialize device-specific data in other solution stores. You can also use the Azure IoT Hub Device Provisioning Service to enable zero-touch, just-in-time provisioning to one or more IoT hubs without requiring human intervention. To learn more, see the [provisioning service documentation](https://azure.microsoft.com/documentation/services/iot-dps).
+
+In addition, we also provide a set of SDKs for working with the [Device Provisioning Service](../iot-dps/about-iot-dps.md).
+
+- **Provisioning Device SDKs** enable you to build apps that run on your IoT devices to communicate with the Device Provisioning Service.
+- **Provisioning Service SDKs** enable you to build backend applications to manage your enrollments in the Device Provisioning Service.
+
+Learn about the [benefits of developing using Azure IoT SDKs](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/).
+
 ## Azure IoT Hub Device Provisioning Service
+
+All these scenarios are achievable today through the Device Provisioning Service using the same basic flow:
+
+![Flow](../.Media/c64c2a4c-885b-49ae-b047-1b144a2e3d59.png)
 
 ### Security concepts
 
