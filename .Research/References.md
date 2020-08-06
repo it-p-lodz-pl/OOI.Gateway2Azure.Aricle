@@ -16,7 +16,8 @@
 - [Device Provisioning Service (DPS)](https://docs.microsoft.com/En-us/azure/iot-dps/)
 - [Industrial IoT Platform](https://github.com/Azure/Industrial-IoT#azure-industrial-iot-platform)
 - [Azure IoT Edge documentation](https://docs.microsoft.com/En-us/azure/iot-edge/)
-
+- [Azure Service Bus Messaging documentation](https://docs.microsoft.com/EN-us/azure/service-bus-messaging/)
+ 
 ### Software develope kids
 
 - [Microsoft Azure IoT Protocol Gateway Developer Guide](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)

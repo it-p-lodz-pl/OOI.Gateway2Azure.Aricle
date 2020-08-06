@@ -1,498 +1,488 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>README.md</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
-<style>
-/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-/*---------------------------------------------------------------------------------------------
+<head>
+	<title>README.md</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+	<style>
+		/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+		/*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-body {
-	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
-	font-size: var(--vscode-markdown-font-size, 14px);
-	padding: 0 26px;
-	line-height: var(--vscode-markdown-line-height, 22px);
-	word-wrap: break-word;
-}
+		body {
+			font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+			font-size: var(--vscode-markdown-font-size, 14px);
+			padding: 0 26px;
+			line-height: var(--vscode-markdown-line-height, 22px);
+			word-wrap: break-word;
+		}
 
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-}
+		#code-csp-warning {
+			position: fixed;
+			top: 0;
+			right: 0;
+			color: white;
+			margin: 16px;
+			text-align: center;
+			font-size: 12px;
+			font-family: sans-serif;
+			background-color: #444444;
+			cursor: pointer;
+			padding: 6px;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+		}
 
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-}
+		#code-csp-warning:hover {
+			text-decoration: none;
+			background-color: #007acc;
+			box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
+		}
 
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
+		body.scrollBeyondLastLine {
+			margin-bottom: calc(100vh - 22px);
+		}
 
-body.showEditorSelection .code-line {
-	position: relative;
-}
+		body.showEditorSelection .code-line {
+			position: relative;
+		}
 
-body.showEditorSelection .code-active-line:before,
-body.showEditorSelection .code-line:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	height: 100%;
-}
+		body.showEditorSelection .code-active-line:before,
+		body.showEditorSelection .code-line:hover:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: -12px;
+			height: 100%;
+		}
 
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li.code-line:hover:before {
-	left: -30px;
-}
+		body.showEditorSelection li.code-active-line:before,
+		body.showEditorSelection li.code-line:hover:before {
+			left: -30px;
+		}
 
-.vscode-light.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.15);
-}
+		.vscode-light.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.15);
+		}
 
-.vscode-light.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
+		.vscode-light.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.40);
+		}
 
-.vscode-light.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
+		.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
 
-.vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
-}
+		.vscode-dark.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.4);
+		}
 
-.vscode-dark.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
+		.vscode-dark.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.60);
+		}
 
-.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
+		.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
 
-.vscode-high-contrast.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 160, 0, 0.7);
-}
+		.vscode-high-contrast.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 160, 0, 0.7);
+		}
 
-.vscode-high-contrast.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
+		.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 160, 0, 1);
+		}
 
-.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
+		.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
 
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
 
-a {
-	text-decoration: none;
-}
+		a {
+			text-decoration: none;
+		}
 
-a:hover {
-	text-decoration: underline;
-}
+		a:hover {
+			text-decoration: underline;
+		}
 
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-	outline: 1px solid -webkit-focus-ring-color;
-	outline-offset: -1px;
-}
+		a:focus,
+		input:focus,
+		select:focus,
+		textarea:focus {
+			outline: 1px solid -webkit-focus-ring-color;
+			outline-offset: -1px;
+		}
 
-hr {
-	border: 0;
-	height: 2px;
-	border-bottom: 2px solid;
-}
+		hr {
+			border: 0;
+			height: 2px;
+			border-bottom: 2px solid;
+		}
 
-h1 {
-	padding-bottom: 0.3em;
-	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
+		h1 {
+			padding-bottom: 0.3em;
+			line-height: 1.2;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+		}
 
-h1, h2, h3 {
-	font-weight: normal;
-}
+		h1,
+		h2,
+		h3 {
+			font-weight: normal;
+		}
 
-table {
-	border-collapse: collapse;
-}
+		table {
+			border-collapse: collapse;
+		}
 
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
+		table>thead>tr>th {
+			text-align: left;
+			border-bottom: 1px solid;
+		}
 
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 5px 10px;
-}
+		table>thead>tr>th,
+		table>thead>tr>td,
+		table>tbody>tr>th,
+		table>tbody>tr>td {
+			padding: 5px 10px;
+		}
 
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
+		table>tbody>tr+tr>td {
+			border-top: 1px solid;
+		}
 
-blockquote {
-	margin: 0 7px 0 5px;
-	padding: 0 16px 0 10px;
-	border-left-width: 5px;
-	border-left-style: solid;
-}
+		blockquote {
+			margin: 0 7px 0 5px;
+			padding: 0 16px 0 10px;
+			border-left-width: 5px;
+			border-left-style: solid;
+		}
 
-code {
-	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-	font-size: 1em;
-	line-height: 1.357em;
-}
+		code {
+			font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+			font-size: 1em;
+			line-height: 1.357em;
+		}
 
-body.wordWrap pre {
-	white-space: pre-wrap;
-}
+		body.wordWrap pre {
+			white-space: pre-wrap;
+		}
 
-pre:not(.hljs),
-pre.hljs code > div {
-	padding: 16px;
-	border-radius: 3px;
-	overflow: auto;
-}
+		pre:not(.hljs),
+		pre.hljs code>div {
+			padding: 16px;
+			border-radius: 3px;
+			overflow: auto;
+		}
 
-pre code {
-	color: var(--vscode-editor-foreground);
-	tab-size: 4;
-}
+		pre code {
+			color: var(--vscode-editor-foreground);
+			tab-size: 4;
+		}
 
-/** Theming */
+		/** Theming */
 
-.vscode-light pre {
-	background-color: rgba(220, 220, 220, 0.4);
-}
+		.vscode-light pre {
+			background-color: rgba(220, 220, 220, 0.4);
+		}
 
-.vscode-dark pre {
-	background-color: rgba(10, 10, 10, 0.4);
-}
+		.vscode-dark pre {
+			background-color: rgba(10, 10, 10, 0.4);
+		}
 
-.vscode-high-contrast pre {
-	background-color: rgb(0, 0, 0);
-}
+		.vscode-high-contrast pre {
+			background-color: rgb(0, 0, 0);
+		}
 
-.vscode-high-contrast h1 {
-	border-color: rgb(0, 0, 0);
-}
+		.vscode-high-contrast h1 {
+			border-color: rgb(0, 0, 0);
+		}
 
-.vscode-light table > thead > tr > th {
-	border-color: rgba(0, 0, 0, 0.69);
-}
+		.vscode-light table>thead>tr>th {
+			border-color: rgba(0, 0, 0, 0.69);
+		}
 
-.vscode-dark table > thead > tr > th {
-	border-color: rgba(255, 255, 255, 0.69);
-}
+		.vscode-dark table>thead>tr>th {
+			border-color: rgba(255, 255, 255, 0.69);
+		}
 
-.vscode-light h1,
-.vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
-	border-color: rgba(0, 0, 0, 0.18);
-}
+		.vscode-light h1,
+		.vscode-light hr,
+		.vscode-light table>tbody>tr+tr>td {
+			border-color: rgba(0, 0, 0, 0.18);
+		}
 
-.vscode-dark h1,
-.vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
-	border-color: rgba(255, 255, 255, 0.18);
-}
+		.vscode-dark h1,
+		.vscode-dark hr,
+		.vscode-dark table>tbody>tr+tr>td {
+			border-color: rgba(255, 255, 255, 0.18);
+		}
+	</style>
 
-</style>
+	<style>
+		/* Tomorrow Theme */
+		/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+		/* Original theme - https://github.com/chriskempson/tomorrow-theme */
 
-<style>
-/* Tomorrow Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+		/* Tomorrow Comment */
+		.hljs-comment,
+		.hljs-quote {
+			color: #8e908c;
+		}
 
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-	color: #8e908c;
-}
+		/* Tomorrow Red */
+		.hljs-variable,
+		.hljs-template-variable,
+		.hljs-tag,
+		.hljs-name,
+		.hljs-selector-id,
+		.hljs-selector-class,
+		.hljs-regexp,
+		.hljs-deletion {
+			color: #c82829;
+		}
 
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-	color: #c82829;
-}
+		/* Tomorrow Orange */
+		.hljs-number,
+		.hljs-built_in,
+		.hljs-builtin-name,
+		.hljs-literal,
+		.hljs-type,
+		.hljs-params,
+		.hljs-meta,
+		.hljs-link {
+			color: #f5871f;
+		}
 
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-	color: #f5871f;
-}
+		/* Tomorrow Yellow */
+		.hljs-attribute {
+			color: #eab700;
+		}
 
-/* Tomorrow Yellow */
-.hljs-attribute {
-	color: #eab700;
-}
+		/* Tomorrow Green */
+		.hljs-string,
+		.hljs-symbol,
+		.hljs-bullet,
+		.hljs-addition {
+			color: #718c00;
+		}
 
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-	color: #718c00;
-}
+		/* Tomorrow Blue */
+		.hljs-title,
+		.hljs-section {
+			color: #4271ae;
+		}
 
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-	color: #4271ae;
-}
+		/* Tomorrow Purple */
+		.hljs-keyword,
+		.hljs-selector-tag {
+			color: #8959a8;
+		}
 
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-	color: #8959a8;
-}
+		.hljs {
+			display: block;
+			overflow-x: auto;
+			color: #4d4d4c;
+			padding: 0.5em;
+		}
 
-.hljs {
-	display: block;
-	overflow-x: auto;
-	color: #4d4d4c;
-	padding: 0.5em;
-}
+		.hljs-emphasis {
+			font-style: italic;
+		}
 
-.hljs-emphasis {
-	font-style: italic;
-}
+		.hljs-strong {
+			font-weight: bold;
+		}
+	</style>
 
-.hljs-strong {
-	font-weight: bold;
-}
-</style>
-
-<style>
-/*
+	<style>
+		/*
  * Markdown PDF CSS
  */
 
- body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-	padding: 0 12px;
-}
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+			padding: 0 12px;
+		}
 
-pre {
-	background-color: #f8f8f8;
-	border: 1px solid #cccccc;
-	border-radius: 3px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	overflow-wrap: break-word;
-}
+		pre {
+			background-color: #f8f8f8;
+			border: 1px solid #cccccc;
+			border-radius: 3px;
+			overflow-x: auto;
+			white-space: pre-wrap;
+			overflow-wrap: break-word;
+		}
 
-pre:not(.hljs) {
-	padding: 23px;
-	line-height: 19px;
-}
+		pre:not(.hljs) {
+			padding: 23px;
+			line-height: 19px;
+		}
 
-blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
-}
+		blockquote {
+			background: rgba(127, 127, 127, 0.1);
+			border-color: rgba(0, 122, 204, 0.5);
+		}
 
-.emoji {
-	height: 1.4em;
-}
+		.emoji {
+			height: 1.4em;
+		}
 
-code {
-	font-size: 14px;
-	line-height: 19px;
-}
+		code {
+			font-size: 14px;
+			line-height: 19px;
+		}
 
-/* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
-	font-size: inherit;
-}
+		/* for inline code */
+		:not(pre):not(.hljs)>code {
+			color: #C9AE75;
+			/* Change the old color so it seems less like an error */
+			font-size: inherit;
+		}
 
-/* Page Break : use <div class="page"/> to insert page break
+		/* Page Break : use <div class="page"/> to insert page break
 -------------------------------------------------------- */
-.page {
-	page-break-after: always;
-}
+		.page {
+			page-break-after: always;
+		}
+	</style>
 
-</style>
-
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+	<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
+
 <body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
-<h1 id="ooiazure-interoperability----omit-in-toc">OOI/Azure Interoperability <!-- omit in toc --></h1>
-<h2 id="table-of-content---omit-in-toc">Table of content<!-- omit in toc --></h2>
-<ul>
-<li><a href="#title-proposals">Title proposals</a></li>
-<li><a href="#article-structure">Article structure</a></li>
-<li><a href="#prototyping">Prototyping</a></li>
-<li><a href="#see-also">See also</a></li>
-</ul>
-<h2 id="title-proposals">Title proposals</h2>
-<ul>
-<li>Object-Oriented Internet - reactive visualization of asynchronous data using AZURE</li>
-<li>Object-Oriented Internet - Azure interoperability</li>
-</ul>
-<h2 id="article-structure">Article structure</h2>
-<ul>
-<li><strong>Abstract</strong></li>
-<li><strong>Key words</strong>
-Azure, Cloud Computing, Object-Oriented Internet, OPC Unified Architecture, Machine to Machine Communication, Internet of Things,</li>
-<li><strong>Introduction</strong>
-<ul>
-<li><strong>Subject</strong>
-A basic matter of thought, discussion, investigation, development, etc. Describe the problem and the motivation for undertaking the effort to solve the problem.</li>
-<li><strong>Goal</strong>
-What we are going to achieve - the result or achievement toward which effort is directed.</li>
-<li><strong>Scope</strong>
-What we must do to prove the goal have been achieved. Extent or range of development, view, outlook, application, operation, effectiveness, etc.</li>
-<li><strong>Related work</strong>
-Any information about available reusable deliverables related to this work.</li>
-</ul>
-</li>
-<li><strong>Azure Main Technology Fetuses</strong>
-<ul>
-<li><strong>Selection of the service</strong></li>
-<li><strong>Metadata</strong>
-<ul>
-<li><strong>Device Template (DT)</strong></li>
-<li><strong>Device Capability Model</strong></li>
-<li><strong>Interface</strong></li>
-<li><strong>Digital Twin Definition Language (DTDL)</strong></li>
-</ul>
-</li>
-<li><strong>Simple, complex and structural data processing</strong></li>
-<li><strong>Connectivity</strong></li>
-<li><strong>How to implement</strong>
-All about available libraries and tools</li>
-</ul>
-</li>
-<li><strong>OOI Main Technology Fetuses</strong>
-<ul>
-<li>Machinie To Machine communication based on the semantic data</li>
-<li>OOI PubSub Implementation Architecture</li>
-<li>Simple, complex and structural data processing</li>
-</ul>
-</li>
-<li><strong>Azure to Sensors (M2S) connectivity deployment</strong>
-<ul>
-<li><strong>Architecture</strong>
-Domain model presenting relationship between the: Azure, PubSub Gateway, Device, Design and development tools</li>
-<li><strong>Connectivity</strong>
-Describe reactive nature of the Azure monitoring process data (telemetry) services.</li>
-<li><strong>Deployment phases</strong>
-<ul>
-<li>Design</li>
-<li>Gateway and devices registration</li>
-<li>Authentication</li>
-<li>Device/Service association</li>
-<li>Device/Application association</li>
-<li>Establishing session
-<ul>
-<li>Device/Device Template (Device Capability Model) association - establishing a semantic-context</li>
-<li>Security management - establishing security-context</li>
-</ul>
-</li>
-<li>Interconnection - exchange of data</li>
-<li>Maintenance</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>Gateway implementation</strong>
-<ul>
-<li>Architecture</li>
-<li>Protocol selection and mapping</li>
-<li>Configuration</li>
-<li>Testing</li>
-</ul>
-</li>
-<li><strong>Conclusion</strong></li>
-<li><strong>References</strong>
-List of available resources related to the topic in concern</li>
-</ul>
-<h2 id="prototyping">Prototyping</h2>
-<p>The prototyping is conducted in the repositories:</p>
-<ul>
-<li><a href="https://github.com/mpostol/OPC-UA-OOI#object-oriented-internet">Object-Oriented Internet</a> - Object-Oriented Internet - Machines to Machine Meaningful Interoperability</li>
-<li><a href="https://github.com/Drutol/CrossHMI#crosshmi">CrossHMI</a> - Thesis: Object-Oriented Internet - reactive visualization of asynchronous data using AZURE</li>
-</ul>
-<h2 id="see-also">See also</h2>
-<ul>
-<li>
-<p>Postół M. (2020) Object-Oriented Internet Reactive Interoperability. In: Krzhizhanovskaya V. et al. (eds) Computational Science – ICCS 2020. ICCS 2020. Lecture Notes in Computer Science, vol 12141. Springer, Cham; <a href="https://doi.org/10.1007/978-3-030-50426-7_31">DOI: https://doi.org/10.1007/978-3-030-50426-7_31</a></p>
-<ul>
-<li>Postół M. (2020) <a href="https://www.researchgate.net/publication/341882427_Object-Oriented_Internet_Reactive_Interoperability">Object-Oriented Internet Reactive Interoperability</a>, presentation, DOI: 10.13140/RG.2.2.33984.56323</li>
-</ul>
-</li>
-<li>
-<p>Mariusz Postol, <a href="https://www.researchgate.net/publication/341165347_Machine_to_Machine_Semantic-Data_Based_Communication_Comprehensive_Survey">Machine to Machine Semantic-Data Based Communication: Comprehensive Survey</a> chapter in book <a href="https://www.researchgate.net/publication/335524620_Computer_Game_Innovations_2018">Computer Game Innovations 2018</a>, Publisher: Lodz University of Technology Press; ISBN: 978-83-7283-999-2</p>
-</li>
-<li>
-<p>Mariusz Postol, <a href="https://ieeexplore.ieee.org/abstract/document/7321562">Object Oriented Internet</a>, <a href="https://fedcsis.org/2015/inetsapp">3rd International Conference on Innovative Network Systems and Applications</a>, 2015, <a href="https://ieeexplore.ieee.org/abstract/document/7321562">IEEE Xplore Digital Library</a> <a href="https://fedcsis.org/proceedings/2015/pliks/160.pdf"><img src="https://img.shields.io/badge/DOI-10.15439/2015F160-blue" alt="DOI"></a></p>
-</li>
-</ul>
-<!--OOI on GitHub-->
-<ul>
-<li><a href="https://github.com/mpostol/OPC-UA-OOI">Object Oriented Internet - C# deliverables supporting a new Machine To Machine (M2M) communication architecture; GitHub Open Source Software</a>
-<ul>
-<li><a href="https://github.com/mpostol/OPC-UA-OOI/tree/master/Networking/UDPMessageHandler">GitHub UAOOI.Networking.UDPMessageHandler</a></li>
-<li><a href="https://github.com/mpostol/OPC-UA-OOI/tree/master/Networking/ReferenceApplication">GitHub UAOOI.Networking.ReferenceApplication</a></li>
-<li><a href="https://github.com/mpostol/OPC-UA-OOI/releases">GitHub UAOOI Releases Page</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><a href="https://commsvr.gitbook.io/ooi/readme">Object Oriented Internet - online ebook</a></li>
-</ul>
-<ul>
-<li><a href="https://github.com/mpostol/ASMD">OPC UA Address Space Model Designer (ASMD); GitHub Open Source Software</a></li>
-</ul>
+	<script>
+		mermaid.initialize({
+			startOnLoad: true,
+			theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+				? 'dark'
+				: 'default'
+		});
+	</script>
+	<h1 id="ooiazure-interoperability----omit-in-toc">OOI/Azure Interoperability
+		<!-- omit in toc -->
+	</h1>
+	<h2 id="table-of-content---omit-in-toc">Table of content
+		<!-- omit in toc -->
+	</h2>
+	<ul>
+		<li><a href="#title-proposals">Title proposals</a></li>
+		<li><a href="#article-structure">Article structure</a></li>
+		<li><a href="#workspace-organization">Workspace organization</a></li>
+		<li><a href="#prototyping">Prototyping</a></li>
+		<li><a href="#see-also">See also</a></li>
+	</ul>
+	<h2 id="title-proposals">Title proposals</h2>
+	<ul>
+		<li>Object-Oriented Internet - reactive visualization of asynchronous data using AZURE</li>
+		<li>Object-Oriented Internet - Azure interoperability</li>
+	</ul>
+	<h2 id="article-structure">Article structure</h2>
+	<p>To get more about the preliminary structure check out the document <a
+			href="Markdown%5CReadme.md">Markdown\Readme.md</a></p>
+	<h2 id="workspace-organization">Workspace organization</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Folder</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>.Media</td>
+				<td>All graphics related to the research and the article content.</td>
+			</tr>
+			<tr>
+				<td>.Research</td>
+				<td>Documents prepared based on the project reference. The content may not be original and contains the
+					research outcome.</td>
+			</tr>
+			<tr>
+				<td>docs</td>
+				<td>GitHub pages - documentation that may be published elsewhere. Not awaitable in private repository -
+					published as <a
+						href="https://it-p-lodz-pl.github.io/OOI.Gateway2Azure.Article/README.html">OOI/Azure
+						Interoperability</a>.</td>
+			</tr>
+			<tr>
+				<td>Latex</td>
+				<td>A final version of the paper prepared using Latex format.</td>
+			</tr>
+			<tr>
+				<td>Markdown</td>
+				<td>A preliminary content of the article prepared using markdown format.</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2 id="prototyping">Prototyping</h2>
+	<p>The prototyping is conducted in the repositories:</p>
+	<ul>
+		<li><a href="https://github.com/mpostol/OPC-UA-OOI#object-oriented-internet">Object-Oriented Internet</a> -
+			Object-Oriented Internet - Machines to Machine Meaningful Interoperability</li>
+		<li><a href="https://github.com/Drutol/CrossHMI#crosshmi">CrossHMI</a> - Thesis: Object-Oriented Internet -
+			reactive visualization of asynchronous data using AZURE</li>
+	</ul>
+	<h2 id="see-also">See also</h2>
+	<ul>
+		<li>
+			<p>Postół M. (2020) Object-Oriented Internet Reactive Interoperability. In: Krzhizhanovskaya V. et al. (eds)
+				Computational Science – ICCS 2020. ICCS 2020. Lecture Notes in Computer Science, vol 12141. Springer,
+				Cham; <a href="https://doi.org/10.1007/978-3-030-50426-7_31">DOI:
+					https://doi.org/10.1007/978-3-030-50426-7_31</a></p>
+			<ul>
+				<li>Postół M. (2020) <a
+						href="https://www.researchgate.net/publication/341882427_Object-Oriented_Internet_Reactive_Interoperability">Object-Oriented
+						Internet Reactive Interoperability</a>, presentation, DOI: 10.13140/RG.2.2.33984.56323</li>
+			</ul>
+		</li>
+		<li>
+			<p>Mariusz Postol, <a
+					href="https://www.researchgate.net/publication/341165347_Machine_to_Machine_Semantic-Data_Based_Communication_Comprehensive_Survey">Machine
+					to Machine Semantic-Data Based Communication: Comprehensive Survey</a> chapter in book <a
+					href="https://www.researchgate.net/publication/335524620_Computer_Game_Innovations_2018">Computer
+					Game Innovations 2018</a>, Publisher: Lodz University of Technology Press; ISBN: 978-83-7283-999-2
+			</p>
+		</li>
+		<li>
+			<p>Mariusz Postol, <a href="https://ieeexplore.ieee.org/abstract/document/7321562">Object Oriented
+					Internet</a>, <a href="https://fedcsis.org/2015/inetsapp">3rd International Conference on Innovative
+					Network Systems and Applications</a>, 2015, <a
+					href="https://ieeexplore.ieee.org/abstract/document/7321562">IEEE Xplore Digital Library</a> <a
+					href="https://fedcsis.org/proceedings/2015/pliks/160.pdf"><img
+						src="https://img.shields.io/badge/DOI-10.15439/2015F160-blue" alt="DOI"></a></p>
+		</li>
+	</ul>
+	<p>&lt;!-OOI on GitHub-&gt;</p>
+	<ul>
+		<li><a href="https://github.com/mpostol/OPC-UA-OOI">Object Oriented Internet - C# deliverables supporting a new
+				Machine To Machine (M2M) communication architecture; GitHub Open Source Software</a>
+			<ul>
+				<li><a href="https://github.com/mpostol/OPC-UA-OOI/tree/master/Networking/UDPMessageHandler">GitHub
+						UAOOI.Networking.UDPMessageHandler</a></li>
+				<li><a href="https://github.com/mpostol/OPC-UA-OOI/tree/master/Networking/ReferenceApplication">GitHub
+						UAOOI.Networking.ReferenceApplication</a></li>
+				<li><a href="https://github.com/mpostol/OPC-UA-OOI/releases">GitHub UAOOI Releases Page</a></li>
+			</ul>
+		</li>
+	</ul>
+	<ul>
+		<li><a href="https://commsvr.gitbook.io/ooi/readme">Object Oriented Internet - online ebook</a></li>
+	</ul>
+	<ul>
+		<li><a href="https://github.com/mpostol/ASMD">OPC UA Address Space Model Designer (ASMD); GitHub Open Source
+				Software</a></li>
+	</ul>
 
 </body>
+
 </html>
