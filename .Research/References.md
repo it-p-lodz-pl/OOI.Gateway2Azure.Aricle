@@ -4,7 +4,7 @@
 
 - [Azure](#azure)
   - [Services](#services)
-  - [Software develope kids](#software-develope-kids)
+  - [Software Develope Kids](#software-develope-kids)
 - [Object-Oriented Internet](#object-oriented-internet)
 
 ## Azure
@@ -17,14 +17,16 @@
 - [Industrial IoT Platform](https://github.com/Azure/Industrial-IoT#azure-industrial-iot-platform)
 - [Azure IoT Edge documentation](https://docs.microsoft.com/En-us/azure/iot-edge/)
 - [Azure Service Bus Messaging documentation](https://docs.microsoft.com/EN-us/azure/service-bus-messaging/)
- 
-### Software develope kids
+
+### Software Develope Kids
 
 - [Microsoft Azure IoT Protocol Gateway Developer Guide](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 - [Benefits of using the Azure IoT SDKs, and pitfalls to avoid if you don’t](https://azure.microsoft.com/EN-us/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)
 - [Microsoft.Azure.Devices Namespace](https://docs.microsoft.com/EN-us/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 - [Azure IoT device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks)
 - [Microsoft Azure IoT SDK for .NET](https://github.com/Azure/azure-iot-sdk-csharp#microsoft-azure-iot-sdk-for-net)
+- [Quickstart: Send telemetry from a device to an IoT hub and read it with a back-end application (.NET)](https://docs.microsoft.com/EN-us/azure/iot-hub/quickstart-send-telemetry-dotnet#clean-up-resources)
+- [Azure IoT Samples for C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp#azure-iot-samples-for-c-net)
 
 ## Object-Oriented Internet
 
