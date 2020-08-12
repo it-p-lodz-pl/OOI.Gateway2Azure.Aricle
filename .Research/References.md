@@ -27,6 +27,9 @@
 - [Microsoft Azure IoT SDK for .NET](https://github.com/Azure/azure-iot-sdk-csharp#microsoft-azure-iot-sdk-for-net)
 - [Quickstart: Send telemetry from a device to an IoT hub and read it with a back-end application (.NET)](https://docs.microsoft.com/EN-us/azure/iot-hub/quickstart-send-telemetry-dotnet#clean-up-resources)
 - [Azure IoT Samples for C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp#azure-iot-samples-for-c-net)
+- [„Use the Azure Digital Twins APIs and SDKs - Azure Digital Twins”](https://docs.microsoft.com/EN-us/azure/digital-twins/how-to-use-apis-sdks)
+- [Microsoft.Azure.DigitalTwins.Parser](https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)
+- [„Azure/azure-sdk-for-net”, GitHub.](https://github.com/Azure/azure-sdk-for-net)
 
 ## Object-Oriented Internet
 
