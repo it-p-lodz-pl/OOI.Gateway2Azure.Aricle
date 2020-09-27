@@ -6,7 +6,7 @@
   - [Abstract](#abstract)
   - [Key words](#key-words)
   - [Introduction](#introduction)
-  - [Azure Main Technology Features](#azure-main-technology-fetuses)
+  - [Azure Main Technology Features](#azure-main-technology-features)
   - [OOI Main Technology Features](#ooi-main-technology-features)
   - [Azure to Sensors (A2S) connectivity deployment (field level connectivity)](#azure-to-sensors-a2s-connectivity-deployment-field-level-connectivity)
   - [Gateway implementation](#gateway-implementation)
@@ -46,7 +46,7 @@ Azure, Cloud Computing, Object-Oriented Internet, OPC Unified Architecture, Mach
 - OOI PubSub Implementation Architecture
 - Simple, complex and structural data processing
 
-### Azure to Sensors (A2S) connectivity deployment (field level connectivity) 
+### Azure to Sensors (A2S) connectivity deployment (field level connectivity)
 
 > The title must be revised
 
@@ -64,11 +64,11 @@ Azure, Cloud Computing, Object-Oriented Internet, OPC Unified Architecture, Mach
   - Interconnection - exchange of data
   - Maintenance
 
-We have selected [IoT Central](https://docs.microsoft.com/en-gb/azure/iot-central/core/) because:
+We have selected [IoT Central](https://docs.microsoft.com/azure/iot-central/core/) because:
 
 - provides process data visualization user interface
 - allows to describe devices using metadata containing telemetry data types
- 
+
 ### Gateway implementation
 
 - Architecture
