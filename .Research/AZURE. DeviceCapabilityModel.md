@@ -29,8 +29,7 @@ Metadata management: in an Azure IoT Central application, device templates defin
 
 ## Device Capability Models
 
-A DCM defines how a device interacts with your IoT Central application.
-A solution developer can import a JSON file that defines the DCM into a device template, or use the web UI in IoT Central to create or edit a DCM. 
+A DCM defines how a device interacts with your IoT Central application. **A solution developer can import a JSON file that defines the DCM into a device template, or use the web UI in IoT Central to create or edit a DCM.**
 
 The JSON file that defines the DCM uses the [Digital Twin Definition Language (DTDL) V1](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL). IoT Central expects the
 JSON file to contain the DCM with the interfaces defined inline, rather than in separate files.
