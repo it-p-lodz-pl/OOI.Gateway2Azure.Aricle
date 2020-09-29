@@ -1,0 +1,229 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{authblk}
+
+\providecommand{\tightlist} { \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\title{Object-Oriented Internet - Azure interoperability} 
+\author[1]{Mariusz Postół}
+\author[2]{Piotr Szymczak}
+\author[3]{Clemens Vasters}
+\affil[1, 2]{Institute of Information Technology, Lodz University of Technology, Łódź, Poland}
+% \email{mailto:mariusz.postol@p.lodz.pl} 
+\affil[3]{Microsort}
+%\tocauthor{Mariusz Postół}
+%\institute{ Institute of Information Technology, Lodz University of Technology, Łódź, Poland \email{mailto:mariusz.postol@p.lodz.pl} }
+
+\begin{document} 
+
+\maketitle
+
+
+\begin{abstract}
+
+  Information and Communication Technology has provided society with a~vast variety of distributed applications. By design, the deployment of this kind of application has to focus primarily on communication. This article addresses research results on the systematic approach to the design of the meaningful Machine to Machine (M2M) communication targeting distributed mobile applications in the context of new emerging disciplines, i.e. Industry 4.0 and Internet of Things. This paper contributes to the design of a new architecture of mobile IoT solutions designed atop of the M2M communication and composed as multi-vendor cyber-physicals systems. The described reusable library supporting this architecture designed using the reactive interoperability archetype proves that the concept enables a systematic approach to the development and deployment of software applications against mobile IoT solutions based on international standards. Dependency injection and adaptive programming engineering techniques have been engaged to develop a full-featured reference application program and make the proposed solution scalable and robust against deployment environment continuous modifications. The article presents an executive summary of the proof of concept and describes selected conceptual and experimental results achieved as an outcome of the open-source project Object-Oriented Internet targeting multi-vendor plug-and-produce interoperability scenario.
+
+%\keywords{Industrial communication \and Industry 4.0 \and Internet of Things \and Machine to Machine Communication \and OPC Unified Architecture}
+
+\end{abstract}
+
+\maketitle
+
+\hypertarget{document-header}{%
+  \section{Document Header}\label{document-header}}
+
+\hypertarget{title-proposals}{%
+  \subsection{Title proposals}\label{title-proposals}}
+
+\begin{itemize}
+  \tightlist
+  \item
+        Object-Oriented Internet - reactive visualization of asynchronous data
+        using AZURE
+  \item
+        Object-Oriented Internet - Azure interoperability
+\end{itemize}
+
+\hypertarget{abstract}{%
+  \subsection{Abstract}\label{abstract}}
+
+\hypertarget{key-words}{%
+  \subsection{Key words}\label{key-words}}
+
+Azure, Cloud Computing, Object-Oriented Internet, OPC Unified
+Architecture, Machine to Machine Communication, Internet of Things, OPC
+UA, RxNetworking
+
+\hypertarget{introduction}{%
+  \section{Introduction}\label{introduction}}
+
+\begin{itemize}
+  \tightlist
+  \item
+        \textbf{Subject} - A basic matter of thought, discussion,
+        investigation, development, etc. Describe the problem and the
+        motivation for undertaking the effort to solve the problem.
+  \item
+        \textbf{Goal} What we are going to achieve - the result or achievement
+        toward which effort is directed.
+  \item
+        \textbf{Scope} - What we must do to prove the goal have been achieved.
+        Extent or range of development, view, outlook, application, operation,
+        effectiveness, etc.
+  \item
+        \textbf{Related work} - Any information about available reusable
+        deliverables related to this work.
+\end{itemize}
+
+\hypertarget{azure-main-technology-features}{%
+  \section{Azure Main Technology
+    Features}\label{azure-main-technology-features}}
+
+\begin{itemize}
+  \tightlist
+  \item
+        \textbf{Selection of the service}
+  \item
+        \textbf{Metadata} - must be discussed in context of the design/run
+        time stages.
+
+        \begin{itemize}
+          \tightlist
+          \item
+                \textbf{Device Template (DT)}
+          \item
+                \textbf{Device Capability Model}
+          \item
+                \textbf{Interface}
+          \item
+                \textbf{Digital Twin Definition Language (DTDL)}
+        \end{itemize}
+  \item
+        \textbf{Simple, complex and structural data processing}
+  \item
+        \textbf{Connectivity}
+  \item
+        \textbf{How to implement} All about available libraries and tools
+\end{itemize}
+
+\hypertarget{ooi-main-technology-features}{%
+  \section{OOI Main Technology
+    Features}\label{ooi-main-technology-features}}
+
+\begin{itemize}
+  \tightlist
+  \item
+        Machinie To Machine communication based on the semantic data
+  \item
+        OOI PubSub Implementation Architecture
+  \item
+        Simple, complex and structural data processing
+\end{itemize}
+
+\hypertarget{azure-to-sensors-a2s-connectivity-deployment-field-level-connectivity}{%
+  \section{Azure to Sensors (A2S) connectivity deployment (field level
+    connectivity)}\label{azure-to-sensors-a2s-connectivity-deployment-field-level-connectivity}}
+
+\begin{quote}
+  The title must be revised
+\end{quote}
+
+\begin{itemize}
+  \tightlist
+  \item
+        \textbf{Architecture} - Domain model presenting relationship between
+        the: Azure, PubSub Gateway, Device, Design and development tools
+  \item
+        \textbf{Connectivity} - Describe reactive nature of the Azure
+        monitoring process data (telemetry) services.
+  \item
+        \textbf{Deployment phases}
+
+        \begin{itemize}
+          \tightlist
+          \item
+                Design
+          \item
+                Gateway and devices registration
+          \item
+                Authentication
+          \item
+                Device/Service association
+          \item
+                Device/Application association
+          \item
+                Establishing session
+
+                \begin{itemize}
+                  \tightlist
+                  \item
+                        Device/Device Template (Device Capability Model) association -
+                        establishing a semantic-context
+                  \item
+                        Security management - establishing security-context
+                \end{itemize}
+          \item
+                Interconnection - exchange of data
+          \item
+                Maintenance
+        \end{itemize}
+\end{itemize}
+
+We have selected
+\href{https://docs.microsoft.com/azure/iot-central/core/}{IoT Central}
+because:
+
+\begin{itemize}
+  \tightlist
+  \item
+        provides process data visualization user interface
+  \item
+        allows to describe devices using metadata containing telemetry data
+        types
+\end{itemize}
+
+\hypertarget{gateway-implementation}{%
+  \section{Gateway implementation}\label{gateway-implementation}}
+
+\begin{itemize}
+  \tightlist
+  \item
+        Architecture
+  \item
+        Protocol selection and mapping
+  \item
+        Configuration
+  \item
+        Testing
+\end{itemize}
+
+\hypertarget{conclusion}{%
+  \section{Conclusion}\label{conclusion}}
+
+The OPC UA PubSub to Azure gateway (\texttt{AzureGateway})
+implementation has been just published on GitHub as the open-source (MIT
+licensed) as a part of the more general concept of the Object-Oriented
+Internet reactive networking. It is proof of the concept that
+
+\begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+        OPC UA PubSub can be implemented as a powerful standalone package - no
+        C/S dependency
+  \item
+        Azure interoperability can be implemented as an out-of-band
+        communication (MQTT, AMQP, HTTP) - no PubSub dependency
+  \item
+        Process data functionality can be composable at run-time - no
+        programming required
+\end{enumerate}
+
+\bibliography{Manuscript}
+\bibliographystyle{splncs04}
+
+\end{document}
