@@ -1,2 +1,2 @@
-pandoc "10.DocumentHeader.md" "20.Introduction.md" "30.AzureTechnologyFeatures.md" "40.OOITechnologyFeatures.md" "50.Sensors2AzureConnectivityDeployment.md" "60.GatewayImplementation.md" "70.Conclusion.md" -s -o ..\Latex\Manuscript.pandoc.tex
+pandoc "20.Introduction.md" "30.AzureTechnologyFeatures.md" "40.OOITechnologyFeatures.md" "50.Sensors2AzureConnectivityDeployment.md" "60.GatewayImplementation.md" "70.Conclusion.md" -s -o ..\Latex\Manuscript.pandoc.tex
 pause ....
