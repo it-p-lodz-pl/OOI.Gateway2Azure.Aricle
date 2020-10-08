@@ -1,57 +1,52 @@
-\documentclass{jacsart}
-\usepackage{hyperref}
-\usepackage{cite}
-\usepackage{stfloats}
-\usepackage{url}
-\usepackage{authblk}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{graphicx}
-\usepackage{amsthm}
-\usepackage{txfonts}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 
-\newtheorem{definition}{Definition}
-\newtheorem{theorem}[definition]{Theorem}
-\newtheorem{corollary}[definition]{Corollary}
-\newtheorem{proposition}[definition]{Proposition}
-\newtheorem{example}[definition]{Example}
+\date{}
 
-
-\providecommand{\tightlist} { \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\providecommand{\keywords}[1]{  \small	  \textbf{\textit{Keywords---}} #1 }
-
-\title{Object-Oriented Internet - Azure Interoperability}
-% \title{Object-Oriented Internet - reactive visualization of asynchronous data using AZURE}
-\headtitle{OOI - Azure Interoperability}
-
-\author{Mariusz Postół\inst{1}, Piotr Szymczak\inst{1}, Clemens Vasters\inst{2}}
-\headauthor{Postół M, Szymczak P, Vasters C}
-\affiliation{%
-  \inst{1}Lodz University of Technology\\
-  Institute of Information Technology\\
-  ul. Wólczańska 215, 90-924 Lodz, Poland\\
-  mailto:mariusz.postol@p.lodz.pl
-  \andinst
-  \inst{2}Microsoft\\
-  Faculty/Department/Office Name\\
-  Postal Addres with the zip-code\\
-  clemensv@microsoft.com}
-
-\keywords{Azure, Cloud Computing, Object-Oriented Internet, Industrial communication, Industry 4.0, Internet of Things, Machine to Machine Communication, OPC Unified Architecture}
-
-\begin{document} 
-
-\maketitle
-
-
-\begin{abstract}
-Each paper should be followed by a compact abstract which points to the main
-scopes and the results obtained by the paper. The abstract should be written
-with the Times New Roman font, 10 pt, justified, and with the 1cm margin both
-left and right side with respect  to the margin of the paper. The abstract should not contain any formulas or references, and should not exceed 200 words. 
-\end{abstract}
-
-\maketitle
+\begin{document}
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -257,18 +252,25 @@ The main goal of this article is to provide proof that:
   functionality is composable at run-time - no programming required
 \end{enumerate}
 
-The remainder of this paper is structured as follows. Sect. \ref*{azure-main-technology-features} analyzes data presentation user interface, available native communication services, and
+The remainder of this paper is structured as follows. Sect.
+\texttt{Azure\ Main\ Technology\ \ Features} analyzes data presentation
+user interface, available native communication services, and
 data/metadata model offered by the Microsoft Azure. The discussion
 covered by this section is the foundation for selecting services
 utilized to expose process data and suitable protocol stack to support
-interconnection. In Sect. \ref*{ooi-main-technology-features} the discussion focuses on the generic architecture that is to be used as a
+interconnection. In Sect.
+\texttt{Object-Oriented\ Internet\ Main\ Technology\ Features} the
+discussion focuses on the generic architecture that is to be used as a
 foundation for further decisions addressing the systematic design of the
 interoperability of the cyber-physical systems and cloud-based
-front-end. Sect. \ref*{azure-to-sensors-a2s-connectivity-deployment-field-level-connectivity} presents the proposed open and reusable software model. It promotes a
+front-end. Sect.
+\texttt{Azure\ to\ Sensors\ (A2S)\ connectivity\ deployment\ (field\ level\ connectivity)}
+presents the proposed open and reusable software model. It promotes a
 reactive interoperability pattern and a generic approach to establishing
 interoperability-context. A reference implementation of this archetype
-is described in Sect.  \ref*{gateway-implementation}. The most
-important findings and future work are summarized in Sect. \ref*{conclusion}.
+is described in Sect. \texttt{Gateway\ implementation}. The most
+important findings and future work are summarized in Sect.
+\texttt{Conclusions}.
 
 \hypertarget{consider-to-add}{%
 \subsection{Consider to add}\label{consider-to-add}}
@@ -284,152 +286,5 @@ development, view, outlook, application, operation, effectiveness, etc.
 
 Any information about available reusable deliverables related to this
 work.
-
-\hypertarget{azure-main-technology-features}{%
-  \section{Azure Main Technology
-    Features}\label{azure-main-technology-features}}
-
-\begin{itemize}
-  \tightlist
-  \item
-        \textbf{Selection of the service}
-  \item
-        \textbf{Metadata} - must be discussed in context of the design/run
-        time stages.
-
-        \begin{itemize}
-          \tightlist
-          \item
-                \textbf{Device Template (DT)}
-          \item
-                \textbf{Device Capability Model}
-          \item
-                \textbf{Interface}
-          \item
-                \textbf{Digital Twin Definition Language (DTDL)}
-        \end{itemize}
-  \item
-        \textbf{Simple, complex and structural data processing}
-  \item
-        \textbf{Connectivity}
-  \item
-        \textbf{How to implement} All about available libraries and tools
-\end{itemize}
-
-\hypertarget{ooi-main-technology-features}{%
-  \section{OOI Main Technology
-    Features}\label{ooi-main-technology-features}}
-
-\begin{itemize}
-  \tightlist
-  \item
-        Machinie To Machine communication based on the semantic data
-  \item
-        OOI PubSub Implementation Architecture
-  \item
-        Simple, complex and structural data processing
-\end{itemize}
-
-\hypertarget{azure-to-sensors-a2s-connectivity-deployment-field-level-connectivity}{%
-  \section{Azure to Sensors (A2S) connectivity deployment (field level
-    connectivity)}\label{azure-to-sensors-a2s-connectivity-deployment-field-level-connectivity}}
-
-\begin{quote}
-  The title must be revised
-\end{quote}
-
-\begin{itemize}
-  \tightlist
-  \item
-        \textbf{Architecture} - Domain model presenting relationship between
-        the: Azure, PubSub Gateway, Device, Design and development tools
-  \item
-        \textbf{Connectivity} - Describe reactive nature of the Azure
-        monitoring process data (telemetry) services.
-  \item
-        \textbf{Deployment phases}
-
-        \begin{itemize}
-          \tightlist
-          \item
-                Design
-          \item
-                Gateway and devices registration
-          \item
-                Authentication
-          \item
-                Device/Service association
-          \item
-                Device/Application association
-          \item
-                Establishing session
-
-                \begin{itemize}
-                  \tightlist
-                  \item
-                        Device/Device Template (Device Capability Model) association -
-                        establishing a semantic-context
-                  \item
-                        Security management - establishing security-context
-                \end{itemize}
-          \item
-                Interconnection - exchange of data
-          \item
-                Maintenance
-        \end{itemize}
-\end{itemize}
-
-We have selected
-\href{https://docs.microsoft.com/azure/iot-central/core/}{IoT Central}
-because:
-
-\begin{itemize}
-  \tightlist
-  \item
-        provides process data visualization user interface
-  \item
-        allows to describe devices using metadata containing telemetry data
-        types
-\end{itemize}
-
-\hypertarget{gateway-implementation}{%
-  \section{Gateway implementation}\label{gateway-implementation}}
-
-\begin{itemize}
-  \tightlist
-  \item
-        Architecture
-  \item
-        Protocol selection and mapping
-  \item
-        Configuration
-  \item
-        Testing
-\end{itemize}
-
-\hypertarget{conclusion}{%
-  \section{Conclusion}\label{conclusion}}
-
-The OPC UA PubSub to Azure gateway (\texttt{AzureGateway})
-implementation has been just published on GitHub as the open-source (MIT
-licensed) as a part of the more general concept of the Object-Oriented
-Internet reactive networking. It is proof of the concept that
-
-\begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \tightlist
-  \item
-        OPC UA PubSub can be implemented as a powerful standalone package - no
-        C/S dependency
-  \item
-        Azure interoperability can be implemented as an out-of-band
-        communication (MQTT, AMQP, HTTP) - no PubSub dependency
-  \item
-        Process data functionality can be composable at run-time - no
-        programming required
-\end{enumerate}
-
-\bibliography{Manuscript}
-\bibliographystyle{aiaa-jacs.bst}
 
 \end{document}
