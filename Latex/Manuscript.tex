@@ -1,24 +1,52 @@
-\documentclass{article}
+\documentclass{jacsart}
 \usepackage{hyperref}
 \usepackage{cite}
-\usepackage{graphicx}
 \usepackage{stfloats}
 \usepackage{url}
 \usepackage{authblk}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{txfonts}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{example}[definition]{Example}
+
 
 \providecommand{\tightlist} { \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \providecommand{\keywords}[1]{  \small	  \textbf{\textit{Keywords---}} #1 }
 
 \title{Object-Oriented Internet - Azure interoperability}
 % \title{Object-Oriented Internet - reactive visualization of asynchronous data using AZURE}
-\author[1]{Mariusz Postół}
-\author[2]{Piotr Szymczak}
-\author[3]{Clemens Vasters}
-\affil[1, 2]{Institute of Information Technology, Lodz University of Technology, Łódź, Poland}
+\headtitle{OOI - Azure interoperability}
+
+%\author[1]{Mariusz Postół}
+%\author[2]{Piotr Szymczak}
+%\author[3]{Clemens Vasters}
+%\affil[1, 2]{Institute of Information Technology, Lodz University of Technology, Łódź, Poland}
 % \email{mailto:mariusz.postol@p.lodz.pl} 
-\affil[3]{Microsort}
+%\affil[3]{Microsort}
 %\tocauthor{Mariusz Postół}
 %\institute{ Institute of Information Technology, Lodz University of Technology, Łódź, Poland \email{mailto:mariusz.postol@p.lodz.pl} }
+
+\author{Author One\inst{1}, Author Two\inst{1,2}}
+\headauthor{A. One, A. Two}
+\affiliation{%
+  \inst{1}Name of the Unit represented (e.g. Your University)\\
+  Faculty/Department/Office Name\\
+  Postal Addres with the zip-code\\
+  yourid@your.mail.server
+  \andinst
+  \inst{2}Name of the Unit represented (e.g. Your University)\\
+  Faculty/Department/Office Name\\
+  Postal Addres with the zip-code\\
+  yourid@your.mail.server}
+
+\keywords{Azure, Cloud Computing, Object-Oriented Internet, Industrial communication, Industry 4.0, Internet of Things, Machine to Machine Communication, OPC Unified Architecture}
 
 \begin{document} 
 
@@ -26,11 +54,10 @@
 
 
 \begin{abstract}
-
-TBD
-
-\keywords{Azure, Cloud Computing, Object-Oriented Internet, Industrial communication, Industry 4.0, Internet of Things, Machine to Machine Communication, OPC Unified Architecture}
-
+Each paper should be followed by a compact abstract which points to the main
+scopes and the results obtained by the paper. The abstract should be written
+with the Times New Roman font, 10 pt, justified, and with the 1cm margin both
+left and right side with respect  to the margin of the paper. The abstract should not contain any formulas or references, and should not exceed 200 words. 
 \end{abstract}
 
 \maketitle
@@ -201,6 +228,6 @@ Internet reactive networking. It is proof of the concept that
 \end{enumerate}
 
 \bibliography{Manuscript}
-\bibliographystyle{splncs04}
+\bibliographystyle{aiaa-jacs.bst}
 
 \end{document}
