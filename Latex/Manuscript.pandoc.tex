@@ -303,10 +303,10 @@ product. It offers a vast variety of services. This virtual environment
 handles an unlimited number of users and devices organized using a
 solution concept. The solution aggregates users, devices, services, and
 required additional resources scoping on a selected scenario. The
-solution is a region that provides a scope to the identifiers (the names
-of devices, users, process data entities, etc) inside it. Solutions are
-used to organize deployment entities into logical groups and prevent
-identity collisions.
+solution serves as a context that provides a scope to the identifiers
+(the names of devices, users, process data entities, etc) inside it.
+Solutions are used to organize deployment entities into logical groups
+and prevent identity collisions.
 
 The \texttt{IoT\ Central} service provides a process data visualization
 user interface. To make this interface meaningful metadata called device
@@ -314,12 +314,12 @@ template is used to describe devices.
 
 Following the assumption that interconnection between the cyber-physical
 system and cloud services is designed based on the gateway concept, a
-middleware must be considered aa a coupler. It must be interconnected
-with the cyber-physical system using an in-bound protocol adhering to
+middleware must be considered as a coupler. It must be interconnected
+with the cyber-physical system using an in-band protocol adhering to
 communications requirements (i.e.~protocol profile, data encoding, time
 relationships, etc.) governing communication of the parts making it up.
 At the same time, it must support back-and-forth data transfer to the
-cloud using out-of-bound native for the cloud services. The transfer
+cloud using out-of-band native for the cloud services. The transfer
 process requires data conversion from source to destination encoding.
 The \texttt{IoT\ Hub} is a service hosted in the cloud that supports
 \texttt{IoT\ Central} providing a robust messaging solution - it acts as
@@ -336,14 +336,19 @@ that the security rules governing the cyber-physical system may also
 apply to the cloud-based services. In the gateway scenario, they can be
 mapped on each other or entirely independent. The
 \texttt{IoT\ Hub\ Device\ Provisioning\ Service} (DPS) is a helper
-service for \texttt{IoT\ Hub} that enables devices registration,
-authentication, and authorization of the requested operations including
-but not limited to data transfer updating the user interface.
+service for \texttt{IoT\ Hub} that enables devices' connection process
+management, upon device providing valid identity attestation it assigns
+the device to an appropriate \texttt{IoT\ Hub} instance and returns to
+the device connection parameters, which allow direct connection with
+given \texttt{IoT\ Hub} service. The device proceeds to use the same
+attestation in \texttt{IoT\ Hub} connection and based on it, is granted
+authorization to selected resources and operations including but not
+limited to data transfer updating the user interface.
 
 It is worth stressing that interaction of the offered by the Azure
 services can be configured flexibly, and as a result, the presented
 above selection of services must be recognized as an example only. The
-`\texttt{IoT\ Central} can be also seamlessly integrated with other
+\texttt{IoT\ Central} can be also seamlessly integrated with other
 services as needed. The following services could also be considered to
 build cloud-based automation solution:
 
@@ -397,7 +402,7 @@ always be the same. To understand a newspaper we must learn the
 appropriate language. To understand the binary data we must have defined
 a data type -- a description of how to create an appropriate bits
 pattern (syntax) and rules needed to assign the information (semantics),
-i.e.~make any correct bits stream meaningful. Concluding, to make two
+i.e.~make any correct bitstream meaningful. Concluding, to make two
 systems interoperable, a semantic-context must be established. The type
 plays the role of metadata, a set of data that describes other data.
 Metadata term is frequently used if the semantic-context is defined
@@ -412,14 +417,14 @@ between communicating parties allows:
 \item
   Development against a type definition of the user interface
 \item
-  Implementation of the functionality of the bits-streams conversion in
+  Implementation of the functionality of the bitstreams conversion in
   advance
 \end{itemize}
 
 Having defined types in advance, a gateway may provide dedicated
-conversions functionality, i.e.~replacing bits-stream used by the
-cyber-physical system by equivalent once for the cloud-based services.
-The Azure offers a vast variety of build-in types ready to be used in
+conversions functionality, i.e.~replacing bitstream used by the
+cyber-physical system by equivalent one for the cloud-based services.
+The Azure offers a vast variety of built-in types ready to be used in
 common cases, but not necessarily there are equivalent counterparts in
 use by the cyber-physical system. Additionally, the data conversion must
 address the following issues:
@@ -431,7 +436,7 @@ address the following issues:
   middleware software native types must be used
 \item
   if the out of the box set of types is not capable of fulfilling more
-  demanding needs custom data types may be defined
+  demanding needs, custom data types must be defined
 \end{itemize}
 
 Although the data conversion is a run-time gateway task the
@@ -440,14 +445,14 @@ engineering task, and therefore this topic is not considered for further
 discussion.
 
 In \texttt{IoT\ Central} a cyber-physical system is represented as a set
-of devices. The characteristics and behaviors of each of a device kind
-are described by the device template. This Device Template (DT)contains
+of devices. The characteristics and behaviors of each device kind are
+described by the device template. This Device Template (DT) contains
 also metadata describing the data (called telemetry) exchanged over the
 wire with the cyber-physical system called Device Capability Model
 (DCM). Additionally, the DT contains properties, customization, and
 views definitions used by the service locally. As an option, DCM
-expressed as a JSON can be imported into a Device Template.
-\texttt{IoT\ Central} allows also to create or edit a DCM using the
+expressed as a JSON-LD can be imported into a Device Template.
+\texttt{IoT\ Central} allows also to create and edit a DCM using the
 dedicated web UI. A JSON file containing DCM can be derived from an
 information model used as a foundation to establish the semantic-context
 applied to achieve interoperability of the devices interconnected as the
@@ -486,6 +491,9 @@ features, including performance. The connectivity with
 \item
   \texttt{Microsoft.Azure.Devices.Client}- Device SDK for Azure IoT Hub
 \item
+  \texttt{Microsoft.Azure.Devices.Shared} - Common code for Azure IoT
+  Device and Service SDKs
+\item
   \texttt{Microsoft.Azure.Devices.Provisioning.Client} - Provisioning
   Device Client SDK for Azure IoT Devices
 \item
@@ -497,9 +505,6 @@ features, including performance. The connectivity with
 \item
   \texttt{Microsoft.Azure.Devices.Provisioning.Transport.Mqtt} -
   Provisioning Device Client MQTT Transport for Azure IoT Devices
-\item
-  \texttt{Microsoft.Azure.Devices.Shared} - Common code for Azure IoT
-  Device and Service SDKs
 \end{itemize}
 
 \hypertarget{ooi-main-technology-features}{%
