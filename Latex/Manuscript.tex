@@ -297,7 +297,7 @@ Deployment of the hybrid solution providing interoperability of the
 reactive communication and emerging cloud computing as a
 \textbf{human-centric} front-end requires decisions addressing the
 selection of the services supporting web user interface capable to
-expose real-time process data. In this context, the service is any
+expose process data. In this context, the service is any
 autonomous (with own identity) software component or module that is
 interfacing with selected cyber-physical systems for data collection,
 analysis, and also remote control. Microsoft Azure is a cloud-based
@@ -344,7 +344,7 @@ the device to an appropriate \texttt{IoT\ Hub} instance and returns to
 the device connection parameters, which allow direct connection with
 given \texttt{IoT\ Hub} service. The device proceeds to use the same
 attestation in \texttt{IoT\ Hub} connection and based on it, is granted
-authorization to selected resources and operations including but not
+authorization %MP authorization can be applied only to operations ?% to selected resources and operations including but not
 limited to data transfer updating the user interface.
 
 It is worth stressing that interaction of the offered by the Azure
@@ -357,12 +357,9 @@ build cloud-based automation solution:
 \begin{itemize}
 \tightlist
 \item
-  \texttt{Industrial\ IoT} - discovering OPC UA enabled servers in a
-  factory network and register them in Azure IoT Hub implemented using
-  \texttt{IoT\ Edge}
+  \texttt{Industrial\ IoT} - discovering OPC UA enabled servers in a factory network and register them in Azure \texttt{IoT\ Hub} implemented using \texttt{IoT\ Edge}
 \item
-  \texttt{Digital\ Twins} - managing the graph of digital twins, which
-  are to represent some real-world process or entity
+  \texttt{Digital\ Twins} - managing the graph of digital twins, which are to represent some real-world process or entity
 \end{itemize}
 
 \texttt{Industrial\ IoT} promotes OPC UA client/server archetype used to
@@ -423,13 +420,7 @@ between communicating parties allows:
   advance
 \end{itemize}
 
-Having defined types in advance, a gateway may provide dedicated
-conversions functionality, i.e.~replacing bitstream used by the
-cyber-physical system by equivalent one for the cloud-based services.
-The Azure offers a vast variety of built-in types ready to be used in
-common cases, but not necessarily there are equivalent counterparts in
-use by the cyber-physical system. Additionally, the data conversion must
-address the following issues:
+Having defined types in advance, a gateway may provide dedicated conversions functionality, i.e.~replacing bitstreams used by the cyber-physical system by equivalent ones for the cloud-based services. The Azure offers a vast variety of built-in types ready to be used in common cases, but not necessarily there are equivalent counterparts in use by the cyber-physical system. Additionally, the data conversion must address the following issues:
 
 \begin{itemize}
 \tightlist
@@ -447,7 +438,7 @@ engineering task, and therefore this topic is not considered for further
 discussion.
 
 In \texttt{IoT\ Central} a cyber-physical system is represented as a set
-of devices. The characteristics and behaviors of each device kind are
+of devices. The characteristics and behavior of each device kind are
 described by the device template. This Device Template (DT) contains
 also metadata describing the data (called telemetry) exchanged over the
 wire with the cyber-physical system called Device Capability Model
@@ -491,7 +482,7 @@ features, including performance. The connectivity with
 \item
   \texttt{Microsoft.Azure.Devices} - Service SDK for Azure IoT Devices
 \item
-  \texttt{Microsoft.Azure.Devices.Client}- Device SDK for Azure IoT Hub
+  \texttt{Microsoft.Azure.Devices.Client}- Device SDK for Azure \texttt{IoT\ Hub}
 \item
   \texttt{Microsoft.Azure.Devices.Shared} - Common code for Azure IoT
   Device and Service SDKs
