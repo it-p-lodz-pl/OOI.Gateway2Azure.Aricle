@@ -56,230 +56,67 @@
 
 \listoftodos[TODO list]
 
-\hypertarget{introduction}{%
-      \section{Introduction}\label{introduction}}
+\section{Introduction}\label{introduction}
 
-All the time, the Information and Communication Technology is providing
-society with a vast variety of new distributed applications aimed at
-micro and macro optimization of the industrial processes. Obviously, the
-design foundation of this kind of application has to focus primarily on
-communication technologies. Based on the role humans take while using
-these applications they can be grouped as follows:
+All the time, the Information and Communication Technology is providing society with a vast variety of new distributed applications aimed at micro and macro optimization of the industrial processes. Obviously, the design foundation of this kind of application has to focus primarily on communication technologies. Based on the role humans take while using these applications they can be grouped as follows:
 
 \begin{itemize}
-      \tightlist
-      \item
-            \textbf{human-centric} - information origin or ultimate information
-            destination is an operator,
-      \item
-            \textbf{machine-centric} - information creation, consumption,
-            networking, and processing are achieved entirely without human
-            interaction.
+      \item \textbf{human-centric} - information origin or ultimate information destination is an operator,
+      \item \textbf{machine-centric} - information creation, consumption, networking, and processing are achieved entirely without human interaction.
 \end{itemize}
 
-A typical \textbf{human-centric} approach is a web-service supporting,
-for example, a web user interface (UI) to monitor conditions, and manage
-millions of devices and their data in a typical cloud-based IoT
-approach. It is characteristic that, in this case, any uncertainty and
-necessity to make a decision can be relaxed by human interaction.
-Coordination of robots behavior in a work-cell (automation islands) is a
-\textbf{machine-centric} example. In this case, it is essential that any
-human interaction is impractical or even impossible. This
-interconnection scenario requires the machine to machine communication
-(M2M) demanding multi-vendor devices integration.
+A typical \textbf{human-centric} approach is a web-service supporting, for example, a web user interface (UI) to monitor conditions, and manage millions of devices and their data in a typical cloud-based IoT approach. It is characteristic that, in this case, any uncertainty and necessity to make a decision can be relaxed by human interaction. Coordination of robots behavior in a work-cell (automation islands) is a \textbf{machine-centric} example. In this case, it is essential that any human interaction is impractical or even impossible. This interconnection scenario requires the machine to machine communication (M2M) demanding multi-vendor devices integration.
 
-From the M2M communication concept, a broader concept of a smart factory
-can be derived. In this concept, the mentioned robots are only executive
-assets of an integrated supervisory control system responsible for macro
-optimization of an industrial process composed into one whole.
-Deployment of the smart factory concept requires a hybrid solution and
-interconnection of the mentioned above heterogeneous environments. This
-approach is called the fourth industrial revolution and coined as
-Industry 4.0. It is worth stressing that machines - or more general
-assets - interconnection is not enough, and additionally, assets
-interoperability has to be expected for the deployment of this concept.
-In this case, multi-vendor integration makes communication
-standardization especially important, namely it is required that the
-payload of the message is standardized to be factored on the gathering
-site and consumed on the ultimate destination site.
+From the M2M communication concept, a broader concept of a smart factory can be derived. In this concept, the mentioned robots are only executive assets of an integrated supervisory control system responsible for macro optimization of an industrial process composed into one whole. Deployment of the smart factory concept requires a hybrid solution and interconnection of the mentioned above heterogeneous environments. This approach is called the fourth industrial revolution and coined as Industry 4.0. It is worth stressing that machines - or more general assets - interconnection is not enough, and additionally, assets interoperability has to be expected for the deployment of this concept. In this case, multi-vendor integration makes communication standardization especially important, namely it is required that the payload of the message is standardized to be factored on the data  gathering site and consumed on the ultimate destination site.
 
-Highly-distributed solutions used to control real-time process
-aggregating islands of automation (e.g.~virtual power plants producing
-renewable energy) additionally must leverage public communication
-infrastructure, namely the Internet. Internet is a demanding environment
-for highly distributed process control applications designed atop the
-M2M communication paradigm because
+Highly-distributed solutions used to control real-time process aggregating islands of automation (e.g.~virtual power plants producing renewable energy) additionally must leverage public communication infrastructure, namely the Internet. Internet is a demanding environment for highly distributed process control applications designed atop the M2M communication paradigm because
+\begin{itemize}
+      \item it is a globally shareable environment and can be also used by malicious users
+      \item it offers only non-deterministic communication making integration of islands of automation designed against the real-time requirements a difficult task
+\end{itemize}
+
+Today both obstacles can be overcome, and as examples, we have bank account remote control and voice over IP in daily use. The first application must be fine-tuned in the context of data security, and the second is very sensitive on time relationships. Similar approaches could be applied to adopt the well known in process control industry concepts:
 
 \begin{itemize}
-      \tightlist
-      \item
-            it is a globally shareable environment and can be also used by
-            malicious users
-      \item
-            it offers only non-deterministic communication making integration of
-            islands of automation designed against the real-time requirements a
-            difficult task
+      \item  Human Machine Interface (HNI)
+      \item Supervisory Control and Data Acquisition (SCADA)
+      \item Distributed Control Systems (DCS)
 \end{itemize}
 
-Today both obstacles can be overcome, and as examples, we have bank
-account remote control and voice over IP in daily use. The first
-application must be fine-tuned in the context of data security, and the
-second is very sensitive on time relationships. Similar approaches could
-be applied to adopt the well known in process control industry concepts:
+A detailed examination of these solutions is far beyond the scope of this article. It is only worth stressing that, by design, all of them are designed on the foundation of interactive communication. Interactive communication is based on a data polling foundation. In this case, the application must follow the interactive behavioral model, because it actively polls the data source for more information by pulling data from a sequence that represents the process state in time. The application is active in the data retrieval process - it controls the pace of the retrieval by sending the requests at its convenience. Such a polling pattern is similar to visiting the books shop and checking out a book. After you are done with the book, you pay another visit to check out another one. If the book is not available you must wait, but you may read what you selected. The client/server archetype is well suited for the mentioned above applications.
+
+After dynamically attaching a new island of automation the control application (responsible for the data pulling) must be reconfigured for this interoperability scenario. In other words, in this case, the interactive communication relationship cannot be directly applied because the control application must be informed on how to pull data from a new source. As a result, a plug and produce scenario cannot be seamlessly applied. A similar drawback must be overcome if for security reasons suitable protection methods have been applied to make network traffic propagation asymmetric. It is accomplished using intermediary devices, for example, firewalls, to enforce traffic selective availability based on predetermined security rules against unauthorized access.
+
+Going further, we shall assume that islands of automation are mobile, e.g.~autonomous cars passing a supervisory controlled service area. In this case, the behavior of the interconnected assets is particularly important concerning the environment in which they must interact. This way we have entered the Internet of Things domain of Internet-based applications.
+
+If we must bother with the network traffic propagation asymmetry or mobility of the asset network attachment-points the reactive relationship could relax the problems encountered while the interactive approach is applied. In this case, the sessionless publisher-subscriber communication relationship is a typical pattern to implement the abstract reactive interoperability paradigm. The sessionless relationship is a message distribution scenario where senders of messages, called publishers, do not send them directly to specific receivers, called subscribers, but instead, categorize the published messages into topics without knowledge about which subscribers if any, there may be. Similarly, subscribers express interest in one or more topics and only receive messages that are of interest, without knowledge about which publishers, if any, there are. In this scenario, the publishers and subscribers are loosely coupled.i.e they are decoupled in time, space and synchronization \cite{RefWorks:doc:5c44e246e4b0591b15ea9e59}.
+
+If the \textbf{machine-centric} interoperability - making up islands of automation - must be monitored and/or controlled by a supervisory system cloud computing concept may be recognized as a beneficial solution to replace or expand the mentioned above applications, i.e.~HMI, SCADA, DCS, etc. Cloud computing is a method to provide a requested functionality as a set of services. There are many examples that cloud computing is useful to reduce costs and increase robustness. It is also valuable in case the process data must be exposed to many stakeholders. Following this idea and offering control systems as a service, there is required a mechanism created on the service concept and supporting abstraction and virtualization - two main pillars of the cloud computing paradigm. In the cloud computing concept, virtualization is recognized as the possibility to share the services by many users, and abstraction hides implementation details.
+
+Deployment of the hybrid solution providing interoperability of the \textbf{machine-centric} cyber-physical system (CFS) and \textbf{human-centric} cloud-based front-end can be implemented applying the following scenarios:
 
 \begin{itemize}
-      \tightlist
-      \item
-            Human Machine Interface (HNI)
-      \item
-            Supervisory Control and Data Acquisition (SCADA)
-      \item
-            Distributed Control Systems (DCS)
+      \item \textbf{direct interconnection} - cloud-based dedicated communication services allow to attache it to the CFS making up a consistent M2M communication network using an in-bound protocol stack
+      \item \textbf{gateway based interconnection} - typical build-in communication services allows to attache the cloud computing to the CFS using an out-of-bound protocol stack
 \end{itemize}
 
-A detailed examination of these solutions is far beyond the scope of
-this article. It is only worth stressing that, by design, all of them
-are designed on the foundation of interactive communication. Interactive
-communication is based on a data polling foundation. In this case, the
-application must follow the interactive behavioral model, because it
-actively polls the data source for more information by pulling data from
-a sequence that represents the process state in time. The application is
-active in the data retrieval process - it controls the pace of the
-retrieval by sending the requests at its convenience. Such a polling
-pattern is similar to visiting the books shop and checking out a book.
-After you are done with the book, you pay another visit to check out
-another one. If the book is not available you must wait, but you may
-read what you selected. The client/server archetype is well suited for
-the mentioned above applications.
+By design, the direct approach requires that the cloud has to be compliant with the interoperability standard the CFS is built upon - it becomes a consistent part of the CFS. Data models, roles, and responsibility differences of both solutions make this approach impractical or even imposable to be applied in typical cases. A more detailed description is covered by the Sect.~\ref*{cloud-to-sensors-field-level-connectivity}.
 
-After dynamically attaching a new island of automation the control
-application (responsible for the data pulling) must be reconfigured for
-this interoperability scenario. In other words, in this case, the
-interactive relationship cannot be directly applied because the control
-application must be informed on how to pull data from a new source. As a
-result, a plug and produce scenario cannot be seamlessly applied. A
-similar drawback must be overcome if for security reasons suitable
-protection methods have been applied to make network traffic propagation
-asymmetric. It is accomplished using intermediary devices, for example,
-firewalls, to enforce traffic selective availability based on
-predetermined security rules against unauthorized access.
-
-Going further, we shall assume that islands of automation are mobile,
-e.g.~autonomous cars passing a supervisory controlled service area. In
-this case, the behavior of the interconnected assets is particularly
-important concerning the environment in which they must interact. This
-way we have entered the Internet of Things domain of Internet-based
-applications.
-
-If we must bother with the network traffic propagation asymmetry or
-mobility of the asset network attachment-points the reactive
-relationship could relax the problems encountered while the interactive
-approach is applied. In this case, the sessionless publisher-subscriber
-communication archetype is a typical pattern to implement the abstract
-reactive interoperability paradigm. The sessionless archetype is a
-message distribution scenario where senders of messages, called
-publishers, do not send them directly to specific receivers, called
-subscribers, but instead, categorize the published messages into topics
-without knowledge about which subscribers if any, there may be.
-Similarly, subscribers express interest in one or more topics and only
-receive messages that are of interest, without knowledge about which
-publishers, if any, there are. In this scenario, the publishers and
-subscribers are loosely coupled.i.e they are decoupled in time, space
-and synchronization \cite{RefWorks:doc:5c44e246e4b0591b15ea9e59}.
-
-If the \textbf{machine-centric} interoperability - making up islands of
-automation - must be monitored and/or controlled by a supervisory system
-cloud computing concept may be recognized as a beneficial solution to
-replace or expand the mentioned above applications, i.e.~HMI, SCADA,
-DCS, etc. Cloud computing is a method to provide a requested
-functionality as a set of services. There are many examples that cloud
-computing is useful to reduce costs and increase robustness. It is also
-valuable in case the process data must be exposed to many stakeholders.
-Following this idea and offering control systems as a service, there is
-required a mechanism created on the service concept and supporting
-abstraction and virtualization - two main pillars of the cloud computing
-paradigm. In the cloud computing concept, virtualization is recognized
-as the possibility to share the services by many users, and abstraction
-hides implementation details.
-
-Deployment of the hybrid solution providing interoperability of the
-\textbf{machine-centric} CFSs and
-\textbf{human-centric} cloud-based front-end can be implemented applying
-the following scenarios:
-
-\begin{itemize}
-      \tightlist
-      \item
-            \textbf{direct interconnection} - cloud-based dedicated communication
-            services allow to attache it to the CFS making up a
-            consistent M2M communication network using an in-bound protocol stack
-      \item
-            \textbf{gateway based interconnection} - typical build-in
-            communication services allows to attache the cloud computing to the
-            CFS using an out-of-bound protocol stack
-\end{itemize}
-
-By design, the direct approach requires that the cloud has to be
-compliant with the interoperability standard the CFS
-is built around - it becomes a consistent part of the cyber-physical
-system. Data models, roles, and responsibility differences of both
-solutions make this approach impractical and imposable to be applied in
-typical cases. A more detailed description is covered by the Sect.~\ref*{cloud-to-sensors-field-level-connectivity}.
-
-This article addresses further research on the integration of the
-CFSs in the context of new emerging disciplines,
-i.e.~Industry 4.0 (I4.0) and the Internet of Things (IoT). The new
-architecture is proposed for integration of the multi-vendor
-\textbf{machine-centric} CFS designed atop of M2M
-reactive communication and emerging cloud computing as a
-\textbf{human-centric} front-end. To support the multi-vendor
-environment OPC Unified Architecture interoperability standard has been
-selected. The proposals are backed by proof of concept reference
-implementations. Prototyping addresses Microsoft Azure Cloud as an
-example. The prototyping outcome has been just published on GitHub as
-the open-source (MIT licensed). The proposed solutions have been
-harmonized with the more general concept called the Object-Oriented
-Internet.
+This article addresses further research on the integration of the CFSs in the context of new emerging disciplines, i.e.~Industry 4.0 (I4.0) and the Internet of Things (IoT). The new architecture is proposed for integration of the multi-vendor \textbf{machine-centric} CFS designed atop of M2M reactive communication and emerging cloud computing as a \textbf{human-centric} front-end. To support the multi-vendor environment OPC Unified Architecture interoperability standard has been selected. The proposals are backed by proof of concept reference implementations. Prototyping addresses Microsoft Azure Cloud as an example. The prototyping outcome has been just published on GitHub as the open-source (MIT licensed). The proposed solutions have been harmonized with the more general concept called the Object-Oriented Internet.
 
 The main goal of this article is to provide proof that:
 
 \begin{enumerate}
-      \def\labelenumi{\arabic{enumi}.}
-      \tightlist
-      \item
-            reactive interoperability M2M communication based on the OPC UA
-            standard can be implemented as a powerful standalone library without
-            dependency on the Client/Server session-oriented archetype
-      \item
-            Azure interoperability can be implemented as an external part
-            employing out-of-band communication without dependency on the OPC UA
-            implementation
-      \item
-            the proposed generic architecture allows that the gateway
-            functionality is composable at run-time - no programming required
+      \item  reactive interoperability M2M communication based on the OPC UA standard can be implemented as a powerful standalone library without dependency on the Client/Server session-oriented archetype
+      \item Azure interoperability can be implemented as an external part employing out-of-band communication without dependency on the OPC UA implementation
+      \item the proposed generic architecture allows that the gateway functionality is implemented as composable part at run-time part - no programming required
 \end{enumerate}
 
-The remainder of this paper is structured as follows. Sect.~\ref*{cloud-to-sensors-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. Sect.~\ref*{azure-main-technology-features} analyzes data presentation user interface, available native communication services, and data/metadata model offered by the Microsoft Azure. The discussion covered by this section is the foundation for selecting services utilized to expose process data and suitable protocol stack to support interconnection. In Sect.~\ref*{ooi-main-technology-features} the discussion focuses on the generic architecture that is to be used as a foundation for further decisions addressing the systematic design of the interoperability of the CFSs and cloud-based front-end. A reference implementation of this archetype is described in Sect.~\ref*{gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref*{architecture}.
+The remainder of this paper is structured as follows. Sect.~\ref*{cloud-to-sensors-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. A reference implementation of this archetype is described in Sect.~\ref*{gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref*{conclusion}.
 
-\hypertarget{consider-to-add}{%
-      \subsection{Consider to add}\label{consider-to-add}}
+\section{Cloud to Sensors Field Level Connectivity}\label{cloud-to-sensors-field-level-connectivity}
 
-\hypertarget{scope}{%
-      \subsubsection{Scope}\label{scope}}
-
-What we must do to prove the goal have been achieved. Extent or range of
-development, view, outlook, application, operation, effectiveness, etc.
-
-\hypertarget{related-work}{%
-      \subsubsection{Related work}\label{related-work}}
-
-Any information about available reusable deliverables related to this work.
-
-\hypertarget{cloud-to-sensors-field-level-connectivity}{%
-      \section{Cloud to Sensors Field Level Connectivity}\label{cloud-to-sensors-field-level-connectivity}}
-
-\hypertarget{architecture}{%
-      \subsection{Architecture}\label{architecture}}
+\subsection{Architecture}\label{architecture}
 
 As it was explained in Sect.~\ref*{introduction}, to follow the Industry 4.0 concept a hybrid environment integrating reactive Machine to Machine interconnection and interactive web-based user interface is required (\ref*{introduction}). The main challenge of the solution in concern is to design a generic but reusable architecture that addresses interoperability of these diverse interconnection scenarios ruled by different requirements, namely
 
@@ -295,16 +132,14 @@ Interconnection of the reactive \textbf{machine - centric} and interactive \text
       \item \textbf{gateway based interconnection} (loosely coupled scenario) - native build-in communication services allows attaching the cloud to the CFS using an out-of-bound protocol stack
 \end{itemize}
 
-In the solution in concern, the interconnection of assets is not enough hence their interoperability is expected. In this case, using the same communication stack must be recognized as only a necessary condition. To support interoperability common data understanding is required. By design, the direct approach requires that the cloud has to be compliant
-with the interoperability standard the CFS uses. As a result, it becomes a consistent communication node of the CFS. Additionally, to meet this requirement the cloud and CFSs have to establish directly the same
+In the solution in concern, the interconnection of assets is not enough hence their interoperability is expected. In this case, using the same communication stack must be recognized as only a necessary condition. To support interoperability common data understanding is required. By design, the direct approach requires that the cloud has to be compliant with the interoperability standard the CFS uses. As a result, it becomes a consistent communication node of the CFS. Additionally, to meet this requirement the cloud and CFSs have to establish directly the same
 
 \begin{itemize}
       \item semantic-context
       \item security-context
 \end{itemize}
 
-The possibility to establish a common semantic-context in the multi-vendor environment makes communication standardization especially important. In this case, it is required that the encoding of the messages payload exchanged over the network (Data Transfer Object - TDO) is standardized so that the payload can be factored on the data-gathering
-site and consumed on the ultimate destination data processing sites. Security between the data origin and ultimate data destination refers to the protection of messages (security-context) against malicious users. It is required that communicating parties are using the same cyber-security measures.
+The possibility to establish a common semantic-context in the multi-vendor environment makes communication standardization especially important. In this case, it is required that the encoding of the messages payload exchanged over the network (Data Transfer Object - TDO) is standardized so that the payload can be factored on the data-gathering site and consumed on the ultimate destination data processing sites. Security between the data origin and ultimate data destination refers to the protection of messages (security-context) against malicious users. It is required that communicating parties are using the same cyber-security measures.
 
 The decision to follow the \textbf{direct interconnection} scenario must be derived from an analysis of the capabilities of available services in concern. However, for the development strategy of this type of solutions this analysis can be done partially taking into account two features that can be considered invariable:
 
@@ -325,12 +160,7 @@ To meet the requirements of real-time distributed control the CFS may use protoc
 
 \textbf{Edge device} is a device that connects directly to the cloud services but acts as an intermediary for other devices called leaf devices. Additionally, it allows the selection of initial data processing and execution of them using local resources. The \textbf{edge device} may be located close to the leaf devices and attached to the cyber-physical network using protocols applicable only to local computer networks. In this scenario, it is possible to use a custom protocol stack to get connected to the \textbf{edge device} with the cloud and helps to save the bandwidth thanks to sending only the results of local processing. In this approach, the \textbf{edge device} is part of cloud vendor products and cannot be recognized as a generic solution that can be used to connect to other clouds at the same time.
 
-The \textbf{field level gateway} is also build atop of the middleware
-concept. The only difference compared with the \textbf{edge device} is
-necessity to use officially supported by the cloud vendor services to
-get connected. In this scenario the process data may be transferred to
-many clouds at the same time provided that the gateway offers this
-functionality.
+The \textbf{field level gateway} is also build atop of the middleware concept. The only difference compared with the \textbf{edge device} is necessity to use officially supported by the cloud vendor services to get connected. In this scenario the process data may be transferred to many clouds at the same time provided that the gateway offers this functionality.
 
 \begin{figure}
       \centering
@@ -350,42 +180,11 @@ To comply with the Industry 4.0 communication criterion it is required that any 
       \item \textbf{sessionless-oriented}: the sender may start sending messages (called packets or datagrams) to the destination without any preceding handshake procedure
 \end{itemize}
 
-Using the session-oriented communication pattern it is difficult or
-even impossible to gather and process mobile data (Sec. I), which is one
-of the Internet of Things paradigms. OPC UA Part 14 PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} \todo{add ref: Mariusz Postol, UA Part 14: PubSub Main Technology Features in Object Oriented Internet, https://github.com/mpostol/OPC-UA-OOI, 2019, DOI: 10.5281/zenodo.1198852} offers the sessionless approach as an additional option to session based client-server interoperability relationship and is a consistent part of the OPC UA specifications suit. As the result it can be recognized as the IoT ready technology.
+Using the session-oriented communication pattern it is difficult or even impossible to gather and process mobile data (Sec.~\ref*{introduction} ), which is one of the Internet of Things paradigms. OPC UA Part 14 PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} \todo{add ref: Mariusz Postol, UA Part 14: PubSub Main Technology Features in Object Oriented Internet, https://github.com/mpostol/OPC-UA-OOI, 2019, DOI: 10.5281/zenodo.1198852} offers the sessionless approach as an additional option to session based client-server interoperability relationship and is a consistent part of the OPC UA specifications suit. As the result it can be recognized as the IoT ready technology.
 
-The presented proposals in the article are backed by proof of concept
-reference implementations. For this study, prototyping addresses
-Microsoft Azure cloud products. There are many reasons for selecting
-Azure to accomplish cloud-based front-end of Cyber-Physical System (CFS). Azure offers
-Infrastructure as a Service (IaaS) and Platform as a Service (PaaS)
-capabilities. As a result, the platform can be used not only as a
-cloud-based front-end for CFS. By design, the Azure services are
-compliant with Security Development Lifecycle (SDL) an industry-leading
-security process. It is also compliant with the new international
-standard for cloud privacy, namely ISO 27018. Solutions hosted on Azure
-are scaled up to millions of users without any additional coding. For
-the development of the CFS front-end, it is essential that Azure
-provides very efficient storage services usefully for real-time process
-data archival. Azure provides a vast variety of hybrid connections
-including but not limited to virtual private networks (VPNs), caches,
-content delivery networks (CDNs), ExpressRoute, and IoT dedicated
-services that can be directly used to implement cloud-based front-end
-for CFS. Because it is also integrated with other Microsoft tools like
-Office 365, Outlook, and SharePoint using Azure allows preserving
-investment and exporting process data to the mentioned tools. Azure also
-offers services supporting analytics and intelligence capabilities for
-further improving business processes and decision making. It is the only
-cloud platform that offers Blockchain as a Service (BaaS), Machine
-Learning, Bots, and Cognitive APIs capabilities.
+The presented proposals in the article are backed by proof of concept reference implementations. For this study, prototyping addresses Microsoft Azure cloud products. There are many reasons for selecting Azure to accomplish cloud-based front-end of Cyber-Physical System (CFS). Azure offers Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) capabilities. As a result, the platform can be used not only as a cloud-based front-end for CFS. By design, the Azure services are compliant with Security Development Lifecycle (SDL) an industry-leading security process. It is also compliant with the new international standard for cloud privacy, namely ISO 27018. Solutions hosted on Azure are scaled up to millions of users without any additional coding. For the development of the CFS front-end, it is essential that Azure provides very efficient storage services usefully for real-time process data archival. Azure provides a vast variety of hybrid connections including but not limited to virtual private networks (VPNs), caches, content delivery networks (CDNs), ExpressRoute, and IoT dedicated services that can be directly used to implement cloud-based front-end for CFS. Because it is also integrated with other Microsoft tools like Office 365, Outlook, and SharePoint using Azure allows preserving investment and exporting process data to the mentioned tools. Azure also offers services supporting analytics and intelligence capabilities for further improving business processes and decision making. It is the only cloud platform that offers Blockchain as a Service (BaaS), Machine Learning, Bots, and Cognitive APIs capabilities.
 
-Azure aids Internet protocols and open standards such as JSON, XML,
-SOAP, REST, MQTT, AMQP, and HTTP. A software development kits for C\#,
-Java, PHP, and Ruby are available for custom applications. Azure
-provides services supporting data exchange over the OPC UA, but they
-don't support pubsub compliant with the OPC UA Part-14. Connectivity
-services on the network use JSON-based Data Transfer Object encoded
-based on schema derived from the solution metadata.
+Azure aids Internet protocols and open standards such as JSON, XML, SOAP, REST, MQTT, AMQP, and HTTP. A software development kits for C\#, Java, PHP, and Ruby are available for custom applications. Azure provides services supporting data exchange over the OPC UA, but they don't support pubsub compliant with the OPC UA Part-14. Connectivity services on the network use JSON-based Data Transfer Object encoded based on schema derived from the solution metadata.
 
 More detailed description of the selected Azure features in context of the application in concern are covered by the Sec.~\ref*{azure-main-technology-features}.
 
@@ -395,13 +194,11 @@ A library that meets all these requirements has been implemented consistently wi
 
 Sect.~\ref*{ooi-main-technology-features} provides a more detailed description of this library and an external part deployment process that is to be used to implement new functionality supporting \texttt{Embedded\ Gateway}.
 
-The following subsections covers description of the current state of technologies with regards to OPC UA pubsub and Azure cloud-based IoT enabler.
+The following subsections cover the description of the current state of technologies with regards to Azure cloud-based IoT enabler and OPC UA pubsub. Sect.~\ref*{azure-main-technology-features} analyzes data presentation user interface, available native communication services, and data/metadata model offered by the Microsoft Azure. The discussion covered by this section is the foundation for selecting services utilized to expose process data and suitable protocol stack to support interconnection. In Sect.~\ref*{ooi-main-technology-features} the discussion focuses on the generic architecture that is to be used as a foundation for further decisions addressing the systematic design of the interoperability of the CFSs and cloud-based front-end.
 
-\hypertarget{azure-main-technology-features}{%
-      \subsection{Azure Main Technology Features}\label{azure-main-technology-features}}
+\subsection{Azure Main Technology Features}\label{azure-main-technology-features}
 
-\hypertarget{services}{%
-      \subsubsection{Services}\label{services}}
+\subsubsection{Services}\label{services}
 
 Deployment of the hybrid solution providing interoperability of the
 \textbf{machine-centric} Cyber-Physical Systems (CFS) designed atop of M2M
@@ -465,8 +262,7 @@ replicate selected process state and behavior. The possibility to add
 value as a result of using these services must be subject to further
 research.
 
-\hypertarget{data-interchange}{%
-      \subsubsection{Data Interchange}\label{data-interchange}}
+\subsubsection{Data Interchange}\label{data-interchange}
 
 System components interoperability means the necessity of the
 information exchange between them. The main challenge of
@@ -550,8 +346,7 @@ and the gateway must be compliant with the DCM, hence the middleware
 software must be aware of conversions that must be applied to achieve
 this interoperability.
 
-\hypertarget{connectivity}{%
-      \subsubsection{Connectivity}\label{connectivity}}
+\subsubsection{Connectivity}\label{connectivity}
 
 From the cloud side, it is proposed to employ the \texttt{IoT\ Hub}
 service to handle the network traffic targeting the cyber-physical
@@ -594,22 +389,21 @@ features, including performance. The connectivity with
             Provisioning Device Client MQTT Transport for Azure IoT Devices
 \end{itemize}
 
-\hypertarget{ooi-main-technology-features}{%
-      \subsection{OOI Main Technology Features}\label{ooi-main-technology-features}}
+\subsection{OOI Main Technology Features}\label{ooi-main-technology-features}
 
 \begin{itemize}
       \tightlist
-      \item
-            Machinie To Machine communication based on the semantic data
-      \item
-            OOI PubSub Implementation Architecture
-      \item
-            Simple, complex and structural data processing
+      \item Machinie To Machine communication based on the semantic data
+      \item OOI PubSub Implementation Architecture
+      \item Simple, complex and structural data processing
 \end{itemize}
 
 
-\hypertarget{gateway-implementation}{%
-      \section{Azure - Object-Oriented Internet interoperability Implementation}\label{gateway-implementation}}
+\section{Azure - Object-Oriented Internet interoperability Implementation}\label{gateway-implementation}
+
+\todo{Add any information about available reusable deliverables related to this work.}
+
+
 
 \begin{itemize}
       \tightlist
@@ -623,8 +417,7 @@ features, including performance. The connectivity with
             Testing
 \end{itemize}
 
-\hypertarget{conclusion}{%
-      \section{Conclusion}\label{conclusion}}
+\section{Conclusion}\label{conclusion}
 
 The OPC UA PubSub to Azure gateway (\texttt{AzureGateway})
 implementation has been just published on GitHub as the open-source (MIT
