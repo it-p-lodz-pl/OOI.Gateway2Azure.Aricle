@@ -19,7 +19,7 @@
 
 
 \providecommand{\tightlist} { \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\providecommand{\keywords}[1]{  \small	  \textbf{\textit{Keywords---}} #1 }
+\providecommand{\keywords}[1]{ \small	 \textbf{\textit{Keywords---}} #1 }
 
 \title{Object-Oriented Internet - Azure Interoperability}
 % \title{Object-Oriented Internet - reactive visualization of asynchronous data using AZURE}
@@ -28,28 +28,28 @@
 \author{Mariusz Postół\inst{1}, Piotr Szymczak\inst{1}, Clemens Vasters\inst{2}}
 \headauthor{Postół M, Szymczak P, Vasters C}
 \affiliation{%
-  \inst{1}Lodz University of Technology\\
-  Institute of Information Technology\\
-  ul. Wólczańska 215, 90-924 Lodz, Poland\\
-  mailto:mariusz.postol@p.lodz.pl
-  \andinst
-  \inst{2}Microsoft\\
-  Faculty/Department/Office Name\\
-  Postal Address with the zip-code\\
-  clemensv@microsoft.com}
+ \inst{1}Lodz University of Technology\\
+ Institute of Information Technology\\
+ ul. Wólczańska 215, 90-924 Lodz, Poland\\
+ mailto:mariusz.postol@p.lodz.pl
+ \andinst
+ \inst{2}Microsoft\\
+ Faculty/Department/Office Name\\
+ Postal Address with the zip-code\\
+ clemensv@microsoft.com}
 
 \keywords{Azure, Cloud Computing, Object-Oriented Internet, Industrial communication, Industry 4.0, Internet of Things, Machine to Machine Communication, OPC Unified Architecture}
 
-\begin{document} 
+\begin{document}
 
 \maketitle
 
 
 \begin{abstract}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus neque eu erat pulvinar rutrum. Sed id congue leo. Pellentesque ornare enim libero, convallis eleifend turpis rhoncus ac. Proin eget pellentesque dolor. Phasellus lacinia velit eget faucibus iaculis. Pellentesque consequat erat non urna scelerisque cursus. Donec urna nisi, pulvinar a nisl eu, lobortis sollicitudin nulla. Proin tempus risus vel lacinia vestibulum. Praesent eget nisi lorem. Nam rutrum lectus vulputate dolor venenatis eleifend. Sed dolor lacus, cursus non enim tincidunt, auctor hendrerit orci. Donec venenatis ultrices est, nec molestie lorem. Morbi eleifend mattis ex, eget mollis leo blandit ut. Nulla sed felis posuere, gravida dui sed, iaculis neque. Donec ante purus, rhoncus eu neque tristique, pretium elementum purus.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus neque eu erat pulvinar rutrum. Sed id congue leo. Pellentesque ornare enim libero, convallis eleifend turpis rhoncus ac. Proin eget pellentesque dolor. Phasellus lacinia velit eget faucibus iaculis. Pellentesque consequat erat non urna scelerisque cursus. Donec urna nisi, pulvinar a nisl eu, lobortis sollicitudin nulla. Proin tempus risus vel lacinia vestibulum. Praesent eget nisi lorem. Nam rutrum lectus vulputate dolor venenatis eleifend. Sed dolor lacus, cursus non enim tincidunt, auctor hendrerit orci. Donec venenatis ultrices est, nec molestie lorem. Morbi eleifend mattis ex, eget mollis leo blandit ut. Nulla sed felis posuere, gravida dui sed, iaculis neque. Donec ante purus, rhoncus eu neque tristique, pretium elementum purus.
 
-Sed euismod maximus consequat. Pellentesque nec leo ligula. Aenean id lorem ac nisi blandit ultrices sit amet nec velit. Vestibulum bibendum ipsum vulputate quam suscipit, eu tincidunt diam imperdiet. Nunc vel turpis ut tortor bibendum ullamcorper sed ut magna. Sed sit amet quam ut lacus pretium ullamcorper. Fusce feugiat ornare mollis. Vestibulum sagittis velit id augue tempus, in vestibulum velit bibendum. Curabitur ac aliquet mi. Aliquam erat volutpat. Cras quis dignissim est, ac gravida.
+  Sed euismod maximus consequat. Pellentesque nec leo ligula. Aenean id lorem ac nisi blandit ultrices sit amet nec velit. Vestibulum bibendum ipsum vulputate quam suscipit, eu tincidunt diam imperdiet. Nunc vel turpis ut tortor bibendum ullamcorper sed ut magna. Sed sit amet quam ut lacus pretium ullamcorper. Fusce feugiat ornare mollis. Vestibulum sagittis velit id augue tempus, in vestibulum velit bibendum. Curabitur ac aliquet mi. Aliquam erat volutpat. Cras quis dignissim est, ac gravida.
 \end{abstract}
 
 \maketitle
@@ -57,7 +57,7 @@ Sed euismod maximus consequat. Pellentesque nec leo ligula. Aenean id lorem ac n
 \listoftodos[TODO list]
 
 \hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+  \section{Introduction}\label{introduction}}
 
 All the time, the Information and Communication Technology is providing
 society with a vast variety of new distributed applications aimed at
@@ -67,14 +67,14 @@ communication technologies. Based on the role humans take while using
 these applications they can be grouped as follows:
 
 \begin{itemize}
-\tightlist
-\item
-  \textbf{human-centric} - information origin or ultimate information
-  destination is an operator,
-\item
-  \textbf{machine-centric} - information creation, consumption,
-  networking, and processing are achieved entirely without human
-  interaction.
+  \tightlist
+  \item
+        \textbf{human-centric} - information origin or ultimate information
+        destination is an operator,
+  \item
+        \textbf{machine-centric} - information creation, consumption,
+        networking, and processing are achieved entirely without human
+        interaction.
 \end{itemize}
 
 A typical \textbf{human-centric} approach is a web-service supporting,
@@ -111,14 +111,14 @@ for highly distributed process control applications designed atop the
 M2M communication paradigm because
 
 \begin{itemize}
-\tightlist
-\item
-  it is a globally shareable environment and can be also used by
-  malicious users
-\item
-  it offers only non-deterministic communication making integration of
-  islands of automation designed against the real-time requirements a
-  difficult task
+  \tightlist
+  \item
+        it is a globally shareable environment and can be also used by
+        malicious users
+  \item
+        it offers only non-deterministic communication making integration of
+        islands of automation designed against the real-time requirements a
+        difficult task
 \end{itemize}
 
 Today both obstacles can be overcome, and as examples, we have bank
@@ -128,13 +128,13 @@ second is very sensitive on time relationships. Similar approaches could
 be applied to adopt the well known in process control industry concepts:
 
 \begin{itemize}
-\tightlist
-\item
-  Human Machine Interface (HNI)
-\item
-  Supervisory Control and Data Acquisition (SCADA)
-\item
-  Distributed Control Systems (DCS)
+  \tightlist
+  \item
+        Human Machine Interface (HNI)
+  \item
+        Supervisory Control and Data Acquisition (SCADA)
+  \item
+        Distributed Control Systems (DCS)
 \end{itemize}
 
 A detailed examination of these solutions is far beyond the scope of
@@ -208,15 +208,15 @@ Deployment of the hybrid solution providing interoperability of the
 the following scenarios:
 
 \begin{itemize}
-\tightlist
-\item
-  \textbf{direct interconnection} - cloud-based dedicated communication
-  services allow to attache it to the cyber-physical system making up a
-  consistent M2M communication network using an in-bound protocol stack
-\item
-  \textbf{gateway based interconnection} - typical build-in
-  communication services allows to attache the cloud computing to the
-  cyber-physical system using an out-of-bound protocol stack
+  \tightlist
+  \item
+        \textbf{direct interconnection} - cloud-based dedicated communication
+        services allow to attache it to the cyber-physical system making up a
+        consistent M2M communication network using an in-bound protocol stack
+  \item
+        \textbf{gateway based interconnection} - typical build-in
+        communication services allows to attache the cloud computing to the
+        cyber-physical system using an out-of-bound protocol stack
 \end{itemize}
 
 By design, the direct approach requires that the cloud has to be
@@ -224,7 +224,7 @@ compliant with the interoperability standard the cyber-physical system
 is built around - it becomes a consistent part of the cyber-physical
 system. Data models, roles, and responsibility differences of both
 solutions make this approach impractical and imposable to be applied in
-typical cases. A more detailed description is covered by the Sect.~\ref*{azure-to-sensors-a2s-connectivity-deployment-field-level-connectivity}.
+typical cases. A more detailed description is covered by the Sect.~\ref*{cloud-to-sensors-field-level-connectivity}.
 
 This article addresses further research on the integration of the
 cyber-physical systems in the context of new emerging disciplines,
@@ -244,156 +244,96 @@ Internet.
 The main goal of this article is to provide proof that:
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  reactive interoperability M2M communication based on the OPC UA
-  standard can be implemented as a powerful standalone library without
-  dependency on the Client/Server session-oriented archetype
-\item
-  Azure interoperability can be implemented as an external part
-  employing out-of-band communication without dependency on the OPC UA
-  implementation
-\item
-  the proposed generic architecture allows that the gateway
-  functionality is composable at run-time - no programming required
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+        reactive interoperability M2M communication based on the OPC UA
+        standard can be implemented as a powerful standalone library without
+        dependency on the Client/Server session-oriented archetype
+  \item
+        Azure interoperability can be implemented as an external part
+        employing out-of-band communication without dependency on the OPC UA
+        implementation
+  \item
+        the proposed generic architecture allows that the gateway
+        functionality is composable at run-time - no programming required
 \end{enumerate}
 
-The remainder of this paper is structured as follows. Sect.~\ref*{azure-main-technology-features} \todo{Overfull must be fixed} analyzes data presentation user interface, available native communication services, and data/metadata model offered by the Microsoft Azure. The discussion covered by this section is the foundation for selecting services utilized to expose process data and suitable protocol stack to support interconnection. In Sect.~\ref*{ooi-main-technology-features} the discussion focuses on the generic architecture that is to be used as a foundation for further decisions addressing the systematic design of the interoperability of the cyber-physical systems and cloud-based front-end. Sect.~\ref*{azure-to-sensors-a2s-connectivity-deployment-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. A reference implementation of this archetype is described in Sect.~\ref*{gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref*{architecture} \todo{overfull}.
+The remainder of this paper is structured as follows. Sect.~\ref*{cloud-to-sensors-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. Sect.~\ref*{azure-main-technology-features} analyzes data presentation user interface, available native communication services, and data/metadata model offered by the Microsoft Azure. The discussion covered by this section is the foundation for selecting services utilized to expose process data and suitable protocol stack to support interconnection. In Sect.~\ref*{ooi-main-technology-features} the discussion focuses on the generic architecture that is to be used as a foundation for further decisions addressing the systematic design of the interoperability of the cyber-physical systems and cloud-based front-end. A reference implementation of this archetype is described in Sect.~\ref*{gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref*{architecture} \todo{overfull}.
 
 \hypertarget{consider-to-add}{%
-\subsection{Consider to add}\label{consider-to-add}}
+  \subsection{Consider to add}\label{consider-to-add}}
 
 \hypertarget{scope}{%
-\subsubsection{Scope}\label{scope}}
+  \subsubsection{Scope}\label{scope}}
 
 What we must do to prove the goal have been achieved. Extent or range of
 development, view, outlook, application, operation, effectiveness, etc.
 
 \hypertarget{related-work}{%
-\subsubsection{Related work}\label{related-work}}
+  \subsubsection{Related work}\label{related-work}}
 
 Any information about available reusable deliverables related to this
 work.
 
 \hypertarget{cloud-to-sensors-field-level-connectivity}{%
-\section{Cloud to Sensors Field Level Connectivity}\label{cloud-to-sensors-field-level-connectivity}}
+  \section{Cloud to Sensors Field Level Connectivity}\label{cloud-to-sensors-field-level-connectivity}}
 
 \hypertarget{architecture}{%
-\subsection{Architecture}\label{architecture}}
+  \subsection{Architecture}\label{architecture}}
 
-As it was explained in Sect.~\ref*{introduction}, to follow the Industry 4.0 concept a hybrid environment integrating reactive Machine to Machine
-interconnection and interactive web-based user interface is required.
-The main challenge of the solution in concern is to design a generic but
-reusable architecture that addresses interoperability of these diverse
-interconnection scenarios ruled by different requirements, namely
+As it was explained in Sect.~, to follow the Industry 4.0 concept a hybrid environment integrating reactive Machine to Machine interconnection and interactive web-based user interface is required (\ref*{introduction}). The main challenge of the solution in concern is to design a generic but reusable architecture that addresses interoperability of these diverse interconnection scenarios ruled by different requirements, namely
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{machine-centric} machine to machine real-time mobile
-  interoperability
-\item
-  \textbf{human-centric} cloud-based front-end
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+        \textbf{machine-centric} machine to machine real-time mobile
+        interoperability
+  \item
+        \textbf{human-centric} cloud-based front-end
 \end{enumerate}
 
-Interconnection of the reactive \textbf{machine-centric} and interactive \textbf{human-centric} environments can be implemented by applying one of the following scenarios \todo{overfull}:
+Interconnection of the reactive \textbf{machine-centric} and interactive \textbf{human-centric} environments can be implemented by applying one of the following scenarios:\todo{overfull}
 
 \begin{itemize}
-\tightlist
-\item
-  \textbf{direct interconnection} - cloud-based dedicated communication
-  services are engaged to attach it to the cyber-physical system making
-  up a consistent M2M communication network using a common protocol
-  stack
-\item
-  \textbf{gateway based interconnection} - native build-in communication
-  services allows attaching the cloud to the cyber-physical system using
-  an out-of-bound protocol stack
+  \item \textbf{direct interconnection} (tightly coupled scenario) - cloud-based dedicated communication services are engaged to attach it to the cyber-physical system making up a consistent M2M communication network using a common protocol stack
+  \item \textbf{gateway based interconnection} (loosely coupled scenario) - native build-in communication services allows attaching the cloud to the cyber-physical system using an out-of-bound protocol stack
 \end{itemize}
 
-In the solution in concern, the interconnection of assets is not enough
-hence their interoperability is expected. In this case, using the same
-communication stack must be recognized as only a necessary condition. To
-support interoperability common data understanding is required. By
-design, the direct approach requires that the cloud has to be compliant
-with the interoperability standard the cyber-physical system uses. As a
-result, it becomes a consistent part of the cyber-physical system.
-Additionally, to meet this requirement the cloud and cyber-physical
-systems have to establish
+In the solution in concern, the interconnection of assets is not enough hence their interoperability is expected. In this case, using the same communication stack must be recognized as only a necessary condition. To support interoperability common data understanding is required. By design, the direct approach requires that the cloud has to be compliant
+with the interoperability standard the cyber-physical system uses. As a result, it becomes a consistent communication node of the cyber-physical system. Additionally, to meet this requirement the cloud and cyber-physical systems have to establish directly
 
 \begin{itemize}
-\tightlist
-\item
-  directly the same semantic-context
-\item
-  directly the same security-context
+  \item the same semantic-context
+  \item the same security-context
 \end{itemize}
 
-The possibility to establish a common semantic-context in the
-multi-vendor environment makes communication standardization especially
-important. In this case, it is required that the encoding of the payload
-of messages exchanged over the network (Data Transfer Object - TDO) is
-standardized so that the payload can be factored on the data-gathering
-site and consumed on the ultimate destination data processing sites.
-Security between the data origin and ultimate data destination refers to
-the protection of messages (security-context) against malicious users.
-It is required that communicating parties are using the same
-cyber-security measures.
+The possibility to establish a common semantic-context in the multi-vendor environment makes communication standardization especially important. In this case, it is required that the encoding of the messages payload exchanged over the network (Data Transfer Object - TDO) is standardized so that the payload can be factored on the data-gathering
+site and consumed on the ultimate destination data processing sites. Security between the data origin and ultimate data destination refers to the protection of messages (security-context) against malicious users. It is required that communicating parties are using the same cyber-security measures.
 
-The decision to follow the \textbf{direct interconnection} scenario must
-be derived from an analysis of the capabilities of available services in
-concern. However, for the development strategy of this type of solutions
-this analysis can be done partially taking into account two features
-that can be considered invariable:
+The decision to follow the \textbf{direct interconnection} scenario must be derived from an analysis of the capabilities of available services in concern. However, for the development strategy of this type of solutions this analysis can be done partially taking into account two features that can be considered invariable:
 
 \begin{itemize}
-\tightlist
-\item
-  by design the cloud-based services must be virtual - they are used to
-  handle many solutions at the same time
-\item
-  by design the M2M communication is usually constrained by the
-  real-time requirements
+  \item by design the cloud-based services must be virtual - they are used to handle many solutions at the same time
+  \item by design the M2M communication is usually constrained by the real-time requirements
 \end{itemize}
 
-In practice, the set of assets embedded in the cyber-physical system is
-very stable. On the another hand, the virtualization of services means
-that they must be very flexible to handle the attachment of new assets
-proactively (acting in advance) at run time. As a result, by design, the
-cloud services must be repressible to register and authenticate devices
-exposing endpoints in the public network to allows the device to access
-a provisioning cloud service. It requires that a session over the
-Internet has to be established by the data holding asset at a
-preparation step.
+In practice, the set of assets embedded in the cyber-physical system is very stable. On the another hand, the virtualization of services means that they must be very flexible to handle the attachment of new assets proactively (acting in advance) at run time. As a result, by design, the cloud services must be repressible to register and authenticate devices exposing endpoints in the public network to allows the device to access a provisioning cloud service. It requires that a session over the Internet has to be established by the data holding asset at a preparation step.
 
-To meet the requirements of real-time distributed control the
-cyber-physical system may use protocols applicable only to local
-computer networks (e.g.~multicast IP, Ethernet, TSN, etc.). Because the
-cloud services support only protocols handling interconnection over the
-Internet the interaction with the cloud requires remote agents,
-i.e.~agents attached locally to the M2M network implemented applying one
-of the following archetypes:
+To meet the requirements of real-time distributed control the cyber-physical system may use protocols applicable only to local computer networks (e.g.~multicast IP, Ethernet, TSN, etc.). Because the cloud services support only protocols handling interconnection over the Internet the interaction with the cloud requires remote agents, i.e.~agents attached locally to the M2M network and implemented by applying one of the following archetypes:
 
 \begin{itemize}
-\tightlist
-\item
-  \textbf{edge device} - remote cloud agent acting as an intermediary
-  for nodes of the cyber-physical network
-\item
-  \textbf{field level gateway} - a dedicated custom device acting as an
-  intermediary for nodes of the cyber-physical network
-\item
-  \textbf{embedded gateway} - a software part composed into a selected
-  node of the cyber-physical network
+  \item \textbf{edge device} - remote cloud agent acting as an intermediaryfor nodes of the cyber-physical network
+  \item \textbf{field level gateway} - a dedicated custom device acting as an intermediary for nodes of the cyber-physical network
+  \item \textbf{embedded gateway} - a software part composed into a selected node of the cyber-physical network
 \end{itemize}
 
 \textbf{Edge device} is a device that connects directly to the cloud
 services but acts as an intermediary for other devices called leaf
 devices. Additionally, it allows the selection of initial data
 processing and execution of them using local resources. The \textbf{edge
-device} may be located close to the leaf devices and attached to the
+  device} may be located close to the leaf devices and attached to the
 cyber-physical network using protocols applicable only to local computer
 networks. In this scenario, it is possible to use a custom protocol
 stack to get connected to the \textbf{edge device} with the cloud and
@@ -410,17 +350,17 @@ many clouds at the same time provided that the gateway offers this
 functionality.
 
 \begin{figure}
-\centering
-\includegraphics{../.Media/StrategyDomainModel.png}
-\caption{Strategy Domain Model}\label{StrategyDomainModel}
+  \centering
+  \includegraphics{../.Media/StrategyDomainModel.png}
+  \caption{Strategy Domain Model}\label{StrategyDomainModel}
 \end{figure}
 
 Unlike the above described solutions, the \textbf{embedded gateway} is
 not derived from the middleware concept. The domain model for this
-archetype is presented in the Fig. Promoting separation of concern
+archetype is presented in the Fig.~\ref*{StrategyDomainModel} Promoting separation of concern
 design principle, the gateway functionality should be implemented as a
 self-contained software part embedded in the \texttt{Networking} service
-of the \texttt{Cipher-physical\ node}. Main functionality of this
+of the \texttt{Cyber-physical\ node}. Main functionality of this
 component is to transfer selected data between
 \texttt{Cyber-physical\ network} using \texttt{Networking} services of
 an existing \texttt{Cyber-physical\ node} and
@@ -428,7 +368,7 @@ an existing \texttt{Cyber-physical\ node} and
 vendor interconnection services.
 
 The \textbf{embedded gateway} archetype relaxes most of the issues
-described above: cipher-physical network real-time behavior, data
+described above: \texttt{Cyber-physical\ network} real-time behavior, data
 encoding incompatibility, security-context differences to name only a
 few. The main goal of this article is to provide proof that the
 \textbf{embedded gateway} archetype implementation is possible based on
@@ -437,28 +377,22 @@ integration of the heterogenous environments in concern. The proposed
 implementation is designed for selected interoperability standard and
 cloud product.
 
-To comply with the Industry 4.0 communication criterion it is required that the product must be addressable over the network via TCP/UDP or IP and has to support the OPC UA Information Model. As a result, any product being advertised as Industry 4.0 enabled must be OPC UA-capable somehow. To support the multi-vendor environment OPC Unified Architecture interoperability standard has been selected. OPC UA supports the following two patterns to be used to transfer data between communicating parties:
+To comply with the Industry 4.0 communication criterion it is required that any product must be addressable over the network via TCP/UDP or IP and has to support the OPC UA Information Model. As a result, any product being advertised as Industry 4.0 enabled must be OPC UA-capable somehow. To support the multi-vendor environment OPC Unified Architecture interoperability standard has been selected. OPC UA supports the following two patterns to be used to transfer data between communicating parties:
 
 \begin{itemize}
-\tightlist
-\item
-  connection-oriented: requires a session that has to be established before any data can be sent between sender and receiver
-\item
-  connectionless-oriented: the sender may start sending messages (called packets or datagrams) to the destination without any preceding handshake procedure
+  \tightlist
+  \item \textbf{session-oriented}: requires a session that has to be established before any data can be sent between sender and receiver
+  \item \textbf{sessionless-oriented}: the sender may start sending messages (called packets or datagrams) to the destination without any preceding handshake procedure
 \end{itemize}
 
-Using the connection-oriented communication pattern it is difficult or
+Using the session-oriented communication pattern it is difficult or
 even impossible to gather and process mobile data (Sec. I), which is one
-of the Internet of Things paradigms. OPC UA Part 14 PubSub \todo{add ref} \footnote{Mariusz Postol, UA Part 14: PubSub Main Technology Features in Object Oriented Internet, https://github.com/mpostol/OPC-UA-OOI, 2019, DOI: 10.5281/zenodo.1198852} offers the
-connectionless approach as an additional option to session based
-client-server interoperability and is a consistent part of the OPC UA
-specifications suit. As the result it can be recognized as the IoT ready
-technology.
+of the Internet of Things paradigms. OPC UA Part 14 PubSub \cite*{RefWorks:doc:5d98837de4b055984c0eecf0} \todo{add ref: Mariusz Postol, UA Part 14: PubSub Main Technology Features in Object Oriented Internet, https://github.com/mpostol/OPC-UA-OOI, 2019, DOI: 10.5281/zenodo.1198852} offers the sessionless approach as an additional option to session based client-server interoperability relationship and is a consistent part of the OPC UA specifications suit. As the result it can be recognized as the IoT ready technology.
 
 The presented proposals in the article are backed by proof of concept
 reference implementations. For this study, prototyping addresses
 Microsoft Azure cloud products. There are many reasons for selecting
-Azure to accomplish cloud-based front-end of CFS. Azure offers
+Azure to accomplish cloud-based front-end of Cyber-Physical System (CFS). Azure offers
 Infrastructure as a Service (IaaS) and Platform as a Service (PaaS)
 capabilities. As a result, the platform can be used not only as a
 cloud-based front-end for CFS. By design, the Azure services are
@@ -488,34 +422,14 @@ don't support pubsub compliant with the OPC UA Part-14. Connectivity
 services on the network use JSON-based Data Transfer Object encoded
 based on schema derived from the solution metadata.
 
-More detailed description of the selected Azure features in context of
-the application in concern are covered by the Sec.
-\texttt{azure-main-technology-features}.
+More detailed description of the selected Azure features in context of the application in concern are covered by the Sec.~\ref*{azure-main-technology-features}.
 
-Based on the sessionless and session-oriented communication patterns
-examination against the IoT requirements  \cite{mpostol2020} 
-it could be
-concluded that the connectionless pattern better suites issues related
-to the assets mobility and traffic asymmetry that is characteristic for
-the application domains in concern. Additionally, to promote
-interoperability and address the demands of the M2M communication in the
-context of a multi-vendor environment the prototyping should use an
-framework that must be compliant with the OPC UA Part 14 PubSub spec.
-According to proposed architecture presented in Fig. above to implement
-the \texttt{Embedded\ Gateway} as a composable part of the
-\texttt{Cipher-physical\ Node} a library implementing
-\texttt{Networking} functionality in compliance with mentioned above
-specification is a starting point for further development. Additionally
-it must be assumed that the library used to deploy
-\texttt{Embedded\ Gateway} support dependency injection and be capable
-to compose an external part supporting Azure/pubsub gateway
-functionality. The composition process must be available without
-modification of the core code of an existing library. As a result the
-prototyping is to be limited to implementation of the
-\texttt{Embedded\ Gateway} software part only.
+Based on the sessionless and session-oriented communication patterns examination against the IoT requirements \cite{mpostol2020} it could be concluded that the connectionless pattern better suites issues related to the assets mobility and traffic asymmetry that is characteristic for the application domains in concern. Additionally, to promote
+interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use an
+framework that must be compliant with the OPC UA Part 14 PubSub spec \cite{RefWorks:doc:5d98837de4b055984c0eecf0}. According to proposed architecture presented in Fig.~\ref*{StrategyDomainModel} to implement the \texttt{Embedded\ Gateway} as a composable part of the \texttt{Cyber-physical\ Node} a library implementing \texttt{Networking} functionality in compliance with mentioned above specification is a starting point for further development. Additionally it must be assumed that the library used to deploy \texttt{Embedded\ Gateway} support dependency injection and be capable to compose an external part supporting Azure/pubsub gateway functionality. The composition process must be available without modification of the core code of an existing library. As a result the prototyping is to be limited to implementation of the \texttt{Embedded\ Gateway} software part only.
 
-A library that meets all these requirements has been implemented consistently with the Object-Oriented Internet paradigm \cite{RefWorks:doc:5c66740ae4b081adf5804596} 
-worked out in an open-source project \footnote{ \url{https://github.com/mpostol/OPC-UA-OOI} }. The \cite{mpostol2020} 
+A library that meets all these requirements has been implemented consistently with the Object-Oriented Internet paradigm \cite{RefWorks:doc:5c66740ae4b081adf5804596}
+worked out in an open-source project \footnote{ \url{https://github.com/mpostol/OPC-UA-OOI} }. The \cite{mpostol2020}
 covers the description of a reference application program implementation proving that it is possible to design
 universal architecture targeting reactive interoperability as a
 consistent part of the Object-Oriented Internet concept compliant with
@@ -527,15 +441,15 @@ adaptability of the existing solutions against any modification of the
 production environment including but not limited to the selected
 interoperability standard change.
 
-Sect.~\ref*{ooi-main-technology-features} provides more detailed description of this library and new functionality (\texttt{Embedded\ Gateway} \todo{refine the text} part deployment process.
+Sect.~\ref*{ooi-main-technology-features} provides more detailed description of this library and part deployment process to implement new functionality supporting (\texttt{Embedded\ Gateway}.
 
 The following subsections covers description of the current state of technologies with regards to OPC UA pubsub and Azure cloud-based IoT enabler.
 
 \hypertarget{azure-main-technology-features}{%
-\subsection{Azure Main Technology Features}\label{azure-main-technology-features}}
+  \subsection{Azure Main Technology Features}\label{azure-main-technology-features}}
 
 \hypertarget{services}{%
-\subsubsection{Services}\label{services}}
+  \subsubsection{Services}\label{services}}
 
 Deployment of the hybrid solution providing interoperability of the
 \textbf{machine-centric} cyber-physical systems designed atop of M2M
@@ -599,11 +513,11 @@ services as needed. The following services could also be considered to
 build cloud-based automation solution:
 
 \begin{itemize}
-\tightlist
-\item
-  \texttt{Industrial\ IoT} - discovering OPC UA enabled servers in a factory network and register them in Azure \texttt{IoT\ Hub} implemented using \texttt{IoT\ Edge}
-\item
-  \texttt{Digital\ Twins} - managing the graph of digital twins, which are to represent some real-world process or entity
+  \tightlist
+  \item
+        \texttt{Industrial\ IoT} - discovering OPC UA enabled servers in a factory network and register them in Azure \texttt{IoT\ Hub} implemented using \texttt{IoT\ Edge}
+  \item
+        \texttt{Digital\ Twins} - managing the graph of digital twins, which are to represent some real-world process or entity
 \end{itemize}
 
 \texttt{Industrial\ IoT} promotes OPC UA client/server archetype used to
@@ -616,7 +530,7 @@ value as a result of using these services must be subject to further
 research.
 
 \hypertarget{data-interchange}{%
-\subsubsection{Data Interchange}\label{data-interchange}}
+  \subsubsection{Data Interchange}\label{data-interchange}}
 
 System components interoperability means the necessity of the
 information exchange between them. The main challenge of
@@ -656,24 +570,24 @@ Using the data type definitions to describe information interchanged
 between communicating parties allows:
 
 \begin{itemize}
-\tightlist
-\item
-  Development against a type definition of the user interface
-\item
-  Implementation of the functionality of the bitstreams conversion in
-  advance
+  \tightlist
+  \item
+        Development against a type definition of the user interface
+  \item
+        Implementation of the functionality of the bitstreams conversion in
+        advance
 \end{itemize}
 
 Having defined types in advance, a gateway may provide dedicated conversions functionality, i.e.~replacing bitstreams used by the cyber-physical system by equivalent ones for the cloud-based services. The Azure offers a vast variety of built-in types ready to be used in common cases, but not necessarily there are equivalent counterparts in use by the cyber-physical system. Additionally, the data conversion must address the following issues:
 
 \begin{itemize}
-\tightlist
-\item
-  usually to covert data from source to destination representation, the
-  middleware software native types must be used
-\item
-  if the out of the box set of types is not capable of fulfilling more
-  demanding needs, custom data types must be defined
+  \tightlist
+  \item
+        usually to covert data from source to destination representation, the
+        middleware software native types must be used
+  \item
+        if the out of the box set of types is not capable of fulfilling more
+        demanding needs, custom data types must be defined
 \end{itemize}
 
 Although the data conversion is a run-time gateway task the
@@ -701,7 +615,7 @@ software must be aware of conversions that must be applied to achieve
 this interoperability.
 
 \hypertarget{connectivity}{%
-\subsubsection{Connectivity}\label{connectivity}}
+  \subsubsection{Connectivity}\label{connectivity}}
 
 From the cloud side, it is proposed to employ the \texttt{IoT\ Hub}
 service to handle the network traffic targeting the cyber-physical
@@ -722,30 +636,30 @@ features, including performance. The connectivity with
 \texttt{IoT\ Hub}, for example, can be obtained using:
 
 \begin{itemize}
-\tightlist
-\item
-  \texttt{Microsoft.Azure.Devices} - Service SDK for Azure IoT Devices
-\item
-  \texttt{Microsoft.Azure.Devices.Client}- Device SDK for Azure \texttt{IoT\ Hub}
-\item
-  \texttt{Microsoft.Azure.Devices.Shared} - Common code for Azure IoT
-  Device and Service SDKs
-\item
-  \texttt{Microsoft.Azure.Devices.Provisioning.Client} - Provisioning
-  Device Client SDK for Azure IoT Devices
-\item
-  \texttt{Microsoft.Azure.Devices.Provisioning.Transport.Amqp} -
-  Provisioning Device Client AMQP Transport for Azure IoT Devices
-\item
-  \texttt{Microsoft.Azure.Devices.Provisioning.Transport.Http} -
-  Provisioning Device Client Http Transport for Azure IoT Devices
-\item
-  \texttt{Microsoft.Azure.Devices.Provisioning.Transport.Mqtt} -
-  Provisioning Device Client MQTT Transport for Azure IoT Devices
+  \tightlist
+  \item
+        \texttt{Microsoft.Azure.Devices} - Service SDK for Azure IoT Devices
+  \item
+        \texttt{Microsoft.Azure.Devices.Client}- Device SDK for Azure \texttt{IoT\ Hub}
+  \item
+        \texttt{Microsoft.Azure.Devices.Shared} - Common code for Azure IoT
+        Device and Service SDKs
+  \item
+        \texttt{Microsoft.Azure.Devices.Provisioning.Client} - Provisioning
+        Device Client SDK for Azure IoT Devices
+  \item
+        \texttt{Microsoft.Azure.Devices.Provisioning.Transport.Amqp} -
+        Provisioning Device Client AMQP Transport for Azure IoT Devices
+  \item
+        \texttt{Microsoft.Azure.Devices.Provisioning.Transport.Http} -
+        Provisioning Device Client Http Transport for Azure IoT Devices
+  \item
+        \texttt{Microsoft.Azure.Devices.Provisioning.Transport.Mqtt} -
+        Provisioning Device Client MQTT Transport for Azure IoT Devices
 \end{itemize}
 
 \hypertarget{ooi-main-technology-features}{%
-\subsection{OOI Main Technology Features}\label{ooi-main-technology-features}}
+  \subsection{OOI Main Technology Features}\label{ooi-main-technology-features}}
 
 \begin{itemize}
   \tightlist
@@ -759,7 +673,7 @@ features, including performance. The connectivity with
 
 
 \hypertarget{gateway-implementation}{%
-\section{Azure - Object-Oriented Internet interoperability Implementation}\label{gateway-implementation}}
+  \section{Azure - Object-Oriented Internet interoperability Implementation}\label{gateway-implementation}}
 
 \begin{itemize}
   \tightlist
