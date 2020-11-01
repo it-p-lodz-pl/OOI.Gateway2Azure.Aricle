@@ -375,6 +375,82 @@ features, including performance. The connectivity with
 
 \subsection{OOI Main Technology Features}\label{ooi-main-technology-features}
 
+This section covers an analysis of how to use the proposed domain model (Sect. \ref*{sec.DomainModel}) to make strategic design decisions and distribute functionality to reusable loosely coupled parts using the dependency injection software engineering and adaptive programming using the approach proposed in~\cite{RefWorks:doc:5d9796cbe4b0f66c52dccf04}.
+
+\begin{wrapfigure}{R}{0.55\textwidth}
+  \includegraphics[width=0.53\textwidth]{UADataApplicationArchitecture.eps} 
+  \caption{Reactive interoperability implementation}\label{fig_rii}
+\end{wrapfigure}
+
+The \emph{Reactive Interoperability} concept has been implemented as an open-source library named \textit{SemanticData} in the project Object-Oriented Internet \cite{RefWorks:doc:5c66740ae4b081adf5804596} designed to be a~foundation for developing application programs that are taking part in the message-centric communication pattern. From the above discussion, we can learn that the main design decisions must concern standardization and flexibility. Standardization needs the selection of an international interoperability specification to make the library ready to be adopted by the multi-vendor environment. Flexibility requires an architecture that promotes the polymorphic independent implementation of essential functions.
+
+Piece by piece integration of a cyber-physical system using multi-vendor products requires that M2M communication employs international standards as the interoperability foundation. Following the presented conclusions, OPC Unified Architecture Part 14 PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} is selected in this respect. By design, this standard should support the required publisher-subscriber communication pattern.  Unfortunately, as it is pointed-out in Sect.~\ref*{sec.DomainModel}, it covers only partially the requirements of the applications concerned. It must be stressed that by design it provides only an abstract specification. Abstract means that the standard must not limit the implementation strategy. This relationship shall be recognized as the proof of concept to verify that the implementation of the proposed model is feasible to be compliant with the selected standard as envisioned and open to support all functionality required to establish the interoperability context.
+
+For many parts of the \emph{Reactive Application} domain model (Sect. \ref*{sec.DomainModel}) a polymorphic approach to implementation is required. To promote the polymorphic ready solution the following concepts have been adopted:
+
+\begin{itemize}
+  \item \textbf{separation of concerns} - to allow an independent development of the parts~\cite{RefWorks:doc:5d92609be4b02eb43d372bd1},
+  \item \textbf{dependency injection} - to allow late binding of separately implemented parts~\cite{RefWorks:doc:5d925b77e4b030b4e0596f5d}.
+\end{itemize}
+
+In Fig.~\ref*{fig_rii} the implementation architecture of the \emph{Reactive Application} is proposed. The common functionality has been implemented as the Software Development Kit (SDK) available as the NuGet package \cite{RefWorks:doc:5c66740ae4b081adf5804596}. To promote the polymorphic approach, it has the factory class \emph{DataManagementSetup} that is a placeholder to gather all injection points used to compose external parts. To be injected the parts must be compliant with appropriate contracts expressed as the following interfaces representing the following functionality:
+
+\begin{itemize}
+  \item \emph{IBindingFactory} - bidirectional data exchange with the underlying process,
+  \item \emph{IConfigurationDataFactory} - the configuration data access,
+  \item \emph{IMessageHandlerFactory} - pushing the \emph{Message} entities to/pulling from \emph{Distribution Channel} (Fig.~\ref*{fig_DomainModel}),
+  \item \emph{IEncodingFactory} - searching a dictionary containing value converters.
+\end{itemize}
+
+It is expected that the functionality implementation represented by these interfaces is provided as external composable parts.
+
+\subsection{Process Data Access}\label{process-data-access}
+
+The \emph{DataRepository} represents data holding assets in the \emph{Reactive Application} and, following the proposed architecture, the \emph{IBindingFactory} interface is implemented by this external part. It captures functionality responsible for accessing the process data from \emph{LocalResources}. The \emph{LocalResources} represents an external part that has a very broad usage purpose. For example, it may be any kind of the process data source/destination, i.e.~\emph{Raw Data} or \emph{Address Space Management} (Fig. \ref*{fig_archit}). By design, the \emph{DataRepository} and associated entities, i.e.~\emph{Local Resources}, \emph{Consumer}, \emph{Producer} have been implemented as external parts, and consequently, the application scope may cover practically any concern that can be separated from the core \emph{Reactive Application} implementation.
+
+Depending on the expected network role the library supports the external implementation of:
+
+\begin{itemize}
+  \item \emph{Consumer} - entities processing data from incoming messages,
+  \item \emph{Producer} - entities gathering process data and populating outgoing messages.
+\end{itemize}
+
+The \emph{Consumer} and \emph{Producer} parts are derived from the \emph{DataRepository} (Fig.~\ref*{fig_rii}). The \emph{Consumer} uses the \emph{IBindingFactory} to gather the data recovered from the \emph{Message} instances pulled from the \emph{Distribution Channel}. The received data may be processed or driven to any data destination. The \emph{Producer} mirrors the \emph{Consumer} functionality and, after reading data from an associated source, populates the \emph{Message} using the gathered data.
+
+\subsection{Configuration Management}\label{configuration-management}
+
+Based on the domain model analysis we can infer that the interoperability of communicating parties requires establishing a~semantic-context and security-context between them in advance. The \emph{Topic} based semantic-context is a foundation to ensure a common understanding of the process data encoded into the \emph{Message} instances. On the other hand, the security-context assures mutually shared security artifacts (i.e.~cipher algorithms, keys, etc.) used to protect the \emph{Message} as one whole. Both are necessary for handling messages. It is assumed that the security-context is established on top of the semantic-context. In that approach, the data is recognized as a principal of the security measures and the topic is regarded as a name of a collection containing the \emph{Message} instances that are to be protected using the associated security-context independently of the endpoints that produce or consume them.
+
+Therefore, a prerequisite for establishing interoperability of the communicating parties is an underlying semantic-context that must be created at the preparation step. In the proposed implementation, realization of this step is based on the configuration using the implementation of the \emph{IConfigurationDataFactory} interface.
+
+Decoupling of this functionality implementation from the functionality activation using an abstract contract and late binding mechanism allows:
+
+\begin{itemize}
+  \item implementation of practically any configuration management scenario,
+  \item modification of this functionality later after releasing the library or deploying the application program in the production environment.
+\end{itemize}
+
+The preparation phase concerns all the parts composed to make a running instance of the application program using the dependency injection approach to allow separate development and late binding. This approach makes any modification straightforward at any development and maintenance stage. From the end-user point of view, the composition process of the running program using independently developed parts is invisible. Because in any case a single program instance is created in a typical approach, we shall expect a commonly shared configuration mechanism providing mutually exclusive parameters to separately developed parts. This scenario has been addressed by the proposed implementation thanks to making the configuration expandable.
+
+\subsection{Distribution Channel Access}\label{distribution-channel-access}
+
+Messages preparation and the pull/push operations, which are essential to get access to \emph{Distribution Channel} require an implementation of the interfaces \emph{IEncodingFactory} and \emph{IMessageHandlerFactory}.
+
+The \emph{IEncodingFactory} is used by the SDK to encode and decode the \emph{Message} entities. To make the parties associated with the same \emph{Distribution Channel} interoperable they all must use the same \emph{Message} syntax. Implementation of the \emph{IEncodingFactory} should address one of the options defined in the specification: JSON or binary.
+
+The \emph{IMessageHandlerFactory} creates object supporting operations: pull incoming messages from and push outgoing messages to adjacent \emph{Intermediary} embedded in an abstract \emph{Distribution Channel} (Fig.~\ref*{fig_DomainModel}). To fulfill this task it has to use a concrete protocol stack. The OPC UA PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0}~specification lists the following protocol stacks:
+
+\begin{itemize}
+  \item \emph{UDP} - UDP protocol~\cite{RefWorks:doc:5d8e1874e4b0bc72a68f0d11} that is used to transport UADP NetworkMessages,
+  \item \emph{Ethernet} - Ethernet-based protocol that is used to transport UADP NetworkMessages,
+  \item \emph{AMQP} - Advanced Message Queuing Protocol (AMQP) \cite{RefWorks:doc:5d91d2d9e4b0bc72a68ffe06} that is used to transport JSON and UADP NetworkMessage,
+  \item \emph{MQTT} - Message Queue Telemetry Transport (MQTT) \cite{RefWorks:doc:5d91e158e4b02eb43d36bb97} that is used to transport JSON and UADP NetworkMessage.
+\end{itemize}
+
+The library \cite{RefWorks:doc:5c66740ae4b081adf5804596} contains a reference implementation of the \emph{IMessageHandlerFactory} for the \emph{UDP} protocol. Because the UDP protocol is used as the \emph{Distribution Channel}, the external filtering of massages is possible only based on the IP address. In this case, the destination port and multicast IP address combination may be recognized as the \emph{Topic} (Sect. \ref*{sec.DomainModel}). Unfortunately, the PubSub specification doesn't provide any mapping outline addressing the question of how to express \emph{Topic} for a particular underlying communication stack. Additionally, it seems difficult or even impossible to create any directory services based on the IP addressing mechanism because it is used for nodes identification and localization on the global network, but not to express data semantics (data meaning). To overcome this limitation it is proposed to use globally unique identifiers of types defined in compliance with OPC UA Information Model~\cite{RefWorks:doc:5ac86c99e4b009947bbb87c9, RefWorks:doc:5ac86c98e4b009947bbb874c} as the \emph{Topic} entities to establish semantic-context and security- context of the reactive assets interoperability. In this approach, the filtering and multiplexing functionality must be embedded locally in the implementation of the UDP communication stack.
+
+It is worth stressing that the proposed separation of concerns and dependency injection approach make the architecture ready to utilize \emph{ANY Protocol} that supports transparent data transfer over the wire (Fig. \ref*{fig_rii}).
+
 \begin{itemize}
       \tightlist
       \item Machinie To Machine communication based on the semantic data
