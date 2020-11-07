@@ -1,0 +1,3 @@
+pandoc "60.GatewayImplementation.md" -s -o ..\Latex\60.GatewayImplementation.tex --wrap=preserve
+pandoc "20.Introduction.md" "30.AzureTechnologyFeatures.md" "40.OOITechnologyFeatures.md" "50.Sensors2AzureConnectivityDeployment.md" "60.GatewayImplementation.md" "70.Conclusion.md" -s -o ..\Latex\Manuscript.pandoc.tex
+pause ....

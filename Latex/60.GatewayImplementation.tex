@@ -1,0 +1,157 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\date{}
+
+\begin{document}
+
+\hypertarget{azure-gateway-datarepository-implementation}{%
+\section{Azure Gateway DataRepository Implementation}\label{azure-gateway-datarepository-implementation}}
+
+\hypertarget{preface}{%
+\subsection{Preface}\label{preface}}
+
+This section describes an example implementation of an OPC UA PubSub to Azure gateway. This gateway is implemented as a composable part of the Reactive Networking Application (\texttt{RxNetworking\ App}). The \texttt{RxNetworking\ App} is an aggregation of \texttt{Producer} and \texttt{Consumer} entities derived from \texttt{DataRepository}. They must provide interconnection to real-time process data, hence they are recognized as an extension of the \texttt{DataRepository} class. \texttt{AzureGateway} part fulfills the \texttt{Consumer} role and uses out-of-band communication to push process data to the cloud.
+
+\hypertarget{architecture}{%
+\subsection{Architecture}\label{architecture}}
+
+Domain model presenting relationship between the: Azure, PubSub Gateway, Device, Design and development tools
+
+The \texttt{AzureGateway} functional package has been implemented based on the \texttt{Consumer} concept. This particular \texttt{Consumer} implements \texttt{IBindingFactory} interface to gather the data recovered from the \texttt{Message} instances pulled from the \texttt{Distribution\ Channel}. The received data is driven to the Azure services using configured out-of-band' protocol. An instance of the \texttt{IBindingFactory} is responsible to create objects implementing \texttt{IBinding} that can be used by the \texttt{Consumer} to forward the data retrieved from \texttt{NetworkMessag} received over the wire to Azure services.
+
+The proposed implementation of the Azure gateway proves that the \texttt{DataRepository} and associated entities, i.e.~\texttt{Local\ Resources}, \texttt{Consumer}, \texttt{Producer} can be implemented as external parts, and consequently, the application scope may cover practically any concern that can be separated from the core PubSub communication engine implementation.
+
+The article provides an introductory understanding of the steps required to implement the \texttt{Consumer} role of \texttt{OOI\ Reactive\ Application}. The \texttt{ReferenceApplication} is an example application of \texttt{Semantic-Data} reactive networking based on {[}OPC UA PubSub{]}{[}OPC.UA.PubSub{]} specification. The document {[}OPC UA PubSub Main Technology Features{]}{[}PubSubMTF{]} covers a description of selected fetuses relevant to this specification.
+
+It is proof of the concept that out-of-band communication for OPC UA PubSub can be implemented based on the \texttt{DataRepository} concept.
+
+Here are steps undertook to implement the \texttt{Consumer} role in the application:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{DataManagementSetup}: this class has been overridden by the \texttt{PartDataManagementSetup} class and it initializes the communication and binds data fields recovered form messages to local resources.
+\item
+  \texttt{IEncodingFactory} and \texttt{IMessageHandlerFactory}: have been implemented in independent libraries and \texttt{Consumer} doesn't depend on this implementation - current implementation of the interfaces is localized as services using an instance of the \texttt{IServiceLocator} interface.
+\item
+  \texttt{IBindingFactory}: has been implemented in the class \texttt{PartBindingFactory} that is responsible to gather the data recovered from the \texttt{Message} instances pulled from the \texttt{Distribution\ Channel}. The received data is driven to the Azure services using configured out-of-band protocol.
+\item
+  \texttt{IConfigurationFactory}: the class \texttt{PartConfigurationFactory} implements this interface to be used for the configuration file opening.
+\end{enumerate}
+
+\hypertarget{datamanagementsetup-implementation}{%
+\subsubsection{\texorpdfstring{\texttt{DataManagementSetup} implementation}{DataManagementSetup implementation}}\label{datamanagementsetup-implementation}}
+
+The \texttt{PartDataManagementSetup} constructor initializes all properties, which are injection points of all parts composing this role.
+
+In this example, it is assumed that \href{https://www.nuget.org/packages/CommonServiceLocator}{\texttt{ServiceLocator}} is implemented to resolve references to any external services.
+
+Finally the \texttt{DataManagementSetup.Start()} method is called to initialize the infrastructure, enable all associations and start pumping the data.
+
+\hypertarget{ibindingfactory-implementation}{%
+\subsubsection{\texorpdfstring{\texttt{IBindingFactory} implementation}{IBindingFactory implementation}}\label{ibindingfactory-implementation}}
+
+Implementation of this interface is a basic step to implement \texttt{Consumer} functionality. The \texttt{DataRepository} represents data holding assets in the \texttt{RxNetworking\ App} and, following the proposed architecture, the \texttt{IBindingFactory} interface is implemented by this external part. It captures functionality responsible for accessing the process data represented by the \texttt{LocalResources}. The \texttt{LocalResources} represents the external part that has a very broad usage purpose. For example, it may be any kind of process data source/destination, and to name a few \texttt{Raw\ Data}, \texttt{OPC\ UA\ Address\ Space\ Management}, and \texttt{Azure} services in this case.
+
+\hypertarget{configuration}{%
+\subsection{Configuration}\label{configuration}}
+
+\hypertarget{iconfigurationfactory-implementation}{%
+\subsubsection{\texorpdfstring{\texttt{IConfigurationFactory} implementation}{IConfigurationFactory implementation}}\label{iconfigurationfactory-implementation}}
+
+Implementation of this interface is straightforward and based entirely on the library UAOOI.Configuration.Networking available as the NuGet package. In a typical scenario, this implementation should not be considered for further modification. The only open question is how to provide the name of the file containing the configuration of this role.
+
+\hypertarget{protocol-selection}{%
+\subsection{Protocol selection}\label{protocol-selection}}
+
+From the description covered by the Sec. and the Sec. the Azure supports the HTTP, AMQP, MQTT, but the PubSub Ethernet, UDP, AMQP, MQTT. If the Ethernet or UDP has been selected to build interconnection based on PubSub direc interoperability with the PubSub is impossible because the Azure doesn't offer these protocol as native communication services.
+
+\hypertarget{data-mapping}{%
+\subsection{data mapping}\label{data-mapping}}
+
+For both the schema is different Data Transfer Object encoding
+
+The Azure uses JSON based Data Transfer Object encoding and schema defined based on the solution metadata. The pubsub uses json and binary Data Transfer Object encoding. If JSON is used possibility to establish semantic context depends on the Azure metadata definition. In case PubSub uses binary encoding establishing interconnection is impossible.
+
+\hypertarget{security}{%
+\subsection{Security}\label{security}}
+
+Azure and PubSub uses different security mechanism so establishing directly security context is impossible at all
+
+\hypertarget{deployment-phases}{%
+\subsection{Deployment phases}\label{deployment-phases}}
+
+\begin{itemize}
+\tightlist
+\item
+  Design
+\item
+  Gateway and devices registration
+\item
+  Authentication
+\item
+  Device/Service association
+\item
+  Device/Application association
+\item
+  Establishing session
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Device/Device Template (Device Capability Model) association - establishing a semantic-context
+  \item
+    Security management - establishing security-context
+  \end{itemize}
+\item
+  Interconnection - exchange of data
+\item
+  Maintenance
+\end{itemize}
+
+\end{document}
