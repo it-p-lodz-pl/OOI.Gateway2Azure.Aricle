@@ -44,12 +44,8 @@
 
 \maketitle
 
-
 \begin{abstract}
-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus neque eu erat pulvinar rutrum. Sed id congue leo. Pellentesque ornare enim libero, convallis eleifend turpis rhoncus ac. Proin eget pellentesque dolor. Phasellus lacinia velit eget faucibus iaculis. Pellentesque consequat erat non urna scelerisque cursus. Donec urna nisi, pulvinar a nisl eu, lobortis sollicitudin nulla. Proin tempus risus vel lacinia vestibulum. Praesent eget nisi lorem. Nam rutrum lectus vulputate dolor venenatis eleifend. Sed dolor lacus, cursus non enim tincidunt, auctor hendrerit orci. Donec venenatis ultrices est, nec molestie lorem. Morbi eleifend mattis ex, eget mollis leo blandit ut. Nulla sed felis posuere, gravida dui sed, iaculis neque. Donec ante purus, rhoncus eu neque tristique, pretium elementum purus.
-
-      Sed euismod maximus consequat. Pellentesque nec leo ligula. Aenean id lorem ac nisi blandit ultrices sit amet nec velit. Vestibulum bibendum ipsum vulputate quam suscipit, eu tincidunt diam imperdiet. Nunc vel turpis ut tortor bibendum ullamcorper sed ut magna. Sed sit amet quam ut lacus pretium ullamcorper. Fusce feugiat ornare mollis. Vestibulum sagittis velit id augue tempus, in vestibulum velit bibendum. Curabitur ac aliquet mi. Aliquam erat volutpat. Cras quis dignissim est, ac gravida.
+      TBD
 \end{abstract}
 
 \maketitle
@@ -93,16 +89,16 @@ If we must bother with the network traffic propagation asymmetry or mobility of 
 
 If the \textbf{machine-centric} interoperability - making up islands of automation - must be monitored and/or controlled by a supervisory system cloud computing concept may be recognized as a beneficial solution to replace or expand the mentioned above applications, i.e.~HMI, SCADA, DCS, etc. Cloud computing is a method to provide a requested functionality as a set of services. There are many examples that cloud computing is useful to reduce costs and increase robustness. It is also valuable in case the process data must be exposed to many stakeholders. Following this idea and offering control systems as a service, there is required a mechanism created on the service concept and supporting abstraction and virtualization - two main pillars of the cloud computing paradigm. In the cloud computing concept, virtualization is recognized as the possibility to share the services by many users, and abstraction hides implementation details.
 
-Deployment of the hybrid solution providing interoperability of the \textbf{machine-centric} cyber-physical system (CFS) and \textbf{human-centric} cloud-based front-end can be implemented applying the following scenarios:
+Deployment of the hybrid solution providing interoperability of the \textbf{machine-centric} cyber-physical system (CPS) and \textbf{human-centric} cloud-based front-end can be implemented applying the following scenarios:
 
 \begin{itemize}
-      \item \textbf{direct interconnection} - cloud-based dedicated communication services allow to attache it to the CFS making up a consistent M2M communication network using an in-bound protocol stack
-      \item \textbf{gateway based interconnection} - typical build-in communication services allows to attache the cloud computing to the CFS using an out-of-bound protocol stack
+      \item \textbf{direct interconnection} - cloud-based dedicated communication services allow to attache it to the CPS making up a consistent M2M communication network using an in-bound protocol stack
+      \item \textbf{gateway based interconnection} - typical build-in communication services allows to attache the cloud computing to the CPS using an out-of-bound protocol stack
 \end{itemize}
 
-By design, the direct approach requires that the cloud has to be compliant with the interoperability standard the CFS is built upon - it becomes a consistent part of the CFS. Data models, roles, and responsibility differences of both solutions make this approach impractical or even imposable to be applied in typical cases. A more detailed description is covered by the Sect.~\ref*{cloud-to-sensors-field-level-connectivity}.
+By design, the direct approach requires that the cloud has to be compliant with the interoperability standard the CPS is built upon - it becomes a consistent part of the CPS. Data models, roles, and responsibility differences of both solutions make this approach impractical or even imposable to be applied in typical cases. A more detailed description is covered by the Sect.~\ref*{cloud-to-sensors-field-level-connectivity}.
 
-This article addresses further research on the integration of the CFSs in the context of new emerging disciplines, i.e.~Industry 4.0 (I4.0) and the Internet of Things (IoT). The new architecture is proposed for integration of the multi-vendor \textbf{machine-centric} CFS designed atop of M2M reactive communication and emerging cloud computing as a \textbf{human-centric} front-end. To support the multi-vendor environment OPC Unified Architecture interoperability standard has been selected. The proposals are backed by proof of concept reference implementations. Prototyping addresses Microsoft Azure Cloud as an example. The prototyping outcome has been just published on GitHub as the open-source (MIT licensed). The proposed solutions have been harmonized with the more general concept called the Object-Oriented Internet.
+This article addresses further research on the integration of the CPS in the context of new emerging disciplines, i.e.~Industry 4.0 (I4.0) and the Internet of Things (IoT). The new architecture is proposed for integration of the multi-vendor \textbf{machine-centric} CPS designed atop of M2M reactive communication and emerging cloud computing as a \textbf{human-centric} front-end. To support the multi-vendor environment OPC Unified Architecture interoperability standard has been selected. The proposals are backed by proof of concept reference implementations. Prototyping addresses Microsoft Azure Cloud as an example. The prototyping outcome has been just published on GitHub as the open-source (MIT licensed). The proposed solutions have been harmonized with the more general concept called the Object-Oriented Internet.
 
 The main goal of this article is to provide proof that:
 
@@ -112,7 +108,7 @@ The main goal of this article is to provide proof that:
       \item the proposed generic architecture allows that the gateway functionality is implemented as composable part at run-time part - no programming required
 \end{enumerate}
 
-The remainder of this paper is structured as follows. Sect.~\ref*{cloud-to-sensors-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. A reference implementation of this archetype is described in Sect.~\ref*{gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref*{conclusion}.
+The remainder of this paper is structured as follows. Sect.~\ref*{cloud-to-sensors-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. A reference implementation of this archetype is described in Sect.~\ref*{sect.gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref*{conclusion}.
 
 \section{Cloud to Sensors Field Level Connectivity}\label{cloud-to-sensors-field-level-connectivity}
 
@@ -128,11 +124,11 @@ As it was explained in Sect.~\ref*{introduction}, to follow the Industry 4.0 con
 Interconnection of the reactive \textbf{machine - centric} and interactive \textbf{human - centric} environments can be implemented by applying one of the following scenarios:
 
 \begin{itemize}
-      \item \textbf{direct interconnection} (tightly coupled scenario) - cloud-based dedicated communication services are engaged to attach it to the CFS making up a consistent M2M communication network using a common protocol stack
-      \item \textbf{gateway based interconnection} (loosely coupled scenario) - native build-in communication services allows attaching the cloud to the CFS using an out-of-bound protocol stack
+      \item \textbf{direct interconnection} (tightly coupled scenario) - cloud-based dedicated communication services are engaged to attach it to the CPS making up a consistent M2M communication network using a common protocol stack
+      \item \textbf{gateway based interconnection} (loosely coupled scenario) - native build-in communication services allows attaching the cloud to the CPS using an out-of-bound protocol stack
 \end{itemize}
 
-In the solution in concern, the interconnection of assets is not enough hence their interoperability is expected. In this case, using the same communication stack must be recognized as only a necessary condition. To support interoperability common data understanding is required. By design, the direct approach requires that the cloud has to be compliant with the interoperability standard the CFS uses. As a result, it becomes a consistent communication node of the CFS. Additionally, to meet this requirement the cloud and CFSs have to establish directly the same
+In the solution in concern, the interconnection of assets is not enough hence their interoperability is expected. In this case, using the same communication stack must be recognized as only a necessary condition. To support interoperability common data understanding is required. By design, the direct approach requires that the cloud has to be compliant with the interoperability standard the CPS uses. As a result, it becomes a consistent communication node of the CPS. Additionally, to meet this requirement the cloud and CPS have to establish directly the same
 
 \begin{itemize}
       \item semantic-context
@@ -148,12 +144,12 @@ The decision to follow the \textbf{direct interconnection} scenario must be deri
       \item by design the M2M communication is usually constrained by the real-time requirements
 \end{itemize}
 
-In practice, the set of assets embedded in the CFS is very stable. On the another hand, the virtualization of services means that they must be very flexible to handle the attachment of new assets proactively (acting in advance) at run time. As a result, by design, the cloud services must be repressible to register and authenticate devices exposing endpoints in the public network to allows the device to access a provisioning cloud service. It requires that a session over the Internet has to be established by the data holding asset at a preparation step.
+In practice, the set of assets embedded in the CPS is very stable. On the another hand, the virtualization of services means that they must be very flexible to handle the attachment of new assets proactively (acting in advance) at run time. As a result, by design, the cloud services must be repressible to register and authenticate devices exposing endpoints in the public network to allows the device to access a provisioning cloud service. It requires that a session over the Internet has to be established by the data holding asset at a preparation step.
 
-To meet the requirements of real-time distributed control the CFS may use protocols applicable only to local computer networks (e.g.~multicast IP, Ethernet, TSN, etc.). Because the cloud services support only protocols handling interconnection over the Internet the interaction with the cloud requires remote agents, i.e.~agents attached locally to the M2M network and implemented by applying one of the following archetypes:
+To meet the requirements of real-time distributed control the CPS may use protocols applicable only to local computer networks (e.g.~multicast IP, Ethernet, TSN, etc.). Because the cloud services support only protocols handling interconnection over the Internet the interaction with the cloud requires remote agents, i.e.~agents attached locally to the M2M network and implemented by applying one of the following archetypes:
 
 \begin{itemize}
-      \item \textbf{edge device} - remote cloud agent acting as an intermediaryfor nodes of the cyber-physical network
+      \item \textbf{edge device} - remote cloud agent acting as an intermediary for nodes of the cyber-physical network
       \item \textbf{field level gateway} - a dedicated custom agent acting as an intermediary for nodes of the cyber-physical network
       \item \textbf{embedded gateway} - a software part composed into a selected node of the cyber-physical network
 \end{itemize}
@@ -168,9 +164,9 @@ The \textbf{field level gateway} is also build atop of the middleware concept. T
       \caption{Strategy Domain Model}\label{StrategyDomainModel}
 \end{figure}
 
-Unlike the above described solutions, the \textbf{embedded gateway} is not derived from the middleware concept. The domain model for this archetype is presented in the Fig.~\ref*{StrategyDomainModel}. Promoting separation of concern design principle, the gateway functionality should be implemented as a self-contained software part embedded in the \texttt{Networking} service of the \texttt{Cyber-physical\ node}. Main functionality of this component is to transfer selected data between \texttt{Cyber-physical\ network} using \texttt{Networking} services of an existing \texttt{Cyber-physical\ node} and \texttt{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
+Unlike the above described solutions, the \textbf{embedded gateway} is not derived from the middleware concept. The domain model for this archetype is presented in the Fig.~\ref*{StrategyDomainModel}. Promoting separation of concern design principle, the gateway functionality should be implemented as a self-contained software part embedded in the \textit{Networking} service of the \textit{Cyber-physical\ node}. Main functionality of this component is to transfer selected data between \textit{Cyber-physical\ network} using \textit{Networking} services of an existing \textit{Cyber-physical\ node} and \textit{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
 
-The \textbf{embedded gateway} archetype relaxes most of the issues described above: \texttt{Cyber-physical\ network} real-time behavior, data encoding incompatibility, security-context differences to name only a few. The main goal of this article is to provide proof that the \textbf{embedded gateway} archetype implementation is possible based on a generic architecture that can be used as a foundation for the integration of the heterogenous environments in concern. The proposed implementation is designed for selected interoperability standard and cloud product.
+The \textbf{embedded gateway} archetype relaxes most of the issues described above: \textit{Cyber-physical\ network} real-time behavior, data encoding incompatibility, security-context differences to name only a few. The main goal of this article is to provide proof that the \textbf{embedded gateway} archetype implementation is possible based on a generic architecture that can be used as a foundation for the integration of the heterogenous environments in concern. The proposed implementation is designed for selected interoperability standard and cloud product.
 
 To comply with the Industry 4.0 communication criterion it is required that any product must be addressable over the network via TCP/UDP or IP and has to support the OPC UA Information Model. As a result, any product being advertised as Industry 4.0 enabled must be OPC UA-capable somehow. To support the multi-vendor environment OPC Unified Architecture interoperability standard has been selected. OPC UA supports the following two patterns to be used to transfer data between communicating parties:
 
@@ -182,66 +178,66 @@ To comply with the Industry 4.0 communication criterion it is required that any 
 
 Using the session-oriented communication pattern it is difficult or even impossible to gather and process mobile data (Sec.~\ref*{introduction} ), which is one of the Internet of Things paradigms. OPC UA Part 14 PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} \todo{add ref: Mariusz Postol, UA Part 14: PubSub Main Technology Features in Object Oriented Internet, https://github.com/mpostol/OPC-UA-OOI, 2019, DOI: 10.5281/zenodo.1198852} offers the sessionless approach as an additional option to session based client-server interoperability relationship and is a consistent part of the OPC UA specifications suit. As the result it can be recognized as the IoT ready technology.
 
-The presented proposals in the article are backed by proof of concept reference implementations. For this study, prototyping addresses Microsoft Azure cloud products. There are many reasons for selecting Azure to accomplish cloud-based front-end of Cyber-Physical System (CFS). Azure offers Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) capabilities. As a result, the platform can be used not only as a cloud-based front-end for CFS. By design, the Azure services are compliant with Security Development Lifecycle (SDL) an industry-leading security process. It is also compliant with the new international standard for cloud privacy, namely ISO 27018. Solutions hosted on Azure are scaled up to millions of users without any additional coding. For the development of the CFS front-end, it is essential that Azure provides very efficient storage services usefully for real-time process data archival. Azure provides a vast variety of hybrid connections including but not limited to virtual private networks (VPNs), caches, content delivery networks (CDNs), ExpressRoute, and IoT dedicated services that can be directly used to implement cloud-based front-end for CFS. Because it is also integrated with other Microsoft tools like Office 365, Outlook, and SharePoint using Azure allows preserving investment and exporting process data to the mentioned tools. Azure also offers services supporting analytics and intelligence capabilities for further improving business processes and decision making. It is the only cloud platform that offers Blockchain as a Service (BaaS), Machine Learning, Bots, and Cognitive APIs capabilities.
+The presented proposals in the article are backed by proof of concept reference implementations. For this study, prototyping addresses Microsoft Azure cloud products. There are many reasons for selecting Azure to accomplish cloud-based front-end of Cyber-Physical System (CPS). Azure offers Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) capabilities. As a result, the platform can be used not only as a cloud-based front-end for CPS. By design, the Azure services are compliant with Security Development Lifecycle (SDL) an industry-leading security process. It is also compliant with the new international standard for cloud privacy, namely ISO 27018. Solutions hosted on Azure are scaled up to millions of users without any additional coding. For the development of the CPS front-end, it is essential that Azure provides very efficient storage services usefully for real-time process data archival. Azure provides a vast variety of hybrid connections including but not limited to virtual private networks (VPNs), caches, content delivery networks (CDNs), ExpressRoute, and IoT dedicated services that can be directly used to implement cloud-based front-end for CPS. Because it is also integrated with other Microsoft tools like Office 365, Outlook, and SharePoint using Azure allows preserving investment and exporting process data to the mentioned tools. Azure also offers services supporting analytics and intelligence capabilities for further improving business processes and decision making. It is the only cloud platform that offers Blockchain as a Service (BaaS), Machine Learning, Bots, and Cognitive APIs capabilities.
 
 Azure aids Internet protocols and open standards such as JSON, XML, SOAP, REST, MQTT, AMQP, and HTTP. A software development kits for C\#, Java, PHP, and Ruby are available for custom applications. Azure provides services supporting data exchange over the OPC UA, but they don't support pubsub compliant with the OPC UA Part-14. Connectivity services on the network use JSON-based Data Transfer Object encoded based on schema derived from the solution metadata.
 
 More detailed description of the selected Azure features in context of the application in concern are covered by the Sec.~\ref*{azure-main-technology-features}.
 
-Based on the sessionless and session-oriented communication patterns examination against the IoT requirements \cite{mpostol2020} it could be concluded that the connectionless pattern better suites issues related to the assets mobility and traffic asymmetry that is characteristic for the application domains in concern. Additionally, to promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub spec \cite{RefWorks:doc:5d98837de4b055984c0eecf0}. According to proposed architecture (Fig.~\ref*{StrategyDomainModel}) to implement the \texttt{Embedded\ Gateway} as a composable part of the \texttt{Cyber-physical\ Node} a library implementing \texttt{Networking} functionality in compliance with mentioned above specification is a starting point for further development. Additionally it must be assumed that the library used to deploy \texttt{Embedded\ Gateway} support dependency injection and be capable to compose an external part supporting Azure/pubsub gateway functionality. The composition process must be available without modification of the core code of an existing library. As a result the prototyping is to be limited to implementation of the \texttt{Embedded\ Gateway} software part only.
+Based on the sessionless and session-oriented communication patterns examination against the IoT requirements \cite{mpostol2020} it could be concluded that the connectionless pattern better suites issues related to the assets mobility and traffic asymmetry that is characteristic for the application domains in concern. Additionally, to promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub spec \cite{RefWorks:doc:5d98837de4b055984c0eecf0}. According to proposed architecture (Fig.~\ref*{StrategyDomainModel}) to implement the \textit{Embedded\ Gateway} as a composable part of the \textit{Cyber-physical\ Node} a library implementing \textit{Networking} functionality in compliance with mentioned above specification is a starting point for further development. Additionally it must be assumed that the library used to deploy \textit{Embedded\ Gateway} support dependency injection and be capable to compose an external part supporting Azure/pubsub gateway functionality. The composition process must be available without modification of the core code of an existing library. As a result the prototyping is to be limited to implementation of the \textit{Embedded\ Gateway} software part only.
 
-A library that meets all these requirements has been implemented consistently with the Object-Oriented Internet paradigm \cite{RefWorks:doc:5c66740ae4b081adf5804596} worked out in an open-source project \footnote{ \url{https://github.com/mpostol/OPC-UA-OOI} }. The paper \cite{mpostol2020} covers the description of a reference application program implementation proving that it is possible to design universal architecture targeting reactive interoperability as a consistent part of the Object-Oriented Internet concept compliant withthe OPC UA PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} international standard. According to the presented implementation andevaluation, using the dependency injection and late binding, theapplication program can be seamlessly adapted to the production environment and scales well. This approach also improves flexibility and adaptability of the existing solutions against any modification of the production environment including but not limited to the selected interoperability standard change.
+A library that meets all these requirements has been implemented consistently with the Object-Oriented Internet paradigm \cite{RefWorks:doc:5c66740ae4b081adf5804596} worked out in an open-source project \footnote{ \url{https://github.com/mpostol/OPC-UA-OOI} }. The paper \cite{mpostol2020} covers the description of a reference application program implementation proving that it is possible to design universal architecture targeting reactive interoperability as a consistent part of the Object-Oriented Internet concept compliant with the OPC UA PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} international standard. According to the presented implementation and evaluation, using the dependency injection and late binding, the application program can be seamlessly adapted to the production environment and scales well. This approach also improves flexibility and adaptability of the existing solutions against any modification of the production environment including but not limited to the selected interoperability standard change.
 
-Sect.~\ref*{ooi-main-technology-features} provides a more detailed description of this library and an external part deployment process that is to be used to implement new functionality supporting \texttt{Embedded\ Gateway}.
+Sect.~\ref*{ooi-main-technology-features} provides a more detailed description of this library and an external part deployment process that is to be used to implement new functionality supporting \textit{Embedded\ Gateway}.
 
-The following subsections cover the description of the current state of technologies with regards to Azure cloud-based IoT enabler and OPC UA pubsub. Sect.~\ref*{azure-main-technology-features} analyzes data presentation user interface, available native communication services, and data/metadata model offered by the Microsoft Azure. The discussion covered by this section is the foundation for selecting services utilized to expose process data and suitable protocol stack to support interconnection. In Sect.~\ref*{ooi-main-technology-features} the discussion focuses on the generic architecture that is to be used as a foundation for further decisions addressing the systematic design of the interoperability of the CFSs and cloud-based front-end.
+The following subsections cover the description of the current state of technologies with regards to Azure cloud-based IoT enabler and OPC UA pubsub. Sect.~\ref*{azure-main-technology-features} analyzes data presentation user interface, available native communication services, and data/metadata model offered by the Microsoft Azure. The discussion covered by this section is the foundation for selecting services utilized to expose process data and suitable protocol stack to support interconnection. In Sect.~\ref*{ooi-main-technology-features} the discussion focuses on the generic architecture that is to be used as a foundation for further decisions addressing the systematic design of the interoperability of the CPS and cloud-based front-end.
 
 \subsection{Azure Main Technology Features}\label{azure-main-technology-features}
 
 \subsubsection{Services}\label{services}
 
-Deployment of the hybrid solution providing interoperability of the \textbf{machine-centric} Cyber-Physical Systems (CFS) designed atop of M2M reactive communication and emerging cloud computing as a \textbf{human-centric} front-end requires decisions addressing the selection of the services supporting web user interface capable to expose process data. In this context, the service is any autonomous (with own identity) software component or module that is interfacing with selected (CFS) for data collection, analysis, and also remote control. Microsoft Azure is a cloud-based product. It offers a vast variety of services. This virtual environment handles an unlimited number of users and devices organized using a solution concept. The solution aggregates users, devices, services, and required additional resources scoping on a selected scenario. The solution serves as a context that provides a scope to the identifiers (the names of devices, users, process data entities, etc) inside it. Solutions are used to organize deployment entities into logical groups and prevent identity collisions.
+Deployment of the hybrid solution providing interoperability of the \textbf{machine-centric} Cyber-Physical Systems (CPS) designed atop of M2M reactive communication and emerging cloud computing as a \textbf{human-centric} front-end requires decisions addressing the selection of the services supporting web user interface capable to expose process data. In this context, the service is any autonomous (with own identity) software component or module that is interfacing with selected (CPS) for data collection, analysis, and also remote control. Microsoft Azure is a cloud-based product. It offers a vast variety of services. This virtual environment handles an unlimited number of users and devices organized using a solution concept. The solution aggregates users, devices, services, and required additional resources scoping on a selected scenario. The solution serves as a context that provides a scope to the identifiers (the names of devices, users, process data entities, etc) inside it. Solutions are used to organize deployment entities into logical groups and prevent identity collisions.
 
-The \texttt{IoT\ Central} service provides a process data visualization
+The \textit{IoT\ Central} service provides a process data visualization
 user interface. To make this interface meaningful metadata called device
 template is used to describe devices.
 
 Following the assumption that interconnection between the cyber-physical
 system and cloud services is designed based on the gateway concept, a
 middleware must be considered as a coupler. It must be interconnected
-with the (CFS) using an in-band protocol adhering to
+with the (CPS) using an in-band protocol adhering to
 communications requirements (i.e.~protocol profile, data encoding, time
 relationships, etc.) governing communication of the parts making it up.
 At the same time, it must support back-and-forth data transfer to the
 cloud using out-of-band native for the cloud services. The transfer
 process requires data conversion from source to destination encoding.
-The \texttt{IoT\ Hub} is a service hosted in the cloud that supports
-\texttt{IoT\ Central} providing a robust messaging solution - it acts as
+The \textit{IoT\ Hub} is a service hosted in the cloud that supports
+\textit{IoT\ Central} providing a robust messaging solution - it acts as
 a central message hub for bi-directional communication. This
 communication is transparent, i.e.~it is not data types aware allowing
 any devices to exchange any kind of data. This service is responsible to
 manage the devices' identity and it offers the following protocol
 stacks: AMQP, MQTT, HTTPS.
 
-Before process data can be exposed using a web user interface the data source must be associated with an appropriate solution and validated to make sure that the security rules are not violated. It is hard to assume that the security rules governing the CFS may also apply to the cloud-based services. In the gateway scenario, they can be mapped on each other or entirely independent. The \texttt{IoT\ Hub\ Device\ Provisioning\ Service} (DPS) is a helper service for \texttt{IoT\ Hub} that enables devices' connection process management, upon device providing valid identity attestation it assigns the device to an appropriate \texttt{IoT\ Hub} instance and returns to the device connection parameters, which allow direct connection with given \texttt{IoT\ Hub} service. The device proceeds to use the same attestation in \texttt{IoT\ Hub} connection and based on it, is granted authorization to selected operations including but not limited to data transfer and updating the user interface.
+Before process data can be exposed using a web user interface the data source must be associated with an appropriate solution and validated to make sure that the security rules are not violated. It is hard to assume that the security rules governing the CPS may also apply to the cloud-based services. In the gateway scenario, they can be mapped on each other or entirely independent. The \textit{IoT\ Hub\ Device\ Provisioning\ Service} (DPS) is a helper service for \textit{IoT\ Hub} that enables devices' connection process management, upon device providing valid identity attestation it assigns the device to an appropriate \textit{IoT\ Hub} instance and returns to the device connection parameters, which allow direct connection with given \textit{IoT\ Hub} service. The device proceeds to use the same attestation in \textit{IoT\ Hub} connection and based on it, is granted authorization to selected operations including but not limited to data transfer and updating the user interface.
 
 It is worth stressing that interaction of the offered by the Azure
 services can be configured flexibly, and as a result, the presented
 above selection of services must be recognized as an example only. The
-\texttt{IoT\ Central} can be also seamlessly integrated with other
+\textit{IoT\ Central} can be also seamlessly integrated with other
 services as needed. The following services could also be considered to
 build cloud-based automation solution:
 
 \begin{itemize}
-      \item \texttt{Industrial\ IoT} - discovering OPC UA enabled servers in a factory network and register them in Azure \texttt{IoT\ Hub} implemented using \texttt{IoT\ Edge}
-      \item \texttt{Digital\ Twins} - managing the graph of digital twins, which are to represent some real-world process or entity
+      \item \textit{Industrial\ IoT} - discovering OPC UA enabled servers in a factory network and register them in Azure \textit{IoT\ Hub} implemented using \textit{IoT\ Edge}
+      \item \textit{Digital\ Twins} - managing the graph of digital twins, which are to represent some real-world process or entity
 \end{itemize}
 
-\texttt{Industrial\ IoT} promotes OPC UA client/server archetype used to
+\textit{Industrial\ IoT} promotes OPC UA client/server archetype used to
 achieve direct and interactive interoperability implemented using
-\texttt{IoT\ Edge} services that allow extracting initial data
+\textit{IoT\ Edge} services that allow extracting initial data
 processing to local premises based on the edge concept.
-\texttt{Digital\ Twins} is an emerging concept to use an observer to
+\textit{Digital\ Twins} is an emerging concept to use an observer to
 replicate selected process state and behavior. The possibility to add
 value as a result of using these services must be subject to further
 research.
@@ -286,24 +282,15 @@ Using the data type definitions to describe information interchanged
 between communicating parties allows:
 
 \begin{itemize}
-      \tightlist
-      \item
-            Development against a type definition of the user interface
-      \item
-            Implementation of the functionality of the bitstreams conversion in
-            advance
+      \item Development against a type definition of the user interface
+      \item Implementation of the functionality of the bitstreams conversion in advance
 \end{itemize}
 
-Having defined types in advance, a gateway may provide dedicated conversions functionality, i.e.~replacing bitstreams used by the CFS by equivalent ones for the cloud-based services. The Azure offers a vast variety of built-in types ready to be used in common cases, but not necessarily there are equivalent counterparts in use by the CFS. Additionally, the data conversion must address the following issues:
+Having defined types in advance, a gateway may provide dedicated conversions functionality, i.e.~replacing bitstreams used by the CPS by equivalent ones for the cloud-based services. The Azure offers a vast variety of built-in types ready to be used in common cases, but not necessarily there are equivalent counterparts in use by the CPS. Additionally, the data conversion must address the following issues:
 
 \begin{itemize}
-      \tightlist
-      \item
-            usually to covert data from source to destination representation, the
-            middleware software native types must be used
-      \item
-            if the out of the box set of types is not capable of fulfilling more
-            demanding needs, custom data types must be defined
+      \item usually to covert data from source to destination representation, the middleware software native types must be used
+      \item if the out of the box set of types is not capable of fulfilling more demanding needs, custom data types must be defined
 \end{itemize}
 
 Although the data conversion is a run-time gateway task the
@@ -311,19 +298,19 @@ implementation of the conversion algorithms must be recognized as an
 engineering task, and therefore this topic is not considered for further
 discussion.
 
-In \texttt{IoT\ Central} a CFS is represented as a set
+In \textit{IoT\ Central} a CPS is represented as a set
 of devices. The characteristics and behavior of each device kind are
 described by the device template. This Device Template (DT) contains
 also metadata describing the data (called telemetry) exchanged over the
-wire with the CFS called Device Capability Model
+wire with the CPS called Device Capability Model
 (DCM). Additionally, the DT contains properties, customization, and
 views definitions used by the service locally. As an option, DCM
 expressed as a JSON-LD can be imported into a Device Template.
-\texttt{IoT\ Central} allows also to create and edit a DCM using the
+\textit{IoT\ Central} allows also to create and edit a DCM using the
 dedicated web UI. A JSON file containing DCM can be derived from an
 information model used as a foundation to establish the semantic-context
 applied to achieve interoperability of the devices interconnected as the
-CFS. DCM development against any external information
+CPS. DCM development against any external information
 model is a design-time task and should be supported by dedicated
 development tools. In any case, the data interchanged between the cloud
 and the gateway must be compliant with the DCM, hence the middleware
@@ -332,13 +319,13 @@ this interoperability.
 
 \subsubsection{Connectivity}\label{connectivity}
 
-From the cloud side, it is proposed to employ the \texttt{IoT\ Hub}
+From the cloud side, it is proposed to employ the \textit{IoT\ Hub}
 service to handle the network traffic targeting the cyber-physical
 system. This service offers profiles of the AMQP, MQTT, HTTPS protocol
 stacks. In any case, process data (telemetry) is transparently
-transferred back-and-forth to the upper layer \texttt{IoT\ Central}
+transferred back-and-forth to the upper layer \textit{IoT\ Central}
 service. Hence, the payload formatting is determined by the DCM
-associated with the \texttt{IoT\ Central} solution. All the mentioned
+associated with the \textit{IoT\ Central} solution. All the mentioned
 protocols are standard ones. Consequently, it is possible to apply any
 available implementation compliant with an appropriate specification to
 achieve connectivity. In this case, all parameters required to establish
@@ -348,46 +335,78 @@ libraries may be used. Using this API the configuration process can be
 reduced significantly. Using these libraries, the selection of the
 communication protocol has an indirect impact on the interoperability
 features, including performance. The connectivity with
-\texttt{IoT\ Hub}, for example, can be obtained using:
+\textit{IoT\ Hub}, for example, can be obtained using:
 
 \begin{itemize}
-      \tightlist
-      \item
-            \texttt{Microsoft.Azure.Devices} - Service SDK for Azure IoT Devices
-      \item
-            \texttt{Microsoft.Azure.Devices.Client}- Device SDK for Azure \texttt{IoT\ Hub}
-      \item
-            \texttt{Microsoft.Azure.Devices.Shared} - Common code for Azure IoT
-            Device and Service SDKs
-      \item
-            \texttt{Microsoft.Azure.Devices.Provisioning.Client} - Provisioning
-            Device Client SDK for Azure IoT Devices
-      \item
-            \texttt{Microsoft.Azure.Devices.Provisioning.Transport.Amqp} -
-            Provisioning Device Client AMQP Transport for Azure IoT Devices
-      \item
-            \texttt{Microsoft.Azure.Devices.Provisioning.Transport.Http} -
-            Provisioning Device Client Http Transport for Azure IoT Devices
-      \item
-            \texttt{Microsoft.Azure.Devices.Provisioning.Transport.Mqtt} -
-            Provisioning Device Client MQTT Transport for Azure IoT Devices
+      \item \textit{Microsoft.Azure.Devices} - Service SDK for Azure IoT Devices
+      \item \textit{Microsoft.Azure.Devices.Client}- Device SDK for Azure \textit{IoT\ Hub}
+      \item \textit{Microsoft.Azure.Devices.Shared} - Common code for Azure IoT Device and Service SDK
+      \item \textit{Microsoft.Azure.Devices.Provisioning.Client} - Provisioning Device Client SDK for Azure IoT Devices
+      \item \textit{Microsoft.Azure.Devices.Provisioning.Transport.Amqp} - Provisioning Device Client AMQP Transport for Azure IoT Devices
+      \item \textit{Microsoft.Azure.Devices.Provisioning.Transport.Http} - Provisioning Device Client Http Transport for Azure IoT Devices
+      \item \textit{Microsoft.Azure.Devices.Provisioning.Transport.Mqtt} - Provisioning Device Client MQTT Transport for Azure IoT Devices
 \end{itemize}
 
 \subsection{OOI Main Technology Features}\label{ooi-main-technology-features}
 
+To promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub (Sect. \ref*{architecture}) and support the \emph{Reactive Interoperability} (Sect. \ref*{introduction}) concept. A framework compliant with this requirements has been implemented as an open-source library named \textit{UAOOI.Networking.SemanticData} (SDK) under an umbrella of the project Object-Oriented Internet \cite{RefWorks:doc:5c66740ae4b081adf5804596}. The library is designed to be a foundation for developing application programs that are taking part in a message-centric communication pattern and interconnected using the reactive networking concept. The diagram in Fig.~\ref*{UADataApplicationArchitecture} shows the relationship between the library \textit{SDK} and external parts composing any reactive networking application (\textit{Reactive\ Application}). The \textit{Reactive Application} is an aggregation of \textit{Producer} and \textit{Consumer} parts. They must support access to real-time process data, hence they are recognized as an extension of \textit{DataRepository} class. To implement the \textit{DataRepository} dedicated implementation of the \textit{IBinding} interface should be provided to create a bridge between CPS and an external row data represented by the \textit{LocalResources} class. A more in-depth description of the \textit{OOI Reactive Application} library enabling data exchange over a network using the reactive networking pattern is in \cite{mpostol2020}.
+
+\begin{figure}
+      \centering
+      \includegraphics[width=5cm]{../.Media/UADataApplicationArchitecture.png}
+      \caption{Reactive interoperability implementation}\label{UADataApplicationArchitecture}
+\end{figure}
+
+From the above discussion, we can learn that the main design decisions must concern standardization and flexibility. Standardization needs the selection of an international interoperability specification to make the library ready to be adopted by the multi-vendor environment. Flexibility requires an architecture that promotes the polymorphic independent implementation of essential functions.
+
+Piece by piece integration of a cyber-physical system using multi-vendor products requires that M2M communication employs international standards as the interoperability foundation. OPC Unified Architecture Part 14 PubSub has been selected in this respect (Sect. \ref*{architecture}). By design, this standard should support the required publisher-subscriber communication pattern. It must be stressed, that by design, the specification provides only an abstract interoperability definition. Abstract means that the standard must not limit the implementation strategy.
+
+Many parts in the domain model presented in Fig.~\ref*{UADataApplicationArchitecture} requires a polymorphic approach to implementation. To promote the polymorphic ready solution the following concepts have been adopted:
+
 \begin{itemize}
-      \tightlist
-      \item Machinie To Machine communication based on the semantic data
-      \item OOI PubSub Implementation Architecture
-      \item Simple, complex and structural data processing
+      \item \textbf{separation of concerns} - to allow an independent development of the parts~\cite{RefWorks:doc:5d92609be4b02eb43d372bd1},
+      \item \textbf{dependency injection} - to allow late binding of separately implemented parts~\cite{RefWorks:doc:5d925b77e4b030b4e0596f5d}.
 \end{itemize}
 
+To promote the polymorphic approach, the library has a factory class called \emph{DataManagementSetup} that is a placeholder to gather all injection points used to compose external parts. To be injected the parts must be compliant with an appropriate contract expressed as the following interfaces:
 
-\section{Azure - Object-Oriented Internet interoperability Implementation}\label{gateway-implementation}
+\begin{itemize}
+      \item \emph{IBindingFactory} - bidirectional data exchange with the underlying process,
+      \item \emph{IConfigurationDataFactory} - the configuration data access,
+      \item \emph{IMessageHandlerFactory} - pushing the \emph{Message} entities to/pulling from \emph{Distribution Channel},
+      \item \emph{IEncodingFactory} - searching a dictionary containing value converters.
+\end{itemize}
 
+It is expected that the functionality implementation expressed by these interfaces is provided as independent external composable parts. The composition is accomplished at run time, and the effective application functionality depends essentially on reusable loosely coupled parts composed using the dependency injection software engineering and adaptive programming concept \todo{cite{RefWorks:doc:5d9796cbe4b0f66c52dccf04}}.
+
+The \textit{DataRepository} represents data holding assets in the \textit{Reactive Application} implementing the \textit{IBindingFactory} interface. It captures functionality responsible for accessing the external process data from \textit{LocalResources}. The \textit{LocalResources} represents an external part that has a very broad usage purpose. For example, it may be any kind of the process data source/destination, i.e. raw data (e.g. PLC internal registers), OPC UA Address Space Management, cloud, file, database, graphical user interface.
+
+Depending on the expected network role the library supports the implementation of:
+
+\begin{itemize}
+      \item \textit{Consumer} - entities processing data from incoming messages,
+      \item \textit{Producer} - entities gathering process data and populating outgoing messages.
+\end{itemize}
+
+The \textit{Consumer} and \textit{Producer} classes are derived from the \textit{DataRepository} (Fig.~\ref*{UADataApplicationArchitecture}). The \textit{Consumer} uses the \textit{IBindingFactory} to gather the data recovered from the \emph{Message} instances pulled from a network. The received data may be processed or driven to any data destination, e.g. cloud-based front-end. The \textit{Producer} mirrors the \textit{Consumer} functionality and, after reading data from an associated source, populates the \emph{Message} using the gathered data.
+
+By design, the \textit{DataRepository} and associated entities, i.e.~\textit{Local Resources}, \textit{Consumer}, \textit{Producer} are embedded in external parts, and consequently, the application scope may cover practically any concern that can be separated from the core \textit{Reactive Application} implementation.
+
+The application startup phase concerns all the parts composed to make a running instance of the application program using the dependency injection approach to allow separate development and late binding. This approach makes any modification straightforward at any development and maintenance stage. From the end-user point of view, the composition process of the running program using independently developed parts is invisible. Because in any case a single program instance is created in a typical approach, we shall expect a commonly shared configuration mechanism providing mutually exclusive parameters to separately developed parts. This scenario has been addressed by the proposed implementation thanks to making the configuration expandable.
+
+From the discussion covered by the Sect. \ref*{architecture} we can infer that the interoperability of communicating parties requires establishing a semantic-context and security-context between them. If the received data is driven to any external data destination (e.g. cloud-based front-end) using out-of-band protocol semantic-context and security context must be defined for this interoperability relationship. There are a vast variety of possibilities for how to define these contexts. Anyway, the most common starting point is the configuration. The proposed approach to instantiate the application as a set of composable parts is very useful in this respect because it makes it possible to expand the core configuration functionality and adapt it to be helpful also in this case. Therefore, the semantic-context may be created based on the configuration using the implementation of the \textit{IConfigurationDataFactory} interface.
+
+Concluding, decoupling of this functionality implementation using an abstract contract and late binding mechanism allows:
+
+\begin{itemize}
+      \item implementation of practically any configuration management scenario,
+      \item modification of this functionality later after releasing the library or deploying the application program in the production environment.
+\end{itemize}
+
+\section{Azure - Object-Oriented Internet interoperability Implementation}\label{sect.gateway-implementation}
+
+\todo{prepare section: \textit{Object-Oriented Internet interoperability Implementation}}
 \todo{Add any information about available reusable deliverables related to this work.}
-
-
 
 \begin{itemize}
       \tightlist
@@ -403,7 +422,7 @@ features, including performance. The connectivity with
 
 \section{Conclusion}\label{conclusion}
 
-The OPC UA PubSub to Azure gateway (\texttt{AzureGateway})
+The OPC UA PubSub to Azure gateway (\textit{AzureGateway})
 implementation has been just published on GitHub as the open-source (MIT
 licensed) as a part of the more general concept of the Object-Oriented
 Internet reactive networking. It is proof of the concept that
