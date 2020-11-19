@@ -111,7 +111,7 @@ The main goal of this article is to provide proof that:
 
 The remainder of this paper is structured as follows. Sect.~\ref*{cloud-to-sensors-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. A reference implementation of this archetype is described in Sect.~\ref*{sect.gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref*{section.conclusion}.
 
-\section{Cloud to Sensors Field Level Connectivity}\label{cloud-to-sensors-field-level-connectivity}
+\section{Sensors to Cloud Field Level Connectivity}\label{cloud-to-sensors-field-level-connectivity}
 
 \subsection{Architecture}\label{subs.architecture}
 
@@ -162,10 +162,10 @@ The \textbf{field level gateway} is also build atop of the middleware concept. T
 \begin{figure}
       \centering
       \includegraphics[width=8cm]{../.Media/StrategyDomainModel.png}
-      \caption{Strategy Domain Model}\label{figure.StrategyDomainModel}
+      \caption{Strategy Domain Model}\label{figure1.StrategyDomainModel}
 \end{figure}
 
-Unlike the above described solutions, the \textbf{embedded gateway} is not derived from the middleware concept. The domain model for this archetype is presented in the Fig.~\ref*{figure.StrategyDomainModel}. Promoting separation of concern design principle, the gateway functionality should be implemented as a self-contained software part embedded in the \textit{Networking} service of the \textit{Cyber-physical\ node}. Main functionality of this component is to transfer selected data between \textit{Cyber-physical\ network} using \textit{Networking} services of an existing \textit{Cyber-physical\ node} and \textit{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
+Unlike the above described solutions, the \textbf{embedded gateway} is not derived from the middleware concept. The domain model for this archetype is presented in the Fig.~\ref*{figure1.StrategyDomainModel}. Promoting separation of concern design principle, the gateway functionality should be implemented as a self-contained software part embedded in the \textit{Networking} service of the \textit{Cyber-physical\ node}. Main functionality of this component is to transfer selected data between \textit{Cyber-physical\ network} using \textit{Networking} services of an existing \textit{Cyber-physical\ node} and \textit{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
 
 The \textbf{embedded gateway} archetype relaxes most of the issues described above: \textit{Cyber-physical\ network} real-time behavior, data encoding incompatibility, security-context differences to name only a few. The main goal of this article is to provide proof that the \textbf{embedded gateway} archetype implementation is possible based on a generic subs.architecture that can be used as a foundation for the integration of the heterogenous environments in concern. The proposed implementation is designed for selected interoperability standard and cloud product.
 
@@ -185,7 +185,7 @@ Azure aids Internet protocols and open standards such as JSON, XML, SOAP, REST, 
 
 More detailed description of the selected Azure features in context of the application in concern are covered by the Sec.~\ref*{azure-main-technology-features}.
 
-Based on the sessionless and session-oriented communication patterns examination against the IoT requirements \cite{mpostol2020} it could be concluded that the connectionless pattern better suites issues related to the assets mobility and traffic asymmetry that is characteristic for the application domains in concern. Additionally, to promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub spec \cite{RefWorks:doc:5d98837de4b055984c0eecf0}. According to proposed architecture (Fig.~\ref*{subs.architecture}) to implement the \textit{Embedded\ Gateway} as a composable part of the \textit{Cyber-physical\ Node} a library implementing \textit{Networking} functionality in compliance with mentioned above specification is a starting point for further development. Additionally it must be assumed that the library used to deploy \textit{Embedded\ Gateway} support dependency injection and be capable to compose an external part supporting Azure/pubsub gateway functionality. The composition process must be available without modification of the core code of an existing library. As a result the prototyping is to be limited to implementation of the \textit{Embedded\ Gateway} software part only.
+Based on the sessionless and session-oriented communication patterns examination against the IoT requirements \cite{mpostol2020} it could be concluded that the connectionless pattern better suites issues related to the assets mobility and traffic asymmetry that is characteristic for the application domains in concern. Additionally, to promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub spec \cite{RefWorks:doc:5d98837de4b055984c0eecf0}. According to proposed architecture (Fig.~\ref*{figure1.StrategyDomainModel}) to implement the \textit{Embedded\ Gateway} as a composable part of the \textit{Cyber-physical\ Node} a library implementing \textit{Networking} functionality in compliance with mentioned above specification is a starting point for further development. Additionally it must be assumed that the library used to deploy \textit{Embedded\ Gateway} support dependency injection and be capable to compose an external part supporting Azure/pubsub gateway functionality. The composition process must be available without modification of the core code of an existing library. As a result the prototyping is to be limited to implementation of the \textit{Embedded\ Gateway} software part only.
 
 A library that meets all these requirements has been implemented consistently with the Object-Oriented Internet paradigm \cite{RefWorks:doc:5c66740ae4b081adf5804596} worked out in an open-source project \footnote{ \url{https://github.com/mpostol/OPC-UA-OOI} }. The paper \cite{mpostol2020} covers the description of a reference application program implementation proving that it is possible to design universal architecture targeting reactive interoperability as a consistent part of the Object-Oriented Internet concept compliant with the OPC UA PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} international standard. According to the presented implementation and evaluation, using the dependency injection and late binding, the application program can be seamlessly adapted to the production environment and scales well. This approach also improves flexibility and adaptability of the existing solutions against any modification of the production environment including but not limited to the selected interoperability standard change.
 
@@ -350,19 +350,19 @@ features, including performance. The connectivity with
 
 \subsection{OOI Main Technology Features}\label{ooi-main-technology-features}
 
-To promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub (Sect. \ref*{subs.architecture}) and support the \emph{Reactive Interoperability} (Sect. \ref*{introduction}) concept. A framework compliant with this requirements has been implemented as an open-source library named \textit{UAOOI.Networking.SemanticData} (SDK) under an umbrella of the project Object-Oriented Internet \cite{RefWorks:doc:5c66740ae4b081adf5804596}. The library is designed to be a foundation for developing application programs that are taking part in a message-centric communication pattern and interconnected using the reactive networking concept. The diagram in Fig.~\ref*{figure.UADataApplicationArchitecture} shows the relationship between the library \textit{SDK} and external parts composing any reactive networking application (\textit{Reactive\ Application}). The \textit{Reactive Application} is an aggregation of \textit{Producer} and \textit{Consumer} parts. They must support access to real-time process data, hence they are recognized as an extension of \textit{DataRepository} class. To implement the \textit{DataRepository} dedicated implementation of the \textit{IBinding} interface should be provided to create a bridge between CPS and an external row data represented by the \textit{LocalResources} class. A more in-depth description of the \textit{OOI Reactive Application} library enabling data exchange over a network using the reactive networking pattern is in \cite{mpostol2020}.
+To promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub (Sect. \ref*{subs.architecture}) and support the \emph{Reactive Interoperability} (Sect. \ref*{introduction}) concept. A framework compliant with this requirements has been implemented as an open-source library named \textit{UAOOI.Networking.SemanticData} (SDK) under an umbrella of the project Object-Oriented Internet \cite{RefWorks:doc:5c66740ae4b081adf5804596}. The library is designed to be a foundation for developing application programs that are taking part in a message-centric communication pattern and interconnected using the reactive networking concept. The diagram in Fig.~\ref*{figure2.UADataApplicationArchitecture} shows the relationship between the library \textit{SDK} and external parts composing any reactive networking application (\textit{Reactive\ Application}). The \textit{Reactive Application} is an aggregation of \textit{Producer} and \textit{Consumer} parts. They must support access to real-time process data, hence they are recognized as an extension of \textit{DataRepository} class. To implement the \textit{DataRepository} dedicated implementation of the \textit{IBinding} interface should be provided to create a bridge between CPS and an external row data represented by the \textit{LocalResources} class. A more in-depth description of the \textit{OOI Reactive Application} library enabling data exchange over a network using the reactive networking pattern is in \cite{mpostol2020}.
 
 \begin{figure}
       \centering
       \includegraphics[width=8cm]{../.Media/UADataApplicationArchitecture.png}
-      \caption{Reactive interoperability implementation}\label{figure.UADataApplicationArchitecture}
+      \caption{Reactive interoperability implementation}\label{figure2.UADataApplicationArchitecture}
 \end{figure}
 
 From the above discussion, we can learn that the main design decisions must concern standardization and flexibility. Standardization needs the selection of an international interoperability specification to make the library ready to be adopted by the multi-vendor environment. Flexibility requires an architecture that promotes the polymorphic independent implementation of essential functions.
 
 Piece by piece integration of a cyber-physical system using multi-vendor products requires that M2M communication employs international standards as the interoperability foundation. OPC Unified Architecture Part 14 PubSub has been selected in this respect (Sect. \ref*{subs.architecture}). By design, this standard should support the required publisher-subscriber communication pattern. It must be stressed, that by design, the specification provides only an abstract interoperability definition. Abstract means that the standard must not limit the implementation strategy.
 
-Many parts in the domain model presented in Fig.~\ref*{figure.UADataApplicationArchitecture} requires a polymorphic approach to implementation. To promote the polymorphic ready solution the following concepts have been adopted:
+Many parts in the domain model presented in Fig.~\ref*{figure2.UADataApplicationArchitecture} requires a polymorphic approach to implementation. To promote the polymorphic ready solution the following concepts have been adopted:
 
 \begin{itemize}
       \item \textbf{separation of concerns} - to allow an independent development of the parts~\cite{RefWorks:doc:5d92609be4b02eb43d372bd1},
@@ -374,11 +374,11 @@ To promote the polymorphic approach, the library has a factory class called \emp
 \begin{itemize}
       \item \emph{IBindingFactory} - bidirectional data exchange with the underlying process,
       \item \emph{IConfigurationDataFactory} - the configuration data access,
-      \item \emph{IMessageHandlerFactory} - pushing the \emph{Message} entities to/pulling from \emph{Distribution Channel},
+      \item \emph{IMessageHandlerFactory} - pushing the \emph{Message} entities to/pulling from the wire,
       \item \emph{IEncodingFactory} - searching a dictionary containing value converters.
 \end{itemize}
 
-It is expected that the functionality implementation expressed by these interfaces is provided as independent external composable parts. The composition is accomplished at run time, and the effective application functionality depends essentially on reusable loosely coupled parts composed using the dependency injection software engineering and adaptive programming concept \todo{cite{RefWorks:doc:5d9796cbe4b0f66c52dccf04}}.
+It is expected that the functionality implementation expressed by these interfaces is provided as independent external composable parts. The composition is accomplished at run time, and the effective application functionality depends essentially on reusable loosely coupled parts composed applying the dependency injection software engineering and adaptive programming concept \todo{cite{RefWorks:doc:5d9796cbe4b0f66c52dccf04}}.
 
 The \textit{DataRepository} represents data holding assets in the \textit{Reactive Application} implementing the \textit{IBindingFactory} interface. It captures functionality responsible for accessing the external process data from \textit{LocalResources}. The \textit{LocalResources} represents an external part that has a very broad usage purpose. For example, it may be any kind of the process data source/destination, i.e. raw data (e.g. PLC internal registers), OPC UA Address Space Management, cloud, file, database, graphical user interface.
 
@@ -389,13 +389,13 @@ Depending on the expected network role the library supports the implementation o
       \item \textit{Producer} - entities gathering process data and populating outgoing messages.
 \end{itemize}
 
-The \textit{Consumer} and \textit{Producer} classes are derived from the \textit{DataRepository} (Fig.~\ref*{figure.UADataApplicationArchitecture}). The \textit{Consumer} uses the \textit{IBindingFactory} to gather the data recovered from the \emph{Message} instances pulled from a network. The received data may be processed or driven to any data destination, e.g. cloud-based front-end. The \textit{Producer} mirrors the \textit{Consumer} functionality and, after reading data from an associated source, populates the \emph{Message} using the gathered data.
+The \textit{Consumer} and \textit{Producer} classes are derived from the \textit{DataRepository} (Fig.~\ref*{figure2.UADataApplicationArchitecture}). The \textit{Consumer} uses the \textit{IBindingFactory} to gather the data recovered from the \emph{Message} instances pulled from a network. The received data may be processed or driven to any data destination, e.g. cloud-based front-end. The \textit{Producer} mirrors the \textit{Consumer} functionality and, after reading data from an associated source, populates the \emph{Message} using the gathered data.
 
 By design, the \textit{DataRepository} and associated entities, i.e.~\textit{Local Resources}, \textit{Consumer}, \textit{Producer} are embedded in external parts, and consequently, the application scope may cover practically any concern that can be separated from the core \textit{Reactive Application} implementation.
 
 The application startup phase concerns all the parts composed to make a running instance of the application program using the dependency injection approach to allow separate development and late binding. This approach makes any modification straightforward at any development and maintenance stage. From the end-user point of view, the composition process of the running program using independently developed parts is invisible. Because in any case a single program instance is created in a typical approach, we shall expect a commonly shared configuration mechanism providing mutually exclusive parameters to separately developed parts. This scenario has been addressed by the proposed implementation thanks to making the configuration expandable.
 
-From the discussion covered by the Sect. \ref*{subs.architecture} we can infer that the interoperability of communicating parties requires establishing a semantic-context and security-context between them. If the received data is driven to any external data destination (e.g. cloud-based front-end) using out-of-band protocol semantic-context and security context must be defined for this interoperability relationship. There are a vast variety of possibilities for how to define these contexts. Anyway, the most common starting point is the configuration. The proposed approach to instantiate the application as a set of composable parts is very useful in this respect because it makes it possible to expand the core configuration functionality and adapt it to be helpful also in this case. Therefore, the semantic-context may be created based on the configuration using the implementation of the \textit{IConfigurationDataFactory} interface.
+From the discussion covered by the Sect. \ref*{subs.architecture} we can infer that the interoperability of communicating parties requires establishing a semantic-context and security-context between them. If the received data is driven to any external data destination (e.g. cloud-based front-end) using out-of-band protocol semantic-context and security-context must be defined for this interoperability relationship. There are a vast variety of possibilities for how to define these contexts. Anyway, the most common starting point is the configuration. The proposed approach to instantiate the application as a set of composable parts is very useful in this respect because it makes it possible to expand the core configuration functionality and adapt it to be helpful also in this case. Therefore, the semantic-context may be created based on the configuration using the implementation of the \textit{IConfigurationDataFactory} interface.
 
 Concluding, decoupling of this functionality implementation using an abstract contract and late binding mechanism allows:
 
@@ -410,23 +410,24 @@ Concluding, decoupling of this functionality implementation using an abstract co
 
 \subsection{Preface}
 
+\todo{replace RxNetworking by Reactive Application}
 This section describes an example implementation of an OPC UA PubSub to Azure gateway. This gateway is implemented as a composable part of the Reactive Networking Application (\textit{RxNetworking\ App}). The \textit{RxNetworking\ App} is an aggregation of \textit{Producer} and \textit{Consumer} entities derived from \textit{DataRepository}. They must provide interconnection to real-time process data, hence they are recognized as an extension of the \textit{DataRepository} class. \textit{AzureGateway} part fulfills the \textit{Consumer} role and uses out-of-band communication to push process data to the cloud.
 
 \begin{figure}
       \centering
       \includegraphics[width=8cm]{../.Media/ImplementationDomainModel.png}
-      \caption{Implementation Architecture}\label{figure.ImplementationDomainModel}
+      \caption{Implementation Architecture}\label{figure3.ImplementationDomainModel}
 \end{figure}
 
 \subsection{Architecture}
 
-A generic domain model presenting relationship between the Azure \textit{Cloud-based\ front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure.StrategyDomainModel}. As it was pointed out in the Sect. \ref*{subs.architecture} using OPC UA PubSub the aggregation of nodes by the network is loosely coupled, i.e. nodes can be added and removed from the network dynamically, and nodes may represent mobile data holding assets.  
+A generic domain model presenting relationship between the Azure \textit{Cloud-based\ front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure1.StrategyDomainModel}. As it was pointed out in the Sect. \ref*{subs.architecture} using OPC UA PubSub the aggregation of nodes by the network is loosely coupled, i.e. nodes can be added and removed from the network dynamically, and nodes may represent mobile data holding assets.  
 
 
 \begin{figure}
       \centering
       \includegraphics[width=\textwidth]{../.Media/ImplementationArchitecture.png}
-      \caption{Implementation Architecture}\label{figure.ImplementationArchitecture}
+      \caption{Implementation Architecture}\label{figure4.ImplementationArchitecture}
 \end{figure}
 
 %) \textit{Cloud-based Front-end} and Cyber-physical node, PubSub Gateway, Device, Design and development tools
@@ -435,7 +436,7 @@ The \textit{AzureGateway} functional package has been implemented based on the \
 
 The proposed implementation of the Azure gateway proves that the \textit{DataRepository} and associated entities, i.e.~\textit{Local\ Resources}, \textit{Consumer}, \textit{Producer} can be implemented as external parts, and consequently, the application scope may cover practically any concern that can be separated from the core PubSub communication engine implementation.
 
-The article provides an introductory understanding of the steps required to implement the \textit{Consumer} role of \textit{OOI\ Reactive\ Application}. The \textit{ReferenceApplication} is an example application of \textit{Semantic-Data} reactive networking based on OPC UA PubSub\cite{RefWorks:doc:5d98837de4b055984c0eecf0} \todo{cite OPC UA PubSub Main Technology Features}.
+\todo{review intro}The article provides an introductory understanding of the steps required to implement the \textit{Consumer} role of \textit{OOI\ Reactive\ Application}. The \textit{ReferenceApplication} is an example application of \textit{Semantic-Data} reactive networking based on OPC UA PubSub\cite{RefWorks:doc:5d98837de4b055984c0eecf0} \todo{cite OPC UA PubSub Main Technology Features}.
 
 It is proof of the concept that out-of-band communication for OPC UA PubSub can be implemented based on the \textit{DataRepository} concept.
 
@@ -455,24 +456,22 @@ In this example, it is assumed that \textit{ServiceLocator} \footnote{ \url{http
 
 Finally the \textit{DataManagementSetup.Start()} method is called to initialize the infrastructure, enable all associations and start pumping the data.
 
-Implementation of this interface is a basic step to implement \textit{Consumer} functionality. The \textit{DataRepository} represents data holding assets in the \textit{RxNetworking\ App} and, following the proposed architecture, the \textit{IBindingFactory} interface is implemented by this external part. It captures functionality responsible for accessing the process data represented by the \textit{LocalResources}. The \textit{LocalResources} represents the external part that has a very broad usage purpose. For example, it may be any kind of process data source/destination, and to name a few \textit{Raw\ Data}, \textit{OPC\ UA\ Address\ Space\ Management}, and \textit{Azure} services in this case.
+Implementation of this interface is a basic step to implement \textit{Consumer} functionality. The \textit{DataRepository} represents data holding assets in the \textit{RxNetworking\ App} and, following the proposed architecture, the \textit{IBindingFactory} interface is implemented by this external part. It captures functionality responsible for accessing the process data represented by the \textit{LocalResources}. \todo{duplacted text} The \textit{LocalResources} represents the external part that has a very broad usage purpose. For example, it may be any kind of process data source/destination, and to name a few \textit{Raw\ Data}, \textit{OPC\ UA\ Address\ Space\ Management}, and \textit{Azure} services in this case.
 
 \subsection{Configuration}
 
-\subsubsection{\texorpdfstring{\textit{IConfigurationFactory} implementation}{IConfigurationFactory implementation}}\label{iconfigurationfactory-implementation}
-
-Implementation of this interface is straightforward and based entirely on the library UAOOI.Configuration.Networking available as the NuGet package. In a typical scenario, this implementation should not be considered for further modification. The only open question is how to provide the name of the file containing the configuration of this role.
+Implementation of the \textit{IConfigurationFactory} interface is straightforward and based entirely on the library UAOOI.Configuration.Networking available as the NuGet package. In a typical scenario, this implementation should not be considered for further modification. The only open question is how to provide the name of the file containing the configuration of this role.
 
 \subsection{Protocol selection}
 
-The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). On other hand the PubSub supports Ethernet, UDP, AMQP, MQTT {Sect. \ref*{subs.architecture}}. If the Ethernet or UDP has been selected to build interconnection based on PubSub direc interoperability between the Azure and PubSub is impossible because the mentioned protocols are not offered as the native communication services.
+The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). On other hand the PubSub supports Ethernet, UDP, AMQP, MQTT {Sect. \ref*{ooi-main-technology-features}}. If the Ethernet or UDP has been selected to build interconnection based on PubSub direc interoperability between the Azure and PubSub is impossible because the mentioned protocols are not offered as the native communication services.
 
 \subsection{data mapping}
 
 \begin{figure}
       \centering
       \includegraphics[width=\textwidth]{../.Media/AzureGateway.png}
-      \caption{Implementation Architecture}\label{figure.AzureGateway}
+      \caption{Implementation Architecture}\label{figure5.AzureGateway}
 \end{figure}
 
 For both the schema is different Data Transfer Object encoding
