@@ -378,7 +378,7 @@ To promote the polymorphic approach, the library has a factory class called \emp
       \item \emph{IEncodingFactory} - searching a dictionary containing value converters.
 \end{itemize}
 
-It is expected that the functionality implementation expressed by these interfaces is provided as independent external composable parts. The composition is accomplished at run time, and the effective application functionality depends essentially on reusable loosely coupled parts composed applying the dependency injection software engineering and adaptive programming concept \todo{cite{RefWorks:doc:5d9796cbe4b0f66c52dccf04}}.
+It is expected that the functionality implementation expressed by these interfaces is provided as independent external composable parts. The composition is accomplished at run time, and the effective application functionality depends essentially on reusable loosely coupled parts composed applying the dependency injection software engineering and adaptive programming concept. \todo{cite{RefWorks:doc:5d9796cbe4b0f66c52dccf04}}
 
 The \textit{DataRepository} represents data holding assets in the \textit{Reactive Application} implementing the \textit{IBindingFactory} interface. It captures functionality responsible for accessing the external process data from \textit{LocalResources}. The \textit{LocalResources} represents an external part that has a very broad usage purpose. For example, it may be any kind of the process data source/destination, i.e. raw data (e.g. PLC internal registers), OPC UA Address Space Management, cloud, file, database, graphical user interface.
 
@@ -404,14 +404,11 @@ Concluding, decoupling of this functionality implementation using an abstract co
       \item modification of this functionality later after releasing the library or deploying the application program in the production environment.
 \end{itemize}
 
-\section{Azure - Object-Oriented Internet interoperability Implementation}\label{sect.gateway-implementation}
-
-\todo{Add any information about available reusable deliverables related to this work.}
+\section{Azure - Object-Oriented Internet Interoperability Implementation}\label{sect.gateway-implementation}
 
 \subsection{Preface}
 
-\todo{replace RxNetworking by Reactive Application}
-This section describes an example implementation of an OPC UA PubSub to Azure gateway. This gateway is implemented as a composable part of the Reactive Networking Application (\textit{RxNetworking\ App}). The \textit{RxNetworking\ App} is an aggregation of \textit{Producer} and \textit{Consumer} entities derived from \textit{DataRepository}. They must provide interconnection to real-time process data, hence they are recognized as an extension of the \textit{DataRepository} class. \textit{AzureGateway} part fulfills the \textit{Consumer} role and uses out-of-band communication to push process data to the cloud.
+A generic domain model presenting relationship between the Azure \textit{Cloud-based\ Front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure1.StrategyDomainModel}. It is proposed to implement the \textit{Cyber-physical\ node} by adopting the \textit{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref*{figure2.UADataApplicationArchitecture}) described in the Sect. \ref*{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref*{figure1.StrategyDomainModel}) lead to a relationship model expressed as the diagram presented in Fig. \ref*{figure3.ImplementationDomainModel}. In this approach, the \textit{Reactive Application} contains at least the \textit{Consumer} entity. In the proposed approach the \textit{Embedded Gateway} is implemented as a composable part derived from the \textit{Consumer} role.
 
 \begin{figure}
       \centering
@@ -419,10 +416,22 @@ This section describes an example implementation of an OPC UA PubSub to Azure ga
       \caption{Implementation Architecture}\label{figure3.ImplementationDomainModel}
 \end{figure}
 
-\subsection{Architecture}
+In final implementation architecture (Fig. \ref*{figure4.ImplementationArchitecture}) the \textit{Consumer} has been implemented by the \textit{PartDataManagementSetup} that is derived from \textit{DatManagementSetup} embedded in the library \textit{Networking} removed from the diagram for the sake of simplicity. It is a basic step to implement the \textit{Consumer} role functionality. The class \textit{PartDataManagementSetup} initializes all properties, which are injection points of all parts composing this role. The \textit{PartDataManagementSetup} extents functionality of the \textit{DatManagementSetup} based on the following associated classes
 
-A generic domain model presenting relationship between the Azure \textit{Cloud-based\ front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure1.StrategyDomainModel}. As it was pointed out in the Sect. \ref*{subs.architecture} using OPC UA PubSub the aggregation of nodes by the network is loosely coupled, i.e. nodes can be added and removed from the network dynamically, and nodes may represent mobile data holding assets.  
+\begin{enumerate}
+      \item \textit{PartConfigurationFactory} - implements the interface \textit{IConfigurationFactory} to get access to the application configuration
+      \item \textit{PartBindingFactory} - implements the interface textit{IBindingFactory} to gather the data recovered from the \textit{Message} instances pulled from the wire
+      \item \textit{CommunicationContext} - handling communication with the Azure services
+\end{enumerate}
 
+Implementation of the \textit{IConfigurationFactory} interface is straightforward and based entirely on the \textit{Networking} library. In a typical scenario, this implementation should not be considered for further modification. The only open question is how to provide the name of the file containing the configuration.
+
+By design, the \textit{PartBindingFactory} implements the \textit{IBindingFactory} to gather the data recovered from the \emph{Message} instances pulled from a network. The received data is driven to \textit{CommunicationContext}.
+
+By design it implements the \textit{IBindingFactory} \todo{add IBindingFactory to fig.} to gather the data recovered from the \emph{Message} instances pulled from a network. The received data is driven to the Azure services using configured out-of-band protocol.
+
+
+\textit{IEncodingFactory} and \textit{IMessageHandlerFactory} interfaces have been implemented in independent libraries and ae not considered for any modifications to provide \textit{Embedded Gateway} functionality. The current implementation of the interfaces is localized at run time as services using an instance of the \textit{IServiceLocator} interface. In this example, it is assumed that \textit{ServiceLocator} \footnote{ \url{https://www.nuget.org/packages/CommonServiceLocator} } is implemented to resolve references to any external services.
 
 \begin{figure}
       \centering
@@ -430,39 +439,13 @@ A generic domain model presenting relationship between the Azure \textit{Cloud-b
       \caption{Implementation Architecture}\label{figure4.ImplementationArchitecture}
 \end{figure}
 
-%) \textit{Cloud-based Front-end} and Cyber-physical node, PubSub Gateway, Device, Design and development tools
+The \textit{DataRepository} represents data holding assets in the \textit{RxNetworking\ App} and, following the proposed architecture, the \textit{IBindingFactory} interface is implemented by this external part. It captures functionality responsible for accessing the process data represented by the \textit{LocalResources}. \todo{duplacted text} The \textit{LocalResources} represents the external part that has a very broad usage purpose. For example, it may be any kind of process data source/destination, and to name a few \textit{Raw\ Data}, \textit{OPC\ UA\ Address\ Space\ Management}, and \textit{Azure} services in this case.
 
-The \textit{AzureGateway} functional package has been implemented based on the \textit{Consumer} concept. This particular \textit{Consumer} implements \textit{IBindingFactory} interface to gather the data recovered from the \textit{Message} instances pulled from the \textit{Distribution\ Channel}. The received data is driven to the Azure services using configured out-of-band' protocol. An instance of the \textit{IBindingFactory} is responsible to create objects implementing \textit{IBinding} that can be used by the \textit{Consumer} to forward the data retrieved from \textit{NetworkMessage} received over the wire to Azure services.
-
-The proposed implementation of the Azure gateway proves that the \textit{DataRepository} and associated entities, i.e.~\textit{Local\ Resources}, \textit{Consumer}, \textit{Producer} can be implemented as external parts, and consequently, the application scope may cover practically any concern that can be separated from the core PubSub communication engine implementation.
-
-\todo{review intro}The article provides an introductory understanding of the steps required to implement the \textit{Consumer} role of \textit{OOI\ Reactive\ Application}. The \textit{ReferenceApplication} is an example application of \textit{Semantic-Data} reactive networking based on OPC UA PubSub\cite{RefWorks:doc:5d98837de4b055984c0eecf0} \todo{cite OPC UA PubSub Main Technology Features}.
-
-It is proof of the concept that out-of-band communication for OPC UA PubSub can be implemented based on the \textit{DataRepository} concept.
-
-Here are steps undertook to implement the \textit{Consumer} role in the application:
-
-\begin{enumerate}
-      \item \textit{DataManagementSetup}: this class has been overridden by the \textit{PartDataManagementSetup} class and it initializes the communication and binds data fields recovered form messages to local resources.
-      \item \textit{IEncodingFactory} and \textit{IMessageHandlerFactory}: have been implemented in independent libraries and \textit{Consumer} doesn't depend on this implementation - current implementation of the interfaces is localized as services using an instance of the \textit{IServiceLocator} interface.
-      \item \textit{IBindingFactory}: has been implemented in the class \textit{PartBindingFactory} that is responsible to gather the data recovered from the \textit{Message} instances pulled from the \textit{Distribution\ Channel}. The received data is driven to the Azure services using configured out-of-band protocol.
-      \item \textit{IConfigurationFactory}: the class \textit{PartConfigurationFactory} implements this interface to be used for the configuration file opening.
-\end{enumerate}
-
-
-The class \textit{DataManagementSetup} constructor initializes all properties, which are injection points of all parts composing this role.
-
-In this example, it is assumed that \textit{ServiceLocator} \footnote{ \url{https://www.nuget.org/packages/CommonServiceLocator} } is implemented to resolve references to any external services.
-
-Finally the \textit{DataManagementSetup.Start()} method is called to initialize the infrastructure, enable all associations and start pumping the data.
-
-Implementation of this interface is a basic step to implement \textit{Consumer} functionality. The \textit{DataRepository} represents data holding assets in the \textit{RxNetworking\ App} and, following the proposed architecture, the \textit{IBindingFactory} interface is implemented by this external part. It captures functionality responsible for accessing the process data represented by the \textit{LocalResources}. \todo{duplacted text} The \textit{LocalResources} represents the external part that has a very broad usage purpose. For example, it may be any kind of process data source/destination, and to name a few \textit{Raw\ Data}, \textit{OPC\ UA\ Address\ Space\ Management}, and \textit{Azure} services in this case.
-
-\subsection{Configuration}
-
-Implementation of the \textit{IConfigurationFactory} interface is straightforward and based entirely on the library UAOOI.Configuration.Networking available as the NuGet package. In a typical scenario, this implementation should not be considered for further modification. The only open question is how to provide the name of the file containing the configuration of this role.
+It initializes the out-of-band communication stack and binds data fields recovered from messages to an Azure data converter and message encoder.
 
 \subsection{Protocol selection}
+
+\todo{Add any information about available reusable deliverables related to this work.}
 
 The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). On other hand the PubSub supports Ethernet, UDP, AMQP, MQTT {Sect. \ref*{ooi-main-technology-features}}. If the Ethernet or UDP has been selected to build interconnection based on PubSub direc interoperability between the Azure and PubSub is impossible because the mentioned protocols are not offered as the native communication services.
 
@@ -501,13 +484,15 @@ Azure and PubSub uses different security mechanism so establishing directly secu
 
 \section{Conclusion}\label{section.conclusion}
 
+As it was pointed out in the Sect. \ref*{subs.architecture} using OPC UA PubSub the aggregation of nodes by the network is loosely coupled, i.e. nodes can be added and removed from the network dynamically, and nodes may represent mobile data holding assets. 
+
+It is worth stressing that based on this approach only dedicated functionality related to communication with the cloud must be implemented. This way, the reusability of the library is promoted.
+
 The OPC UA PubSub to Azure gateway (\textit{AzureGateway}) implementation has been just published on GitHub as the open-source (MIT licensed) as a part of the more general concept of the Object-Oriented Internet reactive networking. It is proof of the concept that
 
 The propose architecture enable possibility to interconnect the cloud-based services with the Cyber-physical network. This solution is in contrast to to the architecture presented in OPC UA Part 1 and Part 14. 
 
 \begin{enumerate}
-      \def\labelenumi{\arabic{enumi}.}
-      \tightlist
       \item OPC UA PubSub can be implemented as a powerful standalone package - no C/S dependency
       \item Azure interoperability can be implemented as an out-of-band communication (MQTT, AMQP, HTTP) - no PubSub dependency
       \item Process data functionality can be composable at run-time - no programming required
