@@ -408,7 +408,7 @@ Concluding, decoupling of this functionality implementation using an abstract co
 
 \subsection{Preface}
 
-A generic domain model presenting relationship between the Azure \textit{Cloud-based\ Front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure1.StrategyDomainModel}. It is proposed to implement the \textit{Cyber-physical\ node} by adopting the \textit{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref*{figure2.UADataApplicationArchitecture}) described in the Sect. \ref*{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref*{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref*{figure3.ImplementationDomainModel}. In the proposed approach the \textit{Embedded Gateway} is derived from the \textit{Consumer} role embedded as as a composable part agregatem by the \textit{Reactive Application}.
+A generic domain model presenting relationship between the Azure \textit{Cloud-based\ Front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure1.StrategyDomainModel}. It is proposed to implement the \textit{Cyber-physical\ node} by adopting the \textit{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref*{figure2.UADataApplicationArchitecture}) described in the Sect. \ref*{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref*{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref*{figure3.ImplementationDomainModel}. In the proposed approach the \textit{Embedded Gateway} is derived from the \textit{Consumer} role embedded as as a composable part aggregated by the \textit{Reactive Application}.
 
 \begin{figure}
       \centering
@@ -421,14 +421,14 @@ In the final deployment architecture (Fig. \ref*{figure4.ImplementationArchitect
 \begin{enumerate}
       \item \textit{PartConfigurationFactory} - to get access to the application configuration
       \item \textit{PartBindingFactory} - to gather the data recovered from the \textit{Message} instances pulled from the wire
-      \item \textit{CommunicationContext} - to handling communication with the Azure services (Sect. \ref*{sub.AzureInteroperability})
+      \item \textit{CommunicationContext} - to handling communication with the Azure services
 \end{enumerate}
 
-In this case, the implementation of the \textit{IConfigurationFactory} interface is straightforward and based entirely on the \textit{Networking} library. In a typical scenario, this implementation should not be considered for further modification. It is ready to provide all necessary configuration parameter to establish semantic and security contexts related to Azure interoperability.
+In this case, the implementation of the \textit{IConfigurationFactory} interface is based entirely on the \textit{Networking} library. In this scenario, this implementation should not be considered for further modification. It is ready to provide all necessary configuration parameters to establish semantic and security contexts related to Azure interoperability.
 
 The \textit{PartBindingFactory} implements the \textit{IBindingFactory} to gather the data recovered from the \emph{Message} instances pulled from a network. The received data is driven to \textit{CommunicationContext} for further processing and pushing to cloud-based services to the Azure services using configured out-of-band protocol.
 
-\textit{IEncodingFactory} and \textit{IMessageHandlerFactory} interfaces (Fig. \ref*{figure2.UADataApplicationArchitecture} have been implemented in independent libraries and ae not considered for any modifications to deploy \textit{Embedded Gateway} functionality. The current implementation of the interfaces is localized at run time as services using an instance of the \textit{IServiceLocator} interface. In this example, it is assumed that \textit{ServiceLocator} \footnote{ \url{https://www.nuget.org/packages/CommonServiceLocator} } is implemented to resolve references to any external services.
+\textit{IEncodingFactory} and \textit{IMessageHandlerFactory} interfaces (Fig. \ref*{figure2.UADataApplicationArchitecture} have been implemented in independent libraries and ae not considered for any modifications to deploy \textit{Embedded Gateway} functionality. The current implementation of the mentioned interfaces is localized at run time as services using an instance of the \textit{IServiceLocator}. In this example, it is assumed that \textit{IServiceLocator} \footnote{ \url{https://www.nuget.org/packages/CommonServiceLocator} } is implemented to resolve references to any external services.
 
 \begin{figure}
       \centering
@@ -436,11 +436,9 @@ The \textit{PartBindingFactory} implements the \textit{IBindingFactory} to gathe
       \caption{Implementation Architecture}\label{figure4.ImplementationArchitecture}
 \end{figure}
 
+\hyphenation{IDTOPro-vider}
+
 The Azure interconnection is realized using the \textit{CommunicationContext}. It establish the out-of-band communication stack and implements message encoder. The encoded data is gathered from the \textit{PartBindingFactory} using the \textit{IDTOProvider} that defines a contract used to pull data transfer object created from a selected subscription.
-
-binds data fields recovered from messages to an Azure data converter and message encoder.
-
-% consider to remove: The \textit{DataRepository} represents data holding assets in the \textit{RxNetworking\ App} and, following the proposed architecture, the \textit{IBindingFactory} interface is implemented by this external part. It captures functionality responsible for accessing the process data represented by the \textit{LocalResources}. \todo{duplacted text} The \textit{LocalResources} represents the external part that has a very broad usage purpose. For example, it may be any kind of process data source/destination, and to name a few \textit{Raw\ Data}, \textit{OPC\ UA\ Address\ Space\ Management}, and \textit{Azure} services in this case.
 
 \subsection{Out-of-band Protocol Selection}
 
