@@ -418,6 +418,12 @@ A generic domain model presenting relationship between the Azure \textit{Cloud-b
 
 In the final deployment architecture (Fig. \ref*{figure4.ImplementationArchitecture}) the \textit{Consumer} role has been realized by the \textit{PartDataManagementSetup} that is derived from \textit{DatManagementSetup} embedded in the library \textit{Networking} removed from the diagram for the sake of simplicity. It is a basic step for implementation of the \textit{Consumer} role functionality. The class \textit{PartDataManagementSetup} initializes all properties, which are injection points of all parts composing this role. It extents functionality of the \textit{DatManagementSetup} based on the following associated classes
 
+\begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{../.Media/ImplementationArchitecture.png}
+      \caption{Implementation Architecture}\label{figure4.ImplementationArchitecture}
+\end{figure}
+
 \begin{enumerate}
       \item \textit{PartConfigurationFactory} - to get access to the application configuration
       \item \textit{PartBindingFactory} - to gather the data recovered from the \textit{Message} instances pulled from the wire
@@ -430,21 +436,15 @@ The \textit{PartBindingFactory} implements the \textit{IBindingFactory} to gathe
 
 \textit{IEncodingFactory} and \textit{IMessageHandlerFactory} interfaces (Fig. \ref*{figure2.UADataApplicationArchitecture} have been implemented in independent libraries and ae not considered for any modifications to deploy \textit{Embedded Gateway} functionality. The current implementation of the mentioned interfaces is localized at run time as services using an instance of the \textit{IServiceLocator}. In this example, it is assumed that \textit{IServiceLocator} \footnote{ \url{https://www.nuget.org/packages/CommonServiceLocator} } is implemented to resolve references to any external services.
 
-\begin{figure}
-      \centering
-      \includegraphics[width=\textwidth]{../.Media/ImplementationArchitecture.png}
-      \caption{Implementation Architecture}\label{figure4.ImplementationArchitecture}
-\end{figure}
-
 \hyphenation{IDTOPro-vider}
 
 The Azure interconnection is realized using the \textit{CommunicationContext}. It establish the out-of-band communication stack and implements message encoder. The encoded data is gathered from the \textit{PartBindingFactory} using the \textit{IDTOProvider} that defines a contract used to pull data transfer object created from a selected subscription.
 
 \subsection{Out-of-band Protocol Selection}
 
-\todo{Add any information about available reusable deliverables related to this work.}
+The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). On the other hand the PubSub supports Ethernet, UDP, AMQP, MQTT {Sect. \ref*{ooi-main-technology-features}}. If the Ethernet or UDP has been selected to build interconnection based on PubSub direc interoperability between the Azure and PubSub is impossible because the mentioned protocols are not offered as the native communication services.
 
-The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). On other hand the PubSub supports Ethernet, UDP, AMQP, MQTT {Sect. \ref*{ooi-main-technology-features}}. If the Ethernet or UDP has been selected to build interconnection based on PubSub direc interoperability between the Azure and PubSub is impossible because the mentioned protocols are not offered as the native communication services.
+\todo{Add any information about available reusable deliverables related to this work.}
 
 \subsection{Data Mapping}
 
