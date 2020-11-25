@@ -382,7 +382,7 @@ A generic domain model presenting relationship between the Azure \textit{Cloud-b
       \caption{Architecture Domain Model}\label{figure3.ImplementationDomainModel}
 \end{figure}
 
-In the final deployment architecture (Fig. \ref*{figure4.ImplementationArchitecture}) the \textit{Consumer} role has been realized by the \textit{PartDataManagementSetup} that is derived from \textit{DatManagementSetup} embedded in the library \textit{Networking} removed from this diagram for the sake of simplicity. It is a basic step for implementation of the \textit{Consumer} role functionality. The class \textit{PartDataManagementSetup} initializes all properties, which are injection points of all parts composing this role. It extents functionality of the \textit{DatManagementSetup} based on the following associated classes
+In the final deployment architecture (Fig. \ref*{figure4.ImplementationArchitecture}) the \textit{Consumer} role has been realized by the \textit{PartDataManagementSetup} that is derived from \textit{DataManagementSetup} embedded in the library. \textit{Networking} was removed from this diagram for the sake of simplicity. Invoking \textit{PartDataManagementSetup} is the first step for bootstrapping the \textit{Consumer} role functionality. This class initializes all properties, which are injection points of all parts composing this role. It extents functionality of the \textit{DataManagementSetup} based on the following associated classes:
 
 \begin{figure}
       \centering
@@ -396,7 +396,7 @@ In the final deployment architecture (Fig. \ref*{figure4.ImplementationArchitect
       \item \textit{CommunicationContext} - to handle communication with the Azure services
 \end{enumerate}
 
-In this case, the implementation of the \textit{IConfigurationFactory} interface is based entirely on the \textit{Networking} library. The implementation provided by the library is generic, but it is flexible enough to meet all the requirements in this case and should not be considered for further modification. It is ready to provide all necessary configuration parameters to establish semantic and security contexts related to Azure interoperability.
+In this case, the implementation of the \textit{IConfigurationFactory} interface is based entirely on the \textit{Networking} library. The implementation provided by the library is generic, but it is flexible enough to meet all the requirements which warrants no need of further modifications. It is ready to provide all necessary configuration parameters to establish semantic and security contexts related to Azure interoperability.
 
 The \textit{PartBindingFactory} implements the \textit{IBindingFactory} to gather the data recovered from the \emph{Message} instances pulled from a network. The received data is driven to \textit{CommunicationContext} for further encoding and finally pushing it to the Azure services using configured out-of-band protocol.
 
@@ -410,7 +410,7 @@ The encoded JSON messages must be transferred over the network to Azure using th
 
 \begin{itemize}
       \item \textit{Devices} - Service SDK for Azure IoT Devices
-      \item \textit{Devices.Client} - Device SDK for Azure \textit{IoT\ Hub}
+      \item \textit{Devices.Client} - Device SDK for Azure \textit{IoT\ Hub} including dependencies implementing MQTT and AMQP communication
       \item \textit{Devices.Shared} - Common code for Azure IoT Device and Service SDK
       \item \textit{Devices.Provisioning.Client} - Provisioning Device Client SDK for Azure IoT Devices
       \item \textit{Devices.Provisioning.Transport.Amqp} - Provisioning Device Client AMQP Transport for Azure IoT Devices
