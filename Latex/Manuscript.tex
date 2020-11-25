@@ -372,7 +372,7 @@ Concluding, decoupling of this functionality implementation using an abstract co
 
 \section{Azure - Object-Oriented Internet Interoperability Implementation}\label{sect.gateway-implementation}
 
-\subsection{Gateway Implementation Architecture}\label{subsection.GatewayImplementationArchitecture}
+\subsection{Implementation Architecture}\label{subsection.GatewayImplementationArchitecture}
 
 A generic domain model presenting relationship between the Azure \textit{Cloud-based\ Front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure1.StrategyDomainModel}. It is proposed to implement the \textit{Cyber-physical\ node} by adopting the \textit{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref*{figure2.UADataApplicationArchitecture}) described in the Sect. \ref*{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref*{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref*{figure3.ImplementationDomainModel}. In the proposed approach the \textit{Embedded Gateway} is derived from the \textit{Consumer} role embedded as as a composable part aggregated by the \textit{Reactive Application}.
 
@@ -382,7 +382,7 @@ A generic domain model presenting relationship between the Azure \textit{Cloud-b
       \caption{Architecture Domain Model}\label{figure3.ImplementationDomainModel}
 \end{figure}
 
-In the final deployment architecture (Fig. \ref*{figure4.ImplementationArchitecture}) the \textit{Consumer} role has been realized by the \textit{PartDataManagementSetup} that is derived from \textit{DatManagementSetup} embedded in the library \textit{Networking} removed from the diagram for the sake of simplicity. It is a basic step for implementation of the \textit{Consumer} role functionality. The class \textit{PartDataManagementSetup} initializes all properties, which are injection points of all parts composing this role. It extents functionality of the \textit{DatManagementSetup} based on the following associated classes
+In the final deployment architecture (Fig. \ref*{figure4.ImplementationArchitecture}) the \textit{Consumer} role has been realized by the \textit{PartDataManagementSetup} that is derived from \textit{DatManagementSetup} embedded in the library \textit{Networking} removed from this diagram for the sake of simplicity. It is a basic step for implementation of the \textit{Consumer} role functionality. The class \textit{PartDataManagementSetup} initializes all properties, which are injection points of all parts composing this role. It extents functionality of the \textit{DatManagementSetup} based on the following associated classes
 
 \begin{figure}
       \centering
@@ -393,20 +393,20 @@ In the final deployment architecture (Fig. \ref*{figure4.ImplementationArchitect
 \begin{enumerate}
       \item \textit{PartConfigurationFactory} - to get access to the application configuration
       \item \textit{PartBindingFactory} - to gather the data recovered from the \textit{Message} instances pulled from the wire
-      \item \textit{CommunicationContext} - to handling communication with the Azure services
+      \item \textit{CommunicationContext} - to handle communication with the Azure services
 \end{enumerate}
 
-In this case, the implementation of the \textit{IConfigurationFactory} interface is based entirely on the \textit{Networking} library. In this scenario, this implementation should not be considered for further modification. It is ready to provide all necessary configuration parameters to establish semantic and security contexts related to Azure interoperability.
+In this case, the implementation of the \textit{IConfigurationFactory} interface is based entirely on the \textit{Networking} library. The implementation provided by the library is generic, but it is flexible enough to meet all the requirements in this case and should not be considered for further modification. It is ready to provide all necessary configuration parameters to establish semantic and security contexts related to Azure interoperability.
 
 The \textit{PartBindingFactory} implements the \textit{IBindingFactory} to gather the data recovered from the \emph{Message} instances pulled from a network. The received data is driven to \textit{CommunicationContext} for further encoding and finally pushing it to the Azure services using configured out-of-band protocol.
 
-\textit{IEncodingFactory} and \textit{IMessageHandlerFactory} interfaces (Fig. \ref*{figure2.UADataApplicationArchitecture} have been implemented in independent libraries and ae not considered for any modifications to deploy \textit{Embedded Gateway} functionality. The current implementation of the mentioned interfaces is localized at run time as services using an instance of the \textit{IServiceLocator}. In this example, it is assumed that \textit{IServiceLocator} \footnote{ \url{https://www.nuget.org/packages/CommonServiceLocator} } is implemented to resolve references to any external services. Both interfaces are used to manage interconnection of the node with the \textit{Cyber-physical Network}.
+\textit{IEncodingFactory} and \textit{IMessageHandlerFactory} interfaces (Fig. \ref*{figure2.UADataApplicationArchitecture}) have been implemented in independent libraries and ae not considered for any modifications to deploy \textit{Embedded Gateway} functionality. The current implementation of the mentioned interfaces is localized at run time as services using an instance of the \textit{IServiceLocator}\footnote{ \url{https://www.nuget.org/packages/CommonServiceLocator} }. In this example, it is assumed that \textit{IServiceLocator} is implemented to resolve references to any external services. Both interfaces are used to manage interconnection of the node with the \textit{Cyber-physical Network}.
 
 The Azure interconnection is realized using the \textit{CommunicationContext}. It implements message encoder and establishes the out-of-band communication stack. 
 
-The recovered data from the \textit{Message} is obtained from the \textit{PartBindingFactory} using the \textit{IDTOProvider} that defines a contract used to pull the Data Transfer Object (DTO) created from a selected subscription by the \textit{PartBindingFactory}. The transfer process requires data conversion from source to destination encoding, i.e. replacing bitstreams used by the CPS by equivalent ones for the cloud-based services. The Azure offers a vast variety of built-in types ready to be used in common cases, but not necessarily there are equivalent counterparts in use by the CPS. The Azure uses JSON based Data Transfer Object encoding and schema defined based on the solution metadata. The pubsub uses json and binary Data Transfer Object encoding. In any case the data recovered from the Message pulled from a subscription is stored locally using the object model based on standard .NET types. \textit{PartBindingFactory} maps selected object graph onto the JSON message required by the cloud services.
+The recovered data from the \textit{Message} is obtained from the \textit{PartBindingFactory} using the \textit{IDTOProvider} that defines a contract used to pull the Data Transfer Object (DTO) created from a selected subscription by the \textit{PartBindingFactory}. The transfer process requires data conversion from source to destination encoding, i.e. replacing bitstreams used by the CPS by equivalent ones for the cloud-based services. The Azure offers a vast variety of built-in types ready to be used in common cases, but not necessarily there are equivalent counterparts in use by the CPS. The Azure uses JSON based Data Transfer Object encoding and schema defined based on the solution metadata. The pubsub uses JSON and binary Data Transfer Object encoding. In any case the data recovered from the Message pulled from a subscription is stored locally using the object model based on standard .NET types. \textit{PartBindingFactory} maps selected object graph onto the JSON message required by the cloud services.
 
-The encoded JSON messages must be transferred over the network to Azure using selected protocol stock. The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). All the mentioned protocols are standard ones. Consequently, it is possible to apply any available implementation compliant with an appropriate specification to achieve connectivity. In this case, all parameters required to establish connectivity and security-context is up to the external software responsibility. Alternatively, the API offered by the dedicated libraries may be used. Using this API the configuration process may be reduced significantly. Using these libraries, the selection of the communication protocol has an indirect impact on the interoperability features, including performance. In the proposed gateway implementation the Azure interconnection has been obtained using the following \textit{Microsoft.Azure} libraries:
+The encoded JSON messages must be transferred over the network to Azure using the selected protocol stack. The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). All the mentioned protocols are standard ones. Consequently, it is possible to apply any available implementation compliant with an appropriate specification to achieve connectivity. In this case, all parameters required to establish semantic and security contexts are up to the gateway responsibility. Alternatively, the API offered by the dedicated frameworks (libraries) may be used. Using a framework the configuration process may be reduced significantly, and the communication protocol selection has an indirect impact only on the interoperability features. In the proposed gateway implementation the Azure interconnection has been obtained using the following \textit{Microsoft.Azure} packages:
 
 \begin{itemize}
       \item \textit{Devices} - Service SDK for Azure IoT Devices
@@ -418,7 +418,7 @@ The encoded JSON messages must be transferred over the network to Azure using se
       \item \textit{Devices.Provisioning.Transport.Mqtt} - Provisioning Device Client MQTT Transport for Azure IoT Devices
 \end{itemize}
 
-Azure and PubSub uses different security mechanism so in the proposed solution establishing security context is realized independently. The \textit{CommunicationContext} is responsible to establish this context as an embedded negotiation phase closely coupled with the establishing interconnection. In this interconnection the following steps are distinguished: 
+Azure and PubSub uses different security mechanism so in the proposed solution establishing security context is realized independently. The \textit{CommunicationContext} is responsible to establish this context as an embedded negotiation phase tightly coupled with establishing interconnection. In this interconnection the following steps are distinguished: 
 
 \begin{itemize}
       \item Gateway and devices registration
@@ -430,11 +430,11 @@ Azure and PubSub uses different security mechanism so in the proposed solution e
                   \item Device/Device Template (Device Capability Model) association - establishing a semantic-context
                   \item Security management - establishing security-context
             \end{itemize}
-      \item Interconnection - exchange of data
+      \item Data exchange
       \item Communication maintenance
 \end{itemize}
 
-\section{Conclusion}\label{section.conclusion}
+\section{Conclusion (TBD)}\label{section.conclusion}
 
 The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). On the other hand the PubSub supports Ethernet, UDP, AMQP, MQTT {Sect. \ref*{ooi-main-technology-features}}. Sets of supported protocol are not overlapping. If the Ethernet or UDP has been selected to build PubSub interconnection the direc interoperability between the Azure and PubSub is impossible because the mentioned protocols are not offered as the native communication services. In this case only indirect interconnection is available.
 
