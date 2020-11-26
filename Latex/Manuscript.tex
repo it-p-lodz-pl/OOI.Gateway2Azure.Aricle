@@ -19,7 +19,7 @@
 
 
 \providecommand{\tightlist} { \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\providecommand{\keywords}[1]{ \small	 \textbf{\textit{Keywords---}} #1 }
+\providecommand{\keywords}[1]{ \small \textbf{\textit{Keywords---}} #1 }
 
 \title{Object-Oriented Internet - Azure Interoperability}
 % \title{Object-Oriented Internet - reactive visualization of asynchronous data using AZURE}
@@ -27,7 +27,8 @@
 
 \author{Mariusz Postół\inst{1}, Piotr Szymczak\inst{1}, Clemens Vasters\inst{2}}
 \headauthor{Postół M, Szymczak P, Vasters C}
-\affiliation{%
+\affiliation
+{
  \inst{1}Lodz University of Technology\\
  Institute of Information Technology\\
  ul. Wólczańska 215, 90-924 Lodz, Poland\\
@@ -36,7 +37,8 @@
  \inst{2}Microsoft\\
  Faculty/Department/Office Name\\
  Postal Address with the zip-code\\
- clemensv@microsoft.com}
+ clemensv@microsoft.com
+}
 
 \keywords{ Azure, Cloud Computing, Object-Oriented Internet, Industrial communication, Industry 4.0, Internet of Things, Machine to Machine Communication, OPC Unified Architecture,
            Reactive Networking (RxNetworking)  }
@@ -181,17 +183,17 @@ Using the session-oriented communication pattern it is difficult or even impossi
 
 The presented proposals in the article are backed by proof of concept reference implementations. For this study, prototyping addresses Microsoft Azure cloud products. There are many reasons for selecting Azure to accomplish cloud-based front-end of Cyber-Physical System (CPS). Azure offers Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) capabilities. As a result, the platform can be used not only as a cloud-based front-end for CPS. By design, the Azure services are compliant with Security Development Lifecycle (SDL) an industry-leading security process. It is also compliant with the new international standard for cloud privacy, namely ISO 27018. Solutions hosted on Azure are scaled up to millions of users without any additional coding. For the development of the CPS front-end, it is essential that Azure provides very efficient storage services usefully for real-time process data archival. Azure provides a vast variety of hybrid connections including but not limited to virtual private networks (VPNs), caches, content delivery networks (CDNs), ExpressRoute, and IoT dedicated services that can be directly used to implement cloud-based front-end for CPS. Because it is also integrated with other Microsoft tools like Office 365, Outlook, and SharePoint using Azure allows preserving investment and exporting process data to the mentioned tools. Azure also offers services supporting analytics and intelligence capabilities for further improving business processes and decision making. It is the only cloud platform that offers Blockchain as a Service (BaaS), Machine Learning, Bots, and Cognitive APIs capabilities.
 
-Azure aids Internet protocols and open standards such as JSON, XML, SOAP, REST, MQTT, AMQP, and HTTP. A software development kits for C\#, Java, PHP, and Ruby are available for custom applications. Azure provides services supporting data exchange over the OPC UA, but they don't support pubsub compliant with the OPC UA Part-14. Connectivity services on the network use JSON-based Data Transfer Object encoded based on schema derived from the solution metadata.
+Azure aids Internet protocols and open standards such as JSON, XML, SOAP, REST, MQTT, AMQP, and HTTP. A software development kits for C\#, Java, PHP, and Ruby are available for custom applications. Azure provides services supporting data exchange over the OPC UA, but they don't support PubSub compliant with the OPC UA Part-14. Connectivity services on the network use JSON-based Data Transfer Object encoded based on schema derived from the solution metadata.
 
 More detailed description of the selected Azure features in context of the application in concern are covered by the Sec.~\ref*{azure-main-technology-features}.
 
-Based on the sessionless and session-oriented communication patterns examination against the IoT requirements \cite{mpostol2020} it could be concluded that the connectionless pattern better suites issues related to the assets mobility and traffic asymmetry that is characteristic for the application domains in concern. Additionally, to promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub spec \cite{RefWorks:doc:5d98837de4b055984c0eecf0}. According to proposed architecture (Fig.~\ref*{figure1.StrategyDomainModel}) to implement the \textit{Embedded\ Gateway} as a composable part of the \textit{Cyber-physical\ Node} a library implementing \textit{Networking} functionality in compliance with mentioned above specification is a starting point for further development. Additionally it must be assumed that the library used to deploy \textit{Embedded\ Gateway} support dependency injection and be capable to compose an external part supporting Azure/pubsub gateway functionality. The composition process must be available without modification of the core code of an existing library. As a result the prototyping is to be limited to implementation of the \textit{Embedded\ Gateway} software part only.
+Based on the sessionless and session-oriented communication patterns examination against the IoT requirements \cite{mpostol2020} it could be concluded that the connectionless pattern better suites issues related to the assets mobility and traffic asymmetry that is characteristic for the application domains in concern. Additionally, to promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub spec \cite{RefWorks:doc:5d98837de4b055984c0eecf0}. According to proposed architecture (Fig.~\ref*{figure1.StrategyDomainModel}) to implement the \textit{Embedded\ Gateway} as a composable part of the \textit{Cyber-physical\ Node} a library implementing \textit{Networking} functionality in compliance with mentioned above specification is a starting point for further development. Additionally it must be assumed that the library used to deploy \textit{Embedded\ Gateway} support dependency injection and be capable to compose an external part supporting Azure/PubSub gateway functionality. The composition process must be available without modification of the core code of an existing library. As a result the prototyping is to be limited to implementation of the \textit{Embedded\ Gateway} software part only.
 
 A library that meets all these requirements has been implemented consistently with the Object-Oriented Internet paradigm \cite{RefWorks:doc:5c66740ae4b081adf5804596} worked out in an open-source project \footnote{ \url{https://github.com/mpostol/OPC-UA-OOI} }. The paper \cite{mpostol2020} covers the description of a reference application program implementation proving that it is possible to design universal architecture targeting reactive interoperability as a consistent part of the Object-Oriented Internet concept compliant with the OPC UA PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} international standard. According to the presented implementation and evaluation, using the dependency injection and late binding, the application program can be seamlessly adapted to the production environment and scales well. This approach also improves flexibility and adaptability of the existing solutions against any modification of the production environment including but not limited to the selected interoperability standard change.
 
 Sect.~\ref*{ooi-main-technology-features} provides a more detailed description of this library and an external part deployment process that is to be used to implement new functionality supporting \textit{Embedded\ Gateway}.
 
-The following subsections cover the description of the current state of technologies with regards to Azure cloud-based IoT enabler and OPC UA pubsub. Sect.~\ref*{azure-main-technology-features} analyzes data presentation user interface, available native communication services, and data/metadata model offered by the Microsoft Azure. The discussion covered by this section is the foundation for selecting services utilized to expose process data and suitable protocol stack to support interconnection. In Sect.~\ref*{ooi-main-technology-features} the discussion focuses on the generic architecture that is to be used as a foundation for further decisions addressing the systematic design of the interoperability of the CPS and cloud-based front-end.
+The following subsections cover the description of the current state of technologies with regards to Azure cloud-based IoT enabler and OPC UA PubSub. Sect.~\ref*{azure-main-technology-features} analyzes data presentation user interface, available native communication services, and data/metadata model offered by the Microsoft Azure. The discussion covered by this section is the foundation for selecting services utilized to expose process data and suitable protocol stack to support interconnection. In Sect.~\ref*{ooi-main-technology-features} the discussion focuses on the generic architecture that is to be used as a foundation for further decisions addressing the systematic design of the interoperability of the CPS and cloud-based front-end.
 
 \subsection{Azure Main Technology Features}\label{azure-main-technology-features}
 
@@ -331,8 +333,8 @@ Piece by piece integration of a cyber-physical system using multi-vendor product
 Many parts in the domain model presented in Fig.~\ref*{figure2.UADataApplicationArchitecture} requires a polymorphic approach to implementation. To promote the polymorphic ready solution the following concepts have been adopted:
 
 \begin{itemize}
-      \item \textbf{separation of concerns} - to allow an independent development of the parts~\cite{RefWorks:doc:5d92609be4b02eb43d372bd1},
-      \item \textbf{dependency injection} - to allow late binding of separately implemented parts~\cite{RefWorks:doc:5d925b77e4b030b4e0596f5d}.
+      \item \textbf{separation of concerns} - to allow an independent development of the parts~\cite{RefWorks:doc:5d92609be4b02eb43d372bd1}
+      \item \textbf{dependency injection} - to allow late binding of separately implemented parts~\cite{RefWorks:doc:5d925b77e4b030b4e0596f5d}
 \end{itemize}
 
 To promote the polymorphic approach, the library has a factory class called \emph{DataManagementSetup} that is a placeholder to gather all injection points used to compose external parts. To be injected the parts must be compliant with an appropriate contract expressed as the following interfaces:
@@ -344,7 +346,9 @@ To promote the polymorphic approach, the library has a factory class called \emp
       \item \emph{IEncodingFactory} - searching a dictionary containing value converters.
 \end{itemize}
 
-It is expected that the functionality implementation expressed by these interfaces is provided as independent external composable parts. The composition is accomplished at run time, and the effective application functionality depends essentially on reusable loosely coupled parts composed applying the dependency injection software engineering and adaptive programming concept. \todo{cite{RefWorks:doc:5d9796cbe4b0f66c52dccf04}}
+It is expected that the functionality implementation expressed by these interfaces is provided as independent external composable parts. The composition is accomplished at run time, and the effective application functionality depends essentially on reusable loosely coupled parts composed applying the dependency injection software engineering and adaptive programming concept. 
+
+\todo{cite{RefWorks:doc:5d9796cbe4b0f66c52dccf04}}
 
 The \textit{DataRepository} represents data holding assets in the \textit{Reactive Application} implementing the \textit{IBindingFactory} interface. It captures functionality responsible for accessing the external process data from \textit{LocalResources}. The \textit{LocalResources} represents an external part that has a very broad usage purpose. For example, it may be any kind of the process data source/destination, i.e. raw data (e.g. PLC internal registers), OPC UA Address Space Management, cloud, file, database, graphical user interface.
 
@@ -374,7 +378,7 @@ Concluding, decoupling of this functionality implementation using an abstract co
 
 \subsection{Implementation Architecture}\label{subsection.GatewayImplementationArchitecture}
 
-A generic domain model presenting relationship between the Azure \textit{Cloud-based\ Front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure1.StrategyDomainModel}. It is proposed to implement the \textit{Cyber-physical\ node} by adopting the \textit{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref*{figure2.UADataApplicationArchitecture}) described in the Sect. \ref*{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref*{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref*{figure3.ImplementationDomainModel}. In the proposed approach the \textit{Embedded Gateway} is derived from the \textit{Consumer} role embedded as as a composable part aggregated by the \textit{Reactive Application}.
+A generic domain model presenting relationship between the Azure \textit{Cloud-based\ Front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure1.StrategyDomainModel}. It is proposed to implement the \textit{Cyber-physical\ node} by adopting the \textit{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref*{figure2.UADataApplicationArchitecture}) described in the Sect. \ref*{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref*{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref*{figure3.ImplementationDomainModel}. In the proposed approach the \textit{Embedded Gateway} is derived from the \textit{Consumer} role implemented as as a composable part aggregated by the \textit{Reactive Application}.
 
 \begin{figure}
       \centering
@@ -382,11 +386,15 @@ A generic domain model presenting relationship between the Azure \textit{Cloud-b
       \caption{Architecture Domain Model}\label{figure3.ImplementationDomainModel}
 \end{figure}
 
-In the final deployment architecture (Fig. \ref*{figure4.ImplementationArchitecture}) the \textit{Consumer} role has been realized by the \textit{PartDataManagementSetup} that is derived from \textit{DataManagementSetup} embedded in the library. \textit{Networking} was removed from this diagram for the sake of simplicity. Invoking \textit{PartDataManagementSetup} is the first step for bootstrapping the \textit{Consumer} role functionality. This class initializes all properties, which are injection points of all parts composing this role. It extents functionality of the \textit{DataManagementSetup} based on the following associated classes:
+\hyphenation{PartData-Mana-gement-Setup}
+
+In the final deployment architecture (Fig. \ref*{figure4.ImplementationArchitecture}) the \textit{Consumer} role has been realized by the \textit{PartDataManagementSetup} that is derived from \textit{DataManagementSetup} provided by the library. \textit{Networking} was removed from this diagram for the sake of simplicity. Instantiating \textit{PartDataManagementSetup} is the first step for bootstrapping process of the \textit{Consumer} role functionality. This class initializes all properties, which are injection points of all parts composing this role. It extents functionality of the \textit{DataManagementSetup} based on the following associated classes:
+
+\todo{Overfull}
 
 \begin{figure}
       \centering
-      \includegraphics[width=\textwidth]{../.Media/ImplementationArchitecture.png}
+      \includegraphics[width=10cm]{../.Media/ImplementationArchitecture.png}
       \caption{Implementation Architecture}\label{figure4.ImplementationArchitecture}
 \end{figure}
 
@@ -402,11 +410,11 @@ The \textit{PartBindingFactory} implements the \textit{IBindingFactory} to gathe
 
 \textit{IEncodingFactory} and \textit{IMessageHandlerFactory} interfaces (Fig. \ref*{figure2.UADataApplicationArchitecture}) have been implemented in independent libraries and ae not considered for any modifications to deploy \textit{Embedded Gateway} functionality. The current implementation of the mentioned interfaces is localized at run time as services using an instance of the \textit{IServiceLocator}\footnote{ \url{https://www.nuget.org/packages/CommonServiceLocator} }. In this example, it is assumed that \textit{IServiceLocator} is implemented to resolve references to any external services. Both interfaces are used to manage interconnection of the node with the \textit{Cyber-physical Network}.
 
-The Azure interconnection is realized using the \textit{CommunicationContext}. It implements message encoder and establishes the out-of-band communication stack. 
+The Azure interconnection is realized using the \textit{CommunicationContext}. It implements message encoder and establishes the out-of-band communication stack.
 
-The recovered data from the \textit{Message} is obtained from the \textit{PartBindingFactory} using the \textit{IDTOProvider} that defines a contract used to pull the Data Transfer Object (DTO) created from a selected subscription by the \textit{PartBindingFactory}. The transfer process requires data conversion from source to destination encoding, i.e. replacing bitstreams used by the CPS by equivalent ones for the cloud-based services. The Azure offers a vast variety of built-in types ready to be used in common cases, but not necessarily there are equivalent counterparts in use by the CPS. The Azure uses JSON based Data Transfer Object encoding and schema defined based on the solution metadata. The pubsub uses JSON and binary Data Transfer Object encoding. In any case the data recovered from the Message pulled from a subscription is stored locally using the object model based on standard .NET types. \textit{PartBindingFactory} maps selected object graph onto the JSON message required by the cloud services.
+The recovered data from the \textit{Message} is obtained from the \textit{PartBindingFactory} using the \textit{IDTOProvider} that defines a contract used to pull the Data Transfer Object (DTO) created from a selected subscription by the \textit{PartBindingFactory}. The transfer process requires data conversion from source to destination encoding, i.e. replacing bitstreams used by the CPS by equivalent ones for the cloud-based services. The Azure offers a vast variety of built-in types ready to be used in common cases, but not necessarily there are equivalent counterparts in use by the CPS. The Azure uses JSON based Data Transfer Object encoding and schema defined based on the solution metadata. The PubSub uses JSON and binary Data Transfer Object encodings. In any case the data recovered from the Message pulled from a subscription is stored locally using the object model based on standard .NET types. \textit{PartBindingFactory} maps selected object graph onto the JSON message required by the cloud services.
 
-The encoded JSON messages must be transferred over the network to Azure using the selected protocol stack. The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). All the mentioned protocols are standard ones. Consequently, it is possible to apply any available implementation compliant with an appropriate specification to achieve connectivity. In this case, all parameters required to establish semantic and security contexts are up to the gateway responsibility. Alternatively, the API offered by the dedicated frameworks (libraries) may be used. Using a framework the configuration process may be reduced significantly, and the communication protocol selection has an indirect impact only on the interoperability features. In the proposed gateway implementation the Azure interconnection has been obtained using the following \textit{Microsoft.Azure} packages:
+The encoded JSON messages must be transferred over the network to Azure using the selected protocol stack. The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). All the mentioned protocols are standard ones. Consequently, it is possible to apply any available implementation compliant with an appropriate specification to achieve connectivity. In this case, all parameters required to establish semantic and security contexts are up to the gateway responsibility. Alternatively, the API offered by the dedicated frameworks (libraries) may be used. Using a framework the configuration process may be reduced significantly, and the communication protocol selection has only an indirect impact on the interoperability features. In the proposed gateway implementation the Azure interconnection has been obtained using the following \textit{Microsoft.Azure} packages:
 
 \begin{itemize}
       \item \textit{Devices} - Service SDK for Azure IoT Devices
@@ -418,7 +426,11 @@ The encoded JSON messages must be transferred over the network to Azure using th
       \item \textit{Devices.Provisioning.Transport.Mqtt} - Provisioning Device Client MQTT Transport for Azure IoT Devices
 \end{itemize}
 
-Azure and PubSub uses different security mechanism so in the proposed solution establishing security context is realized independently. The \textit{CommunicationContext} is responsible to establish this context as an embedded negotiation phase tightly coupled with establishing interconnection. In this interconnection the following steps are distinguished: 
+Azure and PubSub uses different security mechanism so in the proposed solution establishing security context is realized independently. The \textit{CommunicationContext} is responsible to establish this context as an embedded negotiation phase tightly coupled with establishing interconnection.
+
+\todo{consider removing}
+
+In this interconnection the following steps are distinguished:
 
 \begin{itemize}
       \item Gateway and devices registration
@@ -438,13 +450,13 @@ Azure and PubSub uses different security mechanism so in the proposed solution e
 
 The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). On the other hand the PubSub supports Ethernet, UDP, AMQP, MQTT {Sect. \ref*{ooi-main-technology-features}}. Sets of supported protocol are not overlapping. If the Ethernet or UDP has been selected to build PubSub interconnection the direc interoperability between the Azure and PubSub is impossible because the mentioned protocols are not offered as the native communication services. In this case only indirect interconnection is available.
 
-As it was pointed out in the Sect. \ref*{subs.architecture} using OPC UA PubSub the aggregation of nodes by the network is loosely coupled, i.e. nodes can be added and removed from the network dynamically, and nodes may represent mobile data holding assets. 
+As it was pointed out in the Sect. \ref*{subs.architecture} using OPC UA PubSub the aggregation of nodes by the network is loosely coupled, i.e. nodes can be added and removed from the network dynamically, and nodes may represent mobile data holding assets.
 
 It is worth stressing that based on this approach only dedicated functionality related to communication with the cloud must be implemented. This way, the reusability of the library is promoted.
 
 The OPC UA PubSub to Azure gateway (\textit{AzureGateway}) implementation has been just published on GitHub as the open-source (MIT licensed) as a part of the more general concept of the Object-Oriented Internet reactive networking. It is proof of the concept that
 
-The propose architecture enable possibility to interconnect the cloud-based services with the Cyber-physical network. This solution is in contrast to to the architecture presented in OPC UA Part 1 and Part 14. 
+The propose architecture enable possibility to interconnect the cloud-based services with the Cyber-physical network. This solution is in contrast to to the architecture presented in OPC UA Part 1 and Part 14.
 
 \begin{enumerate}
       \item OPC UA PubSub can be implemented as a powerful standalone package - no C/S dependency
