@@ -69,6 +69,7 @@ A typical \textbf{human-centric} approach is a web-service supporting, for examp
 From the M2M communication concept, a broader concept of a smart factory can be derived. In this concept, the mentioned robots are only executive assets of an integrated supervisory control system responsible for macro optimization of an industrial process composed into one whole. Deployment of the smart factory concept requires a hybrid solution and interconnection of the mentioned above heterogeneous environments. This approach is called the fourth industrial revolution and coined as Industry 4.0. It is worth stressing that machines - or more general assets - interconnection is not enough, and additionally, assets interoperability has to be expected for the deployment of this concept. In this case, multi-vendor integration makes communication standardization especially important, namely it is required that the payload of the message is standardized to be factored on the data  gathering site and consumed on the ultimate destination site.
 
 Highly-distributed solutions used to control real-time process aggregating islands of automation (e.g.~virtual power plants producing renewable energy) additionally must leverage public communication infrastructure, namely the Internet. Internet is a demanding environment for highly distributed process control applications designed atop the M2M communication paradigm because
+
 \begin{itemize}
       \item it is a globally shareable environment and can be also used by malicious users
       \item it offers only non-deterministic communication making integration of islands of automation designed against the real-time requirements a difficult task
@@ -96,7 +97,7 @@ Deployment of the hybrid solution providing interoperability of the \textbf{mach
 
 By design, the direct approach requires that the cloud has to be compliant with the interoperability standard the CPS is built upon - it becomes a consistent part of the CPS. Data models, roles, and responsibility differences of both solutions make this approach impractical or even imposable to be applied in typical cases. A more detailed description is covered by the Sect.~\ref*{cloud-to-sensors-field-level-connectivity}.
 
-This article addresses further research on the integration of the CPS in the context of new emerging disciplines, i.e.~Industry 4.0 (I4.0) and the Internet of Things (IoT). The new architecture is proposed for integration of the multi-vendor \textbf{machine-centric} CPS designed atop of M2M reactive communication and emerging cloud computing as a \textbf{human-centric} front-end. To support the multi-vendor environment OPC Unified Architecture interoperability standard has been selected. The proposals are backed by proof of concept reference implementations. Prototyping addresses Microsoft Azure Cloud as an example. The prototyping outcome has been just published on GitHub as the open-source (MIT licensed). The proposed solutions have been harmonized with the more general concept called the Object-Oriented Internet.
+This article addresses further research on the integration of the CPS in the context of new emerging disciplines, i.e.~Industry 4.0 (I4.0) and the Internet of Things (IoT). The new architecture is proposed for integration of the multi-vendor \textbf{machine-centric} CPS designed atop of M2M reactive communication and emerging cloud computing as a \textbf{human-centric} front-end. To support the multi-vendor environment OPC Unified Architecture \cite{LiteratureSurveyOnOpenPlatformCommunications} interoperability standard has been selected. The proposals are backed by proof of concept reference implementations. Prototyping addresses Microsoft Azure Cloud as an example. The prototyping outcome has been just published on GitHub as the open-source (MIT licensed). The proposed solutions have been harmonized with the more general concept called the Object-Oriented Internet.
 
 The main goal of this article is to provide proof that:
 
@@ -159,10 +160,10 @@ The \textbf{field level gateway} is also build atop of the middleware concept. T
 \begin{figure}
       \centering
       \includegraphics[width=8cm]{../.Media/StrategyDomainModel.png}
-      \caption{Concept Domain Model}\label{figure1.StrategyDomainModel}
+      \caption{Domain model of a generic interconnection concept}\label{figure1.StrategyDomainModel}
 \end{figure}
 
-Unlike the above described solutions, the \textbf{embedded gateway} is not derived from the middleware concept. The domain model for this archetype is presented in the Fig.~\ref*{figure1.StrategyDomainModel}. Promoting separation of concern design principle, the gateway functionality should be implemented as a self-contained software part embedded in the \textit{Networking} service of the \textit{Cyber-physical\ node}. Main functionality of this component is to transfer selected data between \textit{Cyber-physical\ network} using \textit{Networking} services of an existing \textit{Cyber-physical\ node} and \textit{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
+Unlike the above described solutions, the \textbf{embedded gateway} is not derived from the middleware concept. A generic domain model for this interconnection is presented in the Fig.~\ref*{figure1.StrategyDomainModel}. Promoting separation of concern design principle, the gateway functionality should be implemented as a self-contained software part embedded in the \textit{Networking} service of the \textit{Cyber-physical\ node}. Main functionality of this component is to transfer selected data between \textit{Cyber-physical\ network} using \textit{Networking} services of an existing \textit{Cyber-physical\ node} and \textit{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
 
 The \textbf{embedded gateway} archetype relaxes most of the issues described above: \textit{Cyber-physical\ network} real-time behavior, data encoding incompatibility, security-context differences to name only a few. The main goal of this article is to provide proof that the \textbf{embedded gateway} archetype implementation is possible based on a generic architecture that can be used as a foundation for the integration of the heterogenous environments in concern. The proposed implementation is designed for selected interoperability standard and cloud product.
 
@@ -182,7 +183,7 @@ Azure aids Internet protocols and open standards such as JSON, XML, SOAP, REST, 
 
 More detailed description of the selected Azure features in context of the application in concern are covered by the Sec.~\ref*{azure-main-technology-features}.
 
-Based on the sessionless and session-oriented communication patterns examination against the IoT requirements \cite{mpostol2020} it could be concluded that the connectionless pattern better suites issues related to the assets mobility and traffic asymmetry that is characteristic for the application domains in concern. Additionally, to promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} specification. According to proposed architecture (Fig.~\ref*{figure1.StrategyDomainModel}) to implement the \textit{Embedded\ Gateway} as a composable part of the \textit{Cyber-physical\ Node} a library implementing \textit{Networking} functionality in compliance with mentioned above specification is a starting point for further development. Additionally, it must be assumed that the library used to deploy \textit{Embedded\ Gateway} support dependency injection and be capable to compose an external part supporting Azure/PubSub gateway functionality. The composition process must be available without modification of the core code of an existing library. As a result, the prototyping is to be limited to implementation of the \textit{Embedded\ Gateway} software part only.
+Based on the sessionless and session-oriented communication patterns examination against the IoT requirements \cite{mpostol2020} it could be concluded that the connectionless pattern better suites issues related to the assets mobility and traffic asymmetry that is characteristic for the application domains in concern. Additionally, to promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} specification. According to proposed generic architecture (Fig.~\ref*{figure1.StrategyDomainModel}) to implement the \textit{Embedded\ Gateway} as a composable part of the \textit{Cyber-physical\ Node} a library implementing \textit{Networking} functionality in compliance with mentioned above specification is a starting point for further development. Additionally, it must be assumed that the library used to deploy \textit{Embedded\ Gateway} support dependency injection and be capable to compose an external part supporting Azure/PubSub gateway functionality. The composition process must be available without modification of the core code of an existing library. As a result, the prototyping is to be limited to implementation of the \textit{Embedded\ Gateway} software part only.
 
 A library that meets all these requirements has been implemented consistently with the Object-Oriented Internet paradigm \cite{RefWorks:doc:5c66740ae4b081adf5804596} worked out in an open-source project \footnote{ \url{https://github.com/mpostol/OPC-UA-OOI} }. The paper \cite{mpostol2020} covers the description of a reference application program implementation proving that it is possible to design universal architecture targeting reactive interoperability as a consistent part of the Object-Oriented Internet concept compliant with the OPC UA PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} international standard. According to the presented implementation and evaluation, using the dependency injection and late binding, the application program can be seamlessly adapted to the production environment and scales well. This approach also improves flexibility and adaptability of the existing solutions against any modification of the production environment including but not limited to the selected interoperability standard change.
 
@@ -375,7 +376,7 @@ Concluding, decoupling of this functionality implementation using an abstract co
 
 \subsection{Implementation Architecture}\label{subsection.GatewayImplementationArchitecture}
 
-A generic domain model presenting relationship between the Azure \textit{Cloud-based\ Front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure1.StrategyDomainModel}. It is proposed to implement the \textit{Cyber-physical\ node} by adopting the \textit{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref*{figure2.UADataApplicationArchitecture}) described in the Sect. \ref*{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref*{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref*{figure3.ImplementationDomainModel}. In the proposed approach the \textit{Embedded Gateway} is derived from the \textit{Consumer} role implemented as as a composable part aggregated by the \textit{Reactive Application}.
+A generic domain model presenting interconnection architecture between the Azure \textit{Cloud-based\ Front-end} and \textit{Cyber-physical\ node} attached to the \textit{Cyber-physical\ network} is presented in Fig. \ref*{figure1.StrategyDomainModel}. It is proposed to implement the \textit{Cyber-physical\ node} by adopting the \textit{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref*{figure2.UADataApplicationArchitecture}) described in the Sect. \ref*{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref*{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref*{figure3.ImplementationDomainModel}. In the proposed approach the \textit{Embedded Gateway} is derived from the \textit{Consumer} role implemented as as a composable part aggregated by the \textit{Reactive Application}.
 
 \begin{figure}
       \centering
@@ -425,72 +426,29 @@ The encoded JSON messages must be transferred over the network to Azure using th
 
 Azure and PubSub uses different security mechanism so in the proposed solution establishing security-context is realized independently. The \textit{CommunicationContext} is responsible to establish this context as an embedded negotiation phase tightly coupled with establishing interconnection.
 
-\todo{consider removing}
+\section{Conclusion}\label{section.conclusion}
 
-In this interconnection the following steps are distinguished:
+Nowadays, the macro optimization of the industrial processes requires an integration of a vast variety of new distributed applications provided by the Information and Communication Technology over and over. It requires further research on the integration of \textbf{machine-centric} Cyber-Physical Systems(CPS) with \textbf{human-centric} front-end in the context of new emerging disciplines, i.e. Industry 4.0 (I4.0) and the Internet of Things (IoT) (Sect. \ref*{introduction}). 
 
-\begin{itemize}
-      \item Gateway and devices registration
-      \item Authentication
-      \item Device/Service association
-      \item Device/Application association
-      \item Establishing session
-            \begin{itemize}
-                  \item Device/Device Template (Device Capability Model) association - establishing a semantic-context
-                  \item Security management - establishing security-context
-            \end{itemize}
-      \item Data exchange
-      \item Communication maintenance
-\end{itemize}
+Cyber-Physical Systems (CPS) are composed using the multi-vendor components interconnected atop of the Machine To Machine (M2M) communication. In many applications, the dynamic nature of the CPS must be considered. Dynamic nature means that interconnected assets may be added/removed from the network at any time. Typically, by design, CPS must fulfill the real-time and assets mobility requirements.
 
-\section{Conclusion (TBD)}\label{section.conclusion}
+Highly-distributed solutions used to control/monitor a set of geographically spread islands of automation (e.g.~virtual power plants producing renewable energy) additionally must leverage public communication infrastructure, namely the Internet. If islands of automation must be controlled over the Internet, the cloud computing concept may be recognized as a reasonable answer. Following this concept, the cloud-based supervisory control functionality is applied as a set of services employing abstraction and virtualization - two main pillars of the cloud computing paradigm. In the cloud computing concept, virtualization is recognized as the possibility to share the services by many users, and abstraction hides implementation details.
 
-In this case, multi-vendor integration makes communication standardization especially important, namely it is required that the payload of the message is standardized to be factored on the data  gathering site and consumed on the ultimate destination site.
+This paper has presented a new generic architecture applicable for the integration of the \textbf{machine-centric} CPS and emerging cloud computing as a \textbf{human-centric} front-end.
 
-If we must bother with the network traffic propagation asymmetry or mobility of the asset network attachment-points the reactive relationship could relax the problems encountered while the interactive approach is applied.
+If we must bother with the network traffic propagation asymmetry or mobility of the asset network attachment-points the reactive relationship\cite{mpostol2020} could relax the problems encountered while the interactive approach is applied. The real-time multi-vendor environment makes communication standardization especially important. To support this environment OPC Unified Architecture \cite{RefWorks:doc:5ac86c98e4b009947bbb874c} interoperability standard has been selected. As it was pointed out in the Sect. \ref*{subs.architecture} using OPC UA PubSub \cite{RefWorks:doc:5d98837de4b055984c0eecf0} the aggregation of nodes by the network is loosely coupled, i.e. nodes can be added and removed from the network dynamically, and nodes may represent mobile data holding assets. 
 
-By design, the direct approach requires that the cloud has to be compliant with the interoperability standard the CPS is built upon - it becomes a consistent part of the CPS. Data models, roles, and responsibility differences of both solutions make this approach impractical or even imposable to be applied in typical cases.
+From the analysis covered by the Sect. \ref*{subs.architecture} it is concluded that the \textbf{embedded gateway} archetype best suits all requirements described above. It relaxes most of the issues related to \textbf{direct interconnection} and solutions inferred from the middleware concept, i.e. real-time behavior, data encoding incompatibility, security-context differences, to name only a few. The generic domain model for the proposed interconnection archetype is presented in the Fig.~\ref*{figure1.StrategyDomainModel}. We have highlighted that to promote the separation of concern design principle, the gateway functionality should be implemented as a self-contained software part embedded in the \textit{Networking} service of the \textit{Cyber-physical\ node}. Main functionality of this component is to transfer selected data between \textit{Cyber-physical\ network} using \textit{Networking} services of an existing \textit{Cyber-physical\ node} and \textit{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
 
-The main goal of this article is to provide proof that:
+To promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub (Sect. \ref*{subs.architecture}) and support the \emph{Reactive Interoperability} (Sect. \ref*{introduction}) concept. We proposed to use an open-source library named \textit{UAOOI.Networking} (\textit{Networking} for short) (Fig.~\ref*{figure2.UADataApplicationArchitecture}) for this purpose. It is worth stressing that based on this approach only dedicated functionality related to the communication with the cloud must be implemented. 
 
-\begin{enumerate}
-      \item  reactive interoperability M2M communication based on the OPC UA standard can be implemented as a powerful standalone library without dependency on the Client/Server session-oriented archetype
-      \item Azure interoperability can be implemented as an external part employing out-of-band communication without dependency on the OPC UA implementation
-      \item the proposed generic architecture allows that the gateway functionality is implemented as composable part at run-time part - no programming required
-\end{enumerate}
+We derived the final model presented in Fig. \ref*{figure3.ImplementationDomainModel} by merging selected entities from the library (Fig.~\ref*{figure2.UADataApplicationArchitecture}) into the generic interconnection domain model (Fig. \ref*{figure1.StrategyDomainModel}). In the proposed approach the \textit{Embedded Gateway} is derived from the \textit{Consumer} role implemented as as a composable part aggregated by the \textit{Reactive Application}.
 
-The possibility to establish a common semantic-context in the multi-vendor environment makes communication standardization especially important.
+The proposals are backed by proof of concept reference implementations. Prototyping addresses Microsoft Azure Cloud as an example. The prototyping outcome has been just published on GitHub as the open-source (MIT licensed). The proposed solutions have been harmonized with the more general concept called the Object-Oriented Internet.
 
-Unlike the above described solutions, the \textbf{embedded gateway} is not derived from the middleware concept.
+The described results proves that the \textbf{embedded gateway} archetype implementation is possible based on existing standalone framework supporting reactive interoperability atop of the M2M communication compliant with the OPC UA PubSub standard. It is worth stressing that there are no dependency on the Client/Server session-oriented relationship. It is in contrast to architecture described in the OPC UA Part 1 specification where the publisher role is tightly coupled with the \textbf{Address Space} embedded component of the OPC UA Server. In the proposed solution the Azure interoperability is obtained by implementation only a dedicated part employing out-of-band communication without dependency on the OPC UA implementation. It is worth stressing that the gateway functionality is implemented as composable without programming skills part. Because the part is composed at run-time it makes possible to modify its functionality later after releasing the library or deploying the application program in the production environment.
 
-The Azure supports the HTTP, AMQP, MQTT (Sec. \ref*{azure-main-technology-features}). On the other hand the PubSub supports Ethernet, UDP, AMQP, MQTT {Sect. \ref*{ooi-main-technology-features}}. Sets of supported protocol are not overlapping. If the Ethernet or UDP has been selected to build PubSub interconnection the direc interoperability between the Azure and PubSub is impossible because the mentioned protocols are not offered as the native communication services. In this case only indirect interconnection is available.
-
-As it was pointed out in the Sect. \ref*{subs.architecture} using OPC UA PubSub the aggregation of nodes by the network is loosely coupled, i.e. nodes can be added and removed from the network dynamically, and nodes may represent mobile data holding assets.
-
-Based on the sessionless and session-oriented communication patterns examination against the IoT requirements \cite{mpostol2020} it could be concluded that the connectionless pattern better suites issues related to the assets mobility and traffic asymmetry that is characteristic for the application domains in concern.
-
-It is worth stressing that based on this approach only dedicated functionality related to communication with the cloud must be implemented. This way, the reusability of the library is promoted.
-
-The OPC UA PubSub to Azure gateway (\textit{AzureGateway}) implementation has been just published on GitHub as the open-source (MIT licensed) as a part of the more general concept of the Object-Oriented Internet reactive networking. It is proof of the concept that
-
-The propose architecture enable possibility to interconnect the cloud-based services with the Cyber-physical network. This solution is in contrast to to the architecture presented in OPC UA Part 1 and Part 14.
-
-Concluding, decoupling of this functionality implementation using an abstract contract and late binding mechanism allows:
-
-\begin{itemize}
-      \item implementation of practically any configuration management scenario,
-      \item modification of this functionality later after releasing the library or deploying the application program in the production environment.
-\end{itemize}
-
-
-From the above discussion, we can learn that the main design decisions must concern standardization and flexibility. Standardization needs the selection of an international interoperability specification to make the library ready to be adopted by the multi-vendor environment. Flexibility requires an architecture that promotes the polymorphic independent implementation of essential functions.
-
-
-\begin{enumerate}
-      \item OPC UA PubSub can be implemented as a powerful standalone package - no C/S dependency
-      \item Azure interoperability can be implemented as an out-of-band communication (MQTT, AMQP, HTTP) - no PubSub dependency
-      \item Process data functionality can be composable at run-time - no programming required
-\end{enumerate}
+Concluding, it is proof of the concept that applying the proposed architecture and implementation scenario it is possible to interconnect selected cloud services (e.g. textit{Azure\  Industrial\ IoT}) with the Cyber-physical Network interconnected as one whole atop of the OPC UA PubSub. It is in contrast to interconnecting cloud services with the selected \emph{ Address\ Space} exposed by a selected OPC UA server limiting the PubSub role to data export out of the OPC UA ecosystem functionality.
 
 \bibliography{Manuscript.bib}
 \bibliographystyle{aiaa-jacs.bst}
