@@ -48,7 +48,11 @@
 \maketitle
 
 \begin{abstract}
-      TBD
+
+      Optimization of the industrial processes requires further research on the integration of machine-centric systems with human-centric cloud-based services in the context of new emerging disciplines, namely Industry 4.0 and Internet of Things. This research aims at working out a new generic architecture and deployment scenario applicable to this integration. To deal with the network traffic propagation asymmetry or assets mobility the reactive interoperability relationship of the interconnected nodes is proposed. Described solution based on the OPC Unified Architecture international standard relaxes issues related to the real-time multi-vendor environment. The discussion addressing the generic architecture concludes that the embedded gateway archetype best suits all requirements. To promote separation of concerns and reusability, the implementation of the embedded gateway archetype has been implemented as a composable part of an existing OPC UA PubSub framework.
+
+      The proposals are backed by proof of concept reference implementations conforming the possibility to interconnect selected cloud services with the cyber-physical system interconnected as one whole atop of the OPC UA by applying the proposed architecture and deployment scenario. It is in contrast to interconnecting cloud services with a selected OPC UA server limiting the PubSub role to data export only.
+
 \end{abstract}
 
 \maketitle
@@ -338,7 +342,7 @@ To promote the polymorphic approach, the library has a factory class called \emp
 \begin{itemize}
       \item \emph{IBindingFactory} - bidirectional data exchange with the underlying process
       \item \emph{IConfigurationDataFactory} - the configuration data access
-      \item \emph{IMessageHandlerFactory} - \emph{Message} entities pushing to/pulling from the wire 
+      \item \emph{IMessageHandlerFactory} - \emph{Message} entities pushing to/pulling from the wire
       \item \emph{IEncodingFactory} - searching a dictionary containing value converters
 \end{itemize}
 
@@ -428,7 +432,7 @@ Azure and PubSub uses different security mechanism so in the proposed solution e
 
 \section{Conclusion}\label{section.conclusion}
 
-Nowadays, the macro optimization of the industrial processes requires an integration of a vast variety of distributed applications provided by the Information and Communication Technology. It requires further research on the integration of \textbf{machine-centric} Cyber-Physical Systems (CPS) with \textbf{human-centric} front-end in the context of new emerging disciplines, i.e. Industry 4.0 (I4.0) and the Internet of Things (IoT) (Sect. \ref*{introduction}). 
+Nowadays, the macro optimization of the industrial processes requires an integration of a vast variety of distributed applications provided by the Information and Communication Technology. It requires further research on the integration of \textbf{machine-centric} Cyber-Physical Systems (CPS) with \textbf{human-centric} front-end in the context of new emerging disciplines, i.e. Industry 4.0 and the Internet of Things (Sect. \ref*{introduction}).
 
 CPS is composed using the multi-vendor components (data holding assets) interconnected atop of the Machine To Machine (M2M) communication. In many applications, the dynamic nature of the CPS must be considered. Dynamic nature means that interconnected assets may be added/removed from the network at any time. By design, typically CPS must fulfill the real-time and mobility of the assets requirements.
 
@@ -440,7 +444,7 @@ If we must bother with the network traffic propagation asymmetry or mobility of 
 
 From the analysis covered by the Sect. \ref*{subs.architecture} it is concluded that the \textbf{embedded gateway} archetype best suits all requirements described above. It relaxes most of the issues related to \textbf{direct interconnection} and solutions inferred from the middleware concept, i.e. \textbf{edge device} - remote cloud agent and \textbf{field level gateway} - a dedicated custom agent. The generic domain model for the proposed interconnection archetype is presented in the Fig.~\ref*{figure1.StrategyDomainModel}. We have highlighted that to promote the separation of concern design principle, the gateway functionality should be implemented as a self-contained dedicated software part embedded in the core \textit{Networking} service of the \textit{Cyber-physical\ node}. Main functionality of this component is to transfer process data between \textit{Cyber-physical\ network} using \textit{Networking} services of an existing \textit{Cyber-physical\ node} and \textit{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
 
-To promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub (Sect. \ref*{subs.architecture}) and support the \emph{Reactive Interoperability} (Sect. \ref*{introduction}) concept. We proposed to use an open-source library named \emph{UAOOI.Networking} (\emph{Networking} for short) (Fig.~\ref*{figure2.UADataApplicationArchitecture}) for this purpose. It is worth stressing that based on this approach only dedicated functionality related to the communication with the cloud must be implemented. 
+To promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub (Sect. \ref*{subs.architecture}) and support the \emph{Reactive Interoperability} (Sect. \ref*{introduction}) concept. We proposed to use an open-source library named \emph{UAOOI.Networking} (\emph{Networking} for short) (Fig.~\ref*{figure2.UADataApplicationArchitecture}) for this purpose. It is worth stressing that based on this approach only dedicated functionality related to the communication with the cloud must be implemented.
 
 We derived the final model presented in Fig. \ref*{figure4.ImplementationArchitecture} by merging selected entities from the \emph{Networking} library (Fig.~\ref*{figure2.UADataApplicationArchitecture}) into the generic interconnection domain model (Fig. \ref*{figure1.StrategyDomainModel}). In the proposed approach the \textit{Embedded Gateway} is derived from the \textit{Consumer} role implemented as as a composable part aggregated by the \textit{Reactive Application}.
 
