@@ -124,7 +124,7 @@ As it was explained in Sect.~\ref*{introduction}, to follow the Industry 4.0 con
       \item \textbf{human-centric} cloud-based front-end
 \end{enumerate}
 
-Interconnection of the reactive \textbf{machine - centric} and interactive \textbf{human - centric} environments can be implemented by applying one of the following scenarios:
+Interconnection of the reactive \textbf{machine-centric} and interactive \textbf{human-centric} environments can be implemented by applying one of the following scenarios:
 
 \begin{itemize}
       \item \textbf{direct interconnection} (tightly coupled scenario) - cloud-based dedicated communication services are engaged to attach it to the CPS making up a consistent M2M communication network using a common protocol stack
@@ -138,7 +138,7 @@ In the solution in concern, the interconnection of assets is not enough hence th
       \item security-context
 \end{itemize}
 
-The possibility to establish a common semantic-context in the multi-vendor environment makes communication standardization especially important. In this case, it is required that the encoding of the messages payload exchanged over the network (Data Transfer Object - TDO) is standardized so that the payload can be factored on the data-gathering site and consumed on the ultimate destination data processing sites. Security between the data origin and ultimate data destination refers to the protection of messages (security-context) against malicious users. It is required that communicating parties are using the same cyber-security measures.
+The possibility to establish a common semantic-context in the multi-vendor environment makes communication standardization especially important. In this case, it is required that the encoding of the messages payload exchanged over the network (Data Transfer Object - DTO) is standardized so that the payload can be factored on the data-gathering site and consumed on the ultimate destination data processing sites. Security between the data origin and ultimate data destination refers to the protection of messages (security-context) against malicious users. It is required that communicating parties are using the same cyber-security measures.
 
 The decision to follow the \textbf{direct interconnection} scenario must be derived from an analysis of the capabilities of available services in concern. However, for the development strategy of this type of solutions this analysis can be done partially taking into account two features that can be considered invariable:
 
@@ -147,7 +147,7 @@ The decision to follow the \textbf{direct interconnection} scenario must be deri
       \item by design the M2M communication is usually constrained by the real-time requirements
 \end{itemize}
 
-The virtualization of cloud services means that they must be very flexible to handle the attachment of new assets proactively (acting in advance) at run time. As a result, by design, the cloud services must be repressible to register and authenticate devices exposing endpoints in the public network to allows the device to access a provisioning cloud service. It requires that a session over the Internet has to be established by the data holding asset at a preparation step.
+The virtualization of cloud services means that they must be very flexible to handle the attachment of new assets proactively (acting in advance) at run time. As a result, by design, the cloud services must be responsible to register and authenticate devices by exposing endpoints in the public network to allow the device to access a provisioning cloud service. It requires that a session over the Internet has to be established by the data holding asset at a preparation step.
 
 To meet the requirements of real-time distributed control the CPS may use protocols applicable only to local computer networks (e.g.~multicast IP, Ethernet, TSN, etc.). Because the cloud services support only protocols handling interconnection over the Internet the interaction with the cloud requires remote agents, i.e.~agents attached locally to the M2M network and implemented by applying one of the following archetypes:
 
