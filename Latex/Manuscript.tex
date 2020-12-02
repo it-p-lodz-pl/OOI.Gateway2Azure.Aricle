@@ -205,10 +205,10 @@ The \textit{IoT\ Central} service provides a process data visualization
 user interface. To make this interface meaningful metadata called device
 template is used to describe devices.
 
-Following the assumption that interconnection between the CPS and cloud services is designed based on the gateway concept, a middleware must be considered as a coupler. It must be interconnected with the CPS using an in-band protocol adhering to communications requirements (i.e.~protocol profile, data encoding, time relationships, etc.) governing communication of the parts making it up. At the same time, it must support back-and-forth data transfer to the cloud using out-of-band native for the cloud services. The transfer process requires data conversion from source to destination encoding. The \textit{IoT\ Hub} is a service hosted in the cloud that supports \textit{IoT\ Central} providing a robust messaging solution - it acts as a central message hub for bi-directional communication. This communication is transparent, i.e.~it is not data types aware allowing
-any devices to exchange any kind of data. This service is responsible to manage the devices' identity and it offers the following protocol stacks: AMQP, MQTT, HTTPS.
+Following the assumption that interconnection between the CPS and cloud services is designed based on the gateway concept, a middleware must be considered as a coupler. It must be interconnected with the CPS using an in-band protocol adhering to communications requirements (i.e.~protocol profile, data encoding, time relationships, etc.) governing communication of the parts making it up. At the same time, it must support back-and-forth data transfer to the cloud using out-of-band native for the cloud services. The transfer process requires data conversion from source to destination encoding. The \textit{IoT\ Hub} is a service hosted in the cloud that supports \textit{IoT\ Central} providing a robust messaging solution - it acts as a central message hub for bi-directional communication [TODO: Reference]. This communication is transparent, i.e.~it is not data types aware allowing
+any devices to exchange any kind of data. This service is responsible to manage the devices' identity and it offers the following protocol stacks: AMQP, MQTT and HTTPS.
 
-Before process data can be exposed using a web user interface the data source must be associated with an appropriate solution and validated to make sure that the security rules are not violated. It is hard to assume that the security rules governing the CPS may also apply to the cloud-based services. In the gateway scenario, they can be mapped on each other or entirely independent. The \textit{IoT\ Hub\ Device\ Provisioning\ Service} (DPS) is a helper service for \textit{IoT\ Hub} that enables devices' connection process management, upon device providing valid identity attestation it assigns the device to an appropriate \textit{IoT\ Hub} instance and returns to the device connection parameters, which allow direct connection with given \textit{IoT\ Hub} service. The device proceeds to use the same attestation in \textit{IoT\ Hub} connection and based on it, is granted authorization to selected operations including but not limited to data transfer and updating the user interface.
+Before process data can be exposed using a web user interface the data source must be associated with an appropriate solution and validated to make sure that the security rules are not violated. It is hard to assume that the security rules governing the CPS may also apply to the cloud-based services. In the gateway scenario, they can be mapped on each other or be entirely independent. The \textit{IoT\ Hub\ Device\ Provisioning\ Service} (DPS) is a helper service for \textit{IoT\ Hub} that enables devices' connection process management, upon device providing valid identity attestation it assigns the device to an appropriate \textit{IoT\ Hub} instance and returns to the device connection parameters, which allow direct connection with given \textit{IoT\ Hub} service. The device proceeds to use the same attestation in \textit{IoT\ Hub} connection and based on it, is granted authorization to selected operations including but not limited to data transfer and updating the user interface.
 
 It is worth stressing that interaction of the offered by the Azure
 services can be configured flexibly, and as a result, the presented
@@ -290,7 +290,7 @@ discussion.
 In \textit{IoT\ Central} a CPS is represented as a set
 of devices. The characteristics and behavior of each device kind are
 described by the device template. This Device Template (DT) contains
-also metadata describing the data (called telemetry) exchanged over the
+also metadata describing the data exchanged over the
 wire with the CPS called Device Capability Model
 (DCM). Additionally, the DT contains properties, customization, and
 views definitions used by the service locally. As an option, DCM
@@ -310,8 +310,8 @@ this interoperability.
 
 From the cloud side, it is proposed to employ the \textit{IoT\ Hub}
 service to handle the network traffic targeting the cyber-physical
-system. This service offers profiles of the AMQP, MQTT, HTTPS protocol
-stacks. In any case, process data (telemetry) is transparently
+system. This service offers profiles of the AMQP, MQTT and HTTPS protocol
+stacks. In any case, process data is transparently
 transferred back-and-forth to the upper layer \textit{IoT\ Central}
 service. Hence, the payload formatting is determined by the DCM
 associated with the \textit{IoT\ Central} solution.
