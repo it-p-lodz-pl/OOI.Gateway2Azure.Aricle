@@ -1,4 +1,7 @@
-\documentclass{jacsart}
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{hyperref}
 \usepackage{cite}
 \usepackage{stfloats}
@@ -22,21 +25,19 @@
 \providecommand{\keywords}[1]{ \small \textbf{\textit{Keywords---}} #1 }
 
 \title{Object-Oriented Internet - Azure Interoperability}
-% \title{Object-Oriented Internet - reactive visualization of asynchronous data using AZURE}
-\headtitle{OOI - Azure Interoperability}
+%\\headtitle{OOI - Azure Interoperability}
 
-\author{Mariusz Postół\inst{1}, Piotr Szymczak\inst{1}}
-\headauthor{Postół M, Szymczak P, Vasters C}
-\affiliation
+\author[1]{Mariusz Postół, Piotr Szymczak}
+%\author[2]{Piotr Szymczak}
+%\headauthor{Postół M, Szymczak P}
+\affil[1]
 {
- \inst{1}Lodz University of Technology\\
+ Lodz University of Technology\\
  Institute of Information Technology\\
  ul. Wólczańska 215, 90-924 Lodz, Poland\\
  mailto:mariusz.postol@p.lodz.pl
 }
-
-\keywords{ Azure, Cloud Computing, Object-Oriented Internet, Industrial communication, Industry 4.0, Internet of Things, Machine to Machine Communication, OPC Unified Architecture,
-           Reactive Networking (RxNetworking)  }
+\date{}
 
 \begin{document}
 
@@ -49,6 +50,9 @@
       The proposals are backed by proof of concept reference implementations confirming the possibility to interconnect selected cloud services with the cyber-physical system interconnected as one whole atop of the OPC UA by applying the proposed architecture and deployment scenario. It is contrary to interconnecting cloud services with a selected OPC UA server limiting the PubSub role to data export only.
 
 \end{abstract}
+
+\keywords{ Azure, Cloud Computing, Object-Oriented Internet, Industrial communication, Industry 4.0, Internet of Things, Machine to Machine Communication, OPC Unified Architecture,
+Reactive Networking (RxNetworking)  }
 
 \maketitle
 
