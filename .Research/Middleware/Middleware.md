@@ -1,26 +1,30 @@
-# Information modeling for middleware in automation
+# Template of the analysis
 
-## Analysis
+## Preface
 
-[Home Page](https://ieeexplore.ieee.org/document/6059111)
+**Abstract** Add abstract
 
-## Research Gate entry
+- [Publication home page](https://a.b.c)
+- [Research Gate entry](https://a.b.c)
 
-## Cite BibTex InformationModeling4MiddlewareInAutomation
+## Cite
 
-```bib
-@inproceedings{InformationModeling4MiddlewareInAutomation,
-  author    = {W. {Mahnke} and A. {Gössling} and M. {Graube} and L. {Urbas}},
-  booktitle = {ETFA2011},
-  title     = {Information modeling for middleware in automation},
-  year      = {2011},
-  volume    = {},
-  number    = {},
-  pages     = {1-7},
-  doi       = {10.1109/ETFA.2011.6059111}
-}
+### BibTex
+
+``` bib
+
 ```
+
+### Text
 
 ```txt
-W. Mahnke, A. Gössling, M. Graube and L. Urbas, "Information modeling for middleware in automation," ETFA2011, Toulouse, 2011, pp. 1-7, doi: 10.1109/ETFA.2011.6059111.
+
 ```
+
+## Excerpts from the text
+
+## See also
+
+### Ref \#1
+
+### Ref \#2
