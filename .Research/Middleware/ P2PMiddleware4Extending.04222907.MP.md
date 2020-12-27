@@ -1,6 +1,6 @@
 # P2P Middleware for Extending the Reach
 
-## Experts
+## Excerpts from the publication
 
 ## Citation
 
