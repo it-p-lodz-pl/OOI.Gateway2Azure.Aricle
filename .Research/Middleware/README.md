@@ -7,3 +7,9 @@ Try to define the term in the context of the following notions.
 | session-oriented | publisher-subscriber |
 | Synchronous      | Asynchronous         |
 | Interactive      | Reactive             |
+
+Compare with similar concepts
+
+- gateway
+- router
+- switch

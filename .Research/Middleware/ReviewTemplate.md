@@ -1,4 +1,4 @@
-# Template of the analysis
+# Review Template
 
 ## Preface
 
@@ -22,6 +22,8 @@
 ```
 
 ## Excerpts from the text
+
+## Summary
 
 ## See also
 
