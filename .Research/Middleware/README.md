@@ -13,3 +13,4 @@ Compare with similar concepts
 - gateway
 - router
 - switch
+- broker
