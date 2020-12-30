@@ -3,6 +3,7 @@
         "AMQP",
         "MQTT",
         "RFID",
-        "discoverability"
+        "discoverability",
+        "titlerunning"
     ]
 }
