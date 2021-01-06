@@ -6,6 +6,7 @@
 - [Article structure](#article-structure)
 - [Workspace organization](#workspace-organization)
 - [Prototyping](#prototyping)
+- [Further work](#further-work)
 - [See also](#see-also)
 
 ## Title proposals
@@ -33,6 +34,14 @@ The prototyping is conducted in the repositories:
 
 - [Object-Oriented Internet](https://github.com/mpostol/OPC-UA-OOI#object-oriented-internet) - Object-Oriented Internet - Machines to Machine Meaningful Interoperability
 - [CrossHMI](https://github.com/Drutol/CrossHMI#crosshmi) - Thesis: Object-Oriented Internet - reactive visualization of asynchronous data using AZURE
+
+## Further work
+
+Consider publishing in:
+
+- [IEEE Transactions on Industrial Informatics](https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=9424)
+- [IEEE Transactions on Software Engineering](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=32)
+- [Journal of Applied Computer Science](https://it.p.lodz.pl/course/view.php?id=12)
 
 ## See also
 
