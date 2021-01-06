@@ -80,7 +80,7 @@ The main goal of this article is to provide proof that
       \item the proposed generic architecture allows that the gateway functionality is implemented as composable part at run-time part - no programming required
 \end{itemize}
 
-The remainder of this paper is structured as follows. Sect.~\ref{cloud-to-sensors-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. A reference implementation of this archetype is described in Sect.~\ref{sect.gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref{section.conclusion}.
+The remainder of this paper is structured as follows. Sect.~\ref{cloud-to-sensors-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. A reference implementation of this archetype is described in Sect.~\ref{section.gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref{section.conclusion}.
 
 \section{Sensors to Cloud Field Level Connectivity}\label{cloud-to-sensors-field-level-connectivity}
 
@@ -274,7 +274,7 @@ Concluding, decoupling of this functionality implementation using an abstract co
       \item modification of this functionality later after releasing the library or deploying the application program in the production environment.
 \end{itemize}
 
-\section{Azure - OOI Implementation}\label{sect.gateway-implementation}
+\section{Azure - OOI Implementation}\label{section.gateway-implementation}
 
 A generic domain model presenting interconnection architecture between the Azure \emph{Cloud-based\ Front-end} and \emph{Cyber-physical\ node} attached to the \emph{Cyber-physical\ network} is presented in Fig.~\ref{figure1.StrategyDomainModel}. It is proposed to implement the \emph{Cyber-physical\ node} by adopting the \emph{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref{figure2.UADataApplicationArchitecture}) described in the Sect. \ref{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref{figure3.ImplementationDomainModel}. In the proposed approach the \emph{Embedded Gateway} is derived from the \emph{Consumer} role implemented as as a composable part aggregated by the \emph{Reactive Application}.
 

@@ -1,9 +1,10 @@
 \documentclass{article}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{hyperref}
 \usepackage{geometry}
 \usepackage{fancyhdr}
 \usepackage{amsmath,amsthm,amssymb}
-\usepackage{hyperref}
-\usepackage{cite}
 \usepackage{stfloats}
 \usepackage{url}
 \usepackage{authblk}
@@ -14,30 +15,18 @@
 \usepackage{txfonts}
 \usepackage{doi}
 
-%\pagestyle{headings}
-%\headtitle{OOI - Azure Interoperability}
-
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{Preliminary}
 \lhead{OOI - OOI Azure Interoperability}
 \rfoot{Page \thepage}
-
-
-\newtheorem{definition}{Definition}
-\newtheorem{theorem}[definition]{Theorem}
-\newtheorem{corollary}[definition]{Corollary}
-\newtheorem{proposition}[definition]{Proposition}
-\newtheorem{example}[definition]{Example}
-
-\providecommand{\tightlist} { \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \providecommand{\keywords}[1]{ \small \textbf{\emph{Keywords---}} #1 }
+
+\begin{document}
 
 \title{Object-Oriented Internet\\ Cloud Interoperability}
 
 \author[1]{Mariusz Postół, Piotr Szymczak}
-%\author[2]{Piotr Szymczak}
-%\headauthor{Postół M, Szymczak P}
 \affil[1]
 {
  Lodz University of Technology\\
@@ -45,9 +34,6 @@
  ul. Wólczańska 215, 90-924 Lodz, Poland\\
  mailto:mariusz.postol@p.lodz.pl
 }
-\date{}
-
-\begin{document}
 
 \maketitle
 
@@ -57,12 +43,9 @@
 
       The proposals are backed by proof of concept reference implementations confirming the possibility to integrate selected cloud services with the cyber-physical system interconnected as one whole atop of the OPC UA by applying the proposed architecture and deployment scenario. It is contrary to interconnecting cloud services with a selected OPC UA server limiting the PubSub role to data export only.
 
+      \keywords{Industry 4.0 \and Internet of Things \and Object-Oriented Internet \and Cloud Computing \and Industrial communication \and Reactive Networking (RxNetworking)\and Machine to Machine Communication \and OPC Unified Architecture \and Azure}
+
 \end{abstract}
-
-\keywords{ Azure, Cloud Computing, Object-Oriented Internet, Industrial communication, Industry 4.0, Internet of Things, Machine to Machine Communication, OPC Unified Architecture,
-Reactive Networking (RxNetworking)  }
-
-\maketitle
 
 \section{Introduction}\label{introduction}
 
@@ -116,7 +99,7 @@ The main goal of this article is to provide proof that
       \item the proposed generic architecture allows that the gateway functionality is implemented as composable part at run-time part - no programming required
 \end{itemize}
 
-The remainder of this paper is structured as follows. Sect.~\ref{cloud-to-sensors-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. A reference implementation of this archetype is described in Sect.~\ref{sect.gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref{section.conclusion}.
+The remainder of this paper is structured as follows. Sect.~\ref{cloud-to-sensors-field-level-connectivity} presents the proposed open and reusable software model. It promotes a reactive interoperability pattern and a generic approach to establishing interoperability-context. A reference implementation of this archetype is described in Sect.~\ref{section.gateway-implementation}. The most important findings and future work are summarized in Sect.~\ref{section.conclusion}.
 
 \section{Sensors to Cloud Field Level Connectivity}\label{cloud-to-sensors-field-level-connectivity}
 
@@ -161,7 +144,6 @@ To meet the requirements of real-time distributed control the CPS may use protoc
       \item \textbf{field level gateway} - a dedicated custom agent acting as an intermediary for nodes of the CPS
       \item \emph{Embedded Gateway} - a software part composed into a selected node of the \emph{Cyber-physical network} (Fig. \ref{figure1.StrategyDomainModel})
 \end{itemize}
-
 
 \begin{figure}
       \centering
@@ -311,7 +293,7 @@ Concluding, decoupling of this functionality implementation using an abstract co
       \item modification of this functionality later after releasing the library or deploying the application program in the production environment.
 \end{itemize}
 
-\section{Azure - OOI Implementation}\label{sect.gateway-implementation}
+\section{Azure - OOI Implementation}\label{section.gateway-implementation}
 
 A generic domain model presenting interconnection architecture between the Azure \emph{Cloud-based\ Front-end} and \emph{Cyber-physical\ node} attached to the \emph{Cyber-physical\ network} is presented in Fig.~\ref{figure1.StrategyDomainModel}. It is proposed to implement the \emph{Cyber-physical\ node} by adopting the \emph{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref{figure2.UADataApplicationArchitecture}) described in the Sect. \ref{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref{figure3.ImplementationDomainModel}. In the proposed approach the \emph{Embedded Gateway} is derived from the \emph{Consumer} role implemented as as a composable part aggregated by the \emph{Reactive Application}.
 
@@ -371,7 +353,7 @@ We derived the final model presented in Fig. \ref{figure4.ImplementationArchitec
 
 The proposals are backed by proof of concept reference implementations. Prototyping addresses Microsoft Azure cloud as an example. The outcome has been just published on GitHub as the open-source (MIT licensed) repository. The proposed solutions have been harmonized with the more general concept called the Object-Oriented Internet.
 
-The described results prove that the \emph{Embedded Gateway} archetype implementation is possible based on the existing standalone framework supporting reactive interoperability atop of the M2M communication compliant with the OPC UA PubSub standard. It is worth stressing that there is no dependency on the Client/Server session-oriented relationship. This relationship is in contrast to the architecture described in the OPC UA Part 1 \cite{OPCUAPart1} specification where the publisher role is tightly coupled with the \textbf{Address Space} \cite{RefWorks:doc:5ac86c97e4b009947bbb8728} embedded component of the OPC UA Server. The real challenge of the future work is to prove that the proposed solution is flexible enough to be used as an archetype to embed the \emph{Embedded Gateway} component into the OPC UA Client or Server to get connected with the cloud in case of the interactive relationship. 
+The described results prove that the \emph{Embedded Gateway} archetype implementation is possible based on the existing standalone framework supporting reactive interoperability atop of the M2M communication compliant with the OPC UA PubSub standard. It is worth stressing that there is no dependency on the Client/Server session-oriented relationship. This relationship is in contrast to the architecture described in the OPC UA Part 1 \cite{OPCUAPart1} specification where the publisher role is tightly coupled with the \textbf{Address Space} \cite{RefWorks:doc:5ac86c97e4b009947bbb8728} embedded component of the OPC UA Server. The real challenge of the future work is to prove that the proposed solution is flexible enough to be used as an archetype to embed the \emph{Embedded Gateway} component into the OPC UA Client or Server to get connected with the cloud in case of the interactive relationship.
 
 In the proposed approach the cloud interoperability is obtained by implementing a dedicated part employing out-of-band communication only without dependency on the OPC UA functionality at all. It is worth stressing that the gateway functionality is implemented as a part - composable to the whole without programming skills. Because the part is composed at the runtime it makes it possible to modify its functionality later after releasing the library or even deploying the application program in the production environment.
 
