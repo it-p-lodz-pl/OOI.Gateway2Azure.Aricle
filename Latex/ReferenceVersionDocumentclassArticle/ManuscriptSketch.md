@@ -57,9 +57,50 @@
 - is that information is abstract
 - workaround to address that impossibility - the information must be represented as a binary stream.
 - regional newspapers in English, German, Polish
+- role of the type definition
+- CPS/cloud types compatibility
+- types conversion is not considered for further discussion.
+- CPS is represented as the device template, Device Template (DT), Device Capability Model (DCM).
+- IoT Hub to handle network traffic
+- HTTP, AMQP, and MQTT implementations, Microsoft.Azure packages, dependency injection
 
 ### OOI Main Technology Features
 
+- UAOOI.Networking
+- standardization and flexibility
+- a polymorphic approach to implementation, separation of concerns
+- DataManagementSetup and interfaces
+- DataRepository represents data holding assets
+- Consumer, Producer
+- Consumer and Producer classes are derived from the DataRepository
+- DataRepository may cover practically any concern
+- separate development and late binding, configuration expandable
+- semantic-context and security-context between them, starting point is the configuration
+- Concluding, it supports any configuration management scenario,, configuration modification at any time
+
 ## Azure - OOI Implementation
 
+- generic domain model presenting interconnection architecture
+- the final deployment architecture
+- IConfigurationFactory implementation
+- PartBindingFactory implements the IBindingFactory
+- IEncodingFactory and IMessageHandlerFactory interfaces, IServiceLocator3.
+- CommunicationContext. role
+- IDTOProvider role, PartBindingFactory maps selected object graph onto the JSON
+- Azure and PubSub use different security mechanisms
+
 ## Conclusion
+
+- further research on the integration
+- dynamic nature of the CPS must be considered
+- leveraging of the public communication infrastructure, cloud computing concept may be recognized as a reasonable answer.
+- The main goal of this research is working out a new generic architecture
+- network trac propagation asymmetry and mobility requires reactive relationship, real-time multi-
+vendor environment => standardization
+- the Embedded Gateway archetype best suits all requirements
+- We proposed to use an open-source library named UAOOI.Networking
+- the final model presented
+- proposals are backed by proof of concept reference implementations
+- The described results prove that the Embedded Gateway archetype
+- cloud interoperability is obtained by implementing a dedicated part employing out-of-band communication, without dependency on the OPC UA functionality
+- Concluding, the paper describes
