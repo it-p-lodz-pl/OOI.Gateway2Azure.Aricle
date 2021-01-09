@@ -6,10 +6,10 @@
 \begin{document}
 
 \title{Object-Oriented Internet\\ Cloud Interoperability}
-\titlerunning{OOI - Cloud Interoperability}
+%\titlerunning{OOI - Cloud Interoperability}
 
 \author{Mariusz Postół\inst{1}\orcidID{0000-0002-9669-0565}  \and Piotr Szymczak\inst{1}\orcidID{0000-0001-6790-3878} }
-\authorrunning{M. Postół et al.}
+%\authorrunning{M. Postół et al.}
 
 \institute
 { Institute of Information Technology, Lodz University of Technology, Łódź, Poland \\
@@ -24,7 +24,7 @@
 
       The proposals are backed by proof of concept reference implementations confirming the possibility to integrate selected cloud services with the cyber-physical system interconnected as one whole atop of the OPC UA by applying the proposed architecture and deployment scenario. It is contrary to interconnecting cloud services with a selected OPC UA server limiting the PubSub role to data export only.
 
-      \keywords{Industry 4.0 \and Internet of Things \and Object-Oriented Internet \and Cloud Computing \and Industrial communication \and Reactive Networking (RxNetworking)\and Machine to Machine Communication \and OPC Unified Architecture \and Azure}
+      \keywords{Industry 4.0 \and Internet of Things \and Object-Oriented Internet \and Cloud Computing \and Industrial communication \and Reactive networking \and Machine to Machine Communication \and OPC Unified Architecture \and Azure}
 
 \end{abstract}
 
@@ -136,7 +136,9 @@ To meet the requirements of real-time distributed control the CPS may use protoc
 
 The \textbf{field level gateway} is also build atop of the middleware concept \cite{Sunyaev2020}. The only difference compared with the \textbf{edge device} is a necessity to use officially supported by the cloud vendor services to get connected. In this scenario, the process data simultaneously may be transferred to many clouds provided that the gateway offers this functionality.
 
+\begin{proposition}
 Unlike the above-described solutions, the \emph{Embedded Gateway} is not derived from the middleware concept. A generic domain model for this interconnection is presented in the Fig.~\ref{figure1.StrategyDomainModel}. Promoting separation of concern design principle, the gateway functionality should be implemented as a self-contained software part embedded in the \emph{Networking} service of the \emph{Cyber-physical\ node}. The main functionality of this component is to transfer selected data between \emph{Cyber-physical\ network} using \emph{Networking} services of an existing \emph{Cyber-physical\ node} and \emph{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
+\end{proposition}
 
 The \emph{Embedded Gateway} archetype relaxes most of the issues described above: \emph{Cyber-physical\ network} real-time behavior, data encoding incompatibility, security - context differences to name only a few. The main goal of this article is to provide proof that the \emph{Embedded Gateway} archetype implementation is possible based on a generic architecture that can be used as a foundation for the integration of the heterogeneous environments in concern. The proposed implementation is designed for a selected interoperability standard and cloud product.
 
@@ -274,7 +276,7 @@ Concluding, decoupling of this functionality implementation using an abstract co
       \item modification of this functionality later after releasing the library or deploying the application program in the production environment.
 \end{itemize}
 
-\section{Azure - OOI Implementation}\label{section.gateway-implementation}
+\section{Azure - OOI Interoperability Implementation}\label{section.gateway-implementation}
 
 A generic domain model presenting interconnection architecture between the Azure \emph{Cloud-based\ Front-end} and \emph{Cyber-physical\ node} attached to the \emph{Cyber-physical\ network} is presented in Fig.~\ref{figure1.StrategyDomainModel}. It is proposed to implement the \emph{Cyber-physical\ node} by adopting the \emph{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref{figure2.UADataApplicationArchitecture}) described in the Sect. \ref{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref{figure3.ImplementationDomainModel}. In the proposed approach the \emph{Embedded Gateway} is derived from the \emph{Consumer} role implemented as as a composable part aggregated by the \emph{Reactive Application}.
 
