@@ -1,6 +1,7 @@
 \documentclass[runningheads]{llncs}
 \usepackage{graphicx}
 \usepackage{cite}
+\usepackage[verbose]{wrapfig}
 %\usepackage{hyperref}
 
 \begin{document}
@@ -126,18 +127,18 @@ To meet the requirements of real-time distributed control the CPS may use protoc
       \item \emph{Embedded Gateway} - a software part composed into a selected node of the \emph{Cyber-physical network} (Fig. \ref{figure1.StrategyDomainModel})
 \end{itemize}
 
-\begin{figure}
+\begin{wrapfigure}{r}{0.55\textwidth}
       \centering
-      \includegraphics[width=8cm]{../../.Media/StrategyDomainModel.png}
-      \caption{Domain model of a generic interconnection concept}\label{figure1.StrategyDomainModel}
-\end{figure}
+      \includegraphics[width=0.53\textwidth]{../../.Media/StrategyDomainModel.png}
+      \caption{Generic interconnection concept}\label{figure1.StrategyDomainModel}
+\end{wrapfigure}
 
 \textbf{Edge device} connects directly to the cloud services but acts as an intermediary for other devices called leaf devices. Additionally, it allows the selection of initial data and processing of them using local resources. The \textbf{edge device} may be located close to the leaf devices and attached to the \emph{Cyber-physical network} using protocols applicable only to local computer networks. In this scenario, it is possible to use a custom protocol stack to get connected to the \textbf{edge device} with the cloud and helps to save the bandwidth thanks to sending only the results of local processing. In this approach, the \textbf{edge device} is part of cloud vendor products and cannot be recognized as a generic solution that can be used to connect to other clouds at the same time.
 
 The \textbf{field level gateway} is also build atop of the middleware concept \cite{Sunyaev2020}. The only difference compared with the \textbf{edge device} is a necessity to use officially supported by the cloud vendor services to get connected. In this scenario, the process data simultaneously may be transferred to many clouds provided that the gateway offers this functionality.
 
 \begin{proposition}
-Unlike the above-described solutions, the \emph{Embedded Gateway} is not derived from the middleware concept. A generic domain model for this interconnection is presented in the Fig.~\ref{figure1.StrategyDomainModel}. Promoting separation of concern design principle, the gateway functionality should be implemented as a self-contained software part embedded in the \emph{Networking} service of the \emph{Cyber-physical\ node}. The main functionality of this component is to transfer selected data between \emph{Cyber-physical\ network} using \emph{Networking} services of an existing \emph{Cyber-physical\ node} and \emph{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
+      Unlike the above-described solutions, the \emph{Embedded Gateway} is not derived from the middleware concept. A generic domain model for this interconnection is presented in the Fig.~\ref{figure1.StrategyDomainModel}. Promoting separation of concern design principle, the gateway functionality should be implemented as a self-contained software part embedded in the \emph{Networking} service of the \emph{Cyber-physical\ node}. The main functionality of this component is to transfer selected data between \emph{Cyber-physical\ network} using \emph{Networking} services of an existing \emph{Cyber-physical\ node} and \emph{Cloud-based\ front-end} using officially supported by the cloud vendor interconnection services.
 \end{proposition}
 
 The \emph{Embedded Gateway} archetype relaxes most of the issues described above: \emph{Cyber-physical\ network} real-time behavior, data encoding incompatibility, security - context differences to name only a few. The main goal of this article is to provide proof that the \emph{Embedded Gateway} archetype implementation is possible based on a generic architecture that can be used as a foundation for the integration of the heterogeneous environments in concern. The proposed implementation is designed for a selected interoperability standard and cloud product.
@@ -224,11 +225,11 @@ The Azure supports HTTP, AMQP, and MQTT protocol stacks, which are all standard 
 
 To promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub (Sect. \ref{subs.architecture}) and support the \emph{Reactive Interoperability} (Sect. \ref{introduction}) concept. A framework compliant with these requirements has been implemented as an open-source library named \emph{UAOOI.Networking} (\emph{Networking} for short) under an umbrella of the project Object-Oriented Internet  (OOI)\cite{mariusz_postol_2020_4361640}. The library is designed to be a foundation for developing application programs that are taking part in a message-centric communication pattern and interconnected using the reactive networking concept. The diagram in Fig.~\ref{figure2.UADataApplicationArchitecture} shows the relationship between the library (\emph{SDK}) and external parts composing any reactive networking application (\emph{Reactive\ Application}). The \emph{Reactive Application} is an aggregation of parts implementing the \emph{Producer} and \emph{Consumer} roles. By design, they support access to real-time process data, hence they are recognized as an extension of \emph{DataRepository} class. To implement the \emph{DataRepository} dedicated implementation of the \emph{IBinding} interface should be provided to create a bridge between CPS and an external row data represented by the \emph{LocalResources} class. A more in-depth description of the \emph{OOI Reactive Application} library enabling data exchange over a network using the reactive networking pattern is covered in \cite{mpostol2020}.
 
-\begin{figure}
+\begin{wrapfigure}{r}{0.55\textwidth}
       \centering
-      \includegraphics[width=8cm]{../../.Media/UADataApplicationArchitecture.png}
-      \caption{Reactive interoperability implementation}\label{figure2.UADataApplicationArchitecture}
-\end{figure}
+      \includegraphics[width=0.53\textwidth]{../../.Media/UADataApplicationArchitecture.png}
+      \caption{Reactive interoperability architecture}\label{figure2.UADataApplicationArchitecture}
+\end{wrapfigure}
 
 From the above discussion, we can learn that the main design decisions must concern standardization and flexibility. Standardization needs the selection of an international interoperability specification to make the library ready to be adopted by the multi-vendor environment. Flexibility requires an architecture that promotes the polymorphic independent implementation of essential functions.
 
@@ -267,6 +268,12 @@ By design, the \emph{DataRepository} and associated entities, i.e.~\emph{Local R
 
 The application startup phase concerns all the parts composed to make a running instance of the application program using the dependency injection approach to allow separate development and late binding. This approach makes any modification straightforward at any development and maintenance stage. From the end-user point of view, the composition process of the running program using independently developed parts is invisible. Because in any case a single program instance is created in a typical approach, we shall expect a commonly shared configuration mechanism providing mutually exclusive parameters to separately developed parts. This scenario has been addressed by the proposed implementation thanks to making the configuration expandable.
 
+\begin{wrapfigure}{t}{0.55\textwidth}
+      \centering
+      \includegraphics[width=0.53\textwidth]{../../.Media/ImplementationDomainModel.png}
+      \caption{Architecture Domain Model}\label{figure3.ImplementationDomainModel}
+\end{wrapfigure}
+
 From the discussion covered by the Sect. \ref{subs.architecture} we can infer that the interoperability of communicating parties requires establishing a semantic-context and security-context between them. If the received data is driven to any external data destination (e.g. cloud-based front-end) using out-of-band protocol semantic-context and security-context must be defined for this interoperability relationship. There are a vast variety of possibilities for how to define these contexts. Anyway, the most common starting point is the configuration. The proposed approach to instantiate the application as a set of composable parts is very useful in this respect because it makes it possible to expand the core configuration functionality and adapt it to be helpful also in this case. Therefore, the semantic-context may be created based on the configuration using the implementation of the \emph{IConfigurationDataFactory} interface.
 
 Concluding, decoupling of this functionality implementation using an abstract contract and late binding mechanism allows:
@@ -280,21 +287,9 @@ Concluding, decoupling of this functionality implementation using an abstract co
 
 A generic domain model presenting interconnection architecture between the Azure \emph{Cloud-based\ Front-end} and \emph{Cyber-physical\ node} attached to the \emph{Cyber-physical\ network} is presented in Fig.~\ref{figure1.StrategyDomainModel}. It is proposed to implement the \emph{Cyber-physical\ node} by adopting the \emph{Reactive Application} archetype compliant with the reactive interoperability concept (Fig. \ref{figure2.UADataApplicationArchitecture}) described in the Sect. \ref{ooi-main-technology-features}. Merging selected entities of this archetype into the proposed domain model (Fig. \ref{figure1.StrategyDomainModel}) lead to a model expressed as the diagram presented in Fig. \ref{figure3.ImplementationDomainModel}. In the proposed approach the \emph{Embedded Gateway} is derived from the \emph{Consumer} role implemented as as a composable part aggregated by the \emph{Reactive Application}.
 
-\begin{figure}
-      \centering
-      \includegraphics[width=8cm]{../../.Media/ImplementationDomainModel.png}
-      \caption{Architecture Domain Model}\label{figure3.ImplementationDomainModel}
-\end{figure}
-
 \hyphenation{PartData-Mana-gement-Setup}
 
 In the final deployment architecture (Fig. \ref{figure4.ImplementationArchitecture}) the \emph{Consumer} role has been realized by the \emph{PartDataManagementSetup} that is derived from \emph{DataManagementSetup} provided by the library. \emph{Networking} (SDK) was removed from this diagram for the sake of simplicity. Instantiating \emph{PartDataManagementSetup} is the first step for bootstrapping process of the \emph{Consumer} role functionality. This class provides an entry point to initialize all properties, which are injection points of all parts composing this role. It extends the functionality of the \emph{DataManagementSetup} based on the following associated classes:
-
-\begin{figure}
-      \centering
-      \includegraphics[width=10cm]{../../.Media/ImplementationArchitecture.png}
-      \caption{Implementation Architecture}\label{figure4.ImplementationArchitecture}
-\end{figure}
 
 \begin{itemize}
       \item \emph{PartConfigurationFactory} - to get access to the application configuration
@@ -303,6 +298,12 @@ In the final deployment architecture (Fig. \ref{figure4.ImplementationArchitectu
 \end{itemize}
 
 In this case, the implementation of the \emph{IConfigurationFactory} interface is based entirely on the \emph{Networking} library. The implementation provided by the library is generic, but it is flexible enough to meet all the requirements, which warrants no need for further modifications for adoption. It is ready to provide all necessary configuration parameters to establish semantic and security contexts related to Azure interoperability.
+
+\begin{wrapfigure}{t}{0.55\textwidth}
+      \centering
+      \includegraphics[width=0.53\textwidth]{../../.Media/ImplementationArchitecture.png}
+      \caption{Implementation Architecture}\label{figure4.ImplementationArchitecture}
+\end{wrapfigure}
 
 The \emph{PartBindingFactory} implements the \emph{IBindingFactory} to gather the data recovered from the \emph{Message} instances pulled from a network. The received data is driven to \emph{CommunicationContext} for further encoding and finally pushing it to the Azure services using the configured out-of-band protocol.
 
@@ -336,7 +337,7 @@ We derived the final model presented in Fig. \ref{figure4.ImplementationArchitec
 
 The proposals are backed by proof of concept reference implementations. Prototyping addresses Microsoft Azure cloud as an example. The outcome has been just published on GitHub as the open-source (MIT licensed) repository. The proposed solutions have been harmonized with the more general concept called the Object-Oriented Internet.
 
-The described results prove that the \emph{Embedded Gateway} archetype implementation is possible based on the existing standalone framework supporting reactive interoperability atop the M2M communication compliant with the OPC UA PubSub standard. It is worth stressing that there is no dependency on the Client/Server session-oriented relationship. This relationship is in contrast to the architecture described in the OPC UA Part 1 \cite{OPCUAPart1} specification where the publisher role is tightly coupled with the \textbf{Address Space} \cite{RefWorks:doc:5ac86c97e4b009947bbb8728} embedded component of the OPC UA Server. The real challenge of the future work is to prove that the proposed solution is flexible enough to be used as an archetype to inject the \emph{Embedded Gateway} part into the OPC UA Client/Server to get connected with the cloud in case of the interactive relationship. 
+The described results prove that the \emph{Embedded Gateway} archetype implementation is possible based on the existing standalone framework supporting reactive interoperability atop the M2M communication compliant with the OPC UA PubSub standard. It is worth stressing that there is no dependency on the Client/Server session-oriented relationship. This relationship is in contrast to the architecture described in the OPC UA Part 1 \cite{OPCUAPart1} specification where the publisher role is tightly coupled with the \textbf{Address Space} \cite{RefWorks:doc:5ac86c97e4b009947bbb8728} embedded component of the OPC UA Server. The real challenge of the future work is to prove that the proposed solution is flexible enough to be used as an archetype to inject the \emph{Embedded Gateway} part into the OPC UA Client/Server to get connected with the cloud in case of the interactive relationship.
 
 In the proposed approach the cloud interoperability is obtained by implementing a dedicated part employing out-of-band communication only without dependency on the OPC UA functionality at all. It is worth stressing that the gateway functionality is implemented as a part - composable to the whole without programming skills. Because the part is composed at the runtime it makes it possible to modify its functionality later after releasing the library or even deploying the application program in the production environment.
 
