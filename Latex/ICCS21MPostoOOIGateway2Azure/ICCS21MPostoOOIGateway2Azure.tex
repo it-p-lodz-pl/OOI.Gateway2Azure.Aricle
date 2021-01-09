@@ -299,11 +299,11 @@ In the final deployment architecture (Fig. \ref{figure4.ImplementationArchitectu
 
 In this case, the implementation of the \emph{IConfigurationFactory} interface is based entirely on the \emph{Networking} library. The implementation provided by the library is generic, but it is flexible enough to meet all the requirements, which warrants no need for further modifications for adoption. It is ready to provide all necessary configuration parameters to establish semantic and security contexts related to Azure interoperability.
 
-\begin{wrapfigure}{t}{0.55\textwidth}
+\begin{figure}
       \centering
-      \includegraphics[width=0.53\textwidth]{ImplementationArchitecture.eps}
+      \includegraphics[width=11cm]{ImplementationArchitecture.eps}
       \caption{Implementation Architecture}\label{figure4.ImplementationArchitecture}
-\end{wrapfigure}
+\end{figure}
 
 The \emph{PartBindingFactory} implements the \emph{IBindingFactory} to gather the data recovered from the \emph{Message} instances pulled from a network. The received data is driven to \emph{CommunicationContext} for further encoding and finally pushing it to the Azure services using the configured out-of-band protocol.
 
