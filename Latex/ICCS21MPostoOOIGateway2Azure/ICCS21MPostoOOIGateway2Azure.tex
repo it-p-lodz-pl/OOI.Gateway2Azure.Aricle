@@ -125,7 +125,7 @@ Based on the sessionless and session-oriented communication patterns examination
 To promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub and support the \emph{Reactive Interoperability} (Sect. \ref{introduction}) concept. A framework compliant with these requirements has been implemented as an open-source library\footnote{\url{https://github.com/mpostol/OPC-UA-OOI}} named \emph{UAOOI.Networking} (\emph{Networking} for short) under an umbrella of the Object-Oriented Internet project \cite{mariusz_postol_2020_4361640}. The library is designed to be a foundation for developing application programs that are taking part in a message-centric communication pattern and interconnected using the reactive networking concept. The diagram in Fig.~\ref{figure2.UADataApplicationArchitecture} shows the relationship between the library (\emph{SDK}) and external parts composing any reactive networking application (\emph{Reactive\ Application}). The \emph{Reactive Application} is an aggregation of parts implementing the \emph{Producer} and \emph{Consumer} roles. By design, they support access to real-time process data, hence they are recognized as an extension of \emph{DataRepository} class. To implement the \emph{DataRepository} dedicated implementation of the \emph{IBindingFactory} interface should be provided to create a bridge between CPS and an external row data represented by the \emph{LocalResources} class. A more in-depth description of the \emph{OOI Reactive Application} library enabling data exchange over a network using the reactive networking pattern is covered in \cite{mpostol2020}.
 
 \begin{wrapfigure}{r}{0.55\textwidth}
-      \includegraphics[width=0.53\textwidth]{UADataApplicationArchitecture.eps}
+      \includegraphics[width=0.53\textwidth]{UADataApplicationArchitectureAzure.eps}
       \caption{Reactive interoperability architecture}\label{figure2.UADataApplicationArchitecture}
 \end{wrapfigure}
 
@@ -164,8 +164,8 @@ The \emph{PartBindingFactory} implements the \emph{IBindingFactory} to gather th
 
 %\emph{IEncodingFactory} and \emph{IMessageHandlerFactory} interfaces (Fig. \ref{figure2.UADataApplicationArchitecture}) have been implemented in independent libraries and ae not considered for any modifications to deploy \emph{Embedded Gateway} functionality. The current implementation of the mentioned interfaces is localized at run time as services using an instance of the \emph{IServiceLocator}\footnote{ \url{https://www.nuget.org/packages/CommonServiceLocator} }. In this example, it is assumed that \emph{IServiceLocator} is implemented to resolve references to any external services. Both interfaces are used to manage the interconnection of the node with the \emph{Cyber-physical Network}.
 
-\begin{wrapfigure}{t}{0.55\textwidth}
-      \includegraphics[width=0.53\textwidth]{ImplementationArchitecture.eps}
+\begin{wrapfigure}{t}{0.5\textwidth}
+      \includegraphics[width=0.49\textwidth]{ImplementationArchitecture.eps}
       \caption{Implementation Architecture}\label{figure4.ImplementationArchitecture}
 \end{wrapfigure}
 
@@ -193,7 +193,7 @@ From the analysis covered by the Sect. \ref{cloud-to-sensors-field-level-connect
 
 To promote interoperability and address the demands of the M2M communication in the context of a multi-vendor environment the prototyping should use a framework that must be compliant with the OPC UA Part 14 PubSub (Sect. \ref{cloud-to-sensors-field-level-connectivity}) and support the \emph{Reactive Interoperability} (Sect. \ref{introduction}) concept. We proposed to use an open-source library named \emph{UAOOI.Networking} (\emph{Networking} for short) (Fig.~\ref{figure2.UADataApplicationArchitecture}) for this purpose. It is worth stressing that based on this approach only dedicated functionality related to the communication with the cloud must be implemented.
 
-We derived the final model presented in Fig. \ref{figure4.ImplementationArchitecture} by merging selected entities from the \emph{Networking} library (Fig.~\ref{figure2.UADataApplicationArchitecture}) into the generic interconnection domain model (Fig. \ref{figure1.StrategyDomainModel}). In the proposed approach the \emph{Embedded Gateway} is derived from the \emph{Consumer} role implemented as as a composable part aggregated by the \emph{Reactive Application}.
+We derived the final model presented in Fig. \ref{figure4.ImplementationArchitecture} by merging selected entities from the \emph{Networking} library (Fig.~\ref{figure2.UADataApplicationArchitecture}) into the generic interconnection domain model (Fig. \ref{figure1.StrategyDomainModel}). In the proposed approach the \emph{Embedded Gateway} is derived from the \emph{Consumer} role implemented as a composable part aggregated by the \emph{Reactive Application}.
 
 The proposals are backed by proof of concept reference implementations. Prototyping addresses Microsoft Azure cloud as an example. The outcome has been just published on GitHub as the open-source (MIT licensed) repository. The proposed solutions have been harmonized with the more general concept called the Object-Oriented Internet.
 
