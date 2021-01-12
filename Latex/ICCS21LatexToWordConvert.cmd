@@ -1,0 +1,1 @@
+pandoc ICCS21MPostoOOIGateway2Azure\ICCS21MPostoOOIGateway2Azure.tex --bibliography=ICCS21MPostoOOIGateway2Azure\ICCS21MPostoOOIGateway2Azure.bib -o ICCS21MPostoOOIGateway2Azure.docx
