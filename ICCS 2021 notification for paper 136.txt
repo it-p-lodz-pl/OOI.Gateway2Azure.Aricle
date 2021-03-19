@@ -1,0 +1,171 @@
+From:	iotss_2021@easychair.org on behalf of Computational Science in IoT and Smart Systems 
+<iotss_2021@easychair.org>
+Sent:	pi¹tek, 19 marca 2021 11:29
+To:	Mariusz Postó³ I72
+Subject:	ICCS 2021 notification for paper 136
+
+Dear Mariusz Postó³,
+
+Thank you for your submission to the International Workshop on Computational Science in IoT and 
+Smart Systems (IoTSS) at the International Conference on Computational Science (ICCS).
+Please read below for the decision on your paper.
+
+Due to the current global health conditions, ICCS 2021 will be held in a fully virtual format.
+(further news and details will be announced in the coming weeks)
+
+As always, submission to ICCS was very competitive, with over 650 submissions.
+The program committee and conference chairs had to carefully select papers of the highest quality and 
+relevance to the field of Computational Science.
+
+We are pleased to inform you that your paper (see below) has been ACCEPTED for publication (as a 14-
+page full paper in Springer's LNCS Series) and oral presentation (20 minutes incl. questions) at the 
+conference.
+
+136  Object-Oriented Internet - Cloud Interoperability
+
+Acceptance is still conditional on the following:
+
+1. That you revise your paper taking into account the reviewers' comments, strictly following the 
+guidelines for camera-ready submission, and submit your final version before the deadline of 5 April 
+2021.
+Detailed instructions on how to submit your camera-ready paper will be sent in a few days, in a separate 
+e-mail.
+
+Please note that provided improvements will be verified by members of the IoTSS Program Committee.
+
+2. That you register for the conference before the author registration deadline (5 April 2021):
+https://www.iccs-meeting.org/iccs2021/registration-accommodation/
+
+Please note that the registration deadline is strict. Only the papers registered until this date will be 
+included in the proceedings.
+
+Congratulations, and thank you for your contribution to the IoTSS workshop. We wish you good health in 
+these troubled times.
+
+With best regards,
+
+Vaidy and Dariusz
+The ICCS Organizing Committee
+
+SUBMISSION: 136
+TITLE: Object-Oriented Internet - Cloud Interoperability
+
+
+----------------------- REVIEW 1 ---------------------
+SUBMISSION: 136
+TITLE: Object-Oriented Internet - Cloud Interoperability
+AUTHORS: Mariusz Postó³ and Piotr Szymczak
+
+----------- Overall evaluation -----------
+SCORE: 1 (weak accept)
+----------- Reviewer's confidence -----------
+SCORE: 2 ((low))
+----------- Relevance to ICCS -----------
+SCORE: 4 (good)
+----------- Quality of abstract -----------
+SCORE: 2 (poor)
+----------- Introduction and motivation -----------
+SCORE: 4 (good)
+----------- Literature review and related work -----------
+SCORE: 2 (poor)
+----------- Description & originality of the own contribution -----------
+SCORE: 3 (fair)
+----------- Results and presentation -----------
+SCORE: 3 (fair)
+----------- Conclusions and future work -----------
+SCORE: 3 (fair)
+----------- Readability, quality of the English -----------
+SCORE: 5 (excellent)
+----------- Quality of the figures -----------
+SCORE: 3 (fair)
+----------- Conformance to the LNCS template -----------
+SCORE: 3 (fair)
+----------- Candidate for best paper -----------
+SCORE: 2 (No)
+----------- Candidate for special issue of Journal of Computational Science -----------
+SCORE: 3 (Don't Know)
+----------- Comments for the authors ----------- The abstract is too detailed. It should be simplified to 
+describe the idea in a more general manner.
+The proposed solutions comparison should be summarized in a more transparent manner like a table or 
+a chart.
+The papier is missing the "related works" section.
+
+
+
+----------------------- REVIEW 2 ---------------------
+SUBMISSION: 136
+TITLE: Object-Oriented Internet - Cloud Interoperability
+AUTHORS: Mariusz Postó³ and Piotr Szymczak
+
+----------- Overall evaluation -----------
+SCORE: 2 (accept)
+----------- Reviewer's confidence -----------
+SCORE: 3 ((medium))
+----------- Relevance to ICCS -----------
+SCORE: 4 (good)
+----------- Quality of abstract -----------
+SCORE: 4 (good)
+----------- Introduction and motivation -----------
+SCORE: 4 (good)
+----------- Literature review and related work -----------
+SCORE: 4 (good)
+----------- Description & originality of the own contribution -----------
+SCORE: 
+----------- Results and presentation -----------
+SCORE: 4 (good)
+----------- Conclusions and future work -----------
+SCORE: 4 (good)
+----------- Readability, quality of the English -----------
+SCORE: 4 (good)
+----------- Quality of the figures -----------
+SCORE: 
+----------- Conformance to the LNCS template -----------
+SCORE: 4 (good)
+----------- Candidate for best paper -----------
+SCORE: 3 (Don't Know)
+----------- Candidate for special issue of Journal of Computational Science -----------
+SCORE: 3 (Don't Know)
+----------- Comments for the authors ----------- Interesting paper concerning standardization of integration 
+between machine-centric and human-centric  systems in the context of Industrial Internet of Things 
+scenarios. Big advantage of the presented research is the attached reference implementation published 
+in open-source model.
+
+
+
+----------------------- REVIEW 3 ---------------------
+SUBMISSION: 136
+TITLE: Object-Oriented Internet - Cloud Interoperability
+AUTHORS: Mariusz Postó³ and Piotr Szymczak
+
+----------- Overall evaluation -----------
+SCORE: 2 (accept)
+----------- Reviewer's confidence -----------
+SCORE: 4 ((high))
+----------- Relevance to ICCS -----------
+SCORE: 4 (good)
+----------- Quality of abstract -----------
+SCORE: 4 (good)
+----------- Introduction and motivation -----------
+SCORE: 4 (good)
+----------- Literature review and related work -----------
+SCORE: 3 (fair)
+----------- Description & originality of the own contribution -----------
+SCORE: 4 (good)
+----------- Results and presentation -----------
+SCORE: 3 (fair)
+----------- Conclusions and future work -----------
+SCORE: 4 (good)
+----------- Readability, quality of the English -----------
+SCORE: 4 (good)
+----------- Quality of the figures -----------
+SCORE: 3 (fair)
+----------- Conformance to the LNCS template -----------
+SCORE: 4 (good)
+----------- Candidate for best paper -----------
+SCORE: 2 (No)
+----------- Candidate for special issue of Journal of Computational Science -----------
+SCORE: 2 (No)
+----------- Comments for the authors ----------- Very general approach with an interesting solution. Looking 
+forward to future extensions of proposed concepts.
+
+
