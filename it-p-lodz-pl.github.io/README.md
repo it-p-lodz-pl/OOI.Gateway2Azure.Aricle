@@ -1,66 +1,52 @@
-# OOI/Azure Interoperability
+# Object-Oriented Internet Cloud Interoperability <!-- omit in toc -->
 
-## Preface
+## Table of content<!-- omit in toc -->
 
-## Title proposals
+- [Executive sumary](#executive-sumary)
+- [Article Abstract](#article-abstract)
+  - [Keywords](#keywords)
+- [Article Table  of Content](#article-table--of-content)
+- [Prototyping](#prototyping)
+- [See also](#see-also)
 
-- Object-Oriented Internet - reactive visualization of asynchronous data using AZURE
-- Object-Oriented Internet - Azure interoperability
+## Executive sumary
 
-## Table of content
+Our article titled `Object-Oriented Internet Cloud Interoperability` has been accepted and is to be published in the Lecture Notes in Computer Science series, on behalf of Springer. The public preview of the article is available for early review. To get the full story and get your copy check out the preprint from Research Gateway: [Object-Oriented Internet Cloud Interoperability](https://www.researchgate.net/publication/346563454_Object-Oriented_Internet_Cloud_Interoperability) or contact me.
 
-- **Abstract**
-- **Key words**
-Azure, Cloud Computing, Object-Oriented Internet, OPC Unified Architecture, Machine to Machine Communication, Internet of Things,
-- **Introduction**
-  - **Subject**
-A basic matter of thought, discussion, investigation, development, etc. Describe the problem and the motivation for undertaking the effort to solve the problem.
-  - **Goal**
-What we are going to achieve - the result or achievement toward which effort is directed.
-  - **Scope**
-What we must do to prove the goal have been achieved. Extent or range of development, view, outlook, application, operation, effectiveness, etc.
-  - **Related work**
-Any information about available reusable deliverables related to this work.
-- **Azure Main Technology Fetuses**
-  - **Selection of the service**
-  - **Metadata**
-    - **Device Template (DT)**
-    - **Device Capability Model**
-    - **Interface**
-    - **Digital Twin Definition Language (DTDL)**
-  - **Simple, complex and structural data processing**
-  - **Connectivity**
-  - **How to implement**
- All about available libraries and tools
-- **OOI Main Technology Fetuses**
-  - Machinie To Machine communication based on the semantic data
-  - OOI PubSub Implementation Architecture
-  - Simple, complex and structural data processing
-- **Azure to Sensors (M2S) connectivity deployment**
-  - **Architecture**
-Domain model presenting relationship between the: Azure, PubSub Gateway, Device, Design and development tools
-  - **Connectivity**
-Describe reactive nature of the Azure monitoring process data (telemetry) services.
-  - **Deployment phases**
-    - Design
-    - Gateway and devices registration
-    - Authorization
-    - Interconnection
-    - Maintenance
-- **Gateway implementation**
-  - Architecture
-  - Protocol selection and mapping
-  - Configuration
-  - Testing
-- **Conclusion**
-- **References**
-List of available resources related to the topic in concern
+The presented proposals are backed by proof of concept reference implementations. To start prototyping check out the open-source library: [Azure Gateway DataRepository Implementation](https://github.com/mpostol/OPC-UA-OOI/tree/master/Networking/DataRepository/AzureGateway#azure-gateway-datarepository-implementation).
+
+It is conducted as part of the open-access [**Object-Oriented Internet** (OOI)](https://github.com/mpostol/OPC-UA-OOI#object-oriented-internet) project targets multi-vendor plug-and-produce machines interoperability scenarios targeting all aspects of the machine-centric global village concept aimed at providing reusable deliverables, training, best practice rules, prototyping, compliance testing and dissemination of valuable results.
+
+The project collecting several repositories is maintained under the umbrella of the [Object-Oriented Internet (OOI) Partnership Program](https://github.com/sponsors/mpostol).
+
+Any questions, comments, and proposals are welcome.
+
+My blog on [About enablers of future solutions](mpostol.wordpress.com).
+
+## Article Abstract
+
+Optimization of industrial processes requires further research on the integration of machine-centric systems with human-centric cloud-based services in the context of new emerging disciplines, namely the fourth industrial revolution coined as Industry 4.0 and Industrial Internet of Things. The following research aims at working out a new generic architecture and deployment scenario applicable to that integration. A~reactive interoperability relationship of the communication parties is proposed to deal with the network traffic propagation asymmetry or assets’ mobility. Described solution based on the OPC Unified Architecture international standard relaxes issues related to the real-time multi-vendor environment. The discussion  concludes that the embedded gateway software component best suits all requirements and thus has been implemented as a composable part of the selected reactive OPC UA framework which promotes separation of concerns and reusability.
+
+The proposals are backed by proof-of-concept reference implementations confirming the possibility of integrating selected cloud services with the OPC UA based cyber-physical system by applying the proposed architecture and deployment scenario. It is contrary to interconnecting cloud services with the selected OPC UA Server limiting the PubSub role to data export only.
+
+### Keywords
+
+`Industry 4.0`, `Internet of Things`, `Object-Oriented Internet` `Cloud Computing` `Industrial communication` `Reactive networking` `Machine to Machine Communication`, `OPC Unified Architecture`, `Azure`
+
+## Article Table  of Content
+
+1. Introduction
+1. Sensors to Cloud Interconnection - Architecture
+1. Cloud - OOI Interoperability Implementation
+1. Conclusion
+
+1. References
 
 ## Prototyping
 
 The prototyping is conducted in the repositories:
 
-- [Object-Oriented Internet](https://github.com/mpostol/OPC-UA-OOI#object-oriented-internet) - Object-Oriented Internet - Machines to Machine Meaningful Interoperability
+- open-source library: [Azure Gateway DataRepository Implementation](https://github.com/mpostol/OPC-UA-OOI/tree/master/Networking/DataRepository/AzureGateway#azure-gateway-datarepository-implementation)
 - [CrossHMI](https://github.com/Drutol/CrossHMI#crosshmi) - Thesis: Object-Oriented Internet - reactive visualization of asynchronous data using AZURE
 
 ## See also
