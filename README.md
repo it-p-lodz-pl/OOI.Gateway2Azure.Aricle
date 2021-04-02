@@ -2,31 +2,26 @@
 
 ## Table of content<!-- omit in toc -->
 
-- [Title proposals](#title-proposals)
-- [Article structure](#article-structure)
 - [Workspace organization](#workspace-organization)
+- [Published version](#published-version)
 - [Prototyping](#prototyping)
-- [Further work](#further-work)
 - [See also](#see-also)
-
-## Title proposals
-
-- Object-Oriented Internet - reactive visualization of asynchronous data using AZURE
-- Object-Oriented Internet - Azure interoperability
-
-## Article structure
-
-To get more about the preliminary structure check out the document [Markdown\Readme.md](Markdown\Readme.md)
 
 ## Workspace organization
 
-| Folder    |Description |
-|-|-|
-| .Media    | All graphics related to the research and the article content.|
-| .Research | Documents prepared based on the project reference. The content may not be original and contains the research outcome.|
-| docs      | GitHub pages - documentation that may be published elsewhere. Not awaitable in private repository - published as [OOI/Azure Interoperability](https://it-p-lodz-pl.github.io/OOI.Gateway2Azure.Article/README.html). |
-| Latex     | A final version of the paper prepared using Latex format. |
-| Markdown  | A preliminary content of the article prepared using markdown format. |
+| Folder                 | Description                                                                                                           |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| .Media                 | All graphics related to the research and the article content.                                                         |
+| .Research              | Documents prepared based on the project reference. The content may not be original and contains the research outcome. |
+| it-p-lodz-pl.github.io | Description of the article for organization github pages.                                                             |
+| Latex                  | A final version of the paper prepared using Latex format.                                                             |
+| Markdown               | A preliminary content of the article prepared using markdown format.                                                  |
+
+## Published version
+
+`Object-Oriented Internet Cloud Interoperability` has been accepted and is to be published in the Lecture Notes in Computer Science series, on behalf of Springer. The public preview of the article is available for early review. To get the full story and get your copy check out the preprint from Research Gateway: [Object-Oriented Internet Cloud Interoperability](https://www.researchgate.net/publication/346563454_Object-Oriented_Internet_Cloud_Interoperability).
+
+Description of the article is maintained in the file [README.md](it-p-lodz-pl.github.io\README.md)
 
 ## Prototyping
 
@@ -34,14 +29,6 @@ The prototyping is conducted in the repositories:
 
 - [Object-Oriented Internet](https://github.com/mpostol/OPC-UA-OOI#object-oriented-internet) - Object-Oriented Internet - Machines to Machine Meaningful Interoperability
 - [CrossHMI](https://github.com/Drutol/CrossHMI#crosshmi) - Thesis: Object-Oriented Internet - reactive visualization of asynchronous data using AZURE
-
-## Further work
-
-Consider publishing in:
-
-- [IEEE Transactions on Industrial Informatics](https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=9424)
-- [IEEE Transactions on Software Engineering](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=32)
-- [Journal of Applied Computer Science](https://it.p.lodz.pl/course/view.php?id=12)
 
 ## See also
 
