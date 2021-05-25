@@ -14,6 +14,7 @@ The document contains notes to prepare a conference presentation.
 - After dynamically attaching a new island of automation the control application (responsible for the data pulling) must be reconfigured for this interoperability scenario. In other words the interactive communication relationship cannot be directly applied because the control application must be informed on how to pull data from a new source.
 
 ### Thesis
+
 For this integration, a new architecture is proposed to support the reactive relationship of communicating parties.
 
 The proposals are backed by proof-of-concept reference implementations confirming the possibility of integrating selected cloud services with the OPC UA based cyber-physical system by applying the proposed architecture and deployment scenario. It is contrary to interconnecting cloud services with the selected OPC UA Server limiting the PubSub role to data export only.
