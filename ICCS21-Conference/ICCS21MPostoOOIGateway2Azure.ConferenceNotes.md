@@ -19,9 +19,34 @@ The document contains notes to prepare a conference presentation.
 
 My name is Mariusz Postół and I am representing the Institute of Information Technology Lodz University of Technology. It is my pleasure to present my and Piotr Szymczak research work related to Object-Oriented Internet and Cloud services integration focusing on the generic architecture that is proposed to implement and deploy this interoperability scenario.
 
-### Smart factory (Industry 4.0) muli-vendor environment
+### Agenda
 
 #### Slide 2
+
+- Topic 1
+- Topic 2
+
+#### Notes 2
+
+To keep your attention let me present the agenda for my presentation. At the very beginning, let's describe the scope of my research. I am going to talk about highly distributed industrial processes. It is very broad application domain that includes but it is not limited to Industrial Internet of Things and smart factory concepts. There is no doubts that nowadays systems like that must be designed and deployed considering multivanom environment. It makes standardization especially important.
+
+____
+ smart factory Talking about M2M communication I will try to point out the most important in my opinion features of this application domain.
+
+Because the Industry 4.0, IoT, and in general cyber-physical developed based on the M2M may bother with the problems related to:
+
+- traffic asymmetry
+- data holder mobility
+- Multi-vendor environment
+
+I will investigate the possibility to engage the Reactive Communication instead of Interactive communication.
+
+To make my proposals adaptable by end-users I will propose details making the presented abstract model a foundation for further development in this respect.
+____
+
+### Industrial highly distributed applications - human role
+
+#### Slide 20
 
 - Human-centric - information origin or ultimate information destination is an operator
   - Human Machine Interface (HMI)
@@ -32,19 +57,23 @@ My name is Mariusz Postół and I am representing the Institute of Information T
   - No human interaction possible to improve solution robustness
   - Cyber-physical systems base on Machine to Machine communication
 
-#### Notes 2
+#### Notes 20
 
-Based on the role humans take while deploying smart factory concept the embedded applications can be grouped as follows Human-centric and Machine-centric. To promote multi-vendor smart factory components supply chain the standardization is especially important. Industry 4.0 is an initiative that address this application domain. Smart factory concept is recognized as forth industrial revolution.
-
-- communication: interconnection and interoperability
-- OPC UA is required 
-- proposed solutions ar compliant with this requirements
+Based on the role humans take while deploying smart factory concept the embedded applications can be grouped as follows Human-centric and Machine-centric. To promote multi-vendor components supply chain the standardization is especially important. Industry 4.0 is an initiative that address this application domain. Smart factory concept is recognized as forth industrial revolution.
 
 A typical human-centric approach is a web-service supporting, for example, a web user interface (UI) to monitor conditions and manage millions of devices and their data in a typical cloud-based IoT approach. In this case, it is characteristic that any uncertainty and necessity to make a decision can be relaxed by human interaction.
 
 An example of the machine-centric scenario is the coordination of robot behavior in a work-cell. In this case, any human interaction must be recognized as impractical or even impossible. This interconnection scenario requires the machine to machine communication (M2M) demanding multi-vendor devices integration. In this case, the solution must be robust enough because no human interaction is expected.
+____
 
-### Interoperability Scenario - Direct interconnection
+- (Industry 4.0) multi-vendor environment
+- communication: interconnection and interoperability
+- OPC UA is required 
+- proposed solutions ar compliant with this requirements
+
+____
+
+### Direct Interconnection Interoperability Scenario
 
 #### Slide 30
 
@@ -54,11 +83,16 @@ An example of the machine-centric scenario is the coordination of robot behavior
 
 To promote reusability the research must be conducted atop of a formal description. The proposed solution and all intermediate steps illustrating how to derive the final solution from the selected domain fetuses are described by means of the UML that is well known and widely used for this purpose language. Finally the workout is abstract enough to be reused in any development environment. As a proof of concept we published two implementations as the open source.
 
-By design, the direct interconnection approach requires that the cloud has to be compliant with the interoperability standard the CPS uses. As a result, it becomes a consistent communication node of the CPS. The decision to follow the direct interconnection scenario must be derived from an analysis of the capabilities of available services in concern. However, for the development strategy of this type of solution, the analysis can be done partially taking into account the following features that can be considered invariable. By design, the cloud-based services must be virtual - they are used to handle many solutions at the same time. Furthermore, M2M communication is usually constrained by real-time requirements. The virtualization of cloud services means that they must be very flexible to handle the attachment of new assets proactively (acting in advance) at run time. As a result, the cloud services must be responsible to register and authenticate devices by exposing endpoints in the public network to allow the device to access a provisioning cloud service. It requires that a session over the Internet has to be established by the data holding asset at a preparation step.
+By design, the direct interconnection approach requires that the cloud has to be compliant with the interoperability standard the CPS uses. As a result, it becomes a consistent communication node of the CPS.
 
-To meet the requirements of real-time distributed control the CPS may use protocols applicable only to local computer networks (e.g. multicast IP, Ethernet, TSN 1, etc.). Because the cloud services support only protocols handling inter connection over the Internet the direct interconnection cannot be applied in a general case.
+By design, the cloud-based services must be virtual - they are used to handle many solutions at the same time. As a result, the cloud services must be responsible to register and authenticate devices by exposing endpoints in the public network to allow the device to access a provisioning cloud service. It requires that a session over the Internet has to be established by the data holding asset at a preparation step.
 
-### Edge interconnection Interoperability Scenario
+Furthermore, M2M communication is usually constrained by real-time requirements. To meet the requirements of real-time distributed control the CPS may use protocols applicable only to local computer networks (e.g. multicast IP, Ethernet,
+TSN 1, etc.).
+
+Because the cloud services support only communication over the Internet the direct interconnection cannot be applied in a general case.
+
+### Edge Interconnection Interoperability Scenario
 
 #### Slide 40
 
@@ -66,19 +100,19 @@ To meet the requirements of real-time distributed control the CPS may use protoc
 
 #### Notes 40
 
-a remote cloud agent acting as an intermediary for nodes of the CPS
+An edge entity is a remote cloud agent acting as an intermediary for nodes of the CPS.
 
-### Interoperability Scenario - Field level gateway
+### Field Level Gateway Interoperability Scenario
 
 #### Slide 50
 
 ![Field level gateway](../.Media/FieldLevelGateway.png)
 
-#### Notes
+#### Notes 50
 
-Field level gateway is a dedicated custom agent acting as an intermediary for nodes of the CPS
+Field level gateway is a dedicated custom agent acting as an intermediary for nodes of the CPS.
 
-### Interoperability Scenario - Embedded Gateway
+### Embedded Gateway Interoperability Scenario
 
 #### Slide 60
 
@@ -132,7 +166,7 @@ This discussion presented in pervious research was concluded that only reactive 
 
 #### Notes 90
 
-- Consumer as a injected part of the Reactive Application complinat wit the OPC UA PubSub
+- Consumer as a injected part of the Reactive Application compliant with the OPC UA PubSub
 - Embedded gateway part based on the Consumer functionality is a full functional member of the Cyber-physical Network
 
 ### Implementation Architecture
@@ -147,8 +181,16 @@ This discussion presented in pervious research was concluded that only reactive 
 
 #### Slide 110
 
-- Standard protocols
-- Frameworks
+- `CommunicationContext` based on state machine
+  - protocol selection and send Data Transfer Object to Cloud
+  - security context
+- `PartBindingFactory`: IDTOProvide
+  - semantic context
+    - data grouping
+    - data mapping
+    - data serialization (JSON)
+- `PartConfigurationFactory`
+  - Application configuration
 
 #### Notes 110
 
