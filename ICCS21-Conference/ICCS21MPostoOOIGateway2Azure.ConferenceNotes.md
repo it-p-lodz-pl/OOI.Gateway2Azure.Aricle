@@ -153,18 +153,11 @@ The proposals are backed by proof-of-concept reference implementations confirmin
 
 ![Cyber-physical network architecture](../.Media/ProcessingUAData.png)
 
-Reactive interoperability relaxes the interconnection problems
-
-- network traffic asymmetry - limits of the network traffic propagation for the security reasons, for example, enforced by a firewall
-- data holder mobility – due to data origin mobility the network node may need to move from one attachment point to another losing its previous endpoint address
-
 #### Notes 70
 
-This discussion presented in pervious research was concluded that only reactive interoperability can be used to overcome network traffic asymmetry and data holder mobility. Therefore the further work is concentrated on this communication scenario. Still, reusability of the existing concepts and solutions must be concerned.
+We believe or even claim that the proposed architecture can be applied to any type of the cyber-physical network. In independent publications you can find in-depth analysis of the interactive - based on the client-server relationship - and reactive - based on the publisher - subscriber interaction applications archetypes. Both must be recognized as not compliant environment therefore to conduct any prototyping we must select one of them. We selected reactive interoperability based on the OPC Unified Architecture PubSub international standard that relaxes issues related to the real-time multi-vendor environment, network traffic asymmetry and data holder mobility.
 
-- A reactive interoperability relationship of the communication parties is proposed to deal with the network traffic propagation asymmetry or assets’ mobility.
-- Described solution based on the OPC Unified Architecture international standard relaxes issues related to the real-time multivendor environment.
-- After dynamically attaching a new island of automation the control application (responsible for the data pulling) must be reconfigured for this interoperability scenario. In other words the interactive communication relationship cannot be directly applied because the control application must be informed on how to pull data from a new source.
+In-dept analysis of this topic is far beyond the presentation scope. To get more details check out my previous publications.
 
 ### Reactive interoperability implementation
 
@@ -174,13 +167,10 @@ This discussion presented in pervious research was concluded that only reactive 
 
 ### Notes 80
 
-- encoding
-- machine to machine communication
-- configuration
-- DataRepository (process data binding)
-  - Consumer
-  - Producer
-  
+To start prototyping we did use a library call UAOOI.Networking.SemanticData - networking for short. This library offers a generic implementation of the mentioned OPC Unifoied Architecture PubSub standard. Iit is generic because allows to select one of the transport protocols allowed by the spec to connect the node to other nodes attache to common cyber-physical network. Additionaly using different implementation of the Encoding component many variants of the NetworkMessage compliant with the spec is configurable and may be agregated by the library at run-time. Encoding and underling protocol stack are responsible to support in-band machnie to machine communication.
+
+In the proposed solution process data binding is offered by the DataRepository. It allows to derive two independent implementations of the Producer and Consumer roles. By design, they support access to real-time process data. Independent implementations of these roles can be composed by the Reactive Application using the dependency injection programming technique. It is in compliance with the separation of concerns programming paradigm.
+
 ### Implementation Domain Model
 
 #### Slide 90
@@ -189,8 +179,13 @@ This discussion presented in pervious research was concluded that only reactive 
 
 #### Notes 90
 
-- Consumer as a injected part of the Reactive Application compliant with the OPC UA PubSub
-- Embedded gateway part based on the Consumer functionality is a full functional member of the Cyber-physical Network
+This diagram is derived by merging previously presented onces and removing not relevant for for further discussion members. According to this diagram, our implementation of the Consumer role has been used to provide embedded gateway functionality and out-of-band communication with cloud services to transfer data to Azure IoT Central solution. The detailed description of this solution design is not relevant for further discussion, so I will skip it.
+
+The most important feutre here is that the Reactive application uses late binding to compose the custom implementation of the gateway. As I said previously it allows to implement this role evan after deploring the hosting reactive application. In other words current Consumer implementation is injected part of the Reactive Application compliant with the OPC UA PubSub. Using other implementations of the Producer/consumer roles a vast variety of functionality can  be provided as the same time.
+
+Using many different Consumer role implementation it is possible to get connected to any cloud services using out-of-band communication compliant with cloud services connectivity requirements. Our prototyping addresses only Azure interoperability as just an example.
+
+It is worth stressing that the embedded gateway part based on the Consumer functionality is a full functional member of the Cyber-physical Network.
 
 ### Implementation Architecture
 
