@@ -167,9 +167,9 @@ In-dept analysis of this topic is far beyond the presentation scope. To get more
 
 ### Notes 80
 
-To start prototyping we did use a library call UAOOI.Networking.SemanticData - networking for short. This library offers a generic implementation of the mentioned OPC Unifoied Architecture PubSub standard. Iit is generic because allows to select one of the transport protocols allowed by the spec to connect the node to other nodes attache to common cyber-physical network. Additionaly using different implementation of the Encoding component many variants of the NetworkMessage compliant with the spec is configurable and may be agregated by the library at run-time. Encoding and underling protocol stack are responsible to support in-band machnie to machine communication.
+To start prototyping we did use a library call UAOOI.Networking.SemanticData - networking for short. This library offers a generic implementation of the mentioned OPC Unified Architecture PubSub standard. It is generic because allows to select one of the transport protocols allowed by the spec to connect the node to other nodes attache to common cyber-physical network. Additionally, using a different implementation of the Encoding component many variants of the NetworkMessage compliant with the spec is configurable and may be aggregated by the library at run-time. Encoding and underling protocol stack are responsible to support in-band machnie to machine communication.
 
-In the proposed solution process data binding is offered by the DataRepository. It allows to derive two independent implementations of the Producer and Consumer roles. By design, they support access to real-time process data. Independent implementations of these roles can be composed by the Reactive Application using the dependency injection programming technique. It is in compliance with the separation of concerns programming paradigm.
+In the proposed solution process data binding is offered by the DataRepository , which implements tha IBindingFactory interface. The  Producer and Consumer roles are derive from it to support bidirectional data exchange with the underlying real process. By design, they support access to real-time process data. Independent implementations of these roles can be composed by the Reactive Application using the dependency injection programming technique. It is in compliance with the separation of concerns programming paradigm.
 
 ### Implementation Domain Model
 
@@ -181,11 +181,11 @@ In the proposed solution process data binding is offered by the DataRepository. 
 
 This diagram is derived by merging previously presented onces and removing not relevant for for further discussion members. According to this diagram, our implementation of the Consumer role has been used to provide embedded gateway functionality and out-of-band communication with cloud services to transfer data to Azure IoT Central solution. The detailed description of this solution design is not relevant for further discussion, so I will skip it.
 
-The most important feutre here is that the Reactive application uses late binding to compose the custom implementation of the gateway. As I said previously it allows to implement this role evan after deploring the hosting reactive application. In other words current Consumer implementation is injected part of the Reactive Application compliant with the OPC UA PubSub. Using other implementations of the Producer/consumer roles a vast variety of functionality can  be provided as the same time.
+The most important feutre here is that the Reactive application uses late binding to compose the custom implementation of the gateway. As I said previously it allows to implement this role evan after deploying the hosting application. In other words current Consumer implementation is injected part of the Reactive Application compliant with the OPC UA PubSub. Using other implementations of the Producer/Consumer roles a vast variety of functionality can  be provided as the same time.
 
-Using many different Consumer role implementation it is possible to get connected to any cloud services using out-of-band communication compliant with cloud services connectivity requirements. Our prototyping addresses only Azure interoperability as just an example.
+Using many different Consumer role implementations it is possible to get connected to any cloud services using out-of-band communication compliant with cloud services connectivity requirements. Our prototyping addresses only Azure interoperability as just an example.
 
-It is worth stressing that the embedded gateway part based on the Consumer functionality is a full functional member of the Cyber-physical Network.
+It is worth stressing that the hosting application of the embedded gateway part based on the Consumer functionality is a fully functional member of the Cyber-physical Network.
 
 ### Implementation Architecture
 
@@ -199,16 +199,13 @@ It is worth stressing that the embedded gateway part based on the Consumer funct
 
 #### Slide 110
 
-- `CommunicationContext` based on state machine
-  - protocol selection and send Data Transfer Object to Cloud
-  - security context
-- `PartBindingFactory`: IDTOProvide
-  - semantic context
-    - data grouping
-    - data mapping
-    - data serialization (JSON)
-- `PartConfigurationFactory`
-  - Application configuration
+Implementation contains two major components, namely CommunicationContext and PartBindingFactory. PartBindingFactory is responsible to groupe and process the data recovered from the messages exchanged over the network. Integrating these two different environments we must assume that metadata used to describe the data exchanged over the cyber-physical networks and the date exposed by the cloud solution are not compliant. For example, to be compliant with the specification the first must be described using encoding required by the OPC Unified Architecture spec parts 6 and 14. On the other hand the cloud solution metadata may be described using Digital Tween Description Language. In other words these two environment uses different domain specific languages to describe syntax and semantics of the process data. Therefore, based on the bitstreams meaning this class of the gateway must be also responsible to provide mapping at run time. The result of mapping is converted to Data Transfer Object using JSON serialization. This Data Transfer object factoring mechanism must be conducted at every time new data is to be send to the cloud, but behavior implementation of the mapping may be considered as the design time activity in a typical case.
+
+CommunicationContext class sends the factored Data Transfer Objects using communication channel established in advance. The data Transfer object is retrieved from the PartBindingFactory using the IDTOProvider interface.
+
+The CommunicationContext maintains the data transfer channel with the cloud services using well known state machine pattern. It is responsible for protocols stack selection, authentication, and autorotation of a session created to establish a communication channel. The encoded JSON messages must be transferred to cloud over the network using the selected protocol stack. The Azure supports HTTP, AMQP, and MQTT protocol stacks, which are all standard ones. It means that they have appropriate specification documentation. Consequently, it is possible to apply any available implementation compliant with an appropriate specification to achieve connectivity. In this case, all parameters required to establish connectivity  and security contexts are up to the gateway responsibility. Alternatively, the API offered by the dedicated frameworks (libraries) may be used. Using a framework, the configuration process may be reduced significantly, and the communication protocol selection has only an indirect impact on the interoperability features. In the proposed implementation, the Azure interconnection has been obtained using the above mentioned frameworks.
+
+Azure and PubSub use different security mechanisms so in the proposed solution establishing security-context is realized independently using the configuration. The CommunicationContext is responsible for establishing the connectivity and security contexts as at the negotiation phase.
 
 #### Notes 110
 
@@ -222,9 +219,9 @@ the company was awarded the contract on the strength of evaluation, proof of con
 
 - The discussion concludes that the embedded gateway software component best suits all requirements and thus has been implemented as a composable part of the selected reactive OPC UA framework which promotes separation of concerns and reusability.
 
-
 ## Future work
 
 - OPC UA Server Embedded Gateway
 - OPC UA Client Emended Gateway
-- 
+- semantic mapping
+- gateway on a stick - self contained application without cyber physical Network interoperability. Data gathered by the producer is send to cloud using the Consumer role implemented to fulfill the gateway functionality. 
