@@ -107,7 +107,7 @@ In case any kind of mobility has to be considered, the next engineering challeng
 
 To promote reusability the research must be conducted atop of a formal description. The proposed solution and all intermediate steps illustrating how to derive the final solution from the selected domain features are described by means of the UML that is a well known and widely used language for this purpose. Finally the workout is abstract enough to be reused in any development environment. As a proof of concept we published two implementations as the open source.
 
-Before meting any further research decision the first important question is relationship between the cloud-based frond-end and cyber physical network, and first natural option is direct interconnection. By design, the direct interconnection approach requires that the cloud has to be compliant with the interoperability standard the cyber-physical system is based atop of.
+Before conducting any further research, we must address the question about the relationship between the cloud-based frond-end and cyber-physical network, and the first natural option is direct interconnection. By design, the direct interconnection approach requires that the cloud has to be compliant with the interoperability standard the cyber-physical system is based on.
 
 This approach is not practical, became by design, the cloud-based services require that for interconnection preparation and data interchange a session over the Internet has to be established by the data holding assets. Contrary to this, Machine to machine communication is usually constrained by real-time requirements to use protocols applicable only to local computer networks (e.g. multicast IP, Ethernet, TSN 1, etc.).
 
@@ -131,7 +131,7 @@ An edge entity is a remote cloud agent acting as an intermediary for nodes of th
 
 #### Notes 50
 
-Field level gateway is a dedicated custom agent acting as an intermediary for nodes connected to the cyber-physical system. This solution is not constrained by the vendor communication context and as the result may be used to handle communication with a variety of clouds. Still this solution is contained only to fulfil the gateway functionality.
+Field level gateway is a dedicated custom agent acting as an intermediary for nodes connected to the cyber-physical system. This solution is not constrained by the cloud vendor communication context and as the result may be used to handle communication with a variety of clouds. Still, this solution is constrained to fulfill the gateway functionality only.
 
 ### Embedded Gateway Interoperability Scenario
 
@@ -143,7 +143,7 @@ Field level gateway is a dedicated custom agent acting as an intermediary for no
 
 We propose a new architecture derived from the field-level approach but not constrained to gateway functionality only. The embedded-gateway is only a composed part of the Networking services of a cyber-physical node. In this approach it may be assumed that the gateway functionality is only an add-iin to expand typical functionality of the node including but not limited to establishing semantic and security context with the other nodes connected to the cyber-physical network. The responsibility of the Embedded Gateway is to establish communication context with the cloud-based frond-end and conduct the selected data transfer in compliance with this context.
 
-Because - according to this proposal - the Embedded-Gateway is composable to any Cyber-physical node it could be deployed far after designing and deploring of the hosting cyber-physical node. The only requirement that constrains this approach is a common abstract contract usually expressed an an interface that the embedded-gateway must be compliant with to be aggregated to the whole. In other words in our solution the gateway is losely copled with the node contray to the Edge and Field-level approach where the gateway functionality is an ebeded part of the host. It improves flexibility, reusability, and in general maintenance cost.
+composable to any Cyber-physical node it could be deployed far after designing and deploring of the hosting cyber-physical node. The only requirement that constrains this approach is a common abstract contract usually expressed as an interface that the embedded gateway must be compliant with to be aggregated to the whole. In other words, in the proposed solution, the gateway is loosely coupled with the node contrary to the Edge and Field-level approaches where the gateway functionality is an embedded part of the host. It improves flexibility, reusability, and in general maintenance cost.
 
 The proposals are backed by proof-of-concept reference implementations confirming the possibility of integrating selected cloud services with the OPC UA based cyber-physical system by applying the proposed architecture and deployment scenario. It is contrary to interconnecting cloud services with the selected OPC UA Server limiting the PubSub role to data export only.
 
