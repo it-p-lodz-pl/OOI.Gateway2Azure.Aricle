@@ -19,31 +19,6 @@ The document contains notes to prepare a conference presentation.
 
 My name is Mariusz Postół and I am representing the Institute of Information Technology Lodz University of Technology. It is my pleasure to present my and Piotr Szymczak research work related to Object-Oriented Internet and Cloud services integration focusing on the generic architecture that is proposed to implement and deploy this interoperability scenario.
 
-### Agenda
-
-#### Slide 2
-
-- Topic 1
-- Topic 2
-
-#### Notes 2
-
-To keep your attention let me present the agenda for my presentation. At the very beginning, let's describe the scope of my research. I am going to talk about highly distributed industrial processes. It is very broad application domain that includes but it is not limited to Industrial Internet of Things and smart factory concepts. There is no doubts that nowadays systems like that must be designed and deployed considering multivanom environment. It makes standardization especially important.
-
-____
- smart factory Talking about M2M communication I will try to point out the most important in my opinion features of this application domain.
-
-Because the Industry 4.0, IoT, and in general cyber-physical developed based on the M2M may bother with the problems related to:
-
-- traffic asymmetry
-- data holder mobility
-- Multi-vendor environment
-
-I will investigate the possibility to engage the Reactive Communication instead of Interactive communication.
-
-To make my proposals adaptable by end-users I will propose details making the presented abstract model a foundation for further development in this respect.
-____
-
 ### Industrial highly distributed applications - human role
 
 #### Slide 20
@@ -105,13 +80,13 @@ In case any kind of mobility has to be considered, the next engineering challeng
 
 #### Notes 30
 
-To promote reusability the research must be conducted atop of a formal description. The proposed solution and all intermediate steps illustrating how to derive the final solution from the selected domain features are described by means of the UML that is a well known and widely used language for this purpose. Finally the workout is abstract enough to be reused in any development environment. As a proof of concept we published two implementations as the open source.
+To promote reusability the research must be conducted atop of a formal description. The proposed solution and all intermediate steps illustrating how to derive the final solution from the selected domain features are described by means of the UML that is a well-known and widely used language for this purpose. Finally, the workout is abstract enough to be reused in any development environment. As a proof of concept, we published two implementations as open source.
 
 Before conducting any further research, we must address the question about the relationship between the cloud-based frond-end and cyber-physical network, and the first natural option is direct interconnection. By design, the direct interconnection approach requires that the cloud has to be compliant with the interoperability standard the cyber-physical system is based on.
 
-This approach is not practical, became by design, the cloud-based services require that for interconnection preparation and data interchange a session over the Internet has to be established by the data holding assets. Contrary to this, Machine to machine communication is usually constrained by real-time requirements to use protocols applicable only to local computer networks (e.g. multicast IP, Ethernet, TSN 1, etc.).
+This approach is not practical, became by design, the cloud-based services require that for interconnection preparation and data interchange a session over the Internet has to be established by the data holding assets. Contrary to this, machine-to-machine communication is usually constrained by real-time requirements to use protocols applicable only to local computer networks (e.g. multicast IP, Ethernet, TSN 1, etc.).
 
-Concluding, it si obvious that because the cloud services support only communication over the Internet the direct interconnection cannot be applied in a general case.
+Concluding, it is obvious that because the cloud services support only communication over the Internet the direct interconnection cannot be applied in a general case.
 
 ### Edge Interconnection Interoperability Scenario
 
@@ -121,7 +96,7 @@ Concluding, it si obvious that because the cloud services support only communica
 
 #### Notes 40
 
-An edge entity is a remote cloud agent acting as an intermediary for nodes of the cyber-physical system. It is a consistent part of cloud-based frond-end services. Main disadvantage of this solution is possibility to support interconnection with only one cloud.
+An edge entity is a remote cloud agent acting as an intermediary for nodes of the cyber-physical system. It is a consistent part of cloud-based frond-end services. The main disadvantage of this solution is the possibility to support interconnection with only one cloud service.
 
 ### Field Level Gateway Interoperability Scenario
 
@@ -141,11 +116,9 @@ Field level gateway is a dedicated custom agent acting as an intermediary for no
 
 #### Notes 60
 
-We propose a new architecture derived from the field-level approach but not constrained to gateway functionality only. The embedded-gateway is only a composed part of the Networking services of a cyber-physical node. In this approach it may be assumed that the gateway functionality is only an add-iin to expand typical functionality of the node including but not limited to establishing semantic and security context with the other nodes connected to the cyber-physical network. The responsibility of the Embedded Gateway is to establish communication context with the cloud-based frond-end and conduct the selected data transfer in compliance with this context.
+We propose a new architecture derived from the field-level approach but not constrained to gateway functionality only. The embedded gateway is only a composed part of the Networking services of a cyber-physical node. In this approach, it may be assumed that the gateway functionality is only an add-in to expand the typical functionality of the node including but not limited to establishing semantic and security context with the other nodes connected to the cyber-physical network. The responsibility of the Embedded Gateway is to establish communication context with the cloud-based frond-end and conduct the selected data transfer in compliance with this context.
 
-composable to any Cyber-physical node it could be deployed far after designing and deploring of the hosting cyber-physical node. The only requirement that constrains this approach is a common abstract contract usually expressed as an interface that the embedded gateway must be compliant with to be aggregated to the whole. In other words, in the proposed solution, the gateway is loosely coupled with the node contrary to the Edge and Field-level approaches where the gateway functionality is an embedded part of the host. It improves flexibility, reusability, and in general maintenance cost.
-
-The proposals are backed by proof-of-concept reference implementations confirming the possibility of integrating selected cloud services with the OPC UA based cyber-physical system by applying the proposed architecture and deployment scenario. It is contrary to interconnecting cloud services with the selected OPC UA Server limiting the PubSub role to data export only.
+Embedded Gateway is composable to any Cyber-physical node it could be deployed far after designing and deploring of the hosting cyber-physical node. The only requirement that constrains this approach is a common abstract contract usually expressed as an interface that the embedded gateway must be compliant with to be aggregated to the whole. In other words, in the proposed solution, the gateway is loosely coupled with the node contrary to the Edge and Field-level approaches where the gateway functionality is an embedded part of the host. It improves flexibility, reusability, and in general maintenance cost.
 
 ### Sessionless (Reactive communication) vs Session Oriented (Interactive communication)
 
@@ -155,9 +128,7 @@ The proposals are backed by proof-of-concept reference implementations confirmin
 
 #### Notes 70
 
-We believe or even claim that the proposed architecture can be applied to any type of the cyber-physical network. In independent publications you can find in-depth analysis of the interactive - based on the client-server relationship - and reactive - based on the publisher - subscriber interaction applications archetypes. Both must be recognized as not compliant environment therefore to conduct any prototyping we must select one of them. We selected reactive interoperability based on the OPC Unified Architecture PubSub international standard that relaxes issues related to the real-time multi-vendor environment, network traffic asymmetry and data holder mobility.
-
-In-dept analysis of this topic is far beyond the presentation scope. To get more details check out my previous publications.
+We believe or even claim that the proposed architecture can be applied to any type of cyber-physical network. In independent publications, you can find an in-depth analysis of the interactive - based on the client-server relationship - and reactive - based on the publisher-subscriber interaction applications archetypes. Both must be recognized as not compliant environments therefore to conduct any prototyping we must select one of them. We selected reactive interoperability based on the OPC Unified Architecture PubSub international standard that relaxes issues related to the real-time multi-vendor environment, network traffic asymmetry, and data holder mobility.
 
 ### Reactive interoperability implementation
 
@@ -195,33 +166,67 @@ It is worth stressing that the hosting application of the embedded gateway part 
 
 #### Notes 100
 
-### Cloud Communication Context
+Implementation contains two major components, namely CommunicationContext and PartBindingFactory.
+
+PartBindingFactory is responsible to group and processing the data recovered from the messages exchanged over the network. Integrating these two different environments we must assume that metadata used to describe the data exchanged over the cyber-physical networks and the data exposed by the cloud solution are not compliant. For example, to be compliant with the specification the cyber-physical data exchange must be described using encoding required by the OPC Unified Architecture spec defined in parts 6 and 14 that offer a few incompatible alternatives. On the other hand, the cloud solution metadata may be described using Digital Tween Description Language that is also not stable. In other words, these two environments uses different domain-specific languages to describe syntax and semantics of the same process data. Therefore, based on the bitstreams meaning this class of the gateway must be also responsible to provide mapping at run time. The result of the mapping is converted to Data Transfer Object using JSON serialization. This Data Transfer Object factoring mechanism must be conducted every time new data is to be sent to the cloud, but behavior implementation of the mapping may be considered as the design-time activity in a typical case.
+
+CommunicationContext class sends the factored Data Transfer Objects using a communication channel established in advance. The Data Transfer Object is retrieved from the PartBindingFactory using the IDTOProvider interface.
+
+The CommunicationContext maintains the data transfer channel with the cloud services using a well-known state machine pattern. It is responsible for protocols stack selection, authentication, and autorotation of a session created to establish a communication channel. The encoded JSON messages must be transferred to the cloud over the network using the selected protocol stack. The Azure supports HTTP, AMQP, and MQTT protocol stacks, which are all standard ones. It means that they have appropriate specification documentation. Consequently, it is possible to apply any available implementation compliant with an appropriate specification to achieve connectivity. In this case, all parameters required to establish connectivity and security contexts are up to the gateway's responsibility. Alternatively, the API offered by the dedicated frameworks (libraries) may be used. Using a framework, the configuration process may be reduced significantly, and the communication protocol selection has only an indirect impact on the interoperability features. In the proposed implementation, the Azure interconnection has been obtained using the above-mentioned frameworks.
+
+Azure and PubSub use different security mechanisms so in the proposed solution establishing security-context is realized independently using the configuration. The CommunicationContext is responsible for establishing the connectivity and security contexts at the negotiation phase.
+
+Finally, CommunicationContext uses out-of-band communication to send data to the cloud services.
+
+### Implementation - proof of concept
 
 #### Slide 110
 
-Implementation contains two major components, namely CommunicationContext and PartBindingFactory. PartBindingFactory is responsible to groupe and process the data recovered from the messages exchanged over the network. Integrating these two different environments we must assume that metadata used to describe the data exchanged over the cyber-physical networks and the date exposed by the cloud solution are not compliant. For example, to be compliant with the specification the first must be described using encoding required by the OPC Unified Architecture spec parts 6 and 14. On the other hand the cloud solution metadata may be described using Digital Tween Description Language. In other words these two environment uses different domain specific languages to describe syntax and semantics of the process data. Therefore, based on the bitstreams meaning this class of the gateway must be also responsible to provide mapping at run time. The result of mapping is converted to Data Transfer Object using JSON serialization. This Data Transfer object factoring mechanism must be conducted at every time new data is to be send to the cloud, but behavior implementation of the mapping may be considered as the design time activity in a typical case.
-
-CommunicationContext class sends the factored Data Transfer Objects using communication channel established in advance. The data Transfer object is retrieved from the PartBindingFactory using the IDTOProvider interface.
-
-The CommunicationContext maintains the data transfer channel with the cloud services using well known state machine pattern. It is responsible for protocols stack selection, authentication, and autorotation of a session created to establish a communication channel. The encoded JSON messages must be transferred to cloud over the network using the selected protocol stack. The Azure supports HTTP, AMQP, and MQTT protocol stacks, which are all standard ones. It means that they have appropriate specification documentation. Consequently, it is possible to apply any available implementation compliant with an appropriate specification to achieve connectivity. In this case, all parameters required to establish connectivity  and security contexts are up to the gateway responsibility. Alternatively, the API offered by the dedicated frameworks (libraries) may be used. Using a framework, the configuration process may be reduced significantly, and the communication protocol selection has only an indirect impact on the interoperability features. In the proposed implementation, the Azure interconnection has been obtained using the above mentioned frameworks.
-
-Azure and PubSub use different security mechanisms so in the proposed solution establishing security-context is realized independently using the configuration. The CommunicationContext is responsible for establishing the connectivity and security contexts as at the negotiation phase.
+- To promote and leverage
+  - Reusability – using the same part in many scenarios
+  - Flexibility
+  - Interoperability in the multi-vendor environment
+  - Deployment without programming
+- The following design patterns are applied
+  - Separation of concerns
+  - Dependency injection
+  - Adaptive Programming
+- Standardization, i.e. OPC UA Part 14 PubSub 
 
 #### Notes 110
 
+It is a theory,  just a set of assumptions that now we can use to propose a concrete implementation meeting the community expectation. I believe that a detailed description of the implementation is not relevant to us in contrast to an analysis of how to use the proposed domain model to make strategic design decisions and functionality distribution. From the above discussion we can learn that the main design decisions must concern reusability (it means using the same part in many scenarios), flexibility, interoperability in the multi-vendor environment, and last but not least deployment without programming.
+
+To meet these requirements the mentioned on the scree design patterns have been used.
+
+- Separation of concerns - to allow independent development of the parts.
+- Dependency injection - to allow late binding of independently implemented parts.
+- Adaptive Programming used at the development and deployment stage to improve the adaptability of the program against changing the production environment.
+
+Piece by piece integration of a cyber-physical system using multi-vendor products requires that machine to machine communication employs international standards as the interoperability foundation. Following the presented conclusions, OPC Unified Architecture Part 14 PubSub is selected in this respect. By design, this standard should support the required publisher-subscriber communication pattern, but it covers only partially the requirements of the applications concerned. Therefore, our proposals shall be recognized as far beyond the specification scope, although they are still compliant with the standard.
+
 ### Proof of concept (pilot projects)
 
-evidence, typically derived from an experiment or pilot project, which demonstrates that a design concept, business proposal, etc., is feasible.
+#### Slide 120
 
-the company was awarded the contract on the strength of evaluation, proof of concept, and budget
+![Implementation Architecture](../.Media/GitHubRepository.png)
 
-### Conclusions
+#### Notes 120
 
-- The discussion concludes that the embedded gateway software component best suits all requirements and thus has been implemented as a composable part of the selected reactive OPC UA framework which promotes separation of concerns and reusability.
+The proposals are backed by proof of concept reference implementations. Prototyping addresses Microsoft Azure cloud as an example. The outcome has been just published on GitHub as the open-source (MIT licensed) repository. The proposed solutions have been harmonized with the more general concept called the Object-Oriented Internet.
 
-## Future work
+### Further work
 
-- OPC UA Server Embedded Gateway
-- OPC UA Client Emended Gateway
-- semantic mapping
-- gateway on a stick - self contained application without cyber physical Network interoperability. Data gathered by the producer is send to cloud using the Consumer role implemented to fulfill the gateway functionality. 
+#### Slide 130
+
+- Future research
+  - OPC UA Server Embedded Gateway
+  - OPC UA Client Emended Gateway
+  - semantic mapping
+  - gateway on a stick - self contained application without cyber physical Network interoperability. Data gathered by the producer is send to cloud using the Consumer role implemented to fulfill the gateway functionality.
+
+#### Notes 130
+
+The discussion concludes that the embedded gateway software component best suits all requirements and thus has been implemented as a composable part of the selected reactive OPC UA framework which promotes separation of concerns and reusability.
+
+My point is that this gateway experience may be easily ported to implement OPC UA Server and OPC UA Client gateway. A next topic that could be a good candidate for further work is a systematic approach to the semantic mapping between different domain-specific languages, namely languages defined by the OPC UA specification and Digital Tween Description Languaged that is to be used to define metadata on the Azure services.
