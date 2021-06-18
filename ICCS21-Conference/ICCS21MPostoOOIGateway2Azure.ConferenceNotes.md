@@ -9,7 +9,7 @@
   - [Industrial highly distributed applications - human role](#industrial-highly-distributed-applications---human-role)
     - [Slide 20](#slide-20)
     - [Notes 20](#notes-20)
-  - [Cyber-physical Systems Telemetry](#cyber-physical-systems-telemetry)
+  - [Telemetry => Cyber-physical Systems](#telemetry--cyber-physical-systems)
     - [Slide 25](#slide-25)
     - [Notes 25](#notes-25)
   - [Direct Interconnection Interoperability Scenario](#direct-interconnection-interoperability-scenario)
@@ -55,6 +55,8 @@ The document contains notes to prepare a conference presentation.
 
 #### Slide 10
 
+- ICCS 2021: INTERNATIONAL CONFERENCE ON COMPUTATIONAL SCIENCE
+- 17-06-2021 Computational Science in IoT and Smart Systems
 - Object-Oriented Internet Cloud Interoperability
 - Mariusz Postół (mailto:mariusz.postol@p.lodz.pl)
 - Piotr Szymczak
