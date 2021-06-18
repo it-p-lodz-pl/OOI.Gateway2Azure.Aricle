@@ -3,7 +3,7 @@
 ## Table of content<!-- omit in toc -->
 
 - [Workspace organization](#workspace-organization)
-- [Published version](#published-version)
+- [How to cite](#how-to-cite)
 - [Prototyping](#prototyping)
 - [See also](#see-also)
 
@@ -17,15 +17,15 @@
 | Latex                  | A final version of the paper prepared using Latex format.                                                             |
 | Markdown               | A preliminary content of the article prepared using markdown format.                                                  |
 
-## Published version
+## How to cite
 
-`Object-Oriented Internet Cloud Interoperability` has been accepted and is to be published in the Lecture Notes in Computer Science series, on behalf of Springer. The public preview of the article is available for early review. To get the full story and get your copy check out the preprint from Research Gateway: [Object-Oriented Internet Cloud Interoperability](https://www.researchgate.net/publication/346563454_Object-Oriented_Internet_Cloud_Interoperability).
-
-Description of the article is maintained in the file [README.md](it-p-lodz-pl.github.io\README.md)
+- Postół M., Szymczak P. (2021) Object-Oriented Internet Cloud Interoperability. In: Paszynski M., Kranzlmüller D., Krzhizhanovskaya V.V., Dongarra J.J., Sloot P.M. (eds) Computational Science – ICCS 2021. ICCS 2021. Lecture Notes in Computer Science, vol 12745. Springer, Cham. <https://doi.org/10.1007/978-3-030-77970-2_43>
+- [About this paper](https://link.springer.com/chapter/10.1007/978-3-030-77970-2_43#citeas)
+- Available on [ResearchGate](https://www.researchgate.net/publication/352289895_Object-Oriented_Internet_Cloud_Interoperability)
 
 ## Prototyping
 
-The prototyping is conducted in the repositories:
+The prototyping was conducted in the repositories:
 
 - [Object-Oriented Internet](https://github.com/mpostol/OPC-UA-OOI#object-oriented-internet) - Object-Oriented Internet - Machines to Machine Meaningful Interoperability
 - [CrossHMI](https://github.com/Drutol/CrossHMI#crosshmi) - Thesis: Object-Oriented Internet - reactive visualization of asynchronous data using AZURE
@@ -46,15 +46,13 @@ The prototyping is conducted in the repositories:
   - [GitHub UAOOI.Networking.ReferenceApplication][OOI.Networking.ReferenceApplication]
   - [GitHub UAOOI Releases Page][OOI.Releases]
 
+- [Object Oriented Internet - online ebook][OOIBook]
+
+- [OPC UA Address Space Model Designer (ASMD); GitHub Open Source Software][ASMD]
+
 [OOI]:https://github.com/mpostol/OPC-UA-OOI
 [OOI.Networking.UDPMessageHandler]:https://github.com/mpostol/OPC-UA-OOI/tree/master/Networking/UDPMessageHandler
 [OOI.Networking.ReferenceApplication]:https://github.com/mpostol/OPC-UA-OOI/tree/master/Networking/ReferenceApplication
 [OOI.Releases]:https://github.com/mpostol/OPC-UA-OOI/releases
-
-- [Object Oriented Internet - online ebook][OOIBook]
-
 [OOIBook]:https://commsvr.gitbook.io/ooi/readme
-
-- [OPC UA Address Space Model Designer (ASMD); GitHub Open Source Software][ASMD]
-
 [ASMD]:https://github.com/mpostol/ASMD
